@@ -1,24 +1,25 @@
 import "../../styles/components/header/style.scss";
-// Находим кнопку Каталог
+document.addEventListener("DOMContentLoaded", () => {
+  if (!localStorage.getItem("KEY_CITY")) {
+    getUserIp();
+  }
+});
+// Каталог + табы
 const catalogButtonHeader = document.querySelector(".header__button");
 const catalogWrapHeader = document.querySelector(".header__catalog-wrap");
 const catalogWrapCloseHeader = document.querySelector(
   ".header__catalog-wrap-close"
 );
-catalogWrapCloseHeader.addEventListener("click", () =>
-  catalogButtonHeader.click()
-);
-// Вешаем обработчик
-catalogButtonHeader.addEventListener("click", () => {
-  // Тоглим стиль по нажатию
-  catalogButtonHeader.classList.toggle("is-open");
-  catalogWrapHeader.classList.toggle("is-open");
-});
-// Находим все элементы списка категории товаров
 const catalogItemsHeader = document.querySelectorAll(
   ".header__catalog-left-column-item"
 );
-// Перебираем каждый
+catalogWrapCloseHeader.addEventListener("click", () =>
+  catalogButtonHeader.click()
+);
+catalogButtonHeader.addEventListener("click", () => {
+  catalogButtonHeader.classList.toggle("is-open");
+  catalogWrapHeader.classList.toggle("is-open");
+});
 catalogItemsHeader.forEach((el) => {
   // Вешаем обработчик на каждый
   el.addEventListener("click", () => {
@@ -42,3 +43,43 @@ catalogItemsHeader.forEach((el) => {
     });
   });
 });
+// Каталог + табы
+
+// Выбор города
+const cityWrapHeader = document.querySelector(".header__pages-city-wrap");
+const cityCloseButtonHeader = document.querySelector(
+  ".header__pages-city-wrap-close"
+);
+const cityConfirmButtonHeader = document.getElementById("header-city-confirm");
+const cityTagButtonHeader = document.querySelector(".tag");
+cityCloseButtonHeader.addEventListener("click", () => {
+  cityWrapHeader.classList.remove("is-open");
+});
+cityConfirmButtonHeader.addEventListener("click", () =>
+  cityCloseButtonHeader.click()
+);
+cityTagButtonHeader.addEventListener("click", () =>
+  cityWrapHeader.classList.add("is-open")
+);
+
+async function getUserIp() {
+  cityWrapHeader.classList.add("is-open");
+  await fetch("https://ipapi.co/json/")
+    .then((res) => res.json())
+    .then((res) => {
+      return getUserLocation(res.ip);
+    });
+}
+async function getUserLocation(ip) {
+  await fetch(
+    `https://api.ipgeolocation.io/ipgeo?apiKey=5e01da5475ba486da5b4b4d332a34862&ip=${ip}`
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      localStorage.setItem(
+        "KEY_CITY",
+        JSON.stringify({ key: res.geoname_id, city: res.city })
+      );
+    });
+}
+// Выбор города
