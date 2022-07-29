@@ -140,14 +140,15 @@
   }
   &__catalog {
     &-wrap {
-      position: fixed;
+      position: absolute;
       top: 124px;
       left: 0;
       background-color: var(--white-color);
       width: 100%;
-      height: 80%;
+      height: 663px;
       transform: translateX(-100%);
       transition: transform .5s ease;
+      z-index: 1;
       &-content {
         display: flex;
       }

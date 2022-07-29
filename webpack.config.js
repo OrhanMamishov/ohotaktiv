@@ -16,11 +16,14 @@ function setupDevtool() {
 }
 
 module.exports = {
-  entry: "./src/public/scripts/imports.js",
+  entry: {
+    indexEntry: "./src/public/scripts/pages/index.js",
+  },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "main.js",
     publicPath: "/",
+    filename: "[name].bundle.js",
+    chunkFilename: "[id].bundle_[chunkhash].js",
   },
   devServer: {
     historyApiFallback: true,
@@ -28,9 +31,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: "babel-loader",
-        exclude: "/node_modules",
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.(scss|css)$/,
@@ -52,8 +60,12 @@ module.exports = {
       filename: "index.css",
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "./src/public/index.html"),
+      // favicon: "src/assets/img/favicon.svg",
       filename: "index.html",
+      template: path.resolve(__dirname, "./src/public/index.html"),
+      chunks: ["indexEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
     }),
     new CleanWebpackPlugin(),
   ],
