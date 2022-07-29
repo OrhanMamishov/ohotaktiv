@@ -3,6 +3,7 @@
 @import 'fonts';
 
 @import '../../styles/components/popup/popup';
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +11,8 @@
 :root {
   --white-color: #FFFFFF;
   --lightness-white-color: #F8F8F8;
+  --darkness-white-color: #7F7F7F;
+  --light-white-color: #E7E7E7;
   --border-color: #EEEEEE;
   --background-color: #EBEBEB;
   --black-color: #282828;
@@ -22,6 +25,9 @@
   --red-color: #FF0000; // уточнить
   --grey-color: #B9B9B9;
   --light-grey-color: #F4F4F4;
+  --footer-title-color: #D7D7D7;
+  --footer-text-color: #A4A4A4;
+  --footer-background-color: #acacac1e;
 }
 
 body,
@@ -34,7 +40,7 @@ html {
   color: var(--black-color);
 }
 
-h1, h2, h3, h4, h5, p, a, li {
+h1, h2, h3, h4, h5, p, a, li, label {
   @include clearStyles;
   letter-spacing: 0.04em;
 }
@@ -80,56 +86,6 @@ button {
   margin: -1px;
 }
 
-@-webkit-keyframes tremor {
-  0%, 25% {
-      left: -1px;
-      top:-1px;
-      -webkit-transform: translateX(-1%);
-      transform: translateX(-1%);
-  }
-  50%, 100% {
-      left: 1px;
-      top: 1px;
-      -webkit-transform: translateX(1%);
-      transform: translateX(1%);
-  }
-}
-@-moz-keyframes tremor {
-  0%, 25% {
-      left: -1px;
-      -webkit-transform: translateX(-1%);
-      transform: translateX(-1%);
-  }
-  50%, 100% {
-      left: 1px;
-      -webkit-transform: translateX(1%);
-      transform: translateX(1%);
-  }
-}
-@-ms-keyframes tremor {
-  0%, 25% {
-      left: -1px;
-      -webkit-transform: translateX(-1%);
-      transform: translateX(-1%);
-  }
-  50%, 100% {
-      left: 1px;
-      -webkit-transform: translateX(1%);
-      transform: translateX(1%);
-  }
-}
-@-o-keyframes tremor {
-  0%, 25% {
-      left: -1px;
-      -webkit-transform: translateX(-1%);
-      transform: translateX(-1%);
-  }
-  50%, 100% {
-      left: 1px;
-      -webkit-transform: translateX(1%);
-      transform: translateX(1%);
-  }
-}
 @keyframes tremor {
   0%, 25% {
       left: -1px;
