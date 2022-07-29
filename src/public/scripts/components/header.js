@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getUserIp();
   }
 });
+
 // Каталог + табы
 const catalogButtonHeader = document.querySelector(".header__button");
 const catalogWrapHeader = document.querySelector(".header__catalog-wrap");
@@ -83,3 +84,41 @@ async function getUserLocation(ip) {
     });
 }
 // Выбор города
+
+// Вывод попапчика с номером заказа
+const statusLinkHeader = document.getElementById("status-link");
+const popupElement = `
+  <div id="popup-status" class="popup">
+    <div class="popup__background"></div>
+    <div class="popup__wrap">
+      <button class="popup__wrap-close"></button>
+      <p class="popup__wrap-text">
+        Введите номер заказа
+      </p>
+      <input type="text" class="popup__wrap-input" placeholder="000000" maxlength="6">
+      <button class="popup__wrap-button">
+        Проверить
+      </button>
+    </div>
+  </div>
+`;
+statusLinkHeader.addEventListener("click", () => {
+  document.body.insertAdjacentHTML("beforeend", popupElement);
+  const popupStatus = document.getElementById("popup-status");
+  const closePopup = document.querySelector(".popup__wrap-close");
+  const backgroundPopup = document.querySelector(".popup__background");
+  const inputPopup = document.querySelector(".popup__wrap-input");
+  const buttonPopup = document.querySelector(".popup__wrap-button");
+  closePopup.addEventListener("click", () => popupStatus.remove());
+  backgroundPopup.addEventListener("click", () => popupStatus.remove());
+  inputPopup.addEventListener("input", (e) => {
+    if (inputPopup.classList.contains("is-not-valid"))
+      inputPopup.classList.remove("is-not-valid");
+    e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
+  });
+  buttonPopup.addEventListener("click", () => {
+    if (inputPopup.value.length < 6)
+      return inputPopup.classList.add("is-not-valid");
+  });
+});
+// Вывод попапчика с номером заказа

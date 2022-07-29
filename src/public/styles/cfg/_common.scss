@@ -1,6 +1,8 @@
 @import '/src/assets/styles/normalize.css';
 @import 'mixin';
 @import 'fonts';
+
+@import '../../styles/components/popup/popup';
 * {
   box-sizing: border-box;
 }
@@ -68,12 +70,6 @@ button {
   max-width: 1460px;
   margin: 0 auto;
   padding: 0 10px;
-  // @media only screen and (max-width: 1024px) {
-  //   padding: 0 30px;
-  // }
-  // @media only screen and (max-width: 768px) {
-  //   padding: 0 15px;
-  // }
 }
 
 .visually-hidden {
@@ -82,4 +78,67 @@ button {
   width: 1px;
   height: 1px;
   margin: -1px;
+}
+
+@-webkit-keyframes tremor {
+  0%, 25% {
+      left: -1px;
+      top:-1px;
+      -webkit-transform: translateX(-1%);
+      transform: translateX(-1%);
+  }
+  50%, 100% {
+      left: 1px;
+      top: 1px;
+      -webkit-transform: translateX(1%);
+      transform: translateX(1%);
+  }
+}
+@-moz-keyframes tremor {
+  0%, 25% {
+      left: -1px;
+      -webkit-transform: translateX(-1%);
+      transform: translateX(-1%);
+  }
+  50%, 100% {
+      left: 1px;
+      -webkit-transform: translateX(1%);
+      transform: translateX(1%);
+  }
+}
+@-ms-keyframes tremor {
+  0%, 25% {
+      left: -1px;
+      -webkit-transform: translateX(-1%);
+      transform: translateX(-1%);
+  }
+  50%, 100% {
+      left: 1px;
+      -webkit-transform: translateX(1%);
+      transform: translateX(1%);
+  }
+}
+@-o-keyframes tremor {
+  0%, 25% {
+      left: -1px;
+      -webkit-transform: translateX(-1%);
+      transform: translateX(-1%);
+  }
+  50%, 100% {
+      left: 1px;
+      -webkit-transform: translateX(1%);
+      transform: translateX(1%);
+  }
+}
+@keyframes tremor {
+  0%, 25% {
+      left: -1px;
+      -webkit-transform: translateX(-1%);
+      transform: translateX(-1%);
+  }
+  50%, 100% {
+      left: 1px;
+      -webkit-transform: translateX(1%);
+      transform: translateX(1%);
+  }
 }

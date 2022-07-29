@@ -1,0 +1,40 @@
+.popup {
+  &__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(#282828, 0.5);
+  }
+  &__wrap {
+    padding: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 218px;
+    background-color: var(--white-color);
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    &-text {
+      @include fontSize13;
+      margin-bottom: 14px;
+    }
+    &-input {
+      @include contentInput;
+      padding: 11px 18px;
+      margin-bottom: 18px;
+    }
+    &-button {
+      @include contentButton;
+      @include fontSize13;
+      padding: 12px 26px;
+    }
+    &-close {
+      @include closeButton;
+      width: 12px;
+      top: 15px;
+      right: 10px;
+    }
+  }
+}

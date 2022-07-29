@@ -59,3 +59,19 @@
     transform: rotate(-45deg) translateY(-50%);
   }
 }
+@mixin contentInput {
+  @include fontSize13;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--grey-color);
+  &::placeholder {
+    color: var(--grey-color);
+  }
+  &:focus {
+    border-color: var(--black-color);
+  }
+  &.is-not-valid {
+    border-color: var(--red-color);
+    animation: 0.1s tremor ease-out 1; 
+  }
+}
