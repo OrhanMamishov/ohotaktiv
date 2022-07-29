@@ -1,0 +1,85 @@
+@import '/src/assets/styles/normalize.css';
+@import 'mixin';
+@import 'fonts';
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --white-color: #FFFFFF;
+  --lightness-white-color: #F8F8F8;
+  --border-color: #EEEEEE;
+  --background-color: #EBEBEB;
+  --black-color: #282828;
+  --yellow-color: #FFE53E;
+  --light-yellow-color: #FFE484;
+  --yellow-active-color: #FFF08E;
+  --green-color: #2FC273;
+  --light-green-color: #40CC80;
+  --pink-color: #FF3E8F;
+  --red-color: #FF0000; // уточнить
+  --grey-color: #B9B9B9;
+  --light-grey-color: #F4F4F4;
+}
+
+body,
+html {
+  min-width: 320px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background-color: var(--background-color);
+  color: var(--black-color);
+}
+
+h1, h2, h3, h4, h5, p, a, li {
+  @include clearStyles;
+  letter-spacing: 0.04em;
+}
+
+ul {
+  @include clearStyles;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black-color);
+}
+
+input {
+  @include clearStyles;
+  letter-spacing: 0.04em;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+button {
+  @include clearStyles;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.container {
+  max-width: 1460px;
+  margin: 0 auto;
+  padding: 0 10px;
+  // @media only screen and (max-width: 1024px) {
+  //   padding: 0 30px;
+  // }
+  // @media only screen and (max-width: 768px) {
+  //   padding: 0 15px;
+  // }
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}

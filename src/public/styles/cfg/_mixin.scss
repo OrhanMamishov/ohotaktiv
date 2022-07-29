@@ -1,0 +1,58 @@
+@mixin clearStyles {
+  margin: 0;
+  padding: 0;
+}
+@mixin fontSize30 {
+  font-size: 30px;
+}
+@mixin fontSize24 {
+  font-size: 24px;
+}
+@mixin fontSize22 {
+  font-size: 22px;
+}
+@mixin fontSize19 {
+  font-size: 19px;
+}
+@mixin fontSize17 {
+  font-size: 17px;
+}
+@mixin fontSize15 {
+  font-size: 15px;
+}
+@mixin fontSize14 {
+  font-size: 14px;
+}
+@mixin fontSize13 {
+  font-size: 13px;
+}
+@mixin fontSize12 {
+  font-size: 12px;
+}
+@mixin contentButton {
+  background-color: var(--yellow-color);
+  border-radius: 10px;
+  color: var(--black-color);
+}
+@mixin closeButton {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background-color: var(--black-color);
+    transform: rotate(45deg) translateY(-50%);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background-color: var(--black-color);
+    transform: rotate(-45deg) translateY(-50%);
+  }
+}
