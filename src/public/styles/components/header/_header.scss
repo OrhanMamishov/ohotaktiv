@@ -1,4 +1,3 @@
-@import '../../cfg/common';
 .header {
   &__wrap {
     &-top {
@@ -48,7 +47,7 @@
         width: 310px;
         padding: 21px 25px;
         background-color: var(--white-color);
-        z-index: 1;
+        z-index: 3;
         &-close {
           @include closeButton;
           position: absolute;
@@ -148,7 +147,7 @@
       height: 663px;
       transform: translateX(-100%);
       transition: transform .5s ease;
-      z-index: 1;
+      z-index: 2;
       &-content {
         display: flex;
       }

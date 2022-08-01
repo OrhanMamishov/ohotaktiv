@@ -6,6 +6,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(#282828, 0.5);
+    z-index: 998;
   }
   &__wrap {
     padding: 24px;
@@ -16,6 +17,7 @@
     background-color: var(--white-color);
     border-radius: 5px;
     transform: translate(-50%, -50%);
+    z-index: 999;
     &-text {
       @include fontSize13;
       margin-bottom: 14px;

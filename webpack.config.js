@@ -56,9 +56,7 @@ module.exports = {
   },
   devtool: setupDevtool(),
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "index.css",
-    }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       // favicon: "src/assets/img/favicon.svg",
       filename: "index.html",

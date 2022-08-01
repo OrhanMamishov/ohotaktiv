@@ -2,8 +2,6 @@
 @import 'mixin';
 @import 'fonts';
 
-@import '../../styles/components/popup/popup';
-
 * {
   box-sizing: border-box;
 }
@@ -75,6 +73,11 @@ button {
 section {
   padding-top: 40px;
   padding-bottom: 40px;
+  h2 {
+    @include fontSize24;
+    margin-bottom: 26px;
+    font-weight: 800;
+  }
 }
 
 .container {
@@ -89,6 +92,163 @@ section {
   width: 1px;
   height: 1px;
   margin: -1px;
+}
+
+.cards-list {
+  display: flex;
+}
+
+.cards-item {
+  width: 211px;
+  &__img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  &__photo-wrap {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  &__button {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    &-wrap {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+    &.compare {
+      background-image: url('../../../img/compare.svg');
+    }
+    &.favourite {
+      background-image: url('../../../img/favourite.svg');
+    }
+  }
+  &__text {
+    &-new {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 77px;
+      font-weight: 900;
+      font-size: 11px;
+      color: var(--white-color);
+      background-color: var(--green-color);
+      text-transform: uppercase;
+      text-align: center;
+      border-radius: 8px 0px;
+    }
+    &-discount {
+      width: 44px;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: 100px;
+      color: var(--black-color);
+      background-color: var(--yellow-color);
+      font-size: 11px;
+      text-align: center;
+    }
+  }
+  &__price {
+    &-wrap {
+      margin-bottom: 6px;
+    }
+    &-text {
+      @include fontSize17;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      span {
+        @include fontSize13;
+        margin-left: 14px;
+        text-decoration: line-through;
+        font-weight: 300;
+      }
+    }
+  }
+  &__description {
+    &-wrap {
+      margin-bottom: 30px;
+    }
+    &-text {
+      @include fontSize13;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  }
+  &__stock {
+    &-wrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+    &-text {
+      @include fontSize12;
+      font-weight: 400;
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+      &.avaliable {
+        color: var(--green-color);
+      }
+      &.not-avaliable {
+        color: var(--red-color);
+      }
+    }
+  }
+  &__rate {
+    &-wrap {
+      margin-bottom: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    &-wrap:not(:checked) > input {
+      display: none;
+    }
+    &-wrap:not(:checked) > label {
+      float: right;
+      padding: 0;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--yellow-color);
+    }
+    &-wrap:not(:checked) > label::before {
+      content: '☆';
+    }
+    &-wrap > input:checked ~ label::before {
+      content: '★';
+    }
+    &-wrap:not(:checked) > label:hover::before,
+    &-wrap:not(:checked) > label:hover ~ label::before {
+      content: '★';
+    }
+    &-wrap > input:checked + label:hover::before,
+    &-wrap > input:checked + label:hover ~ label::before,
+    &-wrap > input:checked ~ label:hover::before,
+    &-wrap > input:checked ~ label:hover ~ label::before,
+    &-wrap > label:hover ~ input:checked ~ label::before  {
+      content: '★';
+    }
+    &-karma {
+      @include fontSize12;
+      margin-left: 10px;
+    }
+  }
+  &__append {
+    @include contentButton;
+    @include fontSize12;
+    padding: 9px 18px;
+  }
 }
 
 @keyframes tremor {

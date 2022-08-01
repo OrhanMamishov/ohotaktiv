@@ -1,6 +1,7 @@
 import "../../styles/components/header/style.scss";
 document.addEventListener("DOMContentLoaded", () => {
   // Проверяем есть ли в браузере выбранный город
+  const cityWrapHeader = document.querySelector(".header__pages-city-wrap");
   if (!localStorage.getItem("KEY_CITY")) {
     getUserIp();
   }
@@ -48,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Каталог + табы
 
   // Выбор города
-  const cityWrapHeader = document.querySelector(".header__pages-city-wrap");
   const cityCloseButtonHeader = document.querySelector(
     ".header__pages-city-wrap-close"
   );

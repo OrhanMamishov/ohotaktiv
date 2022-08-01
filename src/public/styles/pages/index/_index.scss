@@ -1,3 +1,31 @@
 .main {
-  
+  .banners {
+    &__img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    &__swiper-button {
+      &-prev,
+      &-next {
+        width: 39px;
+        height: 78px;
+        background-color: var(--white-color);
+        border-radius: 0px 100px 100px 0px;
+        &::after {
+          font-size: unset;
+          color: var(--darkness-white-color);
+        }
+      }
+      &-prev {
+        left: 0;
+      }
+      &-next {
+        right: 0;
+        transform: rotate(180deg);
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
 }
