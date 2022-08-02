@@ -7,25 +7,28 @@
 }
 
 :root {
-  --white-color: #FFFFFF;
   --lightness-white-color: #F8F8F8;
   --darkness-white-color: #7F7F7F;
   --light-white-color: #E7E7E7;
   --border-color: #EEEEEE;
   --background-color: #EBEBEB;
-  --black-color: #282828;
-  --yellow-color: #FFE53E;
-  --light-yellow-color: #FFE484;
-  --yellow-active-color: #FFF08E;
-  --green-color: #2FC273;
-  --light-green-color: #40CC80;
   --pink-color: #FF3E8F;
-  --red-color: #FF0000; // уточнить
   --grey-color: #B9B9B9;
   --light-grey-color: #F4F4F4;
   --footer-title-color: #D7D7D7;
   --footer-text-color: #A4A4A4;
   --footer-background-color: #acacac1e;
+  // правильные
+  --yellow-color: #FFE53E;
+  --light-yellow-color: #FFE484;
+  --yellow-active-color: #FFF08E;
+  --lightness-grey-color: #F8F8F8;
+  --light-green-color: #40CC80;
+  --green-color: #2FC273;
+  --red-color: #FF153F;
+  --black-color: #2C2C2C;
+  --white-color: #FFFFFF;
+  --dark-grey-color: #545454;
 }
 
 body,
@@ -34,7 +37,7 @@ html {
   font-size: 16px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  background-color: var(--background-color);
+  background-color: var(--white-color);
   color: var(--black-color);
 }
 
@@ -71,11 +74,15 @@ button {
 }
 
 section {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 22px;
+  padding-bottom: 22px;
   h2 {
     @include fontSize24;
     margin-bottom: 26px;
+    font-weight: 800;
+  }
+  h3 {
+    font-size: 18px;
     font-weight: 800;
   }
 }
@@ -94,10 +101,6 @@ section {
   margin: -1px;
 }
 
-.cards-list {
-  display: flex;
-}
-
 .cards-item {
   width: 211px;
   &__img {
@@ -106,7 +109,9 @@ section {
   }
   &__photo-wrap {
     position: relative;
-    margin-bottom: 15px;
+    padding: 30px 0;
+    margin-bottom: 19px;
+    background-color: var(--lightness-grey-color);
   }
   &__button {
     width: 20px;
@@ -116,11 +121,11 @@ section {
     background-position: center;
     &-wrap {
       position: absolute;
-      top: 0;
+      top: 3px;
       right: 0;
     }
     &:not(:last-child) {
-      margin-right: 12px;
+      margin-right: 6px;
     }
     &.compare {
       background-image: url('../../../img/compare.svg');
@@ -131,6 +136,7 @@ section {
   }
   &__text {
     &-new {
+      padding: 4px 0;
       position: absolute;
       top: 0;
       left: 0;
@@ -145,6 +151,7 @@ section {
     }
     &-discount {
       width: 44px;
+      padding: 3px 0;
       display: block;
       position: absolute;
       bottom: 0;
@@ -175,7 +182,7 @@ section {
   }
   &__description {
     &-wrap {
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
     &-text {
       @include fontSize13;
@@ -187,13 +194,13 @@ section {
     &-wrap {
       display: flex;
       align-items: center;
-      margin-bottom: 9px;
+      margin-bottom: 7px;
     }
     &-text {
       @include fontSize12;
       font-weight: 400;
       &:not(:last-child) {
-        margin-right: 16px;
+        margin-right: 22px;
       }
       &.avaliable {
         color: var(--green-color);
@@ -205,7 +212,7 @@ section {
   }
   &__rate {
     &-wrap {
-      margin-bottom: 14px;
+      margin-bottom: 11px;
       overflow: hidden;
       display: flex;
       flex-direction: row-reverse;
@@ -247,7 +254,7 @@ section {
   &__append {
     @include contentButton;
     @include fontSize12;
-    padding: 9px 18px;
+    padding: 11px 18px;
   }
 }
 

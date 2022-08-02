@@ -33,8 +33,7 @@
       }
     }
     &-right-column {
-      margin-right: 111px;
-      padding-top: 13px;
+      // margin-right: 111px;
       &-title {
         @include fontSize24;
         margin-bottom: 13px;
@@ -43,7 +42,7 @@
       }
       &-subtitle {
         @include fontSize13;
-        margin-bottom: 35px;
+        margin-bottom: 48px;
         font-weight: 600;
         color: var(--footer-text-color);
       }
@@ -51,7 +50,7 @@
         margin-bottom: 97px;
         &-input {
           @include contentInput;
-          width: 409px;
+          width: 533px;
           padding: 15px 20px;
           margin-right: 23px;
           margin-bottom: 14px;

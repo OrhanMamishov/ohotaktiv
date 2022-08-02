@@ -75,3 +75,23 @@
     animation: 0.1s tremor ease-out 1; 
   }
 }
+@mixin swiperArrowsIndexPage {
+  &-prev,
+  &-next {
+    width: 42px;
+    height: 42px;
+    top: unset;
+    bottom: 5px;
+    border-radius: 100px;
+    background-color: var(--white-color);
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+    &::after {
+      font-size: 12px;
+      color: var(--black-color);
+    }
+  }
+  &-prev {
+    right: 70px;
+    left: unset;
+  }
+}
