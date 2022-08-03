@@ -10,7 +10,6 @@
   --lightness-white-color: #F8F8F8;
   --darkness-white-color: #7F7F7F;
   --light-white-color: #E7E7E7;
-  --border-color: #EEEEEE;
   --background-color: #EBEBEB;
   --pink-color: #FF3E8F;
   --grey-color: #B9B9B9;
@@ -19,6 +18,7 @@
   --footer-text-color: #A4A4A4;
   --footer-background-color: #acacac1e;
   // правильные
+  --border-color: #EEEEEE;
   --yellow-color: #FFE53E;
   --light-yellow-color: #FFE484;
   --yellow-active-color: #FFF08E;
@@ -91,6 +91,15 @@ section {
   max-width: 1460px;
   margin: 0 auto;
   padding: 0 10px;
+  @media only screen and (max-width: 1440px) {
+    max-width: 1220px;
+  }
+  @media only screen and (max-width: 768px) {
+    max-width: 688px;
+  }
+  @media only screen and (max-width: 360px) {
+    max-width: 308px;
+  }
 }
 
 .visually-hidden {
@@ -255,6 +264,13 @@ section {
     @include contentButton;
     @include fontSize12;
     padding: 11px 18px;
+  }
+}
+
+.for-mobile {
+  display: none;
+  @media only screen and (max-width: 1200px) {
+    display: inherit;
   }
 }
 

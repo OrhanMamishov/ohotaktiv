@@ -8,24 +8,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // Проверяем есть ли в браузере выбранный город
 
   // Каталог + табы
-  const catalogButtonHeader = document.querySelector(".header__button");
+  const catalogButtonHeader = document.querySelector(".header__button-wrap");
   const catalogWrapHeader = document.querySelector(".header__catalog-wrap");
+  const hamburger = document.querySelector(".hamburger");
   const catalogWrapCloseHeader = document.querySelector(
     ".header__catalog-wrap-close"
   );
   const catalogItemsHeader = document.querySelectorAll(
     ".header__catalog-left-column-item"
   );
+  const catalogTabsWrapHeader = document.querySelector(
+    ".header__catalog-right-column"
+  );
+  const catalogTabsWrapCloseHeader = document.querySelector(
+    ".header__catalog-wrap-back"
+  );
+  catalogTabsWrapCloseHeader.addEventListener("click", () => {
+    catalogTabsWrapHeader.classList.remove("is-active");
+  });
   catalogWrapCloseHeader.addEventListener("click", () =>
     catalogButtonHeader.click()
   );
   catalogButtonHeader.addEventListener("click", () => {
-    catalogButtonHeader.classList.toggle("is-open");
+    hamburger.classList.toggle("is-active");
     catalogWrapHeader.classList.toggle("is-open");
+    catalogTabsWrapHeader.classList.remove("is-active");
   });
   catalogItemsHeader.forEach((el) => {
     // Вешаем обработчик на каждый
     el.addEventListener("click", () => {
+      catalogTabsWrapHeader.classList.add("is-active");
       // У остальных снимаем актив
       catalogItemsHeader.forEach((item) => item.classList.remove("is-active"));
       // На кликнутый добавляем актив
@@ -65,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   cityTagButtonHeader.addEventListener("click", () =>
     cityWrapHeader.classList.add("is-open")
   );
-
   async function getUserIp() {
     cityWrapHeader.classList.add("is-open");
     await fetch("https://ipapi.co/json/")
@@ -125,4 +136,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   // Вывод попапчика с номером заказа
+
+  // Открытие менюшки на таблетке
+  const menuButtonHeader = document.querySelector(".menu");
+  const menuHeader = document.querySelector(".header__pages-list");
+  menuButtonHeader.addEventListener("click", () => {
+    menuHeader.classList.toggle("is-open");
+  });
+  const menuCloseHeader = document.querySelector(".close-menu");
+  menuCloseHeader.addEventListener("click", () => {
+    menuHeader.classList.remove("is-open");
+  });
+  menuHeader.addEventListener("click", (e) => {
+    if (e.offsetX < 0) menuCloseHeader.click();
+  });
+  // Открытие менюшки на таблетке
 });
