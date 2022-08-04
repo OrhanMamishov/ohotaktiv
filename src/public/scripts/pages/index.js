@@ -16,29 +16,124 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const bestsellersSwiper = new Swiper(".swiper-bestsellers", {
     modules: [Navigation],
-    spaceBetween: 35,
-    slidesPerView: 6,
     navigation: {
       nextEl: ".bestsellers__swiper-button-next",
       prevEl: ".bestsellers__swiper-button-prev",
     },
+    breakpoints: {
+      1441: {
+        spaceBetween: 35,
+        slidesPerView: 6,
+      },
+      1201: {
+        spaceBetween: 30,
+        slidesPerView: 5,
+      },
+      769: {
+        spaceBetween: 30,
+        slidesPerView: 3,
+      },
+      320: {
+        spaceBetween: 10,
+        slidesPerView: 2,
+      },
+    },
   });
   const newSwiper = new Swiper(".swiper-new", {
     modules: [Navigation],
-    spaceBetween: 35,
-    slidesPerView: 6,
     navigation: {
       nextEl: ".new__swiper-button-next",
       prevEl: ".new__swiper-button-prev",
     },
+    breakpoints: {
+      1441: {
+        spaceBetween: 35,
+        slidesPerView: 6,
+      },
+      1201: {
+        spaceBetween: 30,
+        slidesPerView: 5,
+      },
+      769: {
+        spaceBetween: 30,
+        slidesPerView: 3,
+      },
+      320: {
+        spaceBetween: 10,
+        slidesPerView: 2,
+      },
+    },
   });
   const recommendedSwiper = new Swiper(".swiper-recommended", {
     modules: [Navigation],
-    spaceBetween: 35,
-    slidesPerView: 6,
     navigation: {
       nextEl: ".recommended__swiper-button-next",
       prevEl: ".recommended__swiper-button-prev",
+    },
+    breakpoints: {
+      1441: {
+        spaceBetween: 35,
+        slidesPerView: 6,
+      },
+      1201: {
+        spaceBetween: 30,
+        slidesPerView: 5,
+      },
+      769: {
+        spaceBetween: 30,
+        slidesPerView: 3,
+      },
+      320: {
+        spaceBetween: 10,
+        slidesPerView: 2,
+      },
+    },
+  });
+  const popularSwiper = new Swiper(".swiper-popular", {
+    freeMode: true,
+    breakpoints: {
+      1441: {
+        slidesPerView: 4,
+        spaceBetween: 35,
+      },
+      1201: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      769: {
+        slidesPerView: 2,
+        spaceBetween: 27,
+      },
+      320: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+    },
+  });
+  const blogSwiper = new Swiper(".swiper-blog", {
+    modules: [Navigation],
+    navigation: {
+      nextEl: ".blog__swiper-button-next",
+      prevEl: ".blog__swiper-button-prev",
+    },
+    breakpoints: {
+      1441: {
+        spaceBetween: 35,
+        slidesPerView: 4,
+      },
+      1201: {
+        spaceBetween: 30,
+        slidesPerView: 3,
+      },
+      769: {
+        spaceBetween: 30,
+        slidesPerView: 2,
+      },
+      320: {
+        freeMode: true,
+        spaceBetween: 16,
+        slidesPerView: 1.5,
+      },
     },
   });
   // Свайперы

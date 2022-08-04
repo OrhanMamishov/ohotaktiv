@@ -80,10 +80,20 @@ section {
     @include fontSize24;
     margin-bottom: 26px;
     font-weight: 800;
+    @media only screen and (max-width: 768px) {
+      font-size: 18px;
+      font-weight: 900;
+    }
   }
   h3 {
     font-size: 18px;
     font-weight: 800;
+  }
+  @media only screen and (max-width: 1200px) {
+    padding-bottom: 6px;
+  }
+  @media only screen and (max-width: 768px) {
+    padding-top: 13px;
   }
 }
 
@@ -94,7 +104,10 @@ section {
   @media only screen and (max-width: 1440px) {
     max-width: 1220px;
   }
-  @media only screen and (max-width: 768px) {
+  // @media only screen and (max-width: 1200px) {
+  //   max-width: 688px;
+  // }
+  @media only screen and (max-width: 769px) {
     max-width: 688px;
   }
   @media only screen and (max-width: 360px) {
@@ -144,12 +157,13 @@ section {
     }
   }
   &__text {
-    &-new {
-      padding: 4px 0;
+    &-new,
+    &-hit,
+    &-not {
+      padding: 4px 8px;
       position: absolute;
       top: 0;
       left: 0;
-      width: 77px;
       font-weight: 900;
       font-size: 11px;
       color: var(--white-color);
@@ -157,6 +171,10 @@ section {
       text-transform: uppercase;
       text-align: center;
       border-radius: 8px 0px;
+    }
+    &-hit,
+    &-not {
+      background-color: var(--red-color);
     }
     &-discount {
       width: 44px;
@@ -264,6 +282,109 @@ section {
     @include contentButton;
     @include fontSize12;
     padding: 11px 18px;
+  }
+  @media only screen and (max-width: 1440px) {
+    &__photo-wrap {
+      padding: 27px 0;
+      margin-bottom: 17px;
+    }
+    &__button {
+      width: 19px;
+      height: 17px;
+    }
+    &__price-text {
+      font-size: inherit;
+    }
+    &__text {
+      &-discount {
+        width: 37px;
+        padding: 2px 0;
+      }
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    &__description-wrap {
+      margin-bottom: 43px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    &__button {
+      width: 13px;
+      height: 12px;
+      &-wrap {
+        top: -2px;
+      }
+    }
+    &__price {
+      &-wrap {
+        margin-bottom: 4px;
+      }
+      &-text {
+        @include fontSize12;
+        font-weight: 800;
+        span {
+          margin-left: 12px;
+          font-size: 10px;
+          font-weight: 300;
+        }
+      }
+    }
+    &__photo {
+      &-wrap {
+        padding: 16px 0;
+        margin-bottom: 7px;
+      }
+    }
+    &__description {
+      &-wrap {
+        margin-bottom: 8px;
+      }
+      &-text {
+        font-size: 10px;
+        line-height: 15px;
+        font-weight: 500;
+      }
+    }
+    &__stock {
+      &-wrap {
+        margin-bottom: 5px;
+      }
+      &-text {
+        font-size: 8px;
+        font-weight: 50;
+        &:not(:last-child) {
+          margin-right: 11px;
+        }
+      }
+    }
+    &__rate {
+      &-karma {
+        margin-left: 9px;
+        font-size: 8px;
+      }
+      &-wrap {
+        margin-bottom: 9px;
+        &:not(:checked) > label {
+          font-size: 14px;
+        }
+      }
+    }
+    &__append {
+      padding: 9px 15px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    &__text {
+      &-new,
+      &-hit,
+      &-not {
+        font-size: 8px
+      }
+      &-discount {
+        width: 30px;
+        font-size: 8px;
+      }
+    }
   }
 }
 

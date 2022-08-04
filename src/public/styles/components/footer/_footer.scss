@@ -51,6 +51,10 @@
   }
   &__form {
     margin-bottom: 97px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
     &-wrap {
       grid-area: 1 / 3 / 2 / 5;
       &-title {
@@ -70,7 +74,6 @@
       @include contentInput;
       width: 533px;
       padding: 15px 20px;
-      margin-right: 23px;
       margin-bottom: 14px;
       color: var(--footer-text-color);
       &:focus {
@@ -209,6 +212,7 @@
       }
     }
     &__wrap {
+      padding-top: 63px !important;
       grid-column-gap: 30px;
     }
     &__buyer {
@@ -233,7 +237,6 @@
       }
       &-input {
         width: 416px;
-        margin-right: 31px;
       }
       &-button {
         padding: 16px 22px;
@@ -279,6 +282,7 @@
       padding-top: 45px !important;
     }
     &__form {
+      display: block;
       margin-bottom: 46px;
       &-wrap {
         order: 1;
