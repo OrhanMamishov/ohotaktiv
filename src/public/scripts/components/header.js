@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Каталог + табы
   const catalogButtonHeader = document.querySelector(".header__button-wrap");
   const catalogWrapHeader = document.querySelector(".header__catalog-wrap");
-  const hamburger = document.querySelector(".hamburger");
+  const hamburger = document.querySelector(".hamburger-lines");
   const catalogWrapCloseHeader = document.querySelector(
     ".header__catalog-wrap-close"
   );

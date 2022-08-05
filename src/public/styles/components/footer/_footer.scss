@@ -1,5 +1,5 @@
 .footer {
-  background-color: var(--black-color);
+  background-color: var(--black-footer-color);
   background-image: url('../../../img/footer-background.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -392,7 +392,6 @@
       }
       .checkbox__label {
         margin-bottom: 17px;
-        font-weight: 400;
         font-size: 10px;
         line-height: 15px;
         color: var(--white-color);

@@ -26,9 +26,10 @@
   --light-green-color: #40CC80;
   --green-color: #2FC273;
   --red-color: #FF153F;
-  --black-color: #2C2C2C;
+  --black-color: #000000;
   --white-color: #FFFFFF;
   --dark-grey-color: #545454;
+  --black-footer-color: #2C2C2C;
 }
 
 body,
@@ -36,7 +37,7 @@ html {
   min-width: 320px;
   font-size: 16px;
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   background-color: var(--white-color);
   color: var(--black-color);
 }
@@ -68,6 +69,7 @@ input {
 button {
   @include clearStyles;
   letter-spacing: 0.04em;
+  font-weight: 500;
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -79,10 +81,9 @@ section {
   h2 {
     @include fontSize24;
     margin-bottom: 26px;
-    font-weight: 800;
+    font-weight: 900;
     @media only screen and (max-width: 768px) {
       font-size: 18px;
-      font-weight: 900;
     }
   }
   h3 {
@@ -213,7 +214,6 @@ section {
     }
     &-text {
       @include fontSize13;
-      font-weight: 400;
       line-height: 22px;
     }
   }
@@ -225,7 +225,6 @@ section {
     }
     &-text {
       @include fontSize12;
-      font-weight: 400;
       &:not(:last-child) {
         margin-right: 22px;
       }
