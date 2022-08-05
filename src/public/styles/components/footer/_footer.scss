@@ -67,7 +67,7 @@
         @include fontSize13;
         margin-bottom: 48px;
         font-weight: 600;
-        color: var(--footer-text-color);
+        color: var(--grey-form-color);
       }
     }
     &-input {
@@ -75,7 +75,7 @@
       width: 533px;
       padding: 15px 20px;
       margin-bottom: 14px;
-      color: var(--footer-text-color);
+      color: var(--grey-form-color);
       &:focus {
         border-color: inherit;
       }
@@ -410,7 +410,7 @@
         margin-bottom: 20px;
         font-size: 10px;
         font-weight: 700;
-        color: var(--footer-text-color);
+        color: var(--grey-form-color);
         &::before {
           left: unset;
           top: 0;
@@ -431,7 +431,7 @@
         margin-bottom: 17px;
         font-size: 10px;
         font-weight: 700;
-        color: var(--footer-text-color);
+        color: var(--grey-form-color);
       }
       &-link {
         width: 19px;

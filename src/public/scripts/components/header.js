@@ -101,23 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Вывод попапчика с номером заказа
   const statusLinkHeader = document.getElementById("status-link");
-  const popupElement = `
-  <div id="popup-status" class="popup">
-    <div class="popup__background"></div>
-    <div class="popup__wrap">
-      <button class="popup__wrap-close"></button>
-      <p class="popup__wrap-text">
-        Введите номер заказа
-      </p>
-      <input type="text" class="popup__wrap-input" placeholder="000000" maxlength="6">
-      <button class="popup__wrap-button">
-        Проверить
-      </button>
+  const popupStatusElement = `
+    <div id="popup-status" class="popup">
+      <div class="popup__background"></div>
+      <div class="popup__wrap">
+        <button class="popup__wrap-close"></button>
+        <p class="popup__wrap-text">
+          Введите номер заказа
+        </p>
+        <input type="text" class="popup__wrap-input" placeholder="000000" maxlength="6">
+        <button class="popup__wrap-button">
+          Проверить
+        </button>
+      </div>
     </div>
-  </div>
-`;
+  `;
   statusLinkHeader.addEventListener("click", () => {
-    document.body.insertAdjacentHTML("beforeend", popupElement);
+    document.body.insertAdjacentHTML("beforeend", popupStatusElement);
     const popupStatus = document.getElementById("popup-status");
     const closePopup = document.querySelector(".popup__wrap-close");
     const backgroundPopup = document.querySelector(".popup__background");

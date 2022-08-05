@@ -509,7 +509,7 @@
         &-input {
           width: 133px;
           &::placeholder {
-            color: var(--footer-text-color);
+            color: var(--grey-form-color);
           }
         }
         &-link {
@@ -517,7 +517,7 @@
           display: flex;
           justify-content: space-between;
           span {
-            color: var(--footer-text-color);
+            color: var(--grey-form-color);
           }
         }
       }
