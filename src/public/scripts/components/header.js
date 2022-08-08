@@ -1,4 +1,5 @@
 import "../../styles/components/header/style.scss";
+import { bodyScrollToggle } from "../functions/scrollBody";
 document.addEventListener("DOMContentLoaded", () => {
   // Проверяем есть ли в браузере выбранный город
   const cityWrapHeader = document.querySelector(".header__pages-city-wrap");
@@ -8,9 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Проверяем есть ли в браузере выбранный город
 
   // Каталог + табы
-  const catalogButtonHeader = document.querySelector(".header__button-wrap");
+  const catalogButtonHeader = document.querySelector(".header__button");
   const catalogWrapHeader = document.querySelector(".header__catalog-wrap");
-  const hamburger = document.querySelector(".hamburger-lines");
   const catalogWrapCloseHeader = document.querySelector(
     ".header__catalog-wrap-close"
   );
@@ -30,9 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     catalogButtonHeader.click()
   );
   catalogButtonHeader.addEventListener("click", () => {
-    hamburger.classList.toggle("is-active");
+    bodyScrollToggle();
     catalogWrapHeader.classList.toggle("is-open");
     catalogTabsWrapHeader.classList.remove("is-active");
+    catalogButtonHeader.classList.toggle("is-active");
   });
   catalogItemsHeader.forEach((el) => {
     // Вешаем обработчик на каждый
@@ -53,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Все скрываем
         target.classList.remove("is-active");
         // Если совпадают атрибуты, то показываем
-        if (target.getAttribute("data-target") === dataPath)
+        if (target.getAttribute("data-target") === dataPath) {
           target.classList.add("is-active");
+        }
       });
     });
   });
@@ -117,14 +119,18 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
   statusLinkHeader.addEventListener("click", () => {
+    bodyScrollToggle();
     document.body.insertAdjacentHTML("beforeend", popupStatusElement);
     const popupStatus = document.getElementById("popup-status");
     const closePopup = document.querySelector(".popup__wrap-close");
     const backgroundPopup = document.querySelector(".popup__background");
     const inputPopup = document.querySelector(".popup__wrap-input");
     const buttonPopup = document.querySelector(".popup__wrap-button");
-    closePopup.addEventListener("click", () => popupStatus.remove());
-    backgroundPopup.addEventListener("click", () => popupStatus.remove());
+    closePopup.addEventListener("click", () => {
+      bodyScrollToggle();
+      popupStatus.remove();
+    });
+    backgroundPopup.addEventListener("click", () => closePopup.click());
     inputPopup.addEventListener("input", (e) => {
       if (inputPopup.classList.contains("is-not-valid"))
         inputPopup.classList.remove("is-not-valid");
@@ -141,10 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuButtonHeader = document.querySelector(".menu");
   const menuHeader = document.querySelector(".header__pages-list");
   menuButtonHeader.addEventListener("click", () => {
+    bodyScrollToggle();
     menuHeader.classList.toggle("is-open");
   });
   const menuCloseHeader = document.querySelector(".close-menu");
   menuCloseHeader.addEventListener("click", () => {
+    bodyScrollToggle();
     menuHeader.classList.remove("is-open");
   });
   menuHeader.addEventListener("click", (e) => {

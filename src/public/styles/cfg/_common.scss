@@ -24,7 +24,7 @@
   --yellow-active-color: #FFF08E;
   --lightness-grey-color: #F8F8F8;
   --light-green-color: #40CC80;
-  --green-color: #2FC273;
+  --green-color: #1AB28F;
   --red-color: #FF153F;
   --black-color: #000000;
   --white-color: #FFFFFF;
@@ -167,10 +167,10 @@ section {
       font-weight: 900;
       font-size: 11px;
       color: var(--white-color);
-      background-color: var(--green-color);
+      background: linear-gradient(84.2deg, var(--green-color) 39.66%, var(--yellow-color) 121.84%);
       text-transform: uppercase;
       text-align: center;
-      border-radius: 8px;
+      border-radius: 20px;
     }
     &-hit {
       background-color: var(--red-color);
@@ -202,7 +202,7 @@ section {
         @include fontSize13;
         margin-left: 14px;
         text-decoration: line-through;
-        font-weight: 300;
+        font-weight: 500;
       }
     }
   }
@@ -223,14 +223,33 @@ section {
     }
     &-text {
       @include fontSize12;
+      position: relative;
+      padding-left: 15px;
       &:not(:last-child) {
         margin-right: 22px;
       }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: none;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        transform: translateY(-50%);
+      }
       &.avaliable {
-        color: var(--green-color);
+        &::before {
+          display: block;
+          background-color: var(--green-color);
+        }
       }
       &.not-avaliable {
-        color: var(--red-color);
+        &::before {
+          display: block;
+          background-color: var(--red-color);
+        }
       }
     }
   }
@@ -394,7 +413,8 @@ section {
 .input-wrap {
   position: relative;
   label {
-    @include fontSize14;
+    @include fontSize13;
+    font-weight: 500;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -408,6 +428,7 @@ section {
   input:not(:placeholder-shown) ~ label {
     top: 0%;
     font-size: 10px;
+    font-weight: 300;
   }
 }
 
@@ -504,6 +525,10 @@ section {
       outline: 2px solid var(--yellow-color);
   }
   }
+}
+
+.disable-scroll {
+  overflow: hidden;
 }
 
 @keyframes tremor {

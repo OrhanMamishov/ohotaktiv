@@ -54,7 +54,7 @@
     &__wrap {
       display: flex;
       align-items: center;
-      border-radius: 18px;
+      border-radius: 30px;
       background: linear-gradient(270.1deg, #272727 51.73%, #353535 99.22%);
       background-clip: content-box;
     }
@@ -67,7 +67,7 @@
       @include fontSize14;
       margin-bottom: 22px;
       color: var(--white-color);
-      font-weight: 600;
+      font-weight: 500;
       &-wrap {
         margin: 0 auto;
         text-align: center;
@@ -207,7 +207,7 @@
       }
       &-button {
         @include fontSize12;
-        padding: 5px 15px;
+        padding: 7px 15px;
         background-color: var(--border-color);
         border-radius: 6px;
       }
@@ -764,7 +764,6 @@
       }
       &__item {
         &-img {
-          height: 73px;
           margin-bottom: 6px;
         }
         &-text {

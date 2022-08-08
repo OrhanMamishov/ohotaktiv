@@ -9,12 +9,14 @@
     z-index: 998;
   }
   &__wrap {
+    max-height: 90vh;
     position: fixed;
     top: 50%;
     left: 50%;
     background-color: var(--white-color);
     transform: translate(-50%, -50%);
     z-index: 999;
+    overflow: scroll;
     &-title {
       @include fontSize22;
       font-weight: 900;
@@ -31,7 +33,7 @@
     &-button {
       @include contentButton;
       @include fontSize13;
-      padding: 12px 26px;
+      padding: 16px 26px;
     }
     &-close {
       @include closeButton;
@@ -62,7 +64,6 @@
     }
   }
 }
-
 #popup-status {
   .popup {
     &__wrap {
@@ -78,11 +79,12 @@
 #popup-bonuscard {
   .popup {
     &__wrap {
-      width: fit-content;
+      width: 702px;
       padding: 60px 66px;
       border-radius: 20px;
       &-input {
-        padding: 13px 20px;
+        padding: 15px 20px;
+        font-weight: 500;
       }
       &-close {
         top: 30px;
@@ -142,7 +144,13 @@
   @media only screen and (max-width: 768px) {
     .popup {
       &__wrap {
+        width: 98%;
         padding: 37px 16px;
+        &-close {
+          top: 16px;
+          right: 16px;
+          width: 15px;
+        }
       }
       &__personal {
         &-wrap {

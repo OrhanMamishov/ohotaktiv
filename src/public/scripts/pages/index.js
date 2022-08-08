@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../imports";
 import "../../styles/pages/index/style.scss";
+import { bodyScrollToggle } from "../functions/scrollBody";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Свайперы
@@ -269,12 +270,16 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
   bonuscardButtonIndex.addEventListener("click", () => {
+    bodyScrollToggle();
     document.body.insertAdjacentHTML("beforeend", popupBonuscardElement);
     const popupBonuscard = document.getElementById("popup-bonuscard");
     const closePopup = document.querySelector(".popup__wrap-close");
     const backgroundPopup = document.querySelector(".popup__background");
-    closePopup.addEventListener("click", () => popupBonuscard.remove());
-    backgroundPopup.addEventListener("click", () => popupBonuscard.remove());
+    closePopup.addEventListener("click", () => {
+      bodyScrollToggle();
+      popupBonuscard.remove();
+    });
+    backgroundPopup.addEventListener("click", () => closePopup.click());
   });
   // Вывод попапчика с оформлением заказа
 });
