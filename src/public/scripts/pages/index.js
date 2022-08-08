@@ -24,15 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".bestsellers__swiper-button-prev",
     },
     breakpoints: {
-      1441: {
+      1439: {
         spaceBetween: 35,
         slidesPerView: 6,
       },
-      1201: {
+      1199: {
         spaceBetween: 30,
         slidesPerView: 5,
       },
-      769: {
+      767: {
         spaceBetween: 30,
         slidesPerView: 3,
       },
@@ -50,15 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".new__swiper-button-prev",
     },
     breakpoints: {
-      1441: {
+      1439: {
         spaceBetween: 35,
         slidesPerView: 6,
       },
-      1201: {
+      1199: {
         spaceBetween: 30,
         slidesPerView: 5,
       },
-      769: {
+      767: {
         spaceBetween: 30,
         slidesPerView: 3,
       },
@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".recommended__swiper-button-prev",
     },
     breakpoints: {
-      1441: {
+      1439: {
         spaceBetween: 35,
         slidesPerView: 6,
       },
-      1201: {
+      1199: {
         spaceBetween: 30,
         slidesPerView: 5,
       },
-      769: {
+      767: {
         spaceBetween: 30,
         slidesPerView: 3,
       },
@@ -98,15 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const popularSwiper = new Swiper(".swiper-popular", {
     freeMode: true,
     breakpoints: {
-      1441: {
+      1439: {
         slidesPerView: 4,
         spaceBetween: 35,
       },
-      1201: {
+      1199: {
         slidesPerView: 3,
         spaceBetween: 30,
       },
-      769: {
+      767: {
         slidesPerView: 2,
         spaceBetween: 27,
       },
@@ -124,15 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".blog__swiper-button-prev",
     },
     breakpoints: {
-      1441: {
+      1439: {
         spaceBetween: 35,
         slidesPerView: 4,
       },
-      1201: {
+      1199: {
         spaceBetween: 30,
         slidesPerView: 3,
       },
-      769: {
+      767: {
         spaceBetween: 30,
         slidesPerView: 2,
       },

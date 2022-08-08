@@ -49,7 +49,7 @@
       font-weight: 800;
     }
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     &__wrap {
       &-title {
         font-size: 18px;
@@ -139,7 +139,7 @@
       }
     }
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     .popup {
       &__wrap {
         width: 98%;
@@ -239,7 +239,7 @@
       }
     }
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     .popup {
       &__wrap {
         .choose-cities {

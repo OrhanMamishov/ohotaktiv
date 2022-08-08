@@ -201,7 +201,7 @@
   }
 }
 // Адаптивы
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1439px) {
   .footer {
     &__lists {
       &-wrap {
@@ -274,7 +274,7 @@
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1199px) {
   .footer {
     &__wrap {
       display: flex;
@@ -361,7 +361,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .footer {
     background-size: inherit;
     &__wrap {

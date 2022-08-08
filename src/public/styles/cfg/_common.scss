@@ -82,7 +82,7 @@ section {
     @include fontSize24;
     margin-bottom: 26px;
     font-weight: 900;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 767px) {
       font-size: 18px;
     }
   }
@@ -90,10 +90,10 @@ section {
     font-size: 18px;
     font-weight: 800;
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1199px) {
     padding-bottom: 6px;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     padding-top: 13px;
   }
 }
@@ -102,13 +102,13 @@ section {
   max-width: 1460px;
   margin: 0 auto;
   padding: 0 10px;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1439px) {
     max-width: 1220px;
   }
   // @media only screen and (max-width: 1200px) {
   //   max-width: 688px;
   // }
-  @media only screen and (max-width: 769px) {
+  @media only screen and (max-width: 767px) {
     max-width: 688px;
   }
   @media only screen and (max-width: 321px) {
@@ -300,7 +300,7 @@ section {
     @include fontSize12;
     padding: 11px 18px;
   }
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1439px) {
     &__photo-wrap {
       padding: 27px 0;
       margin-bottom: 17px;
@@ -319,12 +319,12 @@ section {
       }
     }
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1199px) {
     &__description-wrap {
       margin-bottom: 43px;
     }
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     &__button {
       &-wrap {
         top: 0;
@@ -403,7 +403,7 @@ section {
 
 .for-mobile {
   display: none;
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1199px) {
     display: inherit;
   }
 }

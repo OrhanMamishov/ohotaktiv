@@ -7,10 +7,10 @@
 }
 @mixin fontSize24 {
   font-size: 24px;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1439px) {
     font-size: 22px;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     font-size: 14px;
   }
 }
@@ -22,7 +22,7 @@
 }
 @mixin fontSize17 {
   font-size: 17px;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1439px) {
     font-size: 15px;
   }
 }
@@ -31,16 +31,16 @@
 }
 @mixin fontSize14 {
   font-size: 14px;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1439px) {
     font-size: 13px;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     font-size: 12px;
   }
 }
 @mixin fontSize13 {
   font-size: 13px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     font-size: 12px;
   }
 }
@@ -53,7 +53,7 @@
   background-color: var(--yellow-color);
   border-radius: 10px;
   color: var(--black-color);
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     border-radius: 8px;
   }
 }
