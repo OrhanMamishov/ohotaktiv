@@ -180,3 +180,96 @@
     }
   }
 }
+#popup-city {
+  .popup {
+    &__wrap {
+      min-width: 310px;
+      padding: 21px 25px;
+      &-text {
+        @include fontSize13;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      &-button {
+        @include contentButton;
+        @include fontSize13;
+        padding: 12px 26px;
+        &-wrap {
+          display: flex;
+          justify-content: space-between;
+        }
+        &:nth-child(2) {
+          background-color: transparent;
+          border: 1px solid var(--black-color);
+        }
+      }
+      .choose-cities {
+        &__wrap {
+          display: none;
+          padding: 34px 40px;
+          width: 672px;
+        }
+        &__title {
+          @include fontSize19;
+          margin-bottom: 16px;
+          font-weight: 800;
+        }
+        &__input {
+          @include fontSize15;
+          width: 100%;
+          margin-bottom: 36px;
+          padding: 9px 10px 9px 0;
+          border-bottom: 2px solid var(--black-color);
+          background-repeat: no-repeat;
+          background-image: url('../../../img/search.svg');
+          background-position: center right;
+          &::placeholder {
+            color: var(--grey-form-color);
+          }
+        }
+        &__list {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+        }
+        &__item {
+          &:not(:last-child) {
+            margin-bottom: 18px;
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .popup {
+      &__wrap {
+        .choose-cities {
+          &__wrap {
+            padding: 0;
+            width: 100%;
+          }
+          &__title {
+            font-size: 18px;
+          }
+          &__input {
+            min-width: 270px;
+            padding: 5px 10px 5px 0;
+            font-size: 12px;
+          }
+          &__item {
+            label {
+              padding-left: 0;
+              &::before,
+              &::after {
+                display: none;
+              }
+            }
+            &:not(:last-child) {
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

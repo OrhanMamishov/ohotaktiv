@@ -1,0 +1,42 @@
+.main {
+  .sales {
+    padding-bottom: 141px;
+    &__wrap {
+      .navigation {
+        margin-bottom: 27px;
+      }
+    }
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      grid-row-gap: 35px;
+    }
+    &__item {
+      width: 457px;
+    }
+    &__img {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .main {
+    .sales {
+      &__item {
+        width: 381px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .main {
+    .sales {
+      &__item {
+        width: 319px;
+      }
+    }
+  }
+}

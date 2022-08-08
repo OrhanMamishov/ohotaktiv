@@ -531,6 +531,36 @@ section {
   overflow: hidden;
 }
 
+.navigation {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-right: 14px;
+      .navigation__link::after {
+        content: '/';
+        color: var(--darkness-white-color);
+        @include fontSize13;
+        margin-left: 14px;
+      }
+    }
+  }
+  &__link {
+    @include fontSize13;
+    color: var(--darkness-white-color);
+    &.back {
+      color: var(--black-color);
+      &::before {
+        content: '←';
+        margin-right: 14px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 @keyframes tremor {
   0%, 25% {
       left: -1px;

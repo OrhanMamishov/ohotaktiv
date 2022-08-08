@@ -18,6 +18,7 @@ function setupDevtool() {
 module.exports = {
   entry: {
     indexEntry: "./src/public/scripts/pages/index.js",
+    salesEntry: "./src/public/scripts/pages/sales.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -62,6 +63,14 @@ module.exports = {
       filename: "index.html",
       template: path.resolve(__dirname, "./src/public/index.html"),
       chunks: ["indexEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "sales.html",
+      template: path.resolve(__dirname, "./src/public/sales.html"),
+      chunks: ["salesEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),
