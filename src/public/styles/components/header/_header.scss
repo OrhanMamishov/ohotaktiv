@@ -616,6 +616,7 @@
         }
         &:last-child {
           order: 1;
+          display: flex;
         }
         &:first-child {
           order: 4;

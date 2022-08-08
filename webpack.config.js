@@ -19,10 +19,11 @@ module.exports = {
   entry: {
     indexEntry: "./src/public/scripts/pages/index.js",
     salesEntry: "./src/public/scripts/pages/sales.js",
+    blogEntry: "./src/public/scripts/pages/blog.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    publicPath: "./",
+    publicPath: "/",
     filename: "[name].bundle.js",
     chunkFilename: "[id].bundle_[chunkhash].js",
   },
@@ -71,6 +72,14 @@ module.exports = {
       filename: "sales.html",
       template: path.resolve(__dirname, "./src/public/sales.html"),
       chunks: ["salesEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "blog.html",
+      template: path.resolve(__dirname, "./src/public/blog.html"),
+      chunks: ["blogEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),
