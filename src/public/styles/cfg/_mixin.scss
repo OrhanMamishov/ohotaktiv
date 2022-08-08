@@ -35,13 +35,13 @@
     font-size: 13px;
   }
   @media only screen and (max-width: 768px) {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 @mixin fontSize13 {
   font-size: 13px;
   @media only screen and (max-width: 768px) {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 @mixin fontSize12 {
@@ -49,9 +49,13 @@
 }
 @mixin contentButton {
   cursor: pointer;
+  padding: 16px 26px;
   background-color: var(--yellow-color);
   border-radius: 10px;
   color: var(--black-color);
+  @media only screen and (max-width: 768px) {
+    border-radius: 8px;
+  }
 }
 @mixin closeButton {
   position: absolute;

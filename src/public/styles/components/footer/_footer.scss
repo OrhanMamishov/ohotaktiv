@@ -117,7 +117,7 @@
         }
       }
       &__link {
-        color: var(--darkness-white-color);
+        color: var(--light-yellow-color);
       }
       &:checked + .checkbox__span {
         border-color: var(--yellow-color);
@@ -363,6 +363,7 @@
 
 @media only screen and (max-width: 768px) {
   .footer {
+    background-size: inherit;
     &__wrap {
       padding-top: 22px !important;
     }
@@ -372,32 +373,31 @@
       flex-direction: column;
       &-wrap {
         &-title {
+          font-size: 20px;
           margin-bottom: 10px;
-          color: var(--white-color);
+          color: var(--light-white-color);
         }
         &-subtitle {
           margin-bottom: 18px;
-          color: var(--white-color);
+          color: var(--light-white-color);
         }
       }
       &-input {
         width: 100%;
         padding: 14px 17px;
+        color: var(--light-white-color);
       }
       &-button {
         padding: 14px 24px;
         align-self: flex-start;
         order: 3;
-        font-size: 10px;
+        font-size: 12px;
       }
       .checkbox__label {
         margin-bottom: 17px;
         font-size: 10px;
         line-height: 15px;
-        color: var(--white-color);
-      }
-      .checkbox__link {
-        color: var(--yellow-color);
+        color: var(--light-white-color);
       }
     }
     &__lists {
@@ -408,9 +408,9 @@
       &-title {
         width: 100%;
         margin-bottom: 20px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
-        color: var(--grey-form-color);
+        color: var(--light-white-color);
         &::before {
           left: unset;
           top: 0;
@@ -429,9 +429,9 @@
       }
       &-text {
         margin-bottom: 17px;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: 700;
-        color: var(--grey-form-color);
+        color: var(--light-white-color);
       }
       &-link {
         width: 19px;
@@ -453,6 +453,16 @@
           &-text {
             display: none;
           }
+        }
+      }
+    }
+    &__buyer {
+      &-link {
+        font-size: 12px;
+      }
+      &-item {
+        &:not(:last-child) {
+          margin-bottom: 18px;
         }
       }
     }
