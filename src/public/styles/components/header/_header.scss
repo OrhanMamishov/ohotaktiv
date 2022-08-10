@@ -4,11 +4,11 @@
       display: flex;
       align-items: center;
       padding-top: 17px !important;
-      padding-bottom: 16px !important;
+      padding-bottom: 17px !important;
     }
     &-bottom {
       padding-top: 10px !important;
-      padding-bottom: 11px !important;
+      padding-bottom: 10px !important;
       background-color: var(--black-color);
       &-content {
         display: flex;
@@ -285,7 +285,6 @@
       height: 100%;
       display: block;
       border-radius: 8px;
-      background-color: var(--yellow-color);
       background-image: url('../../../img/search.svg');
       background-repeat: no-repeat;
       background-position: center;
@@ -294,7 +293,7 @@
   &__bottom {
     &-list {
       display: flex;
-      margin: 0 0 1px auto;
+      margin: 0 0 0 auto;
     }
     &-item {
       &:not(:last-child) {
@@ -309,6 +308,48 @@
   }
 }
 // Адаптив
+@media only screen and (max-width: 1560px) {
+  .header {
+    &__logo {
+      &-link {
+        width: 131px;
+        margin-right: 20px;
+      }
+    }
+    &__pages {
+      &-item {
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+    }
+    &__button {
+      margin-right: 22px;
+      padding: 13px 22px 13px 39px;
+      background-position: 20px center;
+      &-text {
+        font-size: 13px;
+      }
+    }
+    &__search {
+      &-input {
+        width: 463px;
+        font-size: 13px;
+        &::placeholder {
+          font-size: 13px;
+        }
+      }
+    }
+    &__bottom {
+      &-item {
+        &:not(:last-child) {
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1439px) {
   .header {
     &__logo {

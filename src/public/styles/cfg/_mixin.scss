@@ -16,7 +16,7 @@
 }
 @mixin fontSize24 {
   font-size: 24px;
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (max-width: 1560px) {
     font-size: 22px;
   }
   @media only screen and (max-width: 767px) {
@@ -31,6 +31,12 @@
 }
 @mixin fontSize18 {
   font-size: 18px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 14px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 11px;
+  }
 }
 @mixin fontSize17 {
   font-size: 17px;
@@ -52,7 +58,7 @@
 }
 @mixin fontSize14 {
   font-size: 14px;
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (max-width: 1560px) {
     font-size: 13px;
   }
   @media only screen and (max-width: 767px) {
@@ -70,6 +76,12 @@
 }
 @mixin fontSize12 {
   font-size: 12px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 9px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 8px;
+  }
 }
 @mixin contentButton {
   cursor: pointer;
@@ -126,6 +138,7 @@
 @mixin swiperArrowsIndexPage {
   &-prev,
   &-next {
+    right: 0px;
     width: 42px;
     height: 42px;
     top: unset;
@@ -139,7 +152,7 @@
     }
   }
   &-prev {
-    right: 70px;
+    right: 63px;
     left: unset;
   }
 }

@@ -24,21 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".bestsellers__swiper-button-prev",
     },
     breakpoints: {
-      1439: {
+      1559: {
         spaceBetween: 35,
         slidesPerView: 6,
       },
-      1199: {
+      1439: {
         spaceBetween: 30,
         slidesPerView: 5,
-      },
-      767: {
-        spaceBetween: 30,
-        slidesPerView: 3,
-      },
-      320: {
-        spaceBetween: 10,
-        slidesPerView: 2,
       },
     },
   });
@@ -50,21 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".new__swiper-button-prev",
     },
     breakpoints: {
-      1439: {
+      1559: {
         spaceBetween: 35,
         slidesPerView: 6,
       },
-      1199: {
+      1439: {
         spaceBetween: 30,
         slidesPerView: 5,
-      },
-      767: {
-        spaceBetween: 30,
-        slidesPerView: 3,
-      },
-      320: {
-        spaceBetween: 10,
-        slidesPerView: 2,
       },
     },
   });
@@ -76,21 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
       prevEl: ".recommended__swiper-button-prev",
     },
     breakpoints: {
-      1439: {
+      1559: {
         spaceBetween: 35,
         slidesPerView: 6,
       },
-      1199: {
+      1439: {
         spaceBetween: 30,
         slidesPerView: 5,
-      },
-      767: {
-        spaceBetween: 30,
-        slidesPerView: 3,
-      },
-      320: {
-        spaceBetween: 10,
-        slidesPerView: 2,
       },
     },
   });
@@ -98,21 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const popularSwiper = new Swiper(".swiper-popular", {
     freeMode: true,
     breakpoints: {
-      1439: {
-        slidesPerView: 4,
+      1559: {
         spaceBetween: 35,
+        slidesPerView: 4,
       },
-      1199: {
-        slidesPerView: 3,
+      1439: {
         spaceBetween: 30,
-      },
-      767: {
-        slidesPerView: 2,
-        spaceBetween: 27,
-      },
-      320: {
-        slidesPerView: 1.5,
-        spaceBetween: 10,
+        slidesPerView: 3.5,
       },
     },
   });

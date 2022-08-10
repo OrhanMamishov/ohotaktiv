@@ -50,12 +50,12 @@
     }
   }
   &__form {
-    margin-bottom: 97px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
     &-wrap {
+      margin-bottom: 99px;
       grid-area: 1 / 3 / 2 / 5;
       &-title {
         @include fontSize24;
@@ -83,7 +83,6 @@
     &-button {
       @include fontSize13;
       @include contentButton;
-      padding: 16px 26px;
     }
     .checkbox {
       &__label {
@@ -108,11 +107,11 @@
           position: absolute;
           left: 50%;
           top: 50%;
-          width: 8px;
-          height: 8px;
+          width: 4px;
+          height: 4px;
           border-radius: 50%;
           background-color: var(--yellow-color);
-          transform: translate(-45%, -55%);
+          transform: translate(-55%, -50%);
           opacity: 0;
         }
       }
@@ -133,7 +132,7 @@
     }
     &-list {
       display: flex;
-      margin-bottom: 63px;
+      margin-bottom: 56px;
     }
     &-item {
       &:not(:last-child) {
@@ -156,7 +155,7 @@
     }
     &-text {
       @include fontSize14;
-      margin-bottom: 21px;
+      margin-bottom: 19px;
       font-weight: 600;
       color: var(--footer-title-color);
     }
@@ -201,6 +200,55 @@
   }
 }
 // Адаптивы
+@media only screen and (max-width: 1560px) {
+  .footer {
+    &__wrap {
+      padding-top: 63px !important;
+      padding-bottom: 63px !important;
+    }
+    &__lists {
+      &-wrap {
+        height: 475px;
+        grid-area: 1 / 1 / 3 / 2;
+      }
+      &-title {
+        width: 245px;
+        margin-bottom: 21px;
+      }
+    }
+    &__buyer {
+      &-list {
+        margin-right: 10px;
+      }
+      &-item {
+        &:first-child {
+          margin-right: 20px;
+        }
+        &:not(:last-child) {
+          margin-bottom: 21px;
+        }
+      }
+    }
+    &__form {
+      &-wrap {
+        &-title {
+          margin-bottom: 16px;
+        }
+        &-subtitle {
+          margin-bottom: 44px;
+        }
+      }
+      &-button {
+        padding: 16px 23px;
+      }
+      &-input {
+        width: 416px;
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1439px) {
   .footer {
     &__lists {

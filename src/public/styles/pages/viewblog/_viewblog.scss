@@ -51,7 +51,13 @@
   }
   .goods {
     &__list {
+      margin-bottom: 70px;
+      max-width: 948px;
       display: flex;
+      justify-content: space-between;
+    }
+    &__item {
+
     }
   }
 }
