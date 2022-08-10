@@ -46,7 +46,10 @@
     }
     &-item {
       &:not(:last-child) {
-        margin-right: 50px;
+        margin-right: 30px;
+      }
+      &:nth-child(4) {
+        margin-right: 0;
       }
     }
     &-link {
@@ -268,7 +271,7 @@
     }
     &-input {
       @include fontSize14;
-      width: 634px;
+      width: 565px;
       padding: 13px 0 13px 22px;
       &::placeholder {
         @include fontSize14;

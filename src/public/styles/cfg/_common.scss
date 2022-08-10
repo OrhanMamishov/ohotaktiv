@@ -75,6 +75,28 @@ button {
   background-color: transparent;
 }
 
+img {
+  width: 100%;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 120px;
+  max-width: 1680px;
+  @media only screen and (max-width: 1439px) {
+    max-width: 1320px;
+    padding: 0 100px;
+  }
+  @media only screen and (max-width: 1023px) {
+    max-width: 924px;
+    padding: 0 50px;
+  }
+  @media only screen and (max-width: 767px) {
+    max-width: 736px;
+    padding: 0 16px;
+  }
+}
+
 section {
   padding-top: 22px;
   padding-bottom: 22px;
@@ -95,25 +117,6 @@ section {
   }
   @media only screen and (max-width: 767px) {
     padding-top: 13px;
-  }
-}
-
-.container {
-  max-width: 1460px;
-  margin: 0 auto;
-  padding: 0 10px;
-  @media only screen and (max-width: 1439px) {
-    max-width: 1220px;
-  }
-  // @media only screen and (max-width: 1200px) {
-  //   max-width: 688px;
-  // }
-  @media only screen and (max-width: 767px) {
-    max-width: 688px;
-  }
-  @media only screen and (max-width: 321px) {
-    max-width: 308px;
-    padding: 0 12px;
   }
 }
 
@@ -337,7 +340,7 @@ section {
       &-text {
         font-weight: 800;
         span {
-          margin-left: 12px;
+          margin-left: 5px;
           font-weight: 300;
         }
       }

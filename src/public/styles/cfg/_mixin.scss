@@ -2,16 +2,25 @@
   margin: 0;
   padding: 0;
 }
+@mixin fontSize32 {
+  font-size: 32px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 16px;
+  }
+}
 @mixin fontSize30 {
   font-size: 30px;
 }
 @mixin fontSize24 {
   font-size: 24px;
-  @media only screen and (max-width: 1439px) {
+  @media only screen and (max-width: 1023px) {
     font-size: 22px;
   }
   @media only screen and (max-width: 767px) {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 @mixin fontSize22 {
@@ -20,18 +29,30 @@
 @mixin fontSize19 {
   font-size: 19px;
 }
+@mixin fontSize18 {
+  font-size: 18px;
+}
 @mixin fontSize17 {
   font-size: 17px;
-  @media only screen and (max-width: 1439px) {
-    font-size: 15px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 17px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 14px;
   }
 }
 @mixin fontSize15 {
   font-size: 15px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 15px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 12px;
+  }
 }
 @mixin fontSize14 {
   font-size: 14px;
-  @media only screen and (max-width: 1439px) {
+  @media only screen and (max-width: 1023px) {
     font-size: 13px;
   }
   @media only screen and (max-width: 767px) {
@@ -40,6 +61,9 @@
 }
 @mixin fontSize13 {
   font-size: 13px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 13px;
+  }
   @media only screen and (max-width: 767px) {
     font-size: 12px;
   }
@@ -53,9 +77,7 @@
   background-color: var(--yellow-color);
   border-radius: 10px;
   color: var(--black-color);
-  @media only screen and (max-width: 767px) {
-    border-radius: 8px;
-  }
+
 }
 @mixin closeButton {
   position: absolute;

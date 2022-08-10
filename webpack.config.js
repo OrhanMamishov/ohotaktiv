@@ -20,6 +20,7 @@ module.exports = {
     indexEntry: "./src/public/scripts/pages/index.js",
     salesEntry: "./src/public/scripts/pages/sales.js",
     blogEntry: "./src/public/scripts/pages/blog.js",
+    viewblogEntry: "./src/public/scripts/pages/viewblog.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -80,6 +81,14 @@ module.exports = {
       filename: "blog.html",
       template: path.resolve(__dirname, "./src/public/blog.html"),
       chunks: ["blogEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "viewblog.html",
+      template: path.resolve(__dirname, "./src/public/viewblog.html"),
+      chunks: ["viewblogEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),
