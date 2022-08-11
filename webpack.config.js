@@ -23,6 +23,7 @@ module.exports = {
     viewblogEntry: "./src/public/scripts/pages/viewblog.js",
     shopsEntry: "./src/public/scripts/pages/shops.js",
     viewshopEntry: "./src/public/scripts/pages/viewshop.js",
+    liquidationEntry: "./src/public/scripts/pages/liquidation.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -107,6 +108,14 @@ module.exports = {
       filename: "viewshop.html",
       template: path.resolve(__dirname, "./src/public/viewshop.html"),
       chunks: ["viewshopEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "liquidation.html",
+      template: path.resolve(__dirname, "./src/public/liquidation.html"),
+      chunks: ["liquidationEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),
