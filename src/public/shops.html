@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sales</title>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=6d5af347-234b-4785-ac46-675fce0d5ea1&lang=ru_RU" type="text/javascript">
+  </script>
+  <title>Shops</title>
 </head>
 <body>
   <header class="header">
@@ -851,11 +853,8 @@
     </div>
   </header>
   <main class="main">
-    <h1 class="visually-hidden">
-      Акции
-    </h1>
-    <section class="sales">
-      <div class="sales__wrap container">
+    <section class="categories">
+      <div class="categories__wrap container">
         <nav class="navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
@@ -870,226 +869,655 @@
             </li>
             <li class="navigation__item">
               <a href="#" class="navigation__link">
-                Акции
+                Адреса магазинов
               </a>
             </li>
           </ul>
         </nav>
-        <h2 class="sales__title">
-          Акции
+        <h2 class="categories__title">
+          Адреса магазинов ОхотАктив в городах России
         </h2>
-        <ul class="sales__list">
-          <li class="sales__item">
-            <img src="img/sales-img.jpg" alt="Акционный баннер" class="sales__img">
+        <ul class="categories__list">
+          <li class="categories__item">
+            <p class="categories__item-title">
+              Магазин ОхотАктив 
+            </p>
+            <p class="categories__item-text">
+              Не следует, однако, забывать о том, что постоянный количественный рост и сфера нашей активности способствует повышению актуальности системы обучения кадров.
+            </p>
           </li>
-          <li class="sales__item">
-            <img src="img/sales-img.jpg" alt="Акционный баннер" class="sales__img">
+          <li class="categories__item">
+            <p class="categories__item-title">
+              ОхотАктив Home
+            </p>
+            <p class="categories__item-text">
+              Не следует, однако, забывать о том, что постоянный количественный рост и сфера нашей активности способствует повышению.          
+            </p>
           </li>
-          <li class="sales__item">
-            <img src="img/sales-img.jpg" alt="Акционный баннер" class="sales__img">
+          <li class="categories__item">
+            <p class="categories__item-title">
+              ОхотАктив Mini
+            </p>
+            <p class="categories__item-text">
+              Не следует, однако, забывать о том, что постоянный количественный рост и сфера нашей активности способствует повышению актуальности системы обучения кадров, соответствующей насущным потребностям.   
+            </p>     
           </li>
-          <li class="sales__item">
-            <img src="img/sales-img.jpg" alt="Акционный баннер" class="sales__img">
-          </li>
-          <li class="sales__item">
-            <img src="img/sales-img.jpg" alt="Акционный баннер" class="sales__img">
-          </li>
-          <li class="sales__item">
-            <img src="img/sales-img.jpg" alt="Акционный баннер" class="sales__img">
+          <li class="categories__item">
+            <p class="categories__item-title">
+              ОхотАктив Дисконт
+            </p>
+            <p class="categories__item-text">
+              Не следует, однако, забывать о том, что постоянный количественный рост и сфера нашей активности способствует повышению актуальности системы обучения кадров.          </p>     
           </li>
         </ul>
       </div>
     </section>
-  </main>
-  <footer class="footer">
-      <div class="footer__wrap container">
-        <div class="footer__lists-wrap">
-          <p class="footer__lists-title" data-path="buyer-footer">
-            Покупателю
-          </p>
-          <ul class="footer__buyer-list" data-target="buyer-footer">
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Магазины
-              </a>
+    <section class="map">
+      <div class="map__wrap container">
+        <div class="map__left-column">
+          <input type="text" class="map__input" placeholder="Введите ваш город">
+          <ul class="map__list accordion-container">
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Правила лицензии
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Как заказать
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Оплата
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Доставка
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Часто задаваемые вопросы
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Обмен и возврат
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Сервис
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Гарантия лучшей цены
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Каталог
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Бренды
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Кредит и рассрочка
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-          </ul>
-          <p class="footer__lists-title" data-path="contacts-footer">
-            Контакты
-          </p>          
-          <ul class="footer__buyer-list" data-target="contacts-footer">
-            <li class="footer__buyer-item">
-              <a href="tel:88007008256" class="footer__buyer-link">
-                8 800 700-82-56
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                с 9.00 до 18.00
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="mailto:info@ohotaktiv.ru" class="footer__buyer-link">
-                info@ohotaktiv.ru
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
- 
-          </ul>
-          <p class="footer__lists-title" data-path="aboutus-footer">
-            О компании
-          </p>
-          <ul class="footer__buyer-list" data-target="aboutus-footer">
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Контакты
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Вакансии
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Реквизиты
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Политика конфиденциальности
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Стать поставщиком
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                История компании
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
-            <li class="footer__buyer-item">
-              <a href="#" class="footer__buyer-link">
-                Карта сайта
-              </a>
+            <li class="map__item ac">
+              <p class="map__item-title ac-header">
+                <button type="button" class="map__item-button ac-trigger">
+                  Москва
+                </button>
+              </p>
+              <div class="map__item-panel ac-panel">
+                <address class="map__item-address">
+                  Троицкий проспект, д. 79
+                  <span>
+                    Время работы: 10:00 - 20:00
+                  </span>
+                </address>
+                <a href="#" class="map__item-tel">8 (495) 959-59-48</a>
+                <a href="#" class="map__item-link">Подробнее</a>
+              </div>
             </li>
           </ul>
         </div>
-        <div class="footer__form-wrap">
-          <h2 class="footer__form-wrap-title">
-            Будь в курсе!
-          </h2>
-          <p class="footer__form-wrap-subtitle">
-            Новости и акции только для своих
-          </p>
-          <form action="#" class="footer__form">
-            <input id="footer-form-input" type="text" class="footer__form-input" placeholder="Введите e-mail">
-            <button class="footer__form-button">
-              Подписаться
-            </button>
-            <label class="checkbox__label">
-              Я согласен с <a href="#" class="checkbox__link">условиями персональных данных</a>, а также с <a href="#" class="checkbox__link">условиями подписки</a>
-              <input type="checkbox" class="checkbox visually-hidden" required>
-              <span class="checkbox__span"></span>
-            </label>
-          </form>
+        <div class="map__right-column">
+          <div id="map"></div>
         </div>
-        <div class="footer__social-wrap">
-          <p class="footer__social-text for-mobile">
-            Мы в соцсетях
+      </div>
+    </section>
+    <section class="aboutapp">
+      <h2 class="aboutapp__title visually-hidden">
+        В приложении удобнее
+      </h2>
+      <div class="aboutapp__wrap container">
+        <img src="img/aboutapp-phone-img.png" alt="Приложение" class="aboutapp__img">
+        <div class="aboutapp__description-wrap">
+          <p class="aboutapp__text">
+            В приложении<br>удобнее
           </p>
-          <ul class="footer__social-list">
-            <li class="footer__social-item">
-              <a href="#" class="footer__social-link vk"></a>
-            </li>
-            <li class="footer__social-item">
-              <a href="#" class="footer__social-link youtube"></a>
-            </li>
-          </ul>
-          <p class="footer__social-text">
-            Скачай мобильное приложение
-          </p>
-          <ul class="footer__social-app-list">
-            <li class="footer__social-app-item">
-              <a href="#" class="footer__social-app-link google-play">
-                <p class="footer__social-app-link-text">
-                  Доступно<br><span>Google Play</span>
-                </p>
+          <ul class="aboutapp__wrap-list">
+            <li class="aboutapp__wrap-item">
+              <a href="#" class="aboutapp__wrap-link google-play">
+                Доступно <span>Google Play</span>
               </a>
             </li>
-            <li class="footer__social-app-item">
-              <a href="#" class="footer__social-app-link app-store">
-                <p class="footer__social-app-link-text">
-                  Загрузите в<br><span>AppStore</span>
-                </p>
+            <li class="aboutapp__wrap-item">
+              <a href="#" class="aboutapp__wrap-link app-store">
+                Загрузите в <span>AppStore</span>
               </a>
             </li>
-            <li class="footer__social-app-item">
-              <a href="#" class="footer__social-app-link app-gallery">
-                <p class="footer__social-app-link-text">
-                  Откройте в<br><span>AppGallery</span>
-                </p>
+            <li class="aboutapp__wrap-item">
+              <a href="#" class="aboutapp__wrap-link app-gallery">
+                Откройте в <span>AppGallery</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__wrap container">
+      <div class="footer__lists-wrap">
+        <p class="footer__lists-title" data-path="buyer-footer">
+          Покупателю
+        </p>
+        <ul class="footer__buyer-list" data-target="buyer-footer">
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Магазины
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Правила лицензии
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Как заказать
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Оплата
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Доставка
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Часто задаваемые вопросы
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Обмен и возврат
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Сервис
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Гарантия лучшей цены
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Каталог
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Бренды
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Кредит и рассрочка
+            </a>
+          </li>
+        </ul>
+        <p class="footer__lists-title" data-path="contacts-footer">
+          Контакты
+        </p>          
+        <ul class="footer__buyer-list" data-target="contacts-footer">
+          <li class="footer__buyer-item">
+            <a href="tel:88007008256" class="footer__buyer-link">
+              8 800 700-82-56
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              с 9.00 до 18.00
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="mailto:info@ohotaktiv.ru" class="footer__buyer-link">
+              info@ohotaktiv.ru
+            </a>
+          </li>
+
+        </ul>
+        <p class="footer__lists-title" data-path="aboutus-footer">
+          О компании
+        </p>
+        <ul class="footer__buyer-list" data-target="aboutus-footer">
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Контакты
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Вакансии
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Реквизиты
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Политика конфиденциальности
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Стать поставщиком
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              История компании
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Карта сайта
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__form-wrap">
+        <h2 class="footer__form-wrap-title">
+          Будь в курсе!
+        </h2>
+        <p class="footer__form-wrap-subtitle">
+          Новости и акции только для своих
+        </p>
+        <form action="#" class="footer__form">
+          <input id="footer-form-input" type="text" class="footer__form-input" placeholder="Введите e-mail">
+          <button class="footer__form-button">
+            Подписаться
+          </button>
+          <label class="checkbox__label">
+            Я согласен с <a href="#" class="checkbox__link">условиями персональных данных</a>, а также с <a href="#" class="checkbox__link">условиями подписки</a>
+            <input type="checkbox" class="checkbox visually-hidden" required>
+            <span class="checkbox__span"></span>
+          </label>
+        </form>
+      </div>
+      <div class="footer__social-wrap">
+        <p class="footer__social-text for-mobile">
+          Мы в соцсетях
+        </p>
+        <ul class="footer__social-list">
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link vk"></a>
+          </li>
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link youtube"></a>
+          </li>
+        </ul>
+        <p class="footer__social-text">
+          Скачай мобильное приложение
+        </p>
+        <ul class="footer__social-app-list">
+          <li class="footer__social-app-item">
+            <a href="#" class="footer__social-app-link google-play">
+              <p class="footer__social-app-link-text">
+                Доступно<br><span>Google Play</span>
+              </p>
+            </a>
+          </li>
+          <li class="footer__social-app-item">
+            <a href="#" class="footer__social-app-link app-store">
+              <p class="footer__social-app-link-text">
+                Загрузите в<br><span>AppStore</span>
+              </p>
+            </a>
+          </li>
+          <li class="footer__social-app-item">
+            <a href="#" class="footer__social-app-link app-gallery">
+              <p class="footer__social-app-link-text">
+                Откройте в<br><span>AppGallery</span>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </footer>
 </body>
 </html>

@@ -1,0 +1,118 @@
+.main {
+  .navigation {
+    margin-bottom: 20px;
+  }
+  .categories {
+    &__list {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      width: 334px;
+      height: 245px;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      &-title {
+        @include fontSize17;
+        font-weight: 800;
+      }
+      &-text {
+        @include fontSize14;
+        margin-top: auto;
+      }
+    }
+  }
+  .map {
+    margin-bottom: 84px;
+    &__wrap {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__left-column {
+      width: 100%;
+      margin-right: 16px;
+    }
+    &__input {
+      @include fontSize14;
+      width: 98%;
+      padding: 13px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      &::placeholder {
+        @include fontSize14;
+        color: var(--grey-form-color);
+      }
+    }
+    &__list {
+      height: 515px;
+      padding-right: 10px;
+      overflow: scroll;
+    }
+    &__item {
+      border-style: solid;
+      border-color: var(--border-color) transparent var(--border-color) transparent;
+      border-width: 1px;
+      &-button {
+        @include fontSize17;
+        font-weight: 800;
+        &:focus {
+          color: unset !important;
+        }
+        &::after {
+          content: '' !important;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-image: url('../../../img/arrow-down.svg');
+          width: 12px !important;
+          height: 7px;
+        }
+      }
+      &-address {
+        @include fontSize14;
+        margin-bottom: 13px;
+        margin-top: 16px;
+        padding-left: 30px;
+        font-style: normal;
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-image: url('../../../img/tag.svg');
+        background-size: 4%;
+        span {
+          @include fontSize12;
+          margin-top: 3px;
+          display: block;
+          color: var(--darkness-white-color);
+        }
+      }
+      &-tel {
+        @include fontSize14;
+        display: block;
+        padding-left: 30px;
+        margin-bottom: 8px;
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-image: url('../../../img/tel.svg');
+      }
+      &-link {
+        @include fontSize14;
+        display: block;
+        padding-left: 30px;
+        margin-bottom: 16px;
+        color: var(--green-color);
+      }
+      &.is-active {
+        .ac-trigger::after {
+          transform: rotate(180deg) translate(0, -50%);
+          top: 30%;
+        }
+      }
+    }
+    #map {
+      height: 561px;
+      width: 995px;
+    }
+  }
+}

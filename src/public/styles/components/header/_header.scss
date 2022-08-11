@@ -137,14 +137,13 @@
         width: 328px;
         position: relative;
         padding: 16px 62px;
-        font-weight: 500;
         cursor: pointer;
         border-radius: 10px;
         background-repeat: no-repeat;
         background-position: 15px center;
         &:hover,
         &.is-active {
-          font-weight: 600;
+          font-weight: 700;
           background-color: var(--lightness-white-color);
           &::before {
             content: '';
@@ -228,7 +227,7 @@
         @include fontSize13;
         &.link-title {
           display: inline-block;
-          font-weight: 600;
+          font-weight: 700;
         }
       }
       &-list {
@@ -256,7 +255,6 @@
     transition: background .2s ease;
     &-text {
       @include fontSize14;
-      font-weight: 500;
     }
     &.is-active {
       background-image: url('../../../img/hamburger-close.svg');
@@ -302,7 +300,6 @@
     }
     &-link {
       @include fontSize14;
-      font-weight: 500;
       color: var(--white-color);
     }
   }

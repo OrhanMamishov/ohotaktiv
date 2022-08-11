@@ -39,6 +39,7 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
+    "accordion-js": "^3.3.1",
     "swiper": "^8.3.2"
   }
 }

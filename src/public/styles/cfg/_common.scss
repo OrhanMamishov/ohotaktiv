@@ -623,6 +623,87 @@ section {
     }
   }
 }
+
+.aboutapp {
+  padding-top: 52px;
+  padding-bottom: 0;
+  background-image: url('../../../img/aboutapp-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  &__description-wrap {
+    padding-top: 31px;
+  }
+  &__text {
+    @include fontSize32;
+    padding: 25px 0 32px 164px;
+    margin-bottom: 19px;
+    font-weight: 900;
+    line-height: 42px;
+    background-image: url('../../../img/qrcode.svg');
+    background-repeat: no-repeat;
+  }
+  &__img {
+    margin-right: 80px;
+  }
+  &__wrap {
+    display: flex;
+    max-width: 964px;
+    &-list {
+      display: flex;
+    }
+    &-item {
+      border-radius: 6px;
+      width: 176px;
+      background-color: var(--white-color);
+      &:not(:last-child) {
+        margin-right: 25px;
+      }
+    }
+    &-link {
+      @include fontSize12;
+      padding: 6px 14px 11px 49px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      background-repeat: no-repeat;
+      background-size: auto;
+      background-position: 12px center;
+      font-weight: 500;
+      color: var(--black-color);
+      span {
+        @include fontSize18;
+        font-weight: 700;
+      }
+      &.google-play {
+        background-image: url('../../../img/google-play.svg');
+      }
+      &.app-store {
+        background-image: url('../../../img/app-store-black.svg');
+      }
+      &.app-gallery {
+        background-image: url('../../../img/app-gallery.svg');
+      }
+    }
+  }
+  @media only screen and (max-width: 1560px) {
+    padding-top: 27px;
+    &__wrap {
+      max-width: 1140px;
+    }
+    &__img {
+      margin-right: 56px;
+    }
+    &__description {
+      &-wrap {
+        padding-top: 48px;
+      }
+    }
+    &__text {
+      margin-bottom: 16px;
+      padding: 25px 0 32px 182px;
+    }
+  }
+}
 @keyframes tremor {
   0%, 25% {
       left: -1px;
