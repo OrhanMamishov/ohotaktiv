@@ -22,6 +22,7 @@ module.exports = {
     blogEntry: "./src/public/scripts/pages/blog.js",
     viewblogEntry: "./src/public/scripts/pages/viewblog.js",
     shopsEntry: "./src/public/scripts/pages/shops.js",
+    viewshopEntry: "./src/public/scripts/pages/viewshop.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -98,6 +99,14 @@ module.exports = {
       filename: "shops.html",
       template: path.resolve(__dirname, "./src/public/shops.html"),
       chunks: ["shopsEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "viewshop.html",
+      template: path.resolve(__dirname, "./src/public/viewshop.html"),
+      chunks: ["viewshopEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),
