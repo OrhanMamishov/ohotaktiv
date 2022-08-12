@@ -16,6 +16,7 @@
   .filters {
     &__banner {
       margin-bottom: 30px;
+      width: 100%;
     }
     &__tabs {
       &-list {
@@ -24,7 +25,7 @@
         flex-wrap: wrap;
         gap: 10px;
       }
-      &-button {
+      &-item {
         @include fontSize13;
         padding: 5px 16px;
         border-radius: 100px;
@@ -37,8 +38,12 @@
     }
     &__tab {
       &-result {
-        display: flex;
+        display: none;
+        flex-wrap: wrap;
         justify-content: space-between;
+        &.is-open {
+          display: flex;
+        }
       }
     }
     &__params {
@@ -58,6 +63,7 @@
         flex-wrap: wrap;
         gap: 35px;
         justify-content: flex-end;
+        max-width: 1210px;
       }
     }
     &__avaliability {

@@ -27,7 +27,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    publicPath: "/",
+    publicPath: "./",
     filename: "[name].bundle.js",
     chunkFilename: "[id].bundle_[chunkhash].js",
   },
@@ -48,7 +48,12 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|avif)$/i,

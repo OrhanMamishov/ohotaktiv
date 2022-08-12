@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   catalogItemsHeader.forEach((el) => {
     // Вешаем обработчик на каждый
-    el.addEventListener("click", () => {
+    el.addEventListener("mouseover", () => {
       catalogTabsWrapHeader.classList.add("is-active");
       // У остальных снимаем актив
       catalogItemsHeader.forEach((item) => item.classList.remove("is-active"));

@@ -84,46 +84,14 @@
       @include fontSize13;
       @include contentButton;
     }
-    .checkbox {
-      &__label {
-        @include fontSize13;
-        padding-left: 30px;
-        display: block;
-        position: relative;
-        cursor: pointer;
-        font-weight: 600;
-        color: var(--darkness-white-color);
-      }
-      &__span {
-        position: absolute;
-        top: -1px;
-        left: 0;
-        width: 17px;
-        height: 17px;
-        border: 2px solid var(--yellow-color);
-        border-radius: 50%;
-        &::after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          background-color: var(--yellow-color);
-          transform: translate(-55%, -50%);
-          opacity: 0;
-        }
-      }
-      &__link {
-        color: var(--light-yellow-color);
-      }
-      &:checked + .checkbox__span {
-        border-color: var(--yellow-color);
-      }
-      &:checked + .checkbox__span::after {
-        opacity: 1;
-      }
+  }
+  .checkbox {
+    &__label {
+      color: var(--darkness-white-color);
+      font-weight: 700;
+    }
+    &__link {
+      color: var(--yellow-color);
     }
   }
   &__social {
@@ -284,7 +252,7 @@
         }
       }
       &-input {
-        width: 416px;
+        width: 400px;
       }
       &-button {
         padding: 16px 22px;
@@ -322,7 +290,7 @@
   }
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1365px) {
   .footer {
     &__wrap {
       display: flex;

@@ -116,7 +116,7 @@ section {
     padding-top: 18px;
     padding-bottom: 18px;
   }
-  @media only screen and (max-width: 1199px) {
+  @media only screen and (max-width: 1023px) {
     padding-bottom: 6px;
   }
   @media only screen and (max-width: 767px) {
@@ -219,13 +219,13 @@ section {
   }
   &__description {
     &-wrap {
-      margin-bottom: 35px;
+      margin-bottom: 14px;
     }
     &-text {
       @include fontSize13;
       line-height: 22px;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -341,9 +341,6 @@ section {
       width: 19px;
       height: 17px;
     }
-    &__price-text {
-      font-size: inherit;
-    }
     &__text {
       &-discount {
         width: 37px;
@@ -351,7 +348,8 @@ section {
       }
     }
   }
-  @media only screen and (max-width: 1199px) {
+  @media only screen and (max-width: 1023px) {
+    padding: 0;
     &__description-wrap {
       margin-bottom: 43px;
     }
@@ -367,9 +365,13 @@ section {
         margin-bottom: 10px;
       }
       &-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         font-weight: 800;
         span {
-          margin-left: 5px;
+          margin-left: 0;
+          font-size: 10px;
           font-weight: 300;
         }
       }
@@ -422,7 +424,8 @@ section {
     &__text {
       &-new,
       &-hit {
-        font-size: 10px
+        padding: 2px 6px;
+        font-size: 8px
       }
       &-discount {
         width: 40px;
@@ -439,7 +442,7 @@ section {
 
 .for-mobile {
   display: none;
-  @media only screen and (max-width: 1199px) {
+  @media only screen and (max-width: 1365px) {
     display: inherit;
   }
 }
@@ -486,14 +489,14 @@ section {
     &::after {
       content: '';
       position: absolute;
-      left: 50%;
       top: 50%;
-      width: 5px;
-      height: 2px;
-      border-width: 3px;
-      border-style: solid;
-      border-color: transparent transparent var(--yellow-color) var(--yellow-color);
-      transform: translate(-50%, -75%) rotate(-45deg);
+      left: 50%;
+      width: 14px;
+      height: 10px;
+      background-image: url('/src/public/img/checked.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translate(-50%, -50%);
       transition: opacity .2s ease;
       opacity: 0;
     }
@@ -703,7 +706,94 @@ section {
       padding: 25px 0 32px 182px;
     }
   }
+  @media only screen and (max-width: 1439px) {
+    padding-top: 26px;
+    &__description {
+      &-wrap {
+        padding-top: 49px;
+      }
+    }
+    &__text {
+      padding: 25px 0 22px 164px;
+      margin-bottom: 26px;
+    }
+  }
+  @media only screen and (max-width: 1365px) {
+    &__img {
+      width: 237px;
+      margin-right: 0;
+    }
+    &__description {
+      &-wrap {
+        padding-top: 33px;
+      }
+    }
+    &__text {
+      padding: 15px 0 22px 141px;
+      margin-bottom: 23px;
+      background-size: 25%;
+      font-size: 28px;
+      line-height: 38px;
+    }
+    &__wrap {
+      max-width: 695px;
+      &-item {
+        width: 135px;
+        &:not(:last-child) {
+          margin-right: 17px;
+        }
+      }
+      &-link {
+        padding: 6px 14px 11px 36px;
+        font-size: 9px;
+        background-size: 13%;
+        background-position: 9px center;
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    padding-top: 21px;
+    &__img {
+      width: 137px;
+      margin-right: 18px;
+    }
+    &__text {
+      padding: 0;
+      margin-bottom: 12px;
+      background-image: unset;
+      font-size: 18px;
+      line-height: 21px;
+    }
+    &__wrap {
+      &-item {
+        &:not(:last-child) {
+          margin-bottom: 10px;
+          margin-right: 0;
+        }
+      }
+      &-list {
+        margin-bottom: 23px;
+        flex-direction: column;
+      }
+      &-link {
+        padding: 5px 8px 5px 35px;
+        font-size: 7px;
+        span {
+          font-size: 11px;
+        }
+      }
+    }
+    &__description {
+      &-wrap {
+        padding-top: 0;
+      }
+    }
+  }
 }
+
 @keyframes tremor {
   0%, 25% {
       left: -1px;
