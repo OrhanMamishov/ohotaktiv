@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   templateSwipers.forEach((swiper) => {
     new Swiper("." + swiper, {
+      spaceBetween: 10,
       modules: [Navigation],
       navigation: {
         nextEl: `.${swiper.split("-").reverse().join("__")}-button-next`,
@@ -22,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       breakpoints: {
         1559: {
-          spaceBetween: 35,
           slidesPerView: 6,
         },
         // 1439: {
@@ -30,15 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
         //   slidesPerView: 5,
         // },
         1023: {
-          spaceBetween: 30,
-          slidesPerView: 4,
+          // spaceBetween: 30,
+          slidesPerView: 3,
         },
         767: {
-          spaceBetween: 10,
+          spaceBetween: 20,
           slidesPerView: 3,
         },
         320: {
-          spaceBetween: 10,
+          // spaceBetween: 10,
           slidesPerView: 2,
         },
       },

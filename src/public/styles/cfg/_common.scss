@@ -225,7 +225,7 @@ section {
       @include fontSize13;
       line-height: 22px;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -371,7 +371,6 @@ section {
         font-weight: 800;
         span {
           margin-left: 0;
-          font-size: 10px;
           font-weight: 300;
         }
       }
@@ -437,6 +436,9 @@ section {
   &:hover {
     box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.12);
     border-radius: 10px;
+    @media only screen and (max-width: 1439px) {
+      box-shadow: none;
+    }
   }
 }
 
@@ -650,7 +652,7 @@ section {
   }
   &__wrap {
     display: flex;
-    max-width: 964px;
+    max-width: 1180px;
     &-list {
       display: flex;
     }

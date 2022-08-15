@@ -25,6 +25,7 @@ module.exports = {
     viewshopEntry: "./src/public/scripts/pages/viewshop.js",
     liquidationEntry: "./src/public/scripts/pages/liquidation.js",
     remingtonEntry: "./src/public/scripts/pages/remington.js",
+    compareEntry: "./src/public/scripts/pages/compare.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -130,6 +131,14 @@ module.exports = {
       filename: "remington.html",
       template: path.resolve(__dirname, "./src/public/remington.html"),
       chunks: ["remingtonEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "compare.html",
+      template: path.resolve(__dirname, "./src/public/compare.html"),
+      chunks: ["compareEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),

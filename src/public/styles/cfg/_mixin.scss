@@ -76,12 +76,6 @@
 }
 @mixin fontSize12 {
   font-size: 12px;
-  @media only screen and (max-width: 1023px) {
-    font-size: 9px;
-  }
-  @media only screen and (max-width: 767px) {
-    font-size: 8px;
-  }
 }
 @mixin contentButton {
   cursor: pointer;
