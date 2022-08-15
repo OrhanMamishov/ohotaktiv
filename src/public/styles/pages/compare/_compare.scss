@@ -110,7 +110,19 @@
       }
     }
     .swiper-wrapper li:last-of-type{
-      margin-right: 200px;
+      margin-right: 230px;
+    }
+    &__swiper-button {
+      @include swiperArrowsIndexPage;
+      &-next,
+      &-prev {
+        top: 15%;
+        bottom: unset;
+      }
+      &-prev {
+        right: unset;
+        left: 20%;
+      }
     }
   }
 }
