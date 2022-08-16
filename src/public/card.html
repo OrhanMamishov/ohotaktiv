@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__wrap-top container">
+      <a href="#" class="header__logo-link">
+        <img src="img/logo-header.svg" alt="Логотип Охотактив" class="header__logo">
+      </a>
+      <a href="tel:88007008256" class="header__tel for-mobile">
+        8 800 700-82-56
+      </a>
+      <ul class="header__pages-list">
+        <li class="header__pages-item for-mobile">
+          Меню
+          <button class="header__pages-item-button close-menu">
+            Закрыть
+          </button>
+        </li>
+        <li class="header__pages-item">
+          <button class="header__pages-item-button tag">
+            <span class="for-mobile">Город:</span>Кострома
+          </button>
+          <input class="header__pages-item-input for-mobile" placeholder="Введите ваш город"/>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Войти / Регистрация
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Каталог
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Корзина <span>0 товаров / 0 &#8381;</span>
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Избранное <span>0 товаров</span>
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            В сравнении <span>0 товаров</span>
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Акции
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Remington
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Новинки
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Дисконт
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Ликвидация
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Опт
+          </a>
+        </li>
+        <li class="header__pages-item for-mobile">
+          <a href="#" class="header__pages-item-link">
+            Блог
+          </a>
+        </li>
+        <li class="header__pages-item">
+          <a id="status-link" href="#" class="header__pages-link">
+            Статус заказа
+          </a>
+        </li>
+        <li class="header__pages-item">
+          <a href="#" class="header__pages-link">
+            Приложение
+          </a>
+        </li>
+        <li class="header__pages-item">
+          <a href="#" class="header__pages-link">
+            Магазины
+          </a>
+        </li>
+        <li class="header__pages-item">
+          <a href="#" class="header__pages-link">
+            Подарочный сертификат
+          </a>
+        </li>
+        <li class="header__pages-item">
+          <a href="tel:88008008256" class="header__pages-link">
+            8 800 800-82-56
+          </a>
+        </li>
+      </ul>
+      <ul class="header__actions-list">
+        <li class="header__actions-item">
+          <a href="#" class="header__actions-link favourite"></a>
+          <p class="header__actions-text">
+            Избранное
+          </p>
+        </li>
+        <li class="header__actions-item">
+          <a href="#" class="header__actions-link personal"></a>
+          <p class="header__actions-text">
+            Профиль
+          </p>
+        </li>
+        <li class="header__actions-item">
+          <a href="#" class="header__actions-link compare"></a>
+          <p class="header__actions-text">
+
+          </p>
+        </li>
+        <li class="header__actions-item">
+          <a href="#" class="header__actions-link basket"></a>
+          <p class="header__actions-text">
+            Корзина
+          </p>
+        </li>
+        <li class="header__actions-item for-mobile">
+          <a href="#" class="header__actions-link menu"></a>
+          <p class="header__actions-text">
+            Меню
+          </p>
+        </li>
+        <li class="header__actions-item for-mobile">
+          <a href="#" class="header__actions-link main"></a>
+          <p class="header__actions-text">
+            Главная
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div class="header__wrap-bottom">
+      <div class="header__wrap-bottom-content container">
+        <button class="header__button">
+          <span class="header__button-text">
+            Каталог
+          </span>
+        </button>
+        <div class="header__catalog-wrap">
+          <button class="header__catalog-wrap-close"></button>
+          <button class="header__catalog-wrap-back">
+            Назад
+          </button>
+          <div class="header__catalog-wrap-content container">
+            <div class="header__catalog-left-column">
+              <ul class="header__catalog-left-column-list">
+                <li class="header__catalog-left-column-item fireguns" data-path="fireguns">
+                  Огнестрельное оружие
+                </li>
+                <li class="header__catalog-left-column-item ammunition" data-path="ammunition">
+                  Патроны и комплектующие
+                </li>
+                <li class="header__catalog-left-column-item airguns" data-path="airguns">
+                  Пневматическое оружие
+                </li>
+                <li class="header__catalog-left-column-item optics" data-path="optics">
+                  Оптика
+                </li>
+                <li class="header__catalog-left-column-item maintenance" data-path="maintenance">
+                  Уход за оружием
+                </li>
+                <li class="header__catalog-left-column-item tuning" data-path="tuning">
+                  Тюнинг оружия и ЗИП
+                </li>
+                <li class="header__catalog-left-column-item clothes" data-path="clothes">
+                  Одежда и обувь
+                </li>
+                <li class="header__catalog-left-column-item tourism" data-path="tourism">
+                  Товары для туризма
+                </li>
+                <li class="header__catalog-left-column-item knife" data-path="knife">
+                  Ножи и мультиинструмент
+                </li>
+                <li class="header__catalog-left-column-item equip" data-path="equip">
+                  Экипировка
+                </li>
+                <li class="header__catalog-left-column-item comissionguns" data-path="comissionguns">
+                  Комиссионное оружие
+                </li>
+                <li class="header__catalog-left-column-item crossbow" data-path="crossbow">
+                  Арбалеты, луки, рогатки
+                </li>
+                <li class="header__catalog-left-column-item shootrange" data-path="shootrange">
+                  Оборудование для тиров
+                </li>
+                <li class="header__catalog-left-column-item fishing" data-path="fishing">
+                  Товары для рыбалки
+                </li>
+                <li class="header__catalog-left-column-item electronics" data-path="electronics">
+                  Электроника
+                </li>
+                <li class="header__catalog-left-column-item souvenirs" data-path="souvenirs">
+                  Сувенирная продукция
+                </li>
+              </ul>
+            </div>
+            <div class="header__catalog-right-column">
+              <ul class="header__catalog-right-column-list" data-target="fireguns">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Гладкоствольное
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Нарезное
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Травматическое
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Служебное
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Охолощенное оружие
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Макеты оружия
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-right-column-list" data-target="ammunition">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Патроны
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Нарезные
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Гладкоствольные
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Травматические
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Служебные
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Свето-звуковые
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Испытательные
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Порох
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Гильзы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Капсюля
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Дробь
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Картечь/Пуля
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Пыжи/Прокладки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Снаряжение
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-right-column-list" data-target="airguns">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Пневматические винтовки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Пневматические пистолеты
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-right-column-list" data-target="optics">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Дневная оптика
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Оптические прицелы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Зрительные трубы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Коллиматорные прицелы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Оружейные камеры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                   Дальномеры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Монокуляры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Зрительные трубы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Аксессуары для оптики
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-right-column-list" data-target="maintenance">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Наборы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Шомполы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Вишеры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Ерши
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                   Направляющие
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Патчи
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Адаптеры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Щётки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Химия
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Масла
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Очистители
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Воронение
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Обработка дерева
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Прочее
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-right-column-list" data-target="tourism">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Газовое оборудование:
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Газовые баллоны
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Газовые лампы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Газовые обогреватели
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Газовые плиты
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Гермоупаковка
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Туристические коврики
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Компаса и барометры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Туристическая мебель:
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Гамака
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Кресла
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Кровати
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Наборы мебели
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Столы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Стулья
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Столы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Палатки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Печи для палаток
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Портативные холодильники
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Посуда:
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Котелки, казаны
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Кружки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Миски
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Наборы посуды
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Стаканы, стопки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Столовые приборы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Термокружки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Чайники
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Термоса
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link">
+                    Фляжки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Продукты питания
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Рюкзаки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Спальные мешки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Гриль и барбекю:
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Коптильни
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Мангалы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Решётки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Треноги костровые
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Шампура
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Средства для розжига:
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Жидкое горючее
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Зажигалки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Спички
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Сухое горючее
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Уголь древесный
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Щепа для копчения
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Средства от насекомых
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Тенты
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Оснастка
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Туристический инвентарь
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Канистры и вёдра
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Лопаты
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Пилы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Топоры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link">
+                    Точилки
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-right-column-list" data-target="equip">
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Наушники и беруши
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Очки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Засидки
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Кейсы
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Кобуры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Наколенники
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Патронташи
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Ремни
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Сети маскировочные
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Футляры
+                  </a>
+                </li>
+                <li class="header__catalog-right-column-item">
+                  <a href="#" class="header__catalog-right-column-link link-title">
+                    Чехлы
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="header__search-wrap">
+          <input id="header-search-input" type="text" class="header__search-input" placeholder="Введите запрос">
+          <button class="header__search-button"></button>
+        </div>
+        <ul class="header__bottom-list">
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Акции
+            </a>
+          </li>
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Remington
+            </a>
+          </li>
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Новинки
+            </a>
+          </li>
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Дисконт
+            </a>
+          </li>
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Ликвидация
+            </a>
+          </li>
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Опт
+            </a>
+          </li>
+          <li class="header__bottom-item">
+            <a href="#" class="header__bottom-link">
+              Блог
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <h1 class="visually-hidden">
+      Карточка товара
+    </h1>
+    <section class="card">
+      <div class="card__wrap container">
+        <nav class="navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a href="#" class="navigation__link back">
+                Назад
+              </a>
+            </li>
+            <li class="navigation__item">
+              <a href="#" class="navigation__link">
+                Главная
+              </a>
+            </li>
+            <li class="navigation__item">
+              <a href="#" class="navigation__link">
+                Каталог
+              </a>
+            </li>
+            <li class="navigation__item">
+              <a href="#" class="navigation__link">
+                Огнестрельное оружие
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <img src="img/card-logo.png" alt="Логотип товара" class="card__logo">
+        <h2 class="card__title">
+          Ружье Hatsan ESCORT H112, кал.12x76, ствол 28" (710)
+        </h2>
+        <div class="card__code-wrap">
+          <p class="card__code-article">
+            Артикул: <span>2.4999</span>
+          </p>
+          <p class="card__code-article">
+            Код товара: <span>00162389</span>
+          </p>
+        </div>
+        <div class="card__warning-wrap">
+          <p class="card__warning-text">
+            Внимание! Лицензионный товар.
+          </p>
+        </div>
+        <div class="card__info-wrap">
+          <div class="card__img-wrap">
+            <p class="cards-item__text-new">
+              Новинка
+            </p>
+            <div class="card__img-thumb-wrap swiper gallery-thumbs">
+              <ul class="swiper-wrapper">
+                <li class="card__img-thumb-slide swiper-slide">
+                  <img src="img/card-mini-img.png" alt="Мини картинка товара" class="card__img-mini">
+                </li>
+                <li class="card__img-thumb-slide swiper-slide">
+                  <img src="img/card-mini-img.png" alt="Мини картинка товара" class="card__img-mini">
+                </li>
+                <li class="card__img-thumb-slide swiper-slide">
+                  <img src="img/card-mini-img.png" alt="Мини картинка товара" class="card__img-mini">
+                </li>
+                <li class="card__img-thumb-slide swiper-slide">
+                  <img src="img/card-mini-img.png" alt="Мини картинка товара" class="card__img-mini">
+                </li>
+              </ul>
+            </div>
+            <div class="card__img-top-wrap swiper gallery-top">
+              <ul class="swiper-wrapper">
+                <li class="card__img-top-slide swiper-slide">
+                  <img src="img/card-big-img.png" alt="Картинка товара" class="card__img-big">
+                </li>
+                <li class="card__img-top-slide swiper-slide">
+                  <img src="img/card-big-img.png" alt="Картинка товара" class="card__img-big">
+                </li>
+                <li class="card__img-top-slide swiper-slide">
+                  <img src="img/card-big-img.png" alt="Картинка товара" class="card__img-big">
+                </li>
+                <li class="card__img-top-slide swiper-slide">
+                  <img src="img/card-big-img.png" alt="Картинка товара" class="card__img-big">
+                </li>
+              </ul>
+            </div>
+            <div class="cards-item__button-wrap">
+              <button class="cards-item__button compare"></button>
+              <button class="cards-item__button favourite"></button>
+            </div>
+          </div>
+          <div class="card__info-stats-wrap">
+            <div class="card__info-stats">
+              <p class="card__info-title">
+                Характеристики
+              </p>
+              <div class="dot">
+                <span class="dot__prop">Бренд</span>
+                <span class="dot__value">Benelli</span>
+              </div>
+              <div class="dot">
+                <span class="dot__prop">Калибр</span>
+                <span class="dot__value">12x70</span>
+              </div>
+              <div class="dot">
+                <span class="dot__prop">Длина ствола</span>
+                <span class="dot__value">510мм</span>
+              </div>
+              <div class="dot">
+                <span class="dot__prop">Материал цевья</span>
+                <span class="dot__value">алюминий</span>
+              </div>
+              <button class="card__info-button">
+                Все характеристики
+              </button>
+            </div>
+            <div class="card__info-sizes">
+              <p class="card__info-title">
+                Размер
+              </p>
+              <button class="card__info-button">
+                Таблица размеров
+              </button>
+              <select class="card__info-select js-select" id="select-size" name="select">
+                <option value="450">450 мм</option>
+                <option value="440">440 мм</option>
+                <option value="430">430 мм</option>
+                <option value="420">420 мм</option>
+              </select>
+            </div>
+            <div class="card__info-social">
+              <p class="card__info-social-text">
+                Поделиться:
+              </p>
+              <ul class="card__info-social-list">
+                <li class="card__info-social-item">
+                  <a href="#" class="card__info-social-link vk"></a>
+                </li>
+                <li class="card__info-social-item">
+                  <a href="#" class="card__info-social-link tg"></a>
+                </li>
+                <li class="card__info-social-item">
+                  <a href="#" class="card__info-social-link whatsapp"></a>
+                </li>
+                <li class="card__info-social-item">
+                  <a href="#" class="card__info-social-link ok"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card__pay-wrap">
+            <p class="card__pay-through">
+              28 090 &#8381;
+            </p>
+            <p class="card__pay-discount">
+              -10%
+            </p>
+            <p class="card__pay-price">
+              27 790 &#8381;
+            </p>
+            <div class="cards-item__rate-wrap">
+              <a href="#" class="cards-item__rate-karma">
+                10 отзывов
+              </a>
+              <input type="radio" id="star-5" name="rating" value="5">
+              <label for="star-5" title="Оценка «5»"></label>	
+              <input type="radio" id="star-4" name="rating" value="4">
+              <label for="star-4" title="Оценка «4»"></label>    
+              <input type="radio" id="star-3" name="rating" value="3">
+              <label for="star-3" title="Оценка «3»"></label>  
+              <input type="radio" id="star-2" name="rating" value="2">
+              <label for="star-2" title="Оценка «2»"></label>    
+              <input type="radio" id="star-1" name="rating" value="1">
+              <label for="star-1" title="Оценка «1»"></label>
+            </div>
+            <p class="cards-item__stock-text avaliable">
+              В наличии на складе и в магазине
+            </p>
+            <div class="card__pay-count-button-wrap">
+              <div class="card__pay-count-wrap">
+                <button id="discount-button" class="card__pay-count-button">
+                  -
+                </button>
+                <input class="card__pay-count-input" type="number" min="1" max="1000" value="1">
+                <button id="count-button" class="card__pay-count-button">
+                  +
+                </button>
+              </div>
+              <button class="card__pay-count-button-oneclick">
+                В 1 клик
+              </button>
+            </div>
+            <button class="card__pay-count-button-addtocart">
+              Добавить в корзину
+            </button>
+            <p class="card__pay-count-text">
+              <span>Самовывоз: </span> Сегодня, в 20 магазинах
+            </p>
+            <p class="card__pay-count-text">
+              <span>Курьером: </span> завтра, от 280 &#8381;
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="description">
+      <div class="description__wrap container">
+        <ul class="description__tabs-list">
+          <li class="description__tabs-item is-active" data-path="description-stats">
+            Описание и характеристики
+          </li>
+          <li class="description__tabs-item" data-path="description-set">
+            Товары в комплект
+          </li>
+          <li class="description__tabs-item" data-path="description-review">
+            Отзывы
+          </li>
+          <li class="description__tabs-item" data-path="description-avaliability">
+            Наличие в магазинах
+          </li>
+        </ul>
+        <div class="description__tab is-open" data-target="description-stats">
+          <div class="description__tab-stats-wrap">
+            <div class="description__tab-stats-left">
+              <p class="description__tab-title">
+                Характеристики
+              </p>
+              <div class="description__tab-dots">
+                <div class="dot">
+                  <span class="dot__prop">Бренд</span>
+                  <span class="dot__value">Benelli</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Калибр</span>
+                  <span class="dot__value">12x70</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Длина ствола</span>
+                  <span class="dot__value">510мм</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Материал цевья</span>
+                  <span class="dot__value">Retay</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Материал ствола</span>
+                  <span class="dot__value">Retay</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Вид сверловки</span>
+                  <span class="dot__value">сверловка</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Ёмкость магазина</span>
+                  <span class="dot__value">64-66 патронов</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Шаг нарезов</span>
+                  <span class="dot__value">Retay</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Принцип действия</span>
+                  <span class="dot__value">Retay</span>
+                </div>
+                <div class="dot">
+                  <span class="dot__prop">Расположение стволов</span>
+                  <span class="dot__value">Retay</span>
+                </div>
+              </div>
+            </div>
+            <div class="description__tab-stats-right">
+              <p class="description__tab-title">
+                Описание
+              </p>
+              <p class="description__tab-text">
+                Ружье Hatsan Escort H112 было специально разработано для российского рынка. Это надежное гладкоствольное полуавтоматическое ружье.Система автоматики Smart Valve Piston обеспечивает возможность использования всех видов патронов. Благодаря произведенным конструктивным изменениям в УСМ, не связанным с надежностью конструкции, удалось добиться значительного снижения цены оружия.
+                Особенности ружья: калибр 12х76 мм. Ствол изготовлен из хром-никель-молибденового сплава. Он прошел жёсткие испытания на прочность и рассчитан на стрельбу стальной дробью. Легкосплавная ствольная коробка имеет защитное анодированное покрытие. Насечки на прикладе и цевье обеспечивают улучшенный контроль. Резиновый затыльник для поглощения отдачи. Возможность установки оптического или коллиматорного прицела.
+                В комплект поставки «Хатсан Эскорт» входят 3 сменных чока и ключ.
+              </p>
+            </div>
+          </div>
+        </div>
+          <div class="description__tab" data-target="description-set">
+            <div class="description__tab-set-wrap">
+              <ul class="description__tab-set-list">
+                <li class="description__tab-set-item is-active" data-path="set-fireguns">
+                  Огнестрельное оружие
+                </li>
+                <li class="description__tab-set-item" data-path="set-ammunition">
+                  Патроны и комплектующие
+                </li>
+                <li class="description__tab-set-item" data-path="set-airguns">
+                  Пневматическое оружие
+                </li>
+                <li class="description__tab-set-item" data-path="set-optics">
+                  Оптика
+                </li>
+                <li class="description__tab-set-item" data-path="set-maintenance">
+                  Уход за оружием
+                </li>
+                <li class="description__tab-set-item" data-path="set-tuning">
+                  Тюнинг оружия и ЗИП
+                </li>
+                <li class="description__tab-set-item" data-path="set-clothes">
+                  Одежда и обувь
+                </li>
+                <li class="description__tab-set-item" data-path="set-tourism">
+                  Товары для туризма
+                </li>
+                <li class="description__tab-set-item" data-path="set-knife">
+                  Ножи и мультиинструмент
+                </li>
+                <li class="description__tab-set-item" data-path="set-equip">
+                  Экипировка
+                </li>
+                <li class="description__tab-set-item" data-path="set-comissionguns">
+                  Комиссионное оружие
+                </li>
+                <li class="description__tab-set-item" data-path="set-crossbow">
+                  Арбалеты, луки, рогатки
+                </li>
+                <li class="description__tab-set-item" data-path="set-shootrange">
+                  Оборудование для тиров
+                </li>
+                <li class="description__tab-set-item" data-path="set-fishing">
+                  Товары для рыбалки
+                </li>
+                <li class="description__tab-set-item" data-path="set-electronics">
+                  Электроника
+                </li>
+                <li class="description__tab-set-item" data-path="set-souvenirs">
+                  Сувенирная продукция
+                </li>
+              </ul>
+              <div class="description__tab-set-result">
+                <div class="swiper swiper-tab">
+                  <ul class="description__tab-set-result-list swiper-wrapper cards-list">
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                    <li class="description__tab-set-result-item cards-item swiper-slide">
+                      <div class="cards-item__photo-wrap">
+                        <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                        <!-- <p class="cards-item__text-new">
+                          Новинка
+                        </p> -->
+                        <div class="cards-item__button-wrap">
+                          <button class="cards-item__button compare"></button>
+                          <button class="cards-item__button favourite"></button>
+                        </div>
+                        <p class="cards-item__text-discount">
+                          - 10%
+                        </p>
+                      </div>
+                      <div class="cards-item__price-wrap">
+                        <p class="cards-item__price-text">
+                          74 990 &#8381; <span>75 990 &#8381;</span>
+                        </p>
+                      </div>
+                      <div class="cards-item__description-wrap">
+                        <p class="cards-item__description-text">
+                          Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                        </p>
+                      </div>
+                      <div class="cards-item__stock-wrap">
+                        <p class="cards-item__stock-text avaliable">
+                          На складе
+                        </p>
+                        <p class="cards-item__stock-text avaliable">
+                          В магазине
+                        </p>
+                      </div>
+                      <div class="cards-item__rate-wrap">
+                        <a href="#" class="cards-item__rate-karma">
+                          10
+                        </a>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                      <button class="cards-item__append">
+                        В корзину
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="description__tab-set-result-swiper-button-prev swiper-button-prev"></div>
+                  <div class="description__tab-set-result-swiper-button-next swiper-button-next"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="description__tab" data-target="description-review"> 
+            <div class="description__tab-review-wrap">
+              <div class="description__tab-review-empty">
+                <h3 class="description__tab-review-title">
+                  Ваш отзыв будет первым!
+                </h3>
+                <p class="description__tab-review-text">
+                  Поделитесь опытом, помогите другим покупателям с выбором.
+                </p>
+                <button class="description__tab-review-button">
+                  Оставить отзыв
+                </button>
+              </div>
+              <div class="description__tab-review">
+                <ul class="description__tab-review-list">
+                  <li class="description__tab-review-item">
+                    <div class="description__tab-review-user">
+                      <img src="img/user-avatar.png" alt="Аватар пользователя" class="description__tab-review-user-avatar">
+                      <p class="description__tab-review-user-name">
+                        Ибрагим Ростовский
+                      </p>
+                      <div class="not-clicked-rate-wrap">
+                        <p class="not-clicked-rate-karma">
+                          28 марта 2021г
+                        </p>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2" checked>
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                    </div>
+                    <p class="description__tab-review-comment">
+                      Повседневная практика показывает, что выбранный нами инновационный путь позволяет выполнить важнейшие задания по разработке позиций, занимаемых участниками в отношении поставленных задач?
+                    </p>
+                  </li>
+                  <li class="description__tab-review-item">
+                    <div class="description__tab-review-user">
+                      <img src="img/user-avatar.png" alt="Аватар пользователя" class="description__tab-review-user-avatar">
+                      <p class="description__tab-review-user-name">
+                        Ибрагим Ростовский
+                      </p>
+                      <div class="not-clicked-rate-wrap">
+                        <p class="not-clicked-rate-karma">
+                          28 марта 2021г
+                        </p>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2" checked>
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                    </div>
+                    <p class="description__tab-review-comment">
+                      Повседневная практика показывает, что выбранный нами инновационный путь позволяет выполнить важнейшие задания по разработке позиций, занимаемых участниками в отношении поставленных задач?
+                    </p>
+                  </li>
+                  <li class="description__tab-review-item">
+                    <div class="description__tab-review-user">
+                      <img src="img/user-avatar.png" alt="Аватар пользователя" class="description__tab-review-user-avatar">
+                      <p class="description__tab-review-user-name">
+                        Ибрагим Ростовский
+                      </p>
+                      <div class="not-clicked-rate-wrap">
+                        <p class="not-clicked-rate-karma">
+                          28 марта 2021г
+                        </p>
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2" checked>
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                      </div>
+                    </div>
+                    <p class="description__tab-review-comment">
+                      Повседневная практика показывает, что выбранный нами инновационный путь позволяет выполнить важнейшие задания по разработке позиций, занимаемых участниками в отношении поставленных задач?
+                    </p>
+                  </li>
+                </ul>
+                <div class="description__tab-review-result">
+                  <div class="not-clicked-rate-wrap">
+                    <p class="not-clicked-rate-karma">
+                      4.5/5
+                    </p>
+                    <input type="radio" id="star-5" name="rating" value="5">
+                    <label for="star-5" title="Оценка «5»"></label>	
+                    <input type="radio" id="star-4" name="rating" value="4">
+                    <label for="star-4" title="Оценка «4»"></label>    
+                    <input type="radio" id="star-3" name="rating" value="3">
+                    <label for="star-3" title="Оценка «3»"></label>  
+                    <input type="radio" id="star-2" name="rating" value="2" checked>
+                    <label for="star-2" title="Оценка «2»"></label>    
+                    <input type="radio" id="star-1" name="rating" value="1">
+                    <label for="star-1" title="Оценка «1»"></label>
+                  </div>
+                  <div class="description__tab-review-starsby">
+                    <div class="review-row">
+                      <p class="label">5 звезд</p>
+                      <div class="percent-line">
+                        <div class="line"></div>
+                      </div>
+                      <div class="review-row-count">
+                        8
+                      </div>
+                    </div>
+                    <div class="review-row">
+                      <p class="label">4 звезды</p>
+                      <div class="percent-line">
+                        <div class="line"></div>
+                      </div>
+                      <div class="review-row-count">
+                        8
+                      </div>
+                    </div>
+                    <div class="review-row">
+                      <p class="label">3 звезды</p>
+                      <div class="percent-line">
+                        <div class="line"></div>
+                      </div>
+                      <div class="review-row-count">
+                        8
+                      </div>
+                    </div>
+                    <div class="review-row">
+                      <p class="label">2 звезды</p>
+                      <div class="percent-line">
+                        <div class="line"></div>
+                      </div>
+                      <div class="review-row-count">
+                        8
+                      </div>
+                    </div>
+                    <div class="review-row">
+                      <p class="label">1 звезда</p>
+                      <div class="percent-line">
+                        <div class="line"></div>
+                      </div>
+                      <div class="review-row-count">
+                        8
+                      </div>
+                    </div>
+                  </div>
+                  <button class="description__tab-review-button">
+                    Оставить отзыв
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="description__tab" data-target="description-avaliability">
+            <div class="description__tab-avaliability-wrap">
+              <ul class="description__tab-avaliability-list">
+                <li class="description__tab-avaliability-item">
+                  <address class="description__tab-avaliability-address">
+                    г. Владимир, пр. Суздальский, д. 26
+                  </address>
+                  <p class="description__tab-avaliability-text">
+                    Время работы: 10:00 - 20:00
+                  </p>
+                  <button class="description__tab-avaliability-button">
+                    В корзину
+                  </button>
+                </li>
+                <li class="description__tab-avaliability-item">
+                  <address class="description__tab-avaliability-address">
+                    г. Владимир, пр. Суздальский, д. 26
+                  </address>
+                  <p class="description__tab-avaliability-text">
+                    Время работы: 10:00 - 20:00
+                  </p>
+                  <button class="description__tab-avaliability-button">
+                    В корзину
+                  </button>
+                </li>
+                <li class="description__tab-avaliability-item">
+                  <address class="description__tab-avaliability-address">
+                    г. Владимир, пр. Суздальский, д. 26
+                  </address>
+                  <p class="description__tab-avaliability-text">
+                    Время работы: 10:00 - 20:00
+                  </p>
+                  <button class="description__tab-avaliability-button">
+                    В корзину
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="viewed">
+      <div class="viewed__wrap container">
+        <h2 class="viewed__title">
+          Просмотренные товары
+        </h2>
+        <div class="swiper swiper-viewed">
+          <ul class="viewed__list swiper-wrapper cards-list">
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+            <li class="viewed__item cards-item swiper-slide">
+              <div class="cards-item__photo-wrap">
+                <img src="img/card-img.png" alt="Фотография товара" class="cards-item__img">
+                <!-- <p class="cards-item__text-new">
+                  Новинка
+                </p> -->
+                <div class="cards-item__button-wrap">
+                  <button class="cards-item__button compare"></button>
+                  <button class="cards-item__button favourite"></button>
+                </div>
+                <p class="cards-item__text-discount">
+                  - 10%
+                </p>
+              </div>
+              <div class="cards-item__price-wrap">
+                <p class="cards-item__price-text">
+                  74 990 &#8381; <span>75 990 &#8381;</span>
+                </p>
+              </div>
+              <div class="cards-item__description-wrap">
+                <p class="cards-item__description-text">
+                  Пневматическая винтовка Hatsan Striker Edge 4,5 мм
+                </p>
+              </div>
+              <div class="cards-item__stock-wrap">
+                <p class="cards-item__stock-text avaliable">
+                  На складе
+                </p>
+                <p class="cards-item__stock-text avaliable">
+                  В магазине
+                </p>
+              </div>
+              <div class="cards-item__rate-wrap">
+                <a href="#" class="cards-item__rate-karma">
+                  10
+                </a>
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5" title="Оценка «5»"></label>	
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4" title="Оценка «4»"></label>    
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3" title="Оценка «3»"></label>  
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2" title="Оценка «2»"></label>    
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1" title="Оценка «1»"></label>
+              </div>
+              <button class="cards-item__append">
+                В корзину
+              </button>
+            </li>
+          </ul>
+          <div class="viewed__swiper-button-prev swiper-button-prev"></div>
+          <div class="viewed__swiper-button-next swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+    <section class="questions">
+      <div class="questions__wrap container">
+        <h2 class="questions__title">
+          Остались вопросы?
+        </h2>
+        <ul class="questions__list">
+          <li class="questions__item">
+            <a href="#" class="questions__link call">
+              <span>
+                8 800 700-82-56
+              </span>
+              Звоните! Звонок бесплатный!
+            </a>
+          </li>
+          <li class="questions__item">
+            <a href="#" class="questions__link mail">
+              <span>
+                Свяжитесь с нами
+              </span>
+              Отправьте нам сообщение
+            </a>
+          </li>
+          <li class="questions__item">
+            <a href="#" class="questions__link write">
+              <span>
+                Напишите нам в чат
+              </span>
+              Ответим на все вопросы
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__wrap container">
+      <div class="footer__lists-wrap">
+        <p class="footer__lists-title" data-path="buyer-footer">
+          Покупателю
+        </p>
+        <ul class="footer__buyer-list" data-target="buyer-footer">
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Магазины
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Правила лицензии
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Как заказать
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Оплата
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Доставка
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Часто задаваемые вопросы
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Обмен и возврат
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Сервис
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Гарантия лучшей цены
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Каталог
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Бренды
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Кредит и рассрочка
+            </a>
+          </li>
+        </ul>
+        <p class="footer__lists-title" data-path="contacts-footer">
+          Контакты
+        </p>          
+        <ul class="footer__buyer-list" data-target="contacts-footer">
+          <li class="footer__buyer-item">
+            <a href="tel:88007008256" class="footer__buyer-link">
+              8 800 700-82-56
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              с 9.00 до 18.00
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="mailto:info@ohotaktiv.ru" class="footer__buyer-link">
+              info@ohotaktiv.ru
+            </a>
+          </li>
+
+        </ul>
+        <p class="footer__lists-title" data-path="aboutus-footer">
+          О компании
+        </p>
+        <ul class="footer__buyer-list" data-target="aboutus-footer">
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Контакты
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Вакансии
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Реквизиты
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Политика конфиденциальности
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Стать поставщиком
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              История компании
+            </a>
+          </li>
+          <li class="footer__buyer-item">
+            <a href="#" class="footer__buyer-link">
+              Карта сайта
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__form-wrap">
+        <h2 class="footer__form-wrap-title">
+          Будь в курсе!
+        </h2>
+        <p class="footer__form-wrap-subtitle">
+          Новости и акции только для своих
+        </p>
+        <form action="#" class="footer__form">
+          <input id="footer-form-input" type="text" class="footer__form-input" placeholder="Введите e-mail">
+          <button class="footer__form-button">
+            Подписаться
+          </button>
+          <label class="checkbox__label">
+            Я согласен с <a href="#" class="checkbox__link">условиями персональных данных</a>, а также с <a href="#" class="checkbox__link">условиями подписки</a>
+            <input type="checkbox" class="checkbox visually-hidden" required>
+            <span class="checkbox__span"></span>
+          </label>
+        </form>
+      </div>
+      <div class="footer__social-wrap">
+        <p class="footer__social-text for-mobile">
+          Мы в соцсетях
+        </p>
+        <ul class="footer__social-list">
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link vk"></a>
+          </li>
+          <li class="footer__social-item">
+            <a href="#" class="footer__social-link youtube"></a>
+          </li>
+        </ul>
+        <p class="footer__social-text">
+          Скачай мобильное приложение
+        </p>
+        <ul class="footer__social-app-list">
+          <li class="footer__social-app-item">
+            <a href="#" class="footer__social-app-link google-play">
+              <p class="footer__social-app-link-text">
+                Доступно<br><span>Google Play</span>
+              </p>
+            </a>
+          </li>
+          <li class="footer__social-app-item">
+            <a href="#" class="footer__social-app-link app-store">
+              <p class="footer__social-app-link-text">
+                Загрузите в<br><span>AppStore</span>
+              </p>
+            </a>
+          </li>
+          <li class="footer__social-app-item">
+            <a href="#" class="footer__social-app-link app-gallery">
+              <p class="footer__social-app-link-text">
+                Откройте в<br><span>AppGallery</span>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

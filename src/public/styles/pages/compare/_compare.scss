@@ -5,23 +5,7 @@
   .compare {
     &__tabs {
       &-list {
-        width: 100%;
-        display: flex;
-        border-bottom: 1px solid var(--border-color);
-      }
-      &-item {
-        @include fontSize17;
-        font-weight: 800;
-        color: var(--grey-form-color);
-        padding: 15px 0;
-        cursor: pointer;
-        &.is-active {
-          color: var(--black-color);
-          border-bottom: 2px solid var(--black-color);
-        }
-        &:not(:last-child) {
-          margin-right: 78px;
-        }
+        @include tabsList;
       }
     }
     &__tab {

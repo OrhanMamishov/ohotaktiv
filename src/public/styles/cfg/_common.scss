@@ -796,6 +796,51 @@ section {
   }
 }
 
+.dot {
+  &__prop {
+    float: left;
+  }
+  &__value {
+    float: right;
+  }
+  &::after {
+    content: '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ';
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.not-clicked-rate {
+  &-wrap {
+    margin-bottom: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &-wrap:not(:checked) > input {
+    display: none;
+  }
+  &-wrap:not(:checked) > label {
+    float: right;
+    padding: 0;
+    font-size: 20px;
+    color: var(--yellow-color);
+  }
+  &-wrap:not(:checked) > label::before {
+    content: '☆';
+  }
+  &-wrap > input:checked ~ label::before {
+    content: '★';
+  }
+  &-karma {
+    @include fontSize12;
+    margin-left: 10px;
+  }
+}
+
 @keyframes tremor {
   0%, 25% {
       left: -1px;
