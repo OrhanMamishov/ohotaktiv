@@ -42,7 +42,7 @@ html {
   color: var(--black-color);
 }
 
-h1, h2, h3, h4, h5, p, a, li, label {
+h1, h2, h3, h4, h5, p, a, li, label, span {
   @include clearStyles;
   letter-spacing: 0.04em;
 }
@@ -59,6 +59,7 @@ a {
 
 input {
   @include clearStyles;
+  font-weight: 500;
   letter-spacing: 0.04em;
   font-family: inherit;
   background-color: transparent;
@@ -140,11 +141,12 @@ section {
   &__img {
     width: 100%;
     border-radius: 10px;
+    mix-blend-mode: multiply;
   }
   &__photo-wrap {
     position: relative;
     padding: 30px 0;
-    margin-bottom: 19px;
+    margin-bottom: 16px;
     background-color: var(--lightness-grey-color);
   }
   &__button {
@@ -187,8 +189,9 @@ section {
       background-color: var(--red-color);
     }
     &-discount {
+      @include fontSize13;
       width: 44px;
-      padding: 3px 0;
+      padding: 4px 2px;
       display: block;
       position: absolute;
       bottom: 0;
@@ -196,7 +199,6 @@ section {
       border-radius: 100px;
       color: var(--black-color);
       background-color: var(--yellow-color);
-      font-size: 11px;
       text-align: center;
     }
   }
@@ -208,7 +210,7 @@ section {
       @include fontSize17;
       display: flex;
       align-items: center;
-      font-weight: 700;
+      font-weight: 800;
       span {
         @include fontSize13;
         margin-left: 14px;
@@ -237,9 +239,9 @@ section {
       margin-bottom: 9px;
     }
     &-text {
-      @include fontSize12;
+      @include fontSize13;
       position: relative;
-      padding-left: 15px;
+      padding-left: 13px;
       &:not(:last-child) {
         margin-right: 15px;
       }
@@ -311,8 +313,9 @@ section {
   }
   &__append {
     @include contentButton;
-    @include fontSize12;
-    padding: 11px 18px;
+    @include fontSize13;
+    padding: 12px 16px;
+    border-radius: 8px;
   }
   @media only screen and (max-width: 1560px) {
     &__button {

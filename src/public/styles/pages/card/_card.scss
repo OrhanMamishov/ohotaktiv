@@ -3,6 +3,9 @@
     margin-bottom: 20px;
   }
   .card {
+    &__title {
+      margin-bottom: 10px;
+    }
     &__wrap {
       position: relative;
     }
@@ -51,7 +54,7 @@
         &-wrap {
           .dot {
             @include fontSize13;
-            width: 256px;
+            width: 310px;
             color: var(--darkness-white-color);
             &__value {
               color: var(--black-color);
@@ -60,7 +63,7 @@
               @include fontSize13;
             }
             &:not(:last-child) {
-              margin-bottom: 6px;
+              margin-bottom: 12px;
             }
           }
         }
@@ -68,9 +71,9 @@
       &-title {
         @include fontSize15;
         display: inline-block;
-        margin-right: 60px;
+        margin-right: 117px;
         font-weight: 800;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
       }
       &-button {
         @include fontSize13;
@@ -113,7 +116,7 @@
       }
       &-social {
         &-text {
-          @include fontSize12;
+          @include fontSize13;
           margin-bottom: 11px;
         }
         &-list {
@@ -171,8 +174,11 @@
           max-height: 284px;
         }
         &-slide {
-          border: 1px solid #7F7F7F;
+          border: 1px solid var(--border-color);
           border-radius: 16px;
+          &.swiper-slide-thumb-active {
+            border: 1px solid var(--black-color);
+          }
         }
       }
       &-top {
@@ -195,12 +201,16 @@
         box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
         border-radius: 20px;
         .cards-item__stock-text {
+          @include fontSize13;
           margin-bottom: 17px;
+        }
+        .cards-item__rate-karma {
+          @include fontSize13;
         }
       }
       &-through {
         @include fontSize15;
-        margin-bottom: 4px;
+        margin-bottom: 9px;
         text-decoration: line-through;
       }
       &-discount {
@@ -208,7 +218,7 @@
         position: absolute;
         top: 32px;
         right: 30px;
-        padding: 2px 10px;
+        padding: 4px 7px;
         background-color: var(--yellow-color);
         border-radius: 100px;
       }
@@ -220,12 +230,13 @@
       &-count {
         &-wrap {
           width: 113px;
-          padding: 16px 18px;
+          padding: 13px 18px;
           margin-right: 16px;
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--footer-title-color);
           border-radius: 10px;
         }
         &-input {
+          @include fontSize13;
           max-width: 47px;
           text-align: center;
         }
@@ -238,21 +249,23 @@
             @include fontSize13;
             padding: 16px 44px;
             border-radius: 10px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--footer-title-color);
           }
           &-addtocart {
             @include contentButton;
+            @include fontSize13;
+            padding: 18px 26px;
             width: 100%;
-            margin-bottom: 35px;
+            margin-bottom: 23px;
           }
         }
         &-text {
-          @include fontSize12;
+          @include fontSize13;
           span {
             font-weight: 700;
           }
           &:not(:last-child) {
-            margin-bottom: 4px;
+            margin-bottom: 10px;
           }
         }
       }
@@ -284,7 +297,7 @@
             @include fontSize14;
           }
           &:not(:last-child) {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
           }
         }
       }
@@ -312,7 +325,7 @@
         }
         &-item {
           @include fontSize13;
-          padding: 5px 16px;
+          padding: 8px 16px;
           border-radius: 100px;
           border: 1px solid var(--border-color);
           &.is-active {

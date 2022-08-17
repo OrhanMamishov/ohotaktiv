@@ -129,6 +129,10 @@
   }
 }
 @mixin swiperArrowsIndexPage {
+  &-disabled {
+    background-color: var(--light-grey-color);
+    opacity: 1;
+  }
   &-prev,
   &-next {
     right: 0px;
@@ -137,8 +141,7 @@
     top: unset;
     bottom: 5px;
     border-radius: 100px;
-    background-color: var(--white-color);
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+    background-color: var(--footer-title-color);
     &::after {
       font-size: 12px;
       color: var(--black-color);

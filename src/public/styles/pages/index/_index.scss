@@ -4,28 +4,9 @@
     &__img {
       width: 100%;
     }
-    &__swiper-button {
-      &-prev,
-      &-next {
-        top: 45.5%;
-        width: 50px;
-        height: 50px;
-        background-color: var(--white-color);
-        border-radius: 100px;
-        &::after {
-          font-size: unset;
-          color: var(--darkness-white-color);
-        }
-      }
-      &-prev {
-        left: 0;
-      }
-      &-next {
-        right: 0;
-        transform: rotate(180deg);
-        &::after {
-          transform: rotate(180deg);
-        }
+    &__pagination {
+      .swiper-pagination-bullet-active {
+        background: var(--white-color);
       }
     }
   }
@@ -47,30 +28,29 @@
   }
   .bonuscard {
     margin-bottom: 15px;
+    background-color: var(--lightness-grey-color);
     &__img {
       border-radius: 18px;
       width: auto;
     }
     &__wrap {
+      max-width: 1200px;
       display: flex;
       align-items: center;
       border-radius: 30px;
-      background: linear-gradient(270.1deg, #272727 51.73%, #353535 99.22%);
       background-clip: content-box;
     }
     &__title {
       @include fontSize22;
       margin-bottom: 10px;
-      color: var(--white-color);
     }
     &__text {
       @include fontSize14;
       margin-bottom: 22px;
-      color: var(--white-color);
+      line-height: 26px;
       font-weight: 500;
       &-wrap {
         margin: 0 auto;
-        text-align: center;
       }
     }
     &__button {
@@ -102,53 +82,69 @@
     }
   }
   .ready {
+    padding-top: 43px;
+    padding-bottom: 43px;
+    background-image: url('../../../img/aboutapp-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-bottom: 38px;
     &__wrap {
       position: relative;
-    }
-    &__tab {
-      &-buttons {
-        &-list {
-          position: absolute;
-          top: -6px;
-          right: 120px;
-          display: flex;
-        }
-        &-item {
-          &:not(:last-child) {
-            margin-right: 20px;
-          }
-        }
-      }
-      &-button {
-        @include fontSize14;
-        padding: 11px 22px;
-        font-weight: 600;
-        border-radius: 100px;
-        color: var(--black-color);
-        background-color: var(--light-grey-color);
-        &.is-active {
-          background-color: var(--black-color);
-          color: var(--white-color);
-        }
-      }
     }
     &__title {
       margin-bottom: 32px;
     }
     &__list {
-      display: none;
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: 385px 245px;
       gap: 35px;
-      &.is-open {
-        display: grid;
-      }
     }
     &__item {
-      display: flex;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      &-button {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border-radius: 100px;
+        background-color: var(--yellow-color);
+        @include fontSize13;
+        &-wrap {
+          position: absolute;
+          bottom: 20px;
+          right: 35px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          top: 45%;
+          right: 35%;
+          width: 7px;
+          height: 7px;
+          border-color: transparent var(--black-color) var(--black-color) transparent;
+          border-style: solid;
+          border-width: 1px;
+          transform: rotate(-45deg) translate(0, -50%);
+        }
+      }
+      &-text {
+        @include fontSize22;
+        margin-bottom: 5px;
+        text-align: end;
+        font-weight: 900;
+        color: var(--white-color);
+      }
       &-img {
         object-fit: cover;
+        transition: transform 0.5s ease;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
       &:first-child {
         grid-area: 1 / 1 / 2 / 4;
@@ -162,6 +158,31 @@
       &:last-child {
         grid-area: 2 / 3 / 3 / 4; 
       }
+    }
+    &__pagination {
+      top: 0;
+      right: 0;
+      left: unset;
+      width: unset;
+      height: fit-content;
+      .swiper-pagination-bullet {
+        @include fontSize14;
+        padding: 8px 20px;
+        width: auto;
+        height: auto;
+        background: var(--white-color);
+        border-radius: 10px;
+        font-weight: 500;
+        opacity: 1;
+        &-active {
+          background: var(--black-color);
+          color: var(--white-color);
+        }
+      }
+    }
+    &__link {
+      display: flex;
+      height: 100%;
     }
   }
   .blog {
@@ -261,11 +282,6 @@
 }
 @media only screen and (max-width: 1560px) {
   .main {
-    .banners {
-      &__img {
-        height: 424px;
-      }
-    }
     .bestsellers {
       &__list {
         padding-bottom: 64px;
@@ -304,11 +320,6 @@
 
 @media only screen and (max-width: 1439px) {
   .main {
-    .banners {
-      &__img {
-        height: 385px;
-      }
-    }
     .bestsellers {
       &__wrap {
         padding-bottom: 52px;
@@ -365,19 +376,6 @@
     }
     .ready {
       margin-bottom: 18px;
-      &__tab {
-        &-buttons {
-          &-list {
-            top: -8px;
-            right: 100px;
-          }
-          &-item {
-            &:not(:last-child) {
-              margin-right: 25px;
-            }
-          }
-        }
-      }
       &__list {
         gap: 30px;
       }
@@ -432,12 +430,6 @@
 
 @media only screen and (max-width: 1365px) {
   .main {
-    .banners {
-      &__img {
-        height: 300px;
-        object-fit: cover;
-      }
-    }
     .bestsellers {
       margin-bottom: 37px;
       &__wrap {
@@ -585,40 +577,24 @@
   }
 }
 
-@media only screen and (max-width: 1023px) {
-  .main {
-    .ready {
-      &__tab-buttons-list {
-        right: 50px;
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: 767px) {
   .main {
-    .banners {
-      &__img {
-        height: 150px;
-        border-radius: 8px;
-      }
-      &__swiper-button {
-        &-next,
-        &-prev {
-          display: none;
-        }
-      }
-    }
     .bestsellers {
       margin-bottom: 25px;
       &__title {
-        margin-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .swiper {
+        max-width: 520px;
       }
     }
     .new {
       margin-bottom: 25px;
       &__title {
-        margin-bottom: 15px;
+        margin-bottom: 25px;
+      }
+      .swiper {
+        max-width: 520px;
       }
     }
     .bonuscard {
@@ -642,18 +618,19 @@
       &__wrap {
         background: unset;
         flex-direction: column;
+        text-align: center;
       }
       &__img {
         margin-bottom: 20px;
-        width: 100%;
-        height: 140px;
+        height: 100%;
+        width: 280px;
         border-radius: 8px;
       }
     }
     .popular {
       margin-bottom: 25px;
       &__title {
-        margin-bottom: 14px;
+        margin-bottom: 25px;
       }
       &__item {
         &-img {
@@ -667,7 +644,10 @@
     .recommended {
       margin-bottom: 25px;
       &__title {
-        margin-bottom: 16px;
+        margin-bottom: 25px;
+      }
+      .swiper {
+        max-width: 520px;
       }
     }
     .ready {
@@ -677,32 +657,30 @@
         gap: 7px;
       }
       &__title {
-        margin-bottom: 10px;
+        margin-bottom: 25px;
       }
-      &__tab {
+      &__item {
         &-button {
-          padding: 8px 17px;
-          border-radius: 8px;
+          display: none;
+          &-wrap {
+            bottom: 0;
+            right: 10px;
+          }
+        }
+        &-text {
           font-size: 12px;
-          font-weight: 700;
         }
-        &-buttons {
-          &-list {
-            position: unset;
-            margin-bottom: 13px;
-          }
-          &-item {
-            &:not(:last-child) {
-              margin-right: 7px;
-            }
-          }
-        }
+      }
+      &__pagination {
+        position: unset;
+        text-align: unset;
+        margin-bottom: 25px;
       }
     }
     .blog {
       margin-bottom: 25px;
       &__title {
-        margin-bottom: 15px;
+        margin-bottom: 25px;
       }
       &__item {
         &-date {
@@ -734,6 +712,7 @@
     .about {
       margin-bottom: 25px;
       &__title {
+        margin-bottom: 25px;
         font-size: 18px;
         line-height: 24px;
       }

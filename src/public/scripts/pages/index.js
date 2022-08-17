@@ -1,6 +1,7 @@
-import Swiper, { Navigation } from "swiper";
+import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "../imports";
 import "../../styles/pages/index/style.scss";
 import { bodyScrollToggle } from "../functions/scrollBody";
@@ -23,9 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       breakpoints: {
         1559: {
-          slidesPerView: 6,
-        },
-        1439: {
           spaceBetween: 30,
           slidesPerView: 5,
         },
@@ -41,18 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
           slidesPerView: 3,
         },
         320: {
-          // spaceBetween: 10,
+          spaceBetween: 30,
           slidesPerView: 2,
         },
       },
     });
   });
   const mainBannerSwiper = new Swiper(".swiper-banner", {
-    modules: [Navigation],
+    modules: [Pagination],
     spaceBetween: 30,
-    navigation: {
-      nextEl: ".banners__swiper-button-next",
-      prevEl: ".banners__swiper-button-prev",
+    pagination: {
+      el: ".banners__pagination",
     },
   });
   //eslint-disable-next-line
@@ -110,6 +107,30 @@ document.addEventListener("DOMContentLoaded", () => {
         freeMode: true,
         spaceBetween: 10,
         slidesPerView: 1.5,
+      },
+    },
+  });
+  //eslint-disable-next-line
+  const readySwiper = new Swiper(".swiper-ready", {
+    modules: [Pagination, Autoplay],
+    // autoplay: {
+    //   delay: 4000,
+    //   pauseOnMouseEnter: true,
+    //   disableOnInteraction: false,
+    // },
+    spaceBetween: 30,
+    pagination: {
+      el: ".ready__pagination",
+      clickable: true,
+      renderBullet: function (index, className) {
+        const names = document.querySelectorAll("[data-name-rus]");
+        return (
+          '<button class="' +
+          className +
+          '">' +
+          names[index].getAttribute("data-name-rus") +
+          "</button>"
+        );
       },
     },
   });
