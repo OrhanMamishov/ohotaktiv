@@ -1,4 +1,5 @@
 const path = require("path");
+const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -28,6 +29,7 @@ module.exports = {
     compareEntry: "./src/public/scripts/pages/compare.js",
     articleEntry: "./src/public/scripts/pages/article.js",
     cardEntry: "./src/public/scripts/pages/card.js",
+    catalogEntry: "./src/public/scripts/pages/catalog.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -55,7 +57,18 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
-          "postcss-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  autoprefixer({
+                    overrideBrowserslist: ["last 4 version"],
+                  }),
+                ],
+              },
+            },
+          },
           "sass-loader",
         ],
       },
@@ -157,6 +170,14 @@ module.exports = {
       filename: "card.html",
       template: path.resolve(__dirname, "./src/public/card.html"),
       chunks: ["cardEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "catalog.html",
+      template: path.resolve(__dirname, "./src/public/catalog.html"),
+      chunks: ["catalogEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),

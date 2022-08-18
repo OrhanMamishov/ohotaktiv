@@ -28,29 +28,30 @@
   }
   .bonuscard {
     margin-bottom: 15px;
-    background-color: var(--lightness-grey-color);
     &__img {
       border-radius: 18px;
       width: auto;
     }
     &__wrap {
-      max-width: 1200px;
       display: flex;
       align-items: center;
-      border-radius: 30px;
+      justify-content: space-between;
+      border-radius: 15px;
+      background-color: var(--black-color);
       background-clip: content-box;
     }
     &__title {
       @include fontSize22;
       margin-bottom: 10px;
+      color: var(--white-color);
     }
     &__text {
       @include fontSize14;
       margin-bottom: 22px;
-      line-height: 26px;
+      color: var(--white-color);
       font-weight: 500;
       &-wrap {
-        margin: 0 auto;
+        padding: 40px 60px;
       }
     }
     &__button {
@@ -350,9 +351,6 @@
       &__img {
         width: 491px;
       }
-      &__text-wrap {
-        padding: 61px 0;
-      }
     }
     .popular {
       margin-bottom: 11px;
@@ -617,13 +615,13 @@
       }
       &__wrap {
         background: unset;
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
       }
       &__img {
         margin-bottom: 20px;
-        height: 100%;
-        width: 280px;
+        width: 100%;
+        height: 140px;
         border-radius: 8px;
       }
     }

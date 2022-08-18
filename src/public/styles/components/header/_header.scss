@@ -318,6 +318,11 @@
         }
       }
     }
+    &__catalog {
+      &-wrap {
+        top: 118px;
+      }
+    }
   }
 }
 
@@ -452,7 +457,7 @@
         max-height: 100vh;
         height: unset;
         position: absolute;
-        top: 96px;
+        top: 100px;
         padding-top: 16px;
         transform: translateX(-150%);
         &-content {
@@ -472,14 +477,14 @@
       &-left-column {
         border-right: unset;
         max-height: 100vh;
-        padding-bottom: 40%;
+        padding-bottom: 80%;
         overflow: scroll;
         &-list {
           padding-top: 0;
         }
         &-item {
           width: 100%;
-          padding: 14px 59px;
+          padding: 14px 0;
           font-weight: 500;
           border-top: 1px solid var(--border-color);
           border-radius: 0;
