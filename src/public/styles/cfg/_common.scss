@@ -31,7 +31,6 @@
   --dark-grey-color: #545454;
   --black-footer-color: #2C2C2C;
 }
-
 body,
 html {
   min-width: 320px;
@@ -41,22 +40,18 @@ html {
   background-color: var(--white-color);
   color: var(--black-color);
 }
-
 h1, h2, h3, h4, h5, p, a, li, label, span, div {
   @include clearStyles;
   letter-spacing: 0.04em;
 }
-
 ul {
   @include clearStyles;
   list-style-type: none;
 }
-
 a {
   text-decoration: none;
   color: var(--black-color);
 }
-
 input {
   @include clearStyles;
   font-weight: 500;
@@ -65,7 +60,6 @@ input {
   border: none;
   outline: none;
 }
-
 button {
   @include clearStyles;
   letter-spacing: 0.04em;
@@ -74,11 +68,9 @@ button {
   cursor: pointer;
   background-color: transparent;
 }
-
 img {
   width: 100%;
 }
-
 .container {
   margin: 0 auto;
   padding: 0 120px;
@@ -96,7 +88,6 @@ img {
     padding: 0 16px;
   }
 }
-
 section {
   padding-top: 22px;
   padding-bottom: 22px;
@@ -123,7 +114,6 @@ section {
     padding-top: 13px;
   }
 }
-
 .visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
@@ -131,7 +121,6 @@ section {
   height: 1px;
   margin: -1px;
 }
-
 .cards-item {
   width: 211px;
   cursor: pointer;
@@ -442,14 +431,12 @@ section {
     }
   }
 }
-
 .for-mobile {
   display: none;
   @media only screen and (max-width: 1365px) {
     display: inherit;
   }
 }
-
 .input-wrap {
   position: relative;
   label {
@@ -471,7 +458,6 @@ section {
     font-weight: 300;
   }
 }
-
 .checkbox {
   &__label {
     @include fontSize13;
@@ -511,7 +497,6 @@ section {
     opacity: 1;
   }
 }
-
 .radio {
   &__input {
     &:checked,
@@ -566,11 +551,9 @@ section {
   }
   }
 }
-
 .disable-scroll {
   overflow: hidden;
 }
-
 .navigation {
   margin-bottom: 20px;
   padding-top: 18px;
@@ -603,7 +586,6 @@ section {
     }
   }
 }
-
 .skeleton {
   div, button, p, span, img {
     background: #eee;
@@ -632,7 +614,6 @@ section {
     }
   }
 }
-
 .aboutapp {
   padding-top: 52px;
   padding-bottom: 0;
@@ -750,7 +731,7 @@ section {
         }
       }
       &-link {
-        padding: 6px 14px 11px 36px;
+        padding: 6px 14px 11px 33px;
         font-size: 9px;
         background-size: 13%;
         background-position: 9px center;
@@ -799,7 +780,6 @@ section {
     }
   }
 }
-
 .dot {
   &__prop {
     float: left;
@@ -815,7 +795,6 @@ section {
     overflow: hidden;
   }
 }
-
 .not-clicked-rate {
   &-wrap {
     margin-bottom: 12px;
