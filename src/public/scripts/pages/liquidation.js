@@ -12,7 +12,7 @@ import wNumb from "wnumb";
 document.addEventListener("DOMContentLoaded", () => {
   // свайпер
   //eslint-disable-next-line
-    const shopSwiper = new Swiper(".swiper-best", {
+  const shopSwiper = new Swiper(".swiper-best", {
     modules: [Navigation],
     navigation: {
       nextEl: ".best__swiper-button-next",
