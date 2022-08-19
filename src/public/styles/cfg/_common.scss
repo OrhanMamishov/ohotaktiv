@@ -42,7 +42,7 @@ html {
   color: var(--black-color);
 }
 
-h1, h2, h3, h4, h5, p, a, li, label, span {
+h1, h2, h3, h4, h5, p, a, li, label, span, div {
   @include clearStyles;
   letter-spacing: 0.04em;
 }
@@ -61,7 +61,6 @@ input {
   @include clearStyles;
   font-weight: 500;
   letter-spacing: 0.04em;
-  font-family: inherit;
   background-color: transparent;
   border: none;
   outline: none;
@@ -136,7 +135,7 @@ section {
 .cards-item {
   width: 211px;
   cursor: pointer;
-  padding: 14px;
+  padding: 20px;
   transition: box-shadow .2s ease;
   &__img {
     width: 100%;
@@ -315,7 +314,6 @@ section {
     @include contentButton;
     @include fontSize13;
     padding: 12px 16px;
-    border-radius: 8px;
   }
   @media only screen and (max-width: 1560px) {
     &__button {
@@ -574,6 +572,9 @@ section {
 }
 
 .navigation {
+  margin-bottom: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
   &__list {
     display: flex;
     align-items: center;
@@ -807,8 +808,9 @@ section {
     float: right;
   }
   &::after {
-    content: '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ';
+    content: '.....................................................................................................................................................................................................................................................................................................................................................................................................................................';
     display: block;
+    color: var(--light-white-color);
     white-space: nowrap;
     overflow: hidden;
   }

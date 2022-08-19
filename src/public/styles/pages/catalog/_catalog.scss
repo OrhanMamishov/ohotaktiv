@@ -1,23 +1,7 @@
 .main {
-  .navigation {
-    margin-bottom: 60px;
-  }
   .tabs {
     &__list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    &__item {
-      @include fontSize13;
-      padding: 8px 16px;
-      border-radius: 100px;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      &.is-active {
-        border-color: var(--yellow-color);
-        background-color: var(--yellow-color);
-      }
+      @include tabsMiniList;
     }
   }
   .result {
@@ -52,6 +36,9 @@
       &-wrap {
         display: flex;
         align-items: flex-start;
+        .swiper {
+          padding: 5px 30px;
+        }
       }
       &-title {
         margin-bottom: 35px;
@@ -68,12 +55,9 @@
         &-text,
         .ac-trigger {
           @include fontSize14;
-          margin-bottom: 14px;
+          margin-bottom: 21px;
           font-weight: 600;
           padding: 0;
-        }
-        &-text {
-
         }
       }
       &-result {
@@ -124,14 +108,14 @@
       }
       &-price {
         &-wrap {
-          margin-bottom: 21px;
+          margin-bottom: 34px;
         }
       }
       &-range {
         &-input {
           @include fontSize13;
           width: 100%;
-          padding: 10px 40px;
+          padding: 13px 40px;
           font-weight: 500;
           border: 1px solid var(--border-color);
           border-radius: 6px;
@@ -157,6 +141,7 @@
       }
       &-slider {
         .slider-style {
+          margin-left: 15px;
           height: 4px;
           border: unset;
           .noUi-connect {
@@ -168,6 +153,8 @@
             top: -12px;
             right: -9px;
             border-radius: 100%;
+            border: none;
+            box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
             &::before,
             &::after {
               display: none;
@@ -177,33 +164,32 @@
       }
       &-input {
         @include fontSize13;
-        padding: 10px 12px;
+        padding: 13px 8px 13px 18px;
         margin-bottom: 12px;
         border: 1px solid var(--border-color);
         border-radius: 6px;
         background-image: url('../../../img/search.svg');
         background-repeat: no-repeat;
-        background-position: right 16px center;
+        background-position: right 11px center;
         background-size: 12px;
       }
       &-another {
         margin-bottom: 20px;
-        padding-bottom: 20px;
         border-bottom: 1px solid var(--border-color);
         &-list {
           padding: 10px 0;
-          height: 120px;
+          height: 136px;
           overflow: scroll;
           &::-webkit-scrollbar {
             width: 5px;
           }
           &::-webkit-scrollbar-thumb {
-              background-color: var(--grey-color);
+            background-color: var(--grey-color);
           }
         }
         &-item {
           &:not(:last-child) {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
           }
         }
         &.ac {
@@ -211,13 +197,15 @@
           border-color: transparent transparent var(--border-color) transparent;
         }
         .ac-trigger {
+          font-family: inherit;
           &::after {
             content: '' !important;
+            right: 0;
+            width: 12px !important;
+            height: 7px;
             background-repeat: no-repeat;
             background-position: center;
             background-image: url('../../../img/arrow-down.svg');
-            width: 12px !important;
-            height: 7px;
           }
           &:focus {
             color: unset !important;
@@ -234,13 +222,13 @@
         @include fontSize13;
         width: 100%;
         display: block;
-        padding: 12px 72px;
-        border-radius: 10px;
+        padding: 16px 72px;
+        border-radius: 100px;
         border: 1px solid var(--black-color);
         &:not(:last-child) {
           margin-bottom: 20px;
           background-color: var(--yellow-color);
-          border: none;
+          border: 1px solid var(--yellow-color);
         }
         &-wrap {
           margin-bottom: 50px;
@@ -339,7 +327,7 @@
         height: 20px;
         background: var(--darkness-white-color);
         &-active {
-          background: var(--black-color);
+          background: var(--dark-grey-color);
         }
       }
     }

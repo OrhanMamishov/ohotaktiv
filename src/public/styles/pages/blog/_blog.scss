@@ -1,8 +1,5 @@
 .main {
   .blog {
-    .navigation {
-      margin-bottom: 27px;
-    }
     &__list {
       padding-bottom: 50px;
     }
@@ -38,7 +35,7 @@
         @include fontSize12;
         padding: 7px 15px;
         background-color: var(--border-color);
-        border-radius: 6px;
+        border-radius: 100px;
       }
     }
   }

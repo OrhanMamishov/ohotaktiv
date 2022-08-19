@@ -81,7 +81,7 @@
   cursor: pointer;
   padding: 16px 26px;
   background-color: var(--yellow-color);
-  border-radius: 10px;
+  border-radius: 100px;
   color: var(--black-color);
 }
 @mixin closeButton {
@@ -143,21 +143,17 @@
   }
   &-prev,
   &-next {
-    right: 0px;
-    width: 42px;
-    height: 42px;
-    top: unset;
-    bottom: 5px;
     border-radius: 100px;
-    background-color: var(--footer-title-color);
     &::after {
-      font-size: 12px;
+      font-size: 20px;
       color: var(--black-color);
     }
   }
   &-prev {
-    right: 63px;
-    left: unset;
+    left: 0;
+  }
+  &-next {
+    right: 0;
   }
 }
 @mixin tabsList {
@@ -176,6 +172,22 @@
     }
     &:not(:last-child) {
       margin-right: 78px;
+    }
+  }
+}
+@mixin tabsMiniList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  li {
+    @include fontSize13;
+    padding: 13px 22px;
+    border-radius: 100px;
+    border: 1px solid var(--darkness-white-color);
+    cursor: pointer;
+    &.is-active {
+      border-color: var(--yellow-color);
+      background-color: var(--yellow-color);
     }
   }
 }

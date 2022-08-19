@@ -1,8 +1,6 @@
 .main {
-  .navigation {
-    margin-bottom: 20px;
-  }
   .card {
+    margin-bottom: 50px;
     &__title {
       margin-bottom: 10px;
     }
@@ -85,21 +83,24 @@
           &__inner {
             @include fontSize13;
             background: unset;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            border: 1px solid var(--grey-form-color);
           }
           &__list {
             &--single {
               padding: 6px 16px 4px 12.5px;
             }
             &--dropdown {
-              border-radius: 6px;
+              border-radius: 8px;
               z-index: 10;
             }
           }
           &__item {
             padding-right: 0 !important;
             font-size: 13px !important;
+            &--choice {
+              padding: 15px 16px 15px 19px !important
+            }
           }
           &::after {
             border-color: var(--grey-form-color) transparent transparent;
@@ -109,7 +110,8 @@
               border-color: transparent transparent var(--grey-form-color);
             }
             .choices__list--dropdown {
-              border-color: var(--border-color);
+              border: none;
+              box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.09);
             }
           }
         }
@@ -230,7 +232,7 @@
       &-count {
         &-wrap {
           width: 113px;
-          padding: 13px 18px;
+          padding: 13px 17px;
           margin-right: 16px;
           border: 1px solid var(--footer-title-color);
           border-radius: 10px;
@@ -479,7 +481,7 @@
       }
       &-avaliability {
         &-item {
-          padding: 28px 0;
+          padding: 23px 0;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -508,7 +510,9 @@
   .viewed {
     &__list {
       display: flex;
-      padding-bottom: 70px;
+    }
+    .swiper {
+      padding: 5px 30px;
     }
     &__swiper-button {
       @include swiperArrowsIndexPage;

@@ -1,8 +1,10 @@
 import "../imports";
 import "../../styles/pages/liquidation/style.scss";
-import Swiper, { Navigation } from "swiper";
+import Swiper, { Navigation, Pagination, Grid } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/grid";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 import noUiSlider from "nouislider";
@@ -12,7 +14,7 @@ import wNumb from "wnumb";
 document.addEventListener("DOMContentLoaded", () => {
   // свайпер
   //eslint-disable-next-line
-  const shopSwiper = new Swiper(".swiper-best", {
+  const bestSwiper = new Swiper(".swiper-best", {
     modules: [Navigation],
     navigation: {
       nextEl: ".best__swiper-button-next",
@@ -20,13 +22,28 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     breakpoints: {
       1559: {
-        spaceBetween: 35,
-        slidesPerView: 6,
+        spaceBetween: 10,
+        slidesPerView: 5,
       },
       1439: {
         spaceBetween: 30,
         slidesPerView: 5,
       },
+    },
+  });
+  const filterSwiper = new Swiper(".swiper-filter", {
+    modules: [Pagination, Grid],
+    spaceBetween: 10,
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    loopFillGroupWithBlank: true,
+    grid: {
+      rows: 4,
+      fill: "row",
+    },
+    pagination: {
+      el: ".filters__swiper-pagination",
+      clickable: true,
     },
   });
   // свайпер

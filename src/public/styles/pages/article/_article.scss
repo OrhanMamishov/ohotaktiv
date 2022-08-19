@@ -1,40 +1,54 @@
 .main {
   padding-bottom: 35px;
-  .navigation {
-    margin-bottom: 20px;
-  }
   .article {
     max-width: 943px;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     &__text {
       @include fontSize15;
-      line-height: 26px;
+      line-height: 28px;
       &:not(:last-child) {
         margin-bottom: 40px;
       }
+    }
+    &__subtitle {
+      @include fontSize13;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    &__title {
+      @include fontSize30;
+      margin-bottom: 20px;
     }
     &__img {
       margin-bottom: 40px;
     }
   }
   .goods {
-    &__list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 35px;
+    margin-bottom: 70px;
+    &__wrap {
+      .swiper {
+        padding: 5px 30px;
+      }
     }
-    &__item {
-      width: 211px;
+    &__swiper-button {
+      @include swiperArrowsIndexPage;
+    }
+    &__list {
+      max-width: 948px;
+      display: flex;
+      justify-content: space-between;
     }
   }
   .liked {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 703px;
-    padding: 30px 50px;
-    border: 1px dashed var(--grey-form-color);
-    border-radius: 6px;
+    &__wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 703px;
+      padding: 30px 50px;
+      border: 1px dashed var(--grey-form-color);
+      border-radius: 6px;
+    }
     &__text {
       @include fontSize13;
       width: 367px;

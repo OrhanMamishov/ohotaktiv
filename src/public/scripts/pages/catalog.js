@@ -87,8 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultSwiper = new Swiper(".swiper-result", {
     modules: [Pagination, Grid],
     spaceBetween: 10,
-    slidesPerView: 5,
-    slidesPerGroup: 5,
+    slidesPerView: 4,
+    slidesPerGroup: 4,
     loopFillGroupWithBlank: true,
     grid: {
       rows: 4,

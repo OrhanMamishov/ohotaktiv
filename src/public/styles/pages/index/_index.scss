@@ -11,16 +11,16 @@
     }
   }
   .bestsellers {
-    &__list {
-      padding-bottom: 70px;
+    .swiper {
+      padding: 5px 30px;
     }
     &__swiper-button {
       @include swiperArrowsIndexPage;
     }
   }
   .new {
-    &__list {
-      padding-bottom: 70px;
+    .swiper {
+      padding: 5px 30px;
     }
     &__swiper-button {
       @include swiperArrowsIndexPage;
@@ -75,8 +75,8 @@
     }
   }
   .recommended {
-    &__list {
-      padding-bottom: 70px;
+    .swiper {
+      padding: 5px 30px;
     }
     &__swiper-button {
       @include swiperArrowsIndexPage;
@@ -224,7 +224,7 @@
         @include fontSize12;
         padding: 7px 15px;
         background-color: var(--border-color);
-        border-radius: 6px;
+        border-radius: 100px;
       }
     }
     &__swiper-button {

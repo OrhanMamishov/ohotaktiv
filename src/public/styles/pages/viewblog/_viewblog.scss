@@ -1,10 +1,8 @@
 .main {
   .viewblog {
-    .navigation {
-      margin-bottom: 27px;
-    }
     &__wrap {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
     }
     &__item {
@@ -18,26 +16,24 @@
         color: var(--dark-grey-color);
       }
       &-title {
-        @include fontSize19;
+        @include fontSize24;
         margin-bottom: 14px;
-        font-weight: 800;
+        font-weight: 900;
       }
       &-text {
         @include fontSize14;
+        margin-bottom: 27px;
         line-height: 22px;
       }
     }
     &__aside {
+      height: 531px;
       align-self: stretch;
-      height: 100vh;
+      overflow: scroll;
       &-title {
         @include fontSize19;
         margin-bottom: 25px;
         font-weight: 800;
-      }
-      &-list {
-        overflow: scroll;
-        height: 100%;
       }
       &-link {
         display: flex;
@@ -50,14 +46,19 @@
     }
   }
   .goods {
+    margin-bottom: 70px;
+    &__wrap {
+      .swiper {
+        padding: 5px 30px;
+      }
+    }
+    &__swiper-button {
+      @include swiperArrowsIndexPage;
+    }
     &__list {
-      margin-bottom: 70px;
       max-width: 948px;
       display: flex;
       justify-content: space-between;
-    }
-    &__item {
-
     }
   }
 }

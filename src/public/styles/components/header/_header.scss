@@ -1,15 +1,16 @@
 .header {
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.09);
   &__wrap {
     &-top {
       display: flex;
       align-items: center;
       padding-top: 17px !important;
       padding-bottom: 17px !important;
+      background-color: var(--lightness-white-color);
     }
     &-bottom {
       padding-top: 10px !important;
       padding-bottom: 10px !important;
-      background-color: var(--black-color);
       &-content {
         display: flex;
         align-items: center;
@@ -138,10 +139,10 @@
         position: relative;
         padding: 16px 40px;
         cursor: pointer;
-        border-radius: 8px;
+        font-weight: 700; 
+        border-radius: 100px;
         &:hover,
         &.is-active {
-          font-weight: 700;
           background-color: var(--yellow-color);
           &::before {
             content: '';
@@ -216,8 +217,8 @@
     display: flex;
     align-items: center;
     margin-right: 25px;
-    padding: 14px 22px 14px 42px;
-    border-radius: 8px;
+    padding: 15px 22px 15px 42px;
+    border-radius: 100px;
     background-color: var(--yellow-color);
     background-image: url('../../../img/hamburger.svg');
     background-repeat: no-repeat;
@@ -242,6 +243,8 @@
       @include fontSize14;
       width: 100%;
       padding: 14px 0 14px 22px;
+      border: 1px solid var(--grey-form-color);
+      border-radius: 100px;
       &::placeholder {
         @include fontSize14;
         color: var(--footer-title-color);
@@ -272,7 +275,6 @@
     }
     &-link {
       @include fontSize14;
-      color: var(--white-color);
     }
   }
 }
