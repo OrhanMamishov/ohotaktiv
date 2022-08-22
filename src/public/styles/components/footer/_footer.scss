@@ -5,7 +5,7 @@
   background-size: contain;
   &__wrap {
     padding-top: 73px !important;
-    padding-bottom: 83px !important;
+    padding-bottom: 73px !important;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -23,13 +23,13 @@
       @include fontSize13;
       margin-bottom: 23px;
       font-weight: 600;
-      color: var(--border-color);
+      color: var(--footer-title-color)
     }
   }
   &__buyer {
     &-list {
       &:nth-child(4) {
-        margin-bottom: 58px;
+        margin-bottom: 61px;
       }
     }
     &-item {
@@ -55,23 +55,27 @@
     align-items: flex-start;
     justify-content: space-between;
     &-wrap {
-      margin-bottom: 99px;
       grid-area: 1 / 3 / 2 / 5;
       &-title {
-        @include fontSize24;
+        @include fontSize22;
         margin-bottom: 50px;
-        font-weight: 800;
+        font-weight: 900;
         color: var(--footer-title-color);
       }
     }
     &-input {
       @include contentInput;
-      width: 475px;
-      padding: 15px 20px;
+      width: 74%;
+      padding: 16px 20px;
       margin-bottom: 14px;
-      color: var(--grey-form-color);
+      color: var(--footer-title-color);
+      font-weight: 700;
+      &:hover,
       &:focus {
-        border-color: inherit;
+        outline-color: var(--footer-title-color);
+      }
+      &::placeholder {
+        color: var(--grey-form-color);
       }
     }
     &-button {
@@ -98,13 +102,16 @@
     }
     &-item {
       &:not(:last-child) {
-        margin-right: 24px;
+        margin-right: 19px;
+      }
+      &:nth-child(6) {
+        margin-right: 23px;
       }
     }
     &-link {
       display: block;
-      width: 30px;
-      height: 20px;
+      width: 37px;
+      height: 25px;
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -113,6 +120,21 @@
       }
       &.youtube {
         background-image: url('../../../img/youtube.svg');
+      }
+      &.telegram {
+        background-image: url('../../../img/telegram.svg');
+      }
+      &.dzen {
+        background-image: url('../../../img/dzen.svg');
+      }
+      &.viber {
+        background-image: url('../../../img/viber.svg');
+      }
+      &.ok {
+        background-image: url('../../../img/ok.svg');
+      }
+      &.rutube {
+        background-image: url('../../../img/rutube.svg');
       }
     }
     &-text {
@@ -135,7 +157,7 @@
       }
       &-link {
         @include fontSize12;
-        padding: 6px 14px 11px 49px;
+        padding: 9px 14px 9px 49px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -143,7 +165,7 @@
         background-size: auto;
         background-position: 12px center;
         font-weight: 500;
-        color: var(--white-color);
+        color: var(--footer-title-color);
         span {
           font-size: 18px;
           font-weight: 700;
@@ -174,7 +196,7 @@
         grid-area: 1 / 1 / 3 / 2;
       }
       &-title {
-        width: 245px;
+        width: 270px;
         margin-bottom: 21px;
       }
     }
@@ -192,19 +214,10 @@
       }
     }
     &__form {
-      &-wrap {
-        &-title {
-          margin-bottom: 16px;
-        }
-        &-subtitle {
-          margin-bottom: 44px;
-        }
-      }
       &-button {
         padding: 16px 23px;
       }
       &-input {
-        width: 416px;
         margin-bottom: 16px;
       }
     }
@@ -223,6 +236,7 @@
     }
     &__wrap {
       padding-top: 63px !important;
+      padding-bottom: 0 !important;
       grid-column-gap: 30px;
     }
     &__buyer {
@@ -237,22 +251,11 @@
     }
     &__form {
       margin-bottom: 114px;
-      &-wrap {
-        &-title {
-          margin-bottom: 15px;
-        }
-        &-subtitle {
-          margin-bottom: 44px;
-        }
-      }
       &-input {
-        width: 400px;
+        width: 70%;
       }
       &-button {
         padding: 16px 22px;
-      }
-      .checkbox__label {
-        padding-left: 25px;
       }
     }
     &__social {
@@ -274,6 +277,9 @@
         &-list {
           justify-content: space-between;
         }
+        &-link {
+          padding: 9px 10px 9px 49px;
+        }
         &-item {
           &:not(:last-child) {
             margin-right: 10px;
@@ -290,6 +296,7 @@
       display: flex;
       flex-direction: column;
       padding-top: 45px !important;
+      padding-bottom: 45px !important;
     }
     &__form {
       display: block;
@@ -301,7 +308,7 @@
         }
       }
       &-input {
-        width: 75%;
+        width: 495px;
         margin-right: 25px;
       }
       &-button {
@@ -364,8 +371,13 @@
         @include fontSize15;
         margin-bottom: 21px;
       }
-      &-app-item {
-        width: 204px;
+      &-app {
+        &-list {
+          justify-content: flex-start;
+        }
+        &-item {
+          width: 204px;
+        }
       }
     }
   }
@@ -376,6 +388,7 @@
     background-size: inherit;
     &__wrap {
       padding-top: 22px !important;
+      padding-bottom: 80px !important;
     }
     &__form {
       margin-bottom: 30px;
@@ -384,7 +397,7 @@
       &-wrap {
         &-title {
           font-size: 20px;
-          margin-bottom: 10px;
+          margin-bottom: 28px;
           color: var(--light-white-color);
         }
         &-subtitle {
@@ -405,15 +418,13 @@
       }
       .checkbox__label {
         margin-bottom: 17px;
-        font-size: 10px;
         line-height: 15px;
         color: var(--light-white-color);
       }
     }
     &__lists {
       &-wrap {
-        margin-bottom: 0;
-        padding: 0;
+        margin-bottom: 15px;
       }
       &-title {
         width: 100%;
@@ -422,9 +433,7 @@
         font-weight: 700;
         color: var(--light-white-color);
         &::before {
-          left: unset;
           top: 0;
-          right: 0;
         }
         &.is-active {
           &::before {
@@ -435,7 +444,7 @@
     }
     &__social {
       &-list {
-        margin-bottom: 18px;
+        margin-bottom: 33px;
       }
       &-text {
         margin-bottom: 17px;
@@ -444,8 +453,8 @@
         color: var(--light-white-color);
       }
       &-link {
-        width: 19px;
-        height: 19px;
+        width: 28px;
+        height: 26px;
       }
       &-app {
         &-list {
@@ -454,7 +463,7 @@
         &-item {
           width: unset;
           &:not(:last-child) {
-            margin-right: 30px;
+            margin-right: 20px;
           }
         }
         &-link {

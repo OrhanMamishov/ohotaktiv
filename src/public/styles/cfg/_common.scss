@@ -72,8 +72,8 @@ img {
   width: 100%;
 }
 section {
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   h2 {
     @include fontSize24;
     margin-bottom: 26px;
@@ -481,7 +481,7 @@ main {
   }
   &__span {
     position: absolute;
-    top: -1px;
+    top: -2px;
     left: 0;
     width: 17px;
     height: 17px;

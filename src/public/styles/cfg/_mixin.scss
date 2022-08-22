@@ -121,6 +121,7 @@
   width: 100%;
   border-radius: 8px;
   outline: 1px solid var(--grey-form-color);
+  transition: outline .2s ease;
   &::placeholder {
     color: var(--grey-color);
   }
@@ -129,6 +130,7 @@
   }
   &:focus {
     outline-width: 2px;
+    outline-color: var(--dark-grey-color);
   }
   &.is-not-valid {
     outline: 1px solid var(--red-color);
@@ -186,7 +188,7 @@
   flex-wrap: wrap;
   gap: 18px;
   li {
-    @include fontSize13;
+    @include fontSize14;
     padding: 13px 22px;
     border-radius: 100px;
     border: 1px solid var(--darkness-white-color);

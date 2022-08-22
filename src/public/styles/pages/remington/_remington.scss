@@ -1,23 +1,13 @@
 .main {
+  // background-image: url('../../../img/remington-background.png');
+  // background-repeat: no-repeat;
+  // background-size: 100%;
   padding-bottom: 142px;
   .remington {
     &__tabs {
       &-list {
-        margin-bottom: 41px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      &-item {
-        @include fontSize15;
-        padding: 10px 20px;
-        border-radius: 10px;
-        font-weight: 800;
-        cursor: pointer;
-        &.is-active {
-          border-color: var(--yellow-color);
-          background-color: var(--yellow-color);
-        }
+        @include tabsMiniList;
+        margin-bottom: 38px;
       }
     }
     &__tab {
@@ -30,9 +20,18 @@
         }
       }
       &-item {
-        width: 170px;
+        padding: 20px 0;
+        width: 260px;
         border-radius: 20px;
+        background-color: var(--white-color);
         cursor: pointer;
+        &-img {
+          width: 78%;
+          display: block;
+          margin: 0 auto;
+          object-fit: scale-down;
+          mix-blend-mode: multiply;
+        }
         &-text {
           @include fontSize14;
           font-weight: 700;

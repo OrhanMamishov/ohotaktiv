@@ -17,6 +17,7 @@
       margin-bottom: 20px;
       font-size: 80px;
       line-height: 80px;
+      font-weight: 900;
       color: var(--white-color);
       &-wrap {
         position: absolute;
@@ -63,15 +64,14 @@
       align-items: center;
     }
     &__title {
-      @include fontSize22;
-      margin-bottom: 17px;
+      margin-bottom: 19px;
     }
     &__text {
       @include fontSize14;
       margin-bottom: 19px;
       font-weight: 500;
       &-wrap {
-        padding: 40px 89px;
+        padding: 54px 89px;
       }
     }
     &__button {
@@ -91,15 +91,17 @@
     }
     &__item {
       padding: 24px 0;
+      height: 310px;
       background-color: var(--lightness-white-color);
       border-radius: 20px;
       &-img {
-        margin-bottom: 14px;
+        margin-bottom: 50px;
         object-fit: none;
         mix-blend-mode: multiply;
       }
       &-text {
         @include fontSize14;
+        display: block;
         font-weight: 700;
         text-align: center;
       }
@@ -119,9 +121,6 @@
   .ready {
     padding-top: 43px;
     padding-bottom: 43px;
-    background-image: url('../../../img/aboutapp-background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
     margin-bottom: 38px;
     &__wrap {
       position: relative;
@@ -149,7 +148,7 @@
         &-wrap {
           position: absolute;
           bottom: 20px;
-          right: 35px;
+          right: 20px;
           display: flex;
           flex-direction: column;
           align-items: flex-end;
@@ -157,7 +156,7 @@
         &::before {
           content: '';
           position: absolute;
-          top: 45%;
+          top: 48%;
           right: 35%;
           width: 7px;
           height: 7px;
@@ -202,16 +201,29 @@
       height: fit-content;
       .swiper-pagination-bullet {
         @include fontSize14;
-        padding: 8px 20px;
+        padding: 10px 20px;
         width: auto;
         height: auto;
         background: var(--white-color);
-        border-radius: 10px;
+        border-radius: 100px;
         font-weight: 500;
         opacity: 1;
         &-active {
+          padding-left: 40px;  
+          position: relative;
           background: var(--black-color);
           color: var(--white-color);
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            width: 15px;
+            height: 10px;
+            transform: translate(0, -50%);
+            background-image: url('../../../img/checked--white.svg');
+            background-repeat: no-repeat;
+          }
         }
       }
     }
@@ -222,6 +234,9 @@
   }
   .blog {
     margin-bottom: 103px;
+    .swiper {
+      padding: 0 30px;
+    }
     &__title {
       margin-bottom: 30px;
     }
@@ -345,11 +360,6 @@
         grid-column-gap: 45px;
         grid-row-gap: 31px;
         transform: translateY(10px);
-      }
-    }
-    .blog {
-      .swiper {
-        padding: 0 30px;
       }
     }
   }

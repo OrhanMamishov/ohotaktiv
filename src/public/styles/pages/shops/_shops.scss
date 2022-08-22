@@ -130,3 +130,21 @@
     }
   }
 }
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .categories {
+      &__list {
+        justify-content: flex-start;
+      }
+      &__item {
+        &:not(:last-child) {
+          margin-right: 30px;
+        }
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+}
