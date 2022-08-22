@@ -1,5 +1,4 @@
 .main {
-  padding-bottom: 35px;
   .article {
     max-width: 943px;
     margin: 0 auto 50px;
@@ -41,6 +40,7 @@
   }
   .liked {
     &__wrap {
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -79,6 +79,57 @@
       }
       &.ok {
         background-image: url('../../../img/ok-black.svg');
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1365px) {
+  .main {
+    .article {
+      max-width: 1320px;
+      padding: 0 100px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    .article {
+      max-width: 924px;
+      padding: 0 50px;
+    }
+    .goods {
+      &__wrap {
+        .swiper {
+          padding: 0;
+        }
+      }
+      &__swiper-button-prev,
+      &__swiper-button-next {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .article {
+      max-width: 736px;
+      padding: 0 16px;
+    }
+    .liked {
+      &__wrap {
+        min-width: 280px;
+        width: min-content;
+        padding: 14px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      &__text {
+        margin-bottom: 10px;
+        width: 100%;
       }
     }
   }

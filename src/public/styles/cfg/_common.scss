@@ -71,23 +71,6 @@ button {
 img {
   width: 100%;
 }
-.container {
-  margin: 0 auto;
-  padding: 0 120px;
-  max-width: 1680px;
-  @media only screen and (max-width: 1439px) {
-    max-width: 1320px;
-    padding: 0 100px;
-  }
-  @media only screen and (max-width: 1023px) {
-    max-width: 924px;
-    padding: 0 50px;
-  }
-  @media only screen and (max-width: 767px) {
-    max-width: 736px;
-    padding: 0 16px;
-  }
-}
 section {
   padding-top: 22px;
   padding-bottom: 22px;
@@ -112,6 +95,35 @@ section {
   }
   @media only screen and (max-width: 767px) {
     padding-top: 13px;
+  }
+}
+main {
+  padding-top: 127px;
+  @media only screen and (max-width: 1560px) {
+    padding-top: 119px;
+  }
+  @media only screen and (max-width: 1365px) {
+    padding-top: 119px;
+  }
+  @media only screen and (max-width: 767px) {
+    padding-top: 103px;
+  }
+}
+.container {
+  margin: 0 auto;
+  padding: 0 120px;
+  max-width: 1680px;
+  @media only screen and (max-width: 1439px) {
+    max-width: 1320px;
+    padding: 0 100px;
+  }
+  @media only screen and (max-width: 1023px) {
+    max-width: 924px;
+    padding: 0 50px;
+  }
+  @media only screen and (max-width: 767px) {
+    max-width: 736px;
+    padding: 0 16px;
   }
 }
 .visually-hidden {
@@ -582,6 +594,24 @@ section {
         content: '←';
         margin-right: 14px;
         font-size: 18px;
+      }
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    padding-top: 0;
+    padding-bottom: 0;
+    &__item {
+      &:first-child {
+        display: none;
+      }
+      &:not(:last-child) {
+        margin-right: 5px;
+        .navigation__link::after {
+          content: '—';
+          color: var(--darkness-white-color);
+          @include fontSize13;
+          margin-left: 5px;
+        }
       }
     }
   }

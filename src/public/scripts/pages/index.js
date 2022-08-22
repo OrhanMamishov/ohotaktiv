@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
           slidesPerView: 4,
         },
         1023: {
-          // spaceBetween: 30,
           slidesPerView: 3,
         },
         767: {
@@ -54,10 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
   //eslint-disable-next-line
   const popularSwiper = new Swiper(".swiper-popular", {
     freeMode: true,
+    navigation: {
+      nextEl: ".popular__swiper-button-next",
+      prevEl: ".popular__swiper-button-prev",
+    },
     breakpoints: {
       1559: {
         spaceBetween: 35,
-        slidesPerView: 4,
+        slidesPerView: 5,
       },
       1439: {
         spaceBetween: 30,

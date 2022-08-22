@@ -9,6 +9,25 @@
         background: var(--white-color);
       }
     }
+    &__item {
+      position: relative;
+    }
+    &__text {
+      width: 330px;
+      margin-bottom: 20px;
+      font-size: 80px;
+      line-height: 80px;
+      color: var(--white-color);
+      &-wrap {
+        position: absolute;
+        top: 50%;
+        right: 400px;
+        transform: translate(0, -50%);
+      }
+    }
+    &__button {
+      @include contentButton;
+    }
   }
   .bestsellers {
     .swiper {
@@ -28,50 +47,65 @@
   }
   .bonuscard {
     margin-bottom: 15px;
+    background-color: var(--lightness-white-color);
+    background-clip: content-box;
     &__img {
       border-radius: 18px;
       width: auto;
+      position: absolute;
+      top: 50%;
+      right: 20%;
+      transform: translate(0, -50%);
     }
     &__wrap {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-radius: 15px;
-      background-color: var(--black-color);
-      background-clip: content-box;
     }
     &__title {
       @include fontSize22;
-      margin-bottom: 10px;
-      color: var(--white-color);
+      margin-bottom: 17px;
     }
     &__text {
       @include fontSize14;
-      margin-bottom: 22px;
-      color: var(--white-color);
+      margin-bottom: 19px;
       font-weight: 500;
       &-wrap {
-        padding: 40px 60px;
+        padding: 40px 89px;
       }
     }
     &__button {
       @include contentButton;
       @include fontSize13;
+      background-color: var(--black-color);
+      color: var(--white-color);
     }
   }
   .popular {
     margin-bottom: 36px;
+    .swiper {
+      padding: 0 30px;
+    }
     &__title {
       margin-bottom: 30px;
     }
     &__item {
+      padding: 24px 0;
+      background-color: var(--lightness-white-color);
+      border-radius: 20px;
       &-img {
         margin-bottom: 14px;
+        object-fit: none;
+        mix-blend-mode: multiply;
       }
       &-text {
-        @include fontSize17;
+        @include fontSize14;
         font-weight: 700;
+        text-align: center;
       }
+    }
+    &__swiper-button {
+      @include swiperArrowsIndexPage;
     }
   }
   .recommended {
@@ -283,14 +317,11 @@
 }
 @media only screen and (max-width: 1560px) {
   .main {
-    .bestsellers {
-      &__list {
-        padding-bottom: 64px;
-      }
-    }
-    .new {
-      &__list {
-        padding-bottom: 64px;
+    .bonuscard {
+      &__text {
+        &-wrap {
+          padding: 36px 0;
+        }
       }
     }
     .about {
@@ -316,15 +347,17 @@
         transform: translateY(10px);
       }
     }
+    .blog {
+      .swiper {
+        padding: 0 30px;
+      }
+    }
   }
 }
 
 @media only screen and (max-width: 1439px) {
   .main {
     .bestsellers {
-      &__wrap {
-        padding-bottom: 52px;
-      }
       &__swiper-button {
         &-prev,
         &-next {
@@ -333,9 +366,6 @@
       }
     }
     .new {
-      &__wrap {
-        padding-bottom: 78px;
-      }
       &__title {
         margin-bottom: 29px;
       }
@@ -346,12 +376,6 @@
         }
       }
     }
-    .bonuscard {
-      margin-bottom: 27px;
-      &__img {
-        width: 491px;
-      }
-    }
     .popular {
       margin-bottom: 11px;
       &__title {
@@ -359,9 +383,6 @@
       }
     }
     .recommended {
-      &__wrap {
-        padding-bottom: 81px;
-      }
       &__title {
         margin-bottom: 33px;
       }
@@ -381,9 +402,6 @@
     .blog {
       margin-bottom: 0;
       padding-bottom: 18px;
-      &__wrap {
-        padding-bottom: 78px;
-      }
       &__title {
         margin-bottom: 26px;
       }
@@ -436,10 +454,6 @@
       &__title {
         margin-bottom: 30px;
       }
-      &__swiper-button-prev,
-      &__swiper-button-next {
-        display: none;
-      }
       &__list {
         padding-bottom: 0;
       }
@@ -449,29 +463,8 @@
       &__wrap {
         padding-bottom: unset;
       }
-      &__swiper-button-prev,
-      &__swiper-button-next {
-        display: none;
-      }
       &__list {
         padding-bottom: 0;
-      }
-    }
-    .bonuscard {
-      margin-bottom: 42px;
-      &__img {
-        width: 319px;
-        height: 210px;
-        object-fit: cover;
-      }
-      &__text {
-        &-wrap {
-          min-width: 261px;
-          padding: 30px 40px;
-        }
-      }
-      &__title {
-        margin-bottom: 15px;
       }
     }
     .popular {
@@ -490,10 +483,6 @@
       }
       &__wrap {
         padding-bottom: unset;
-      }
-      &__swiper-button-prev,
-      &__swiper-button-next {
-        display: none;
       }
       &__list {
         padding-bottom: 0;
@@ -538,10 +527,6 @@
       &__wrap {
         padding-bottom: unset;
       }
-      &__swiper-button-prev,
-      &__swiper-button-next {
-        display: none;
-      }
     }
     .about {
       margin-bottom: 76px;
@@ -575,6 +560,20 @@
   }
 }
 
+@media only screen and (max-width: 1023px) {
+  .main {
+    .bestsellers,
+    .new,
+    .recommended,
+    .blog,
+    .popular {
+      .swiper {
+        padding: 0;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .main {
     .bestsellers {
@@ -593,36 +592,6 @@
       }
       .swiper {
         max-width: 520px;
-      }
-    }
-    .bonuscard {
-      margin-bottom: 25px;
-      &__title {
-        margin-bottom: 14px;
-        font-size: 18px;
-        font-weight: 900;
-        color: var(--black-color);
-      }
-      &__text {
-        margin-bottom: 20px;
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 15px;
-        color: var(--black-color);
-        &-wrap {
-          padding: 0 20px;
-        }
-      }
-      &__wrap {
-        background: unset;
-        flex-direction: column-reverse;
-        text-align: center;
-      }
-      &__img {
-        margin-bottom: 20px;
-        width: 100%;
-        height: 140px;
-        border-radius: 8px;
       }
     }
     .popular {

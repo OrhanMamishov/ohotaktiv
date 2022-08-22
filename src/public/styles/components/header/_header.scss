@@ -1,4 +1,9 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
   box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.09);
   &__wrap {
     &-top {
@@ -13,6 +18,7 @@
     &-bottom {
       padding-top: 10px !important;
       padding-bottom: 10px !important;
+      background-color: var(--white-color);
       &-content {
         display: flex;
         align-items: center;
@@ -342,7 +348,6 @@
 
 @media only screen and (max-width: 1365px) {
   .header {
-    position: relative;
     &__pages {
       &-list {
         display: none;
@@ -358,8 +363,8 @@
           content: '';
           position: absolute;
           top: 0;
-          left: -742px;
-          width: 153%;
+          left: -897px;
+          width: 185%;
           height: 100%;
           background-color: rgba(0, 0, 0, .5);
           pointer-events: all;

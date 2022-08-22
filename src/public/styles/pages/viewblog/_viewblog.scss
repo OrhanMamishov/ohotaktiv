@@ -1,4 +1,7 @@
 .main {
+  .navigation {
+    width: 100%;
+  }
   .viewblog {
     &__wrap {
       display: flex;
@@ -27,9 +30,10 @@
       }
     }
     &__aside {
-      height: 531px;
-      align-self: stretch;
-      overflow: scroll;
+      &-list {
+        height: 531px;
+        width: 350px;
+      }
       &-title {
         @include fontSize19;
         margin-bottom: 25px;
@@ -38,10 +42,12 @@
       &-link {
         display: flex;
       }
-      &-item {
-        &:not(:last-child) {
-          margin-bottom: 35px;
-        }
+    }
+    &__swiper-button {
+      @include swiperArrowsIndexPage;
+      &-next,
+      &-prev {
+        display: none;
       }
     }
   }
@@ -59,6 +65,79 @@
       max-width: 948px;
       display: flex;
       justify-content: space-between;
+    }
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .viewblog {
+      &__item {
+        max-width: 831px;
+      }
+      &__aside {
+        &-list {
+          width: 250px;
+          height: 463px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1365px) {
+  .main {
+    .viewblog {
+      .swiper {
+        padding: 0 35px;
+      }
+      &__item {
+        max-width: 100%;
+      }
+      &__aside {
+        &-list {
+          height: unset;
+          width: 100%;
+        }
+      }
+      &__swiper-button {
+        &-next,
+        &-prev {
+          display: block;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .viewblog {
+      .swiper {
+        padding: 0;
+      }
+      &__item {
+        display: flex;
+        flex-direction: column;
+        &-date {
+          order: 1;
+        }
+        &-img {
+          order: 2;
+        }
+        &-text {
+          order: 3;
+        }
+      }
+      &__swiper-button {
+        &-next,
+        &-prev {
+          display: none;
+        }
+      }
+    }
+    .goods {
+      .swiper {
+        padding: 0;
+      }
     }
   }
 }

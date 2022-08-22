@@ -8,11 +8,28 @@ document.addEventListener("DOMContentLoaded", () => {
   //eslint-disable-next-line
   const goodsSwiper = new Swiper(".swiper-goods", {
     modules: [Navigation],
-    spaceBetween: 30,
-    slidesPerView: 5,
+    spaceBetween: 10,
     navigation: {
       nextEl: ".goods__swiper-button-next",
       prevEl: ".goods__swiper-button-prev",
+    },
+    breakpoints: {
+      1559: {
+        slidesPerView: 5,
+      },
+      1366: {
+        slidesPerView: 4,
+      },
+      1023: {
+        slidesPerView: 3,
+      },
+      767: {
+        slidesPerView: 3,
+      },
+      320: {
+        spaceBetween: 30,
+        slidesPerView: 2,
+      },
     },
   });
   // swipers

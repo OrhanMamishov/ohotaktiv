@@ -155,6 +155,12 @@
   &-next {
     right: 0;
   }
+  @media only screen and (max-width: 1023px) {
+    &-prev,
+    &-next {
+      display: none;
+    }
+  }
 }
 @mixin tabsList {
   width: 100%;
