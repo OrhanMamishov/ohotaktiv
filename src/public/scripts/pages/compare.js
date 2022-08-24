@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 
 document.addEventListener("DOMContentLoaded", () => {
   const compareSwiper = new Swiper(".swiper-compare", {
-    slidesPerView: "auto",
+    slidesPerView: 4,
     modules: [Navigation],
     navigation: {
       nextEl: ".compare__swiper-button-next",

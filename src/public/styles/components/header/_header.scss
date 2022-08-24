@@ -352,6 +352,7 @@
       &-list {
         display: none;
         width: 485px;
+        height: 100vh;
         position: absolute;
         top: 0;
         right: 0;
@@ -486,10 +487,11 @@
       &-left-column {
         border-right: unset;
         max-height: 100vh;
-        padding-bottom: 80%;
-        overflow: scroll;
         &-list {
           padding-top: 0;
+          max-height: 100vh;
+          padding-bottom: 230px;
+          overflow-x: hidden;
         }
         &-item {
           width: 100%;
@@ -529,8 +531,8 @@
           transform: translateX(0%);
         }
         &-list {
-          max-height: 70vh;
-          padding-bottom: 40%;
+          height: 100vh;
+          padding-bottom: 230px;
           overflow-x: hidden;
           &.is-active {
             display: block;
@@ -630,7 +632,7 @@
     }
     &__pages {
       &-list {
-        overflow: scroll;
+        overflow-x: hidden;
         max-height: 100vh;
         padding: 13px 30px 73px;
         width: 100%;

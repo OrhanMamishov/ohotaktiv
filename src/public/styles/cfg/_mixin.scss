@@ -120,29 +120,25 @@
   @include fontSize13;
   width: 100%;
   border-radius: 8px;
-  outline: 1px solid var(--grey-form-color);
-  transition: outline .2s ease;
+  border: 1px solid var(--grey-form-color);
+  transition: border .2s ease;
   &::placeholder {
     color: var(--grey-color);
   }
   &:hover {
-    outline-color: var(--dark-grey-color);
+    border-color: var(--dark-grey-color);
   }
   &:focus {
-    outline-width: 2px;
-    outline-color: var(--dark-grey-color);
+    border-width: 2px;
+    border-color: var(--dark-grey-color);
   }
   &.is-not-valid {
-    outline: 1px solid var(--red-color);
+    border: 1px solid var(--red-color);
     color: var(--red-color);
     animation: 0.1s tremor ease-out 1; 
   }
 }
 @mixin swiperArrowsIndexPage {
-  &-disabled {
-    background-color: var(--light-grey-color);
-    opacity: 1;
-  }
   &-prev,
   &-next {
     border-radius: 100px;

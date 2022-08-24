@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   });
+  //eslint-disable-next-line
   const mainBannerSwiper = new Swiper(".swiper-banner", {
     modules: [Pagination],
     spaceBetween: 30,
@@ -52,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   //eslint-disable-next-line
   const popularSwiper = new Swiper(".swiper-popular", {
+    modules: [Navigation],
     freeMode: true,
     navigation: {
       nextEl: ".popular__swiper-button-next",
@@ -64,20 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       1439: {
         spaceBetween: 30,
-        slidesPerView: 3.5,
-      },
-      1023: {
-        spaceBetween: 30,
-        slidesPerView: 2.5,
+        slidesPerView: 4,
       },
       767: {
         spaceBetween: 30,
-        slidesPerView: 2,
+        slidesPerView: 3,
       },
       320: {
-        freeMode: true,
         spaceBetween: 10,
-        slidesPerView: 1.5,
+        slidesPerView: 2,
       },
     },
   });

@@ -72,7 +72,7 @@
       font-weight: 700;
       &:hover,
       &:focus {
-        outline-color: var(--footer-title-color);
+        border-color: var(--footer-title-color);
       }
       &::placeholder {
         color: var(--grey-form-color);
