@@ -853,19 +853,49 @@ main {
     }
   }
 }
+// .dot {
+//   &__prop {
+//     float: left;
+//   }
+//   &__value {
+//     float: right;
+//   }
+//   &::after {
+//     content: '.....................................................................................................................................................................................................................................................................................................................................................................................................................................';
+//     display: block;
+//     color: var(--light-white-color);
+//     white-space: nowrap;
+//     overflow: hidden;
+//   }
+// }
 .dot {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
   &__prop {
-    float: left;
+    position: relative;
+    width: 70%;
+    span {
+      align-items: flex-start;
+      display: inline;
+      padding-right: 3px;
+      position: relative;
+      background-color: var(--white-color);
+    }
+    &::before {
+      border-bottom: 1px dotted var(--light-white-color);
+      bottom: 0.2em;
+      content: "";
+      display: block;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
   }
   &__value {
-    float: right;
-  }
-  &::after {
-    content: '.....................................................................................................................................................................................................................................................................................................................................................................................................................................';
-    display: block;
-    color: var(--light-white-color);
-    white-space: nowrap;
-    overflow: hidden;
+    padding-left: 3px;
+    width: 30%;
   }
 }
 .not-clicked-rate {

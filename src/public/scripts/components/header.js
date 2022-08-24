@@ -10,61 +10,45 @@ document.addEventListener("DOMContentLoaded", () => {
   // Проверяем есть ли в браузере выбранный город
 
   // Каталог + табы
-  const catalogButtonHeader = document.querySelector(".header__button");
-  const catalogWrapHeader = document.querySelector(".header__catalog-wrap");
-  const catalogWrapLeftColumnHeader = document.querySelector(
-    ".header__catalog-left-column"
+  const headerCatalogTargets = document.querySelectorAll(
+    ".header__catalog-target-list"
   );
-  const catalogWrapCloseHeader = document.querySelector(
-    ".header__catalog-wrap-close"
-  );
-  const catalogItemsHeader = document.querySelectorAll(
-    ".header__catalog-left-column-item"
-  );
-  const catalogTabsWrapHeader = document.querySelector(
-    ".header__catalog-right-column"
-  );
-  const catalogTabsWrapCloseHeader = document.querySelector(
-    ".header__catalog-wrap-back"
-  );
-  catalogTabsWrapCloseHeader.addEventListener("click", () => {
-    catalogWrapLeftColumnHeader.classList.remove("disable-scroll");
-    catalogTabsWrapHeader.classList.remove("is-active");
-  });
-  catalogWrapCloseHeader.addEventListener("click", () =>
-    catalogButtonHeader.click()
-  );
-  catalogButtonHeader.addEventListener("click", () => {
+  const headerCatalogWrap = document.querySelector(".header__catalog-wrap");
+  const headerCatalogButton = document.querySelector(".header__button");
+  headerCatalogButton.addEventListener("click", () => {
     bodyScrollToggle();
-    catalogWrapHeader.classList.toggle("is-open");
-    catalogTabsWrapHeader.classList.remove("is-active");
-    catalogButtonHeader.classList.toggle("is-active");
+    headerCatalogButton.classList.toggle("is-active");
+    headerCatalogWrap.classList.toggle("is-open");
+    headerCatalogTargets.forEach((target) =>
+      target.classList.remove("is-active")
+    );
   });
-  catalogItemsHeader.forEach((el) => {
-    // Вешаем обработчик на каждый
-    el.addEventListener("mouseover", () => {
-      catalogTabsWrapHeader.classList.add("is-active");
-      // У остальных снимаем актив
-      catalogItemsHeader.forEach((item) => item.classList.remove("is-active"));
-      // На кликнутый добавляем актив
-      el.classList.add("is-active");
-
-      // Табы
-      // Находим все элементы с атрибутом data-path
-      const dataPath = el.getAttribute("data-path");
-      // Находим все элементы с атрибутом data-target
-      const dataTargets = document.querySelectorAll("[data-target]");
-      // Перебираем все таргеты
-      dataTargets.forEach((target) => {
-        // Все скрываем
+  const headerCatalogTabs = document.querySelectorAll(
+    ".header__catalog-tabs-item"
+  );
+  headerCatalogTabs.forEach((tab) => {
+    tab.addEventListener("mouseover", () => {
+      headerCatalogTargets.forEach((target) => {
         target.classList.remove("is-active");
-        // Если совпадают атрибуты, то показываем
-        if (target.getAttribute("data-target") === dataPath) {
-          catalogWrapLeftColumnHeader.classList.add("disable-scroll");
+        if (
+          target.getAttribute("data-target") == tab.getAttribute("data-path")
+        ) {
           target.classList.add("is-active");
         }
       });
     });
+  });
+  const headerCatalogClose = document.querySelector(
+    ".header__catalog-wrap-close"
+  );
+  headerCatalogClose.addEventListener("click", () =>
+    headerCatalogButton.click()
+  );
+  const headerBackButton = document.querySelector(".header__catalog-wrap-back");
+  headerBackButton.addEventListener("click", () => {
+    headerCatalogTargets.forEach((target) =>
+      target.classList.remove("is-active")
+    );
   });
   // Каталог + табы
 

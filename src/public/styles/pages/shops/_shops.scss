@@ -34,12 +34,11 @@
       margin-right: 16px;
     }
     &__input {
+      @include contentInput;
       @include fontSize15;
-      width: 98%;
-      padding: 13px 20px;
+      width: 94%;
+      padding: 13px 0;
       margin-bottom: 20px;
-      border-radius: 10px;
-      border: 1px solid var(--grey-form-color);
       &::placeholder {
         @include fontSize14;
         color: var(--grey-form-color);

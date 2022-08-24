@@ -119,8 +119,8 @@
 @mixin contentInput {
   @include fontSize13;
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--grey-form-color);
+  // border-radius: 8px;
+  border-bottom: 2px solid var(--grey-form-color);
   transition: border .2s ease;
   &::placeholder {
     color: var(--grey-color);
