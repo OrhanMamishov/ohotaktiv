@@ -197,17 +197,22 @@
     }
     &__pay {
       &-wrap {
+        height: min-content;
         position: relative;
         padding: 32px 30px;
         margin-left: auto;
         box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
         border-radius: 20px;
-        .cards-item__stock-text {
-          @include fontSize13;
-          margin-bottom: 17px;
+        .not-clicked-rate {
+          &-wrap {
+            margin-bottom: 14px;
+          }
+          &-karma {
+            @include fontSize13;
+          }
         }
-        .cards-item__rate-karma {
-          @include fontSize13;
+        .card-item__description-stock-wrap {
+          margin-bottom: 18px;
         }
       }
       &-through {
@@ -232,10 +237,13 @@
       &-count {
         &-wrap {
           width: 113px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           padding: 13px 17px;
           margin-right: 16px;
           border: 1px solid var(--footer-title-color);
-          border-radius: 10px;
+          border-radius: 100px;
         }
         &-input {
           @include fontSize13;
@@ -245,20 +253,13 @@
         &-button {
           &-wrap {
             display: flex;
+            align-items: flex-start;
             margin-bottom: 15px;
-          }
-          &-oneclick {
-            @include fontSize13;
-            padding: 16px 44px;
-            border-radius: 10px;
-            border: 1px solid var(--footer-title-color);
           }
           &-addtocart {
             @include contentButton;
             @include fontSize13;
-            padding: 18px 26px;
-            width: 100%;
-            margin-bottom: 23px;
+            padding: 16px 38px;
           }
         }
         &-text {
@@ -288,7 +289,7 @@
         font-weight: 800;
       }
       &-dots {
-        max-width: 460px;
+        width: 579px;
         .dot {
           @include fontSize14;
           color: var(--darkness-white-color);
@@ -384,7 +385,7 @@
         &-user {
           margin-bottom: 14px;
           display: grid;
-          grid-template-columns: 50px 200px;
+          grid-template-columns: 50px 220px;
           grid-template-rows: repeat(2, 1fr);
           grid-column-gap: 17px;
           &-avatar {

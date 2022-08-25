@@ -1,10 +1,10 @@
+import "../imports";
+import { bodyScrollToggle } from "../functions/scrollBody";
 import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../imports";
 import "../../styles/pages/index/style.scss";
-import { bodyScrollToggle } from "../functions/scrollBody";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Свайперы

@@ -15,7 +15,7 @@
     background-color: var(--white-color);
     transform: translate(-50%, -50%);
     z-index: 999;
-    overflow: scroll;
+    overflow-x: hidden;
     &-title {
       @include fontSize22;
       font-weight: 900;

@@ -4,6 +4,7 @@ import Swiper, { Navigation, Mousewheel, Thumbs } from "swiper";
 import "swiper/css/thumbs";
 import "swiper/css/navigation";
 import "swiper/css";
+import { numberWithSpaces } from "../functions/numberWithSpaces";
 
 document.addEventListener("DOMContentLoaded", () => {
   // свайперы и чойзы
@@ -58,4 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
+  // свайперы и чойзы
+
+  // клики на выбор товара
+  const pricesItems = document.querySelectorAll(".sert__info-prices-item");
+  const priceText = document.querySelector(".sert__pay-price");
+  pricesItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      pricesItems.forEach((el) => el.classList.remove("is-active"));
+      item.classList.add("is-active");
+      priceText.textContent = `${numberWithSpaces(item.textContent)} ₽`;
+    });
+  });
+  // клики на выбор товара
 });

@@ -78,7 +78,7 @@
           border: 1px solid var(--border-color);
           cursor: pointer;
           &.is-active {
-            border: 2px solid var(--yellow-color);
+            border: 1px solid var(--yellow-color);
           }
         }
       }
@@ -175,7 +175,7 @@
       font-weight: 800;
     }
     &__dots {
-      width: 460px;
+      width: 482px;
       .dot {
         @include fontSize13;
         color: var(--darkness-white-color);
@@ -204,48 +204,6 @@
     }
     &__swiper-button {
       @include swiperArrowsIndexPage;
-    }
-  }
-  .questions {
-    padding: 57px 0;
-    background-color: var(--lightness-white-color);
-    &__title {
-      margin-bottom: 0;
-    }
-    &__wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    &__list {
-      display: flex;
-    }
-    &__item {
-      &:not(:last-child) {
-        margin-right: 88px;
-      }
-    }
-    &__link {
-      @include fontSize14;
-      height: 37px;
-      display: block;
-      padding-left: 57px;
-      background-repeat: no-repeat;
-      background-position: left center;
-      span {
-        display: block;
-        margin-bottom: 2px;
-        font-weight: 700;
-      }
-      &.call {
-        background-image: url('../../../img/call-img.svg');
-      }
-      &.mail {
-        background-image: url('../../../img/mail-img.svg');
-      }
-      &.write {
-        background-image: url('../../../img/write-img.svg');
-      }
     }
   }
 }

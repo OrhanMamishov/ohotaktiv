@@ -119,7 +119,6 @@
 @mixin contentInput {
   @include fontSize13;
   width: 100%;
-  // border-radius: 8px;
   border-bottom: 2px solid var(--grey-form-color);
   transition: border .2s ease;
   &::placeholder {
@@ -133,7 +132,7 @@
     border-color: var(--dark-grey-color);
   }
   &.is-not-valid {
-    border: 1px solid var(--red-color);
+    border-color: var(--red-color);
     color: var(--red-color);
     animation: 0.1s tremor ease-out 1; 
   }
