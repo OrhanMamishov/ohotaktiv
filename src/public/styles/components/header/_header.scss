@@ -5,20 +5,19 @@
   width: 100%;
   z-index: 2;
   box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.09);
+  background-color: var(--white-color);
   &__wrap {
     &-top {
-      background-color: var(--lightness-white-color);
       &-content {
         display: flex;
         align-items: center;
         padding-top: 17px !important;
-        padding-bottom: 17px !important;
+        padding-bottom: 8px !important;
       }
     }
     &-bottom {
       padding-top: 10px !important;
-      padding-bottom: 10px !important;
-      background-color: var(--white-color);
+      padding-bottom: 15px !important;
       &-content {
         display: flex;
         align-items: center;
@@ -29,6 +28,11 @@
     margin-right: 43px;
   }
   &__pages {
+    &-link {
+      &.header-tel {
+        font-weight: 700;
+      }
+    }
     &-list {
       position: relative;
       display: flex;
@@ -42,8 +46,11 @@
         background-repeat: no-repeat;
         background-size: contain;
         &.tag {
-          padding-left: 22px;
-          background-image: url('../../../img/tag.svg');
+          padding-right: 15px;
+          font-weight: 700;
+          background-image: url('../../../img/arrow-fill.svg');
+          background-position: center right;
+          background-size: 8%;
         }
       }
     }
@@ -229,17 +236,13 @@
     }
   }
   &__button {
-    display: flex;
-    align-items: center;
+    @include contentButton;
     margin-right: 25px;
     padding: 15px 22px 15px 42px;
-    border-radius: 100px;
-    background-color: var(--yellow-color);
     background-image: url('../../../img/hamburger.svg');
     background-repeat: no-repeat;
     background-position: 22px center;
     background-size: 10px;
-    transition: background .2s ease;
     &-text {
       @include fontSize14;
     }
@@ -249,7 +252,8 @@
   }
   &__search {
     &-wrap {
-      width: 43%;
+      margin-right: 40px;
+      flex: 3 1 auto;
       position: relative;
       background-color: var(--white-color);
       border-radius: 8px;
@@ -257,7 +261,7 @@
     &-input {
       @include fontSize14;
       width: 100%;
-      padding: 14px 0 14px 22px;
+      padding: 14px 40px 14px 22px;
       border: 1px solid var(--grey-form-color);
       border-radius: 100px;
       &::placeholder {
@@ -268,12 +272,13 @@
     &-button {
       position: absolute;
       top: 0;
-      right: 0;
+      right: 5px;
       width: 41px;
       height: 100%;
       display: block;
       border-radius: 8px;
       background-image: url('../../../img/search.svg');
+      background-size: 14px;
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -311,16 +316,11 @@
     }
     &__button {
       margin-right: 22px;
-      padding: 13px 22px 13px 39px;
-      background-position: 20px center;
       &-text {
         font-size: 13px;
       }
     }
     &__search {
-      &-wrap {
-        width: 39%;
-      }
       &-input {
         font-size: 13px;
         &::placeholder {
@@ -345,11 +345,6 @@
 
 @media only screen and (max-width: 1439px) {
   .header {
-    &__search {
-      &-wrap {
-        width: 37%;
-      }
-    }
     &__catalog {
       &-target {
         &-list {
@@ -468,7 +463,7 @@
     }
     &__search {
       &-wrap {
-        width: 100%;
+        margin-right: 0;
       }
     }
   }
@@ -572,7 +567,7 @@
       }
     }
     &__button {
-      padding: 20px;
+      padding: 22px;
       margin-right: 10px;
       background-size: 14px;
       background-position: center;

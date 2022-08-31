@@ -76,7 +76,7 @@
 body,
 html {
   min-width: 320px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   background-color: var(--white-color);
@@ -125,7 +125,7 @@ section {
     }
   }
   h3 {
-    font-size: 18px;
+    @include fontSize15;
     font-weight: 800;
   }
   @media only screen and (max-width: 1560px) {
@@ -140,7 +140,7 @@ section {
   }
 }
 main {
-  padding-top: 127px;
+  padding-top: 123px;
   @media only screen and (max-width: 1560px) {
     padding-top: 119px;
   }
@@ -185,7 +185,7 @@ main {
     &-wrap {
       position: relative;
       padding: 30px 0;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       background-color: var(--lightness-grey-color);
       border-radius: 10px;
     }
@@ -199,8 +199,8 @@ main {
       justify-content: space-between;
     }
     &-text {
+      @include fontSize13;
       padding: 4px 8px;
-      font-size: 11px;
       color: var(--white-color);
       text-align: center;
       border-radius: 20px;
@@ -209,8 +209,10 @@ main {
       }
       &.new {
         background-color: var(--green-color);
+        display: none; // для теста
       }
       &.discount {
+        margin-top: auto; // для теста
         width: 44px;
         padding: 4px 2px;
         color: var(--black-color);
@@ -232,7 +234,7 @@ main {
         align-items: center;
       }
       &:not(:last-child) {
-        margin-right: 6px;
+        margin-right: 12px;
       }
       &.compare {
         background-image: url('../../../img/compare.svg');
@@ -240,15 +242,18 @@ main {
       &.favourite {
         background-image: url('../../../img/favourite.svg');
       }
+      &.remove {
+        background-image: url('../../../img/remove.svg');
+      }
     }
   }
   &__description {
     &-price {
-      @include fontSize17;
       margin-bottom: 6px;
       display: flex;
       align-items: center;
       font-weight: 800;
+      font-size: 17px;
       span {
         @include fontSize13;
         margin-left: 14px;
@@ -271,7 +276,7 @@ main {
       position: relative;
       padding-left: 13px;
       &:not(:last-child) {
-        margin-right: 15px;
+        margin-right: 20px;
       }
       &::before {
         content: '';
@@ -301,14 +306,14 @@ main {
       &-wrap {
         display: flex;
         align-items: center;
-        margin-bottom: 9px;
+        margin-bottom: 12px;
       }
     }
   }
   &__wrap {
     .not-clicked-rate {
       &-wrap {
-        margin-bottom: 12px;
+        margin-bottom: 16px;
       }
     }
   }
@@ -335,11 +340,6 @@ main {
           top: 0;
         }
       }
-      &-text {
-        &.discount {
-          width: 38px;
-        }
-      }
     }
   }
   @media only screen and (max-width: 1439px) {
@@ -354,7 +354,6 @@ main {
       }
       &-text {
         &.discount {
-          width: 37px;
           padding: 2px 0;
         }
       }
@@ -362,11 +361,6 @@ main {
   }
   @media only screen and (max-width: 1023px) {
     padding: 0;
-    &__description {
-      &-text {
-        margin-bottom: 43px;
-      }
-    }
   }
   @media only screen and (max-width: 767px) {
     &__photo {
@@ -385,7 +379,7 @@ main {
         &.discount {
           width: 40px;
           padding: 4px 0;
-          font-size: 10px;
+          font-size: 12px;
         }
       }
     }
@@ -397,8 +391,8 @@ main {
         align-items: flex-start;
         font-weight: 800;
         span {
+          margin-top: 6px;
           margin-left: 0;
-          font-weight: 300;
         }
       }
       &-text {
@@ -450,10 +444,9 @@ main {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 10px;
+    left: 0;
     color: var(--grey-form-color);
     transition: top .2s ease, font .2s ease;
-    padding: 0 10px;
   }
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
@@ -610,27 +603,11 @@ main {
   }
 }
 .skeleton {
-  div, button, p, span, img {
-    background: #eee;
-    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
-    border-radius: 5px;
-    background-size: 200% 100%;
-    animation: 1.5s shine linear infinite;
-  }
-  div {
-    &:first-child {
-      height: 150px;
-    }
-  }
-  img {
-    height: 150px;
-  }
-  p {
-    height: 20px;
-  }
-  button {
-    height: 35px;
-  }
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
   @keyframes shine {
     to {
       background-position-x: -200%;
@@ -840,8 +817,6 @@ main {
     display: flex;
     align-items: center;
     span {
-      padding: 0;
-      font-size: 20px;
       color: var(--yellow-color);
       &:not(:last-child) {
         margin-right: 3px;
@@ -871,6 +846,50 @@ main {
   &-karma {
     @include fontSize12;
     margin-left: 10px;
+  }
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  input {
+    display: none;
+    &:checked {
+      + .slider {
+        background-color: var(--yellow-color);
+        &::before {
+          transform: translateX(26px);
+        }
+      }
+    }
+    &:focus {
+      + .slider {
+        box-shadow: 0 0 1px #2196F3;
+      }
+    }
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 34px;
+    background-color: var(--grey-color);
+    transition: transform .4s ease, background .4s ease;
+    &::before {
+      content: '';
+      position: absolute;
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: var(--white-color);
+      transition: transform .4s ease, background .4s ease;
+      border-radius: 50%;
+    }
   }
 }
 

@@ -70,13 +70,8 @@
       &-address {
         @include fontSize14;
         margin-bottom: 13px;
-        padding-left: 37px;
         margin-top: 10px;
         font-style: normal;
-        background-repeat: no-repeat;
-        background-position: left top;
-        background-image: url('../../../img/tag.svg');
-        background-size: 4%;
         span {
           @include fontSize12;
           margin-top: 6px;
@@ -87,19 +82,15 @@
       &-tel {
         @include fontSize14;
         display: block;
-        padding-left: 37px;
-        padding-bottom: 10px;
-        background-repeat: no-repeat;
-        background-position: left top;
-        background-image: url('../../../img/tel.svg');
-        background-size: 5%;
+        margin-bottom: 12px;
       }
       &-link {
-        @include fontSize14;
-        display: block;
-        padding-left: 37px;
+        @include fontSize13;
+        padding: 4px 12px;
+        display: inline-block;
         margin-bottom: 25px;
-        color: var(--green-color);
+        border-radius: 100px;
+        background-color: var(--yellow-color);
       }
       &.ac {
         margin-top: 0;

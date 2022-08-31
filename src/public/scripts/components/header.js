@@ -61,16 +61,19 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="popup__wrap">
           <button class="popup__wrap-close"></button>
           <div class="popup__wrap-top">
+            <p class="popup__wrap-subtitle">
+              Выбор города
+            </p>
             <p class="popup__wrap-text">
               Ваш город Кострома?
             </p>
             <div class="popup__wrap-button-wrap">
-              <div id="city-confirm" class="popup__wrap-button">
+              <button id="city-confirm" class="popup__wrap-button">
                 Да, верно
-              </div>
-              <div id="city-change" class="popup__wrap-button">
-                Изменить
-              </div>
+              </button>
+              <button id="city-change" class="popup__wrap-button">
+                Нет, изменить
+              </button>
             </div>
           </div>
           <div class="choose-cities__wrap">
@@ -174,10 +177,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="popup__background"></div>
         <div class="popup__wrap">
           <button class="popup__wrap-close"></button>
-          <p class="popup__wrap-text">
-            Введите номер заказа
+          <p class="popup__wrap-subtitle">
+            Статус заказа
           </p>
-          <input type="text" class="popup__wrap-input" placeholder="000000" maxlength="6">
+          <input type="text" class="popup__wrap-input" placeholder="Введите номер заказа" maxlength="6">
           <button class="popup__wrap-button">
             Проверить
           </button>

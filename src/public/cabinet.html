@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compare</title>
+  <title>Cabinet</title>
 </head>
+
 <body>
   <header class="header">
     <div class="header__wrap-top">
@@ -855,456 +857,736 @@
   </header>
   <main class="main">
     <h1 class="visually-hidden">
-      Сравнение товаров
+      Личный кабинет
     </h1>
-    <section class="compare">
-      <div class="compare__wrap container">
-        <nav class="navigation">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a href="#" class="navigation__link back">
-                Назад
-              </a>
+    <section class="tabs">
+      <div class="tabs__wrap container">
+        <ul class="tabs__list">
+          <li class="tabs__item" data-path="profile">
+            Профиль
+          </li>
+          <li class="tabs__item" data-path="subscription">
+            Подписка
+          </li>
+          <li class="tabs__item" data-path="appeal">
+            Обращения
+          </li>
+          <li class="tabs__item" data-path="ad">
+            Объявления
+          </li>
+          <li class="tabs__item" data-path="orders">
+            Мои заказы
+          </li>
+          <li class="tabs__item" data-path="favourites">
+            Избранное
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="cabinet">
+      <div class="cabinet__wrap container">
+        <div class="cabinet__target" data-target="profile">
+          <h2 class="cabinet__profile-title">
+            Профиль
+          </h2>
+          <div class="cabinet__profile-user">
+            <div class="cabinet__profile-user-avatar-wrap">
+              <img src="img/anonavatar.svg" alt="Аватар пользователя" class="cabinet__profile-user-avatar">
+              <button class="cabinet__profile-user-avatar-change"></button>
+            </div>
+            <p class="cabinet__profile-user-name">
+              Константин Беляев
+              <span>
+                Изменить профиль
+              </span>
+            </p>
+          </div>
+          <form id="cabinet-form" class="cabinet__profile-form">
+            <div class="cabinet__profile-form-item">
+              <h3 class="cabinet__profile-subtitle">
+                Личные данные
+              </h3>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="name-form-input" type="text" placeholder=" " required>
+                <label for="name-form-input">Имя</label>
+              </div>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="surname-form-input" type="text" placeholder=" " required>
+                <label for="surname-form-input">Фамилия</label>
+              </div>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="birthday-form-input" type="date" placeholder=" " required>
+              </div>
+            </div>
+            <div class="cabinet__profile-form-item">
+              <h3 class="cabinet__profile-subtitle">
+                Доставка
+              </h3>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="city-form-input" type="text" placeholder=" " required>
+                <label for="city-form-input">Город</label>
+              </div>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="street-form-input" type="text" placeholder=" " required>
+                <label for="street-form-input">Улица</label>
+              </div>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="house-form-input" type="text" placeholder=" " required>
+                <label for="house-form-input">№ дома</label>
+              </div>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="apartment-form-input" type="text" placeholder=" " required>
+                <label for="apartment-form-input">№ квартиры</label>
+              </div>
+            </div>
+            <div class="cabinet__profile-form-item">
+              <h3 class="cabinet__profile-subtitle">
+                Контактные данные
+              </h3>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="tel-form-input" type="text" placeholder=" " required>
+                <label for="tel-form-input">Телефон</label>
+              </div>
+              <div class="input-wrap">
+                <input class="cabinet__profile-form-input" id="email-form-input" type="text" placeholder=" " maxlength="100" required>
+                <label for="surname-form-input">E-mail</label>
+              </div>
+              <p class="cabinet__profile-form-subtext">
+                Для отображения полного списка заказов необходимо подтвердить электронную почту и номер телефона
+              </p>
+              <button id="submit-button" class="cabinet__profile-button">
+                Сохранить
+              </button>
+            </div>
+            <div class="cabinet__profile-form-item">
+              <h3 class="cabinet__profile-subtitle">
+                Бонусная карта
+              </h3>
+              <p class="cabinet__profile-form-text">
+                Если у вас есть бонусная карта, вы можете добавить её здесь и продолжать покупки со скидкой
+              </p>
+              <button class="cabinet__profile-button">
+                Добавить или оформить карту
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="cabinet__target" data-target="subscription">
+          <h2 class="cabinet__profile-title">
+            Управление подпиской
+          </h2>
+          <p class="cabinet__profile-subscription-text">
+            Письма будут приходить на Email указанный в профиле. Вы в любой момент сможете настроить частоту рассылки
+            или отказаться от неё.
+          </p>
+          <ul class="cabinet__profile-subscription-list">
+            <li class="cabinet__profile-subscription-item">
+              <p class="cabinet__profile-subscription-item-title">
+                Акции, бонусы, скидки
+              </p>
+              <p class="cabinet__profile-subscription-item-text">
+                Информация о предстоящих акциях и скидках
+              </p>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
-                Главная
-              </a>
+            <li class="cabinet__profile-subscription-item">
+              <p class="cabinet__profile-subscription-item-title">
+                Персональные предложения
+              </p>
+              <p class="cabinet__profile-subscription-item-text">
+                Персональные скидки, подборки товаров по вашим интересам
+              </p>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
-                Ликвидация
-              </a>
+            <li class="cabinet__profile-subscription-item">
+              <p class="cabinet__profile-subscription-item-title">
+                Лучшее за неделю
+              </p>
+              <p class="cabinet__profile-subscription-item-text">
+                Все самое интересное за неделю
+              </p>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
             </li>
           </ul>
-        </nav>
-        <h2 class="compare__title">
-          Сравнение товаров
-        </h2>
-        <div class="compare__list-wrap">
-          <ul class="compare__titles-list">
-            <li class="compare__titles-item">
-              Изображение
+        </div>
+        <div class="cabinet__target" data-target="appeal">
+          <h2 class="cabinet__profile-title">
+            Обращения
+          </h2>
+          <div class="cabinet__profile-appeal-columns">
+            <div class="cabinet__profile-appeal-column">
+              <h3 class="cabinet__profile-subtitle">
+                Обмен и возврат
+              </h3>
+              <ul class="cabinet__profile-appeal-list">
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Подготовьтесь заранее.
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    Ознакомьтесь с правилами работы сервисного центра.
+                  </p>
+                </li>
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Принесите товар в пункт выдачи.
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    Найдите ближайший магазин и узнайте режим его работы на Странице адресов.
+                  </p>
+                </li>
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Возьмите с собой:
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    полную комплектация товара, чек или номер заказа (можно найти в разделе Все заказы), паспорт.
+                  </p>
+                </li>
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Завершите обращение.
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    Получите в магазине новый товар или денежные средства. При оплате по безналичному расчёту деньги
+                    вернутся на карту в течение N дней.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="cabinet__profile-appeal-column">
+              <h3 class="cabinet__profile-subtitle">
+                Ремонт и диагностика
+              </h3>
+              <ul class="cabinet__profile-appeal-list">
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Подготовьтесь заранее.
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    Убедитесь, что гарантийный талон заполнен. Ознакомьтесь с правилами работы сервисного центра.
+                  </p>
+                </li>
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Возьмите с собой:
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    гарантийный талон, полную комплектацию товара, чек или номер заказа.
+                  </p>
+                </li>
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Сдайте товар в пункт выдачи заказа.
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    Вы получите акт приема и номер зарегистрированного сообщения. Сроки ремонта зависят от типа оружия,
+                    характера поломки и наличия запасных частей.
+                  </p>
+                </li>
+                <li class="cabinet__profile-appeal-item">
+                  <p class="cabinet__profile-appeal-text">
+                    Получите товар.
+                  </p>
+                  <p class="cabinet__profile-appeal-text">
+                    Предъявите паспорт и акт приема инструмента.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cabinet__target" data-target="ad">
+          <h2 class="cabinet__profile-title">
+            Объявления
+          </h2>
+          <p class="cabinet__profile-ad-text">
+            У вас пока нет ни одного объявления
+          </p>
+          <button class="cabinet__profile-ad-button">
+            Разместить
+          </button>
+        </div>
+        <div class="cabinet__target" data-target="orders">
+          <h2 class="cabinet__orders-title">
+            Мои заказы
+          </h2>
+          <ul class="cabinet__orders-list accordion-container">
+            <li class="cabinet__orders-item ac">
+              <p class="cabinet__orders-item-title ac-header is-worked">
+                <button type="button" class="cabinet__orders-item-button ac-trigger">
+                  Заказ 04.09.2022 <span>25217222-0041</span>
+                </button>
+              </p>
+              <div class="cabinet__orders-item-panel ac-panel">
+                <div class="cabinet__orders-item-order">
+                  <div class="cabinet__orders-item-order-status-wrap">
+                    <p class="cabinet__orders-item-order-status">
+                      Статус заказа: <span class="worked">В обработке</span>
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Дата доставки: 06.06.2022
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Способ доставки: в пункт выдачи
+                    </p>
+                  </div>
+                  <img class="cabinet__orders-item-order-img" src="img/card-img.png" alt="Картинка товара">
+                  <div class="cabinet__orders-item-order-price-wrap">
+                    <p class="cabinet__orders-item-order-price">
+                      157 990 &#8381; 
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Оплачено
+                    </p>
+                  </div>
+                </div>
+                <div class="cabinet__orders-item-order">
+                  <div class="cabinet__orders-item-order-status-wrap">
+                    <p class="cabinet__orders-item-order-status">
+                      Статус заказа: <span>В обработке</span>
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Дата доставки: 06.06.2022
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Способ доставки: в пункт выдачи
+                    </p>
+                  </div>
+                  <img class="cabinet__orders-item-order-img" src="img/card-img.png" alt="Картинка товара">
+                  <div class="cabinet__orders-item-order-price-wrap">
+                    <p class="cabinet__orders-item-order-price">
+                      157 990 &#8381; 
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Оплачено
+                    </p>
+                  </div>
+                </div>
+              </div>
             </li>
-            <li class="compare__titles-item">
-              Описание
-            </li>
-            <li class="compare__titles-item">
-              Наличие
-            </li>
-            <li class="compare__titles-item">
-              Бренд
-            </li>
-            <li class="compare__titles-item">
-              Характеристики
+            <li class="cabinet__orders-item ac">
+              <p class="cabinet__orders-item-title ac-header">
+                <button type="button" class="cabinet__orders-item-button ac-trigger">
+                  Заказ 04.09.2022 <span>25217222-0041</span>
+                </button>
+              </p>
+              <div class="cabinet__orders-item-panel ac-panel">
+                <div class="cabinet__orders-item-order">
+                  <div class="cabinet__orders-item-order-status-wrap">
+                    <p class="cabinet__orders-item-order-status">
+                      Статус заказа: <span>В обработке</span>
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Дата доставки: 06.06.2022
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Способ доставки: в пункт выдачи
+                    </p>
+                  </div>
+                  <img class="cabinet__orders-item-order-img" src="img/card-img.png" alt="Картинка товара">
+                  <div class="cabinet__orders-item-order-price-wrap">
+                    <p class="cabinet__orders-item-order-price">
+                      157 990 &#8381; 
+                    </p>
+                    <p class="cabinet__orders-item-order-text">
+                      Оплачено
+                    </p>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
-          <div class="swiper swiper-compare">         
-            <ul class="compare__card-list swiper-wrapper">
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+        </div>
+        <div class="cabinet__target" data-target="favourites">
+          <h2 class="cabinet__orders-title">
+            Избранное
+          </h2>
+          <div class="swiper swiper-favourite">
+            <ul class="cabinet__favourites-list swiper-wrapper cards-list">
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
                       </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
                       </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
                       </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
                       </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
                       </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
                       </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
                     </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <div class="card-item__description-stock-wrap">
+                        <p class="card-item__description-stock avaliable">
+                          Склад
+                        </p>
+                        <p class="card-item__description-stock not-avaliable">
+                          Магазин
+                        </p>
+                        <p class="card-item__description-stock">
+                          Нет в наличии
+                        </p>
+                      </div>
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
               </li>
             </ul>
-            <div class="compare__card-list-scrollbar swiper-scrollbar"></div>
+            <div class="favourites__swiper-button-prev swiper-button-prev"></div>
+            <div class="favourites__swiper-button-next swiper-button-next"></div>
           </div>
         </div>
       </div>
@@ -1502,4 +1784,5 @@
     </div>
   </footer>
 </body>
+
 </html>

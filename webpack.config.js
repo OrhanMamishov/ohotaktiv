@@ -31,6 +31,7 @@ module.exports = {
     cardEntry: "./src/public/scripts/pages/card.js",
     catalogEntry: "./src/public/scripts/pages/catalog.js",
     sertEntry: "./src/public/scripts/pages/sert.js",
+    cabinetEntry: "./src/public/scripts/pages/cabinet.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -187,6 +188,14 @@ module.exports = {
       filename: "sert.html",
       template: path.resolve(__dirname, "./src/public/sert.html"),
       chunks: ["sertEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "cabinet.html",
+      template: path.resolve(__dirname, "./src/public/cabinet.html"),
+      chunks: ["cabinetEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),

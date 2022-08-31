@@ -21,13 +21,17 @@
       font-weight: 900;
       margin-bottom: 60px;
     }
+    &-subtitle {
+      @include fontSize18;
+      font-weight: 800;
+    }
     &-text {
       @include fontSize13;
       margin-bottom: 14px;
     }
     &-input {
       @include contentInput;
-      padding: 11px 18px;
+      padding: 11px 0;
     }
     &-button {
       @include contentButton;
@@ -36,14 +40,13 @@
     }
     &-close {
       @include closeButton;
-      width: 12px;
       top: 15px;
-      right: 10px;
+      right: 15px;
     }
   }
   &__form {
     &-title {
-      @include fontSize17;
+      @include fontSize15;
       margin-bottom: 24px; 
       font-weight: 800;
     }
@@ -66,10 +69,13 @@
 #popup-status {
   .popup {
     &__wrap {
-      padding: 24px;
-      width: 218px;
+      padding: 25px 30px;
+      width: 349px;
       &-input {
         margin-bottom: 18px;
+      }
+      &-subtitle {
+        margin-bottom: 20px;
       }
     }
   }
@@ -80,18 +86,9 @@
       width: 702px;
       max-height: 95%;
       padding: 60px 66px;
-      &-input {
-        padding: 15px 20px;
-        font-weight: 500;
-      }
       &-close {
         top: 30px;
         right: 30px;
-        width: 21px;
-        &::before,
-        &::after {
-          background-color: var(--grey-form-color);
-        }
       }
     }
     &__personal {
@@ -99,16 +96,8 @@
         margin-bottom: 40px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         gap: 26px;
-        .input-wrap {
-          &:first-child { grid-area: 1 / 1 / 2 / 2; }
-          &:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
-          &:nth-child(3) { grid-area: 2 / 1 / 3 / 3; }
-          &:nth-child(4) { grid-area: 3 / 1 / 4 / 3; }
-          &:nth-child(5) { grid-area: 4 / 1 / 5 / 2; }
-          &:last-child { grid-area: 4 / 2 / 5 / 3; }
-        }
       }
     }
     &__hobbies {
@@ -147,7 +136,6 @@
         &-close {
           top: 16px;
           right: 16px;
-          width: 15px;
         }
       }
       &__personal {
@@ -182,19 +170,24 @@
   .popup {
     &__wrap {
       min-width: 310px;
-      padding: 21px 25px;
+      padding: 25px 30px;
+      &-subtitle {
+        margin-bottom: 22px;
+      }
       &-text {
         @include fontSize13;
-        margin-bottom: 10px;
-        text-align: center;
+        margin-bottom: 25px;
       }
       &-button {
         @include contentButton;
         @include fontSize13;
-        padding: 12px 26px;
+        padding: 17px 24px;
         &-wrap {
           display: flex;
           justify-content: space-between;
+        }
+        &:not(:last-child) {
+          margin-right: 17px;
         }
         &:nth-child(2) {
           background-color: transparent;
@@ -222,6 +215,7 @@
           background-image: url('../../../img/search.svg');
           background-position: center right;
           &::placeholder {
+            @include fontSize14;
             color: var(--grey-form-color);
           }
         }

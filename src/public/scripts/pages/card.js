@@ -7,7 +7,30 @@ import "swiper/css";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  // запрос данных с БД
+  // const idGood = document.location
+  // console.log(document.location.search);
+  // const arrayFromBase = await fetch("https://ohotaktiv.ru/12dev/begin/", {
+  //   mode: "no-cors",
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
+  //   .then((res) => res.json())
+  //   .then((res) => console.log(res));
+  // await fetch(`https://ohotaktiv.ru/12dev/order_status/?order_id=111111`, {
+  //   mode: "no-cors",
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // }).then((res) => res.json());
+  // запрос данных с БД
+  // наполнение контента
+
+  // наполнение контента
   // свайперы и чойзы
   const galleryThumbs = new Swiper(".gallery-thumbs", {
     modules: [Mousewheel],

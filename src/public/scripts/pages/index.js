@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
           spaceBetween: 20,
           slidesPerView: 3,
         },
+        600: {
+          spaceBetween: 20,
+          slidesPerView: 3,
+        },
         320: {
           spaceBetween: 30,
           slidesPerView: 2,
@@ -68,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         spaceBetween: 30,
         slidesPerView: 4,
       },
-      767: {
+      500: {
         spaceBetween: 30,
         slidesPerView: 3,
       },
@@ -88,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     breakpoints: {
       1559: {
         spaceBetween: 35,
-        slidesPerView: 4,
+        slidesPerView: 3,
       },
       1439: {
         spaceBetween: 30,
@@ -100,6 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       767: {
         spaceBetween: 30,
+        slidesPerView: 2,
+      },
+      500: {
+        spaceBetween: 10,
         slidesPerView: 2,
       },
       320: {
@@ -134,24 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
   // Свайперы
-  // Табы в блоке Готовимся к сезону
-  const readyButtonsIndex = document.querySelectorAll(".ready__tab-button");
-  const readyListTabsIndex = document.querySelectorAll(".ready__list");
-  readyButtonsIndex.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (button.classList.contains("is-active")) return;
-      readyButtonsIndex.forEach((el) => el.classList.remove("is-active"));
-      button.classList.add("is-active");
-      const target = button.getAttribute("data-path");
-      readyListTabsIndex.forEach((list) => {
-        list.classList.remove("is-open");
-        if (list.getAttribute("data-target") == target)
-          list.classList.add("is-open");
-      });
-    });
-  });
-  // Табы в блоке Готовимся к сезону
-
   // Попапчики
   // Вывод попапчика с оформлением заказа
   const bonuscardButtonIndex = document.getElementById(
@@ -167,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </h2>
         <form action="#" class="popup__form">
           <h3 class="popup__form-title">
-              Личные данные
+            Введите личные данные
           </h3>
           <div class="popup__personal-wrap">
             <div class="input-wrap">

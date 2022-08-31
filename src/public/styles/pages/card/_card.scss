@@ -3,6 +3,10 @@
     margin-bottom: 50px;
     &__title {
       margin-bottom: 10px;
+      &.skeleton {
+        width: 800px;
+        height: 20px;
+      }
     }
     &__wrap {
       position: relative;
@@ -12,6 +16,10 @@
       top: 50px;
       right: 120px;
       width: 123px;
+      &.skeleton {
+        width: 123px;
+        height: 31px;
+      }
     }
     &__code {
       &-wrap {
@@ -25,6 +33,10 @@
         }
         &:not(:last-child) {
           margin-right: 5px;
+        }
+        &.skeleton {
+          width: 200px;
+          height: 20px;
         }
       }
     }
@@ -64,6 +76,10 @@
               margin-bottom: 12px;
             }
           }
+        }
+        &.skeleton {
+          width: 300px;
+          height: 120px;
         }
       }
       &-title {
@@ -115,6 +131,10 @@
             }
           }
         }
+        &.skeleton {
+          width: 300px;
+          height: 76px;
+        }
       }
       &-social {
         &-text {
@@ -148,6 +168,10 @@
             background-image: url('../../../img/ok-grey.svg');
           }
         }
+        &.skeleton {
+          width: 300px;
+          height: 50px;
+        }
       }
     }
     &__img {
@@ -174,6 +198,10 @@
           max-width: 88px;
           width: 100%;
           max-height: 284px;
+          &.skeleton {
+            width: 88px;
+            height: 284px;
+          }
         }
         &-slide {
           border: 1px solid var(--border-color);
@@ -189,6 +217,10 @@
           box-sizing: border-box;
           height: 350px;
           width: 517px;
+          &.skeleton {
+            width: 510px;
+            height: 350px;
+          }
         }
         &-slide {
           width: 200px;
@@ -214,6 +246,10 @@
         .card-item__description-stock-wrap {
           margin-bottom: 18px;
         }
+        &.skeleton {
+          width: 330px;
+          height: 290px;
+        }
       }
       &-through {
         @include fontSize15;
@@ -231,7 +267,7 @@
       }
       &-price {
         @include fontSize24;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         font-weight: 900;
       }
       &-count {
@@ -240,26 +276,26 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 13px 17px;
+          padding: 15px 17px;
           margin-right: 16px;
           border: 1px solid var(--footer-title-color);
           border-radius: 100px;
         }
         &-input {
           @include fontSize13;
-          max-width: 47px;
+          max-width: 24px;
           text-align: center;
         }
         &-button {
           &-wrap {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
           }
           &-addtocart {
             @include contentButton;
             @include fontSize13;
-            padding: 16px 38px;
+            padding: 18px 38px;
           }
         }
         &-text {
@@ -282,7 +318,7 @@
     }
     &__tab {
       display: none;
-      padding: 67px 0;
+      padding: 67px 0 30px;
       &-title {
         @include fontSize15;
         margin-bottom: 27px;
@@ -303,6 +339,10 @@
             margin-bottom: 12px;
           }
         }
+        &.skeleton {
+          width: 580px;
+          height: 270px;
+        }
       }
       &-stats {
         &-wrap {
@@ -318,28 +358,22 @@
       &-text {
         @include fontSize14;
         line-height: 24px;
+        &.skeleton {
+          width: 707px;
+          height: 264px;
+        }
       }
       &-set {
         &-list {
+          @include tabsMiniList;
           margin-bottom: 70px;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-        }
-        &-item {
-          @include fontSize13;
-          padding: 8px 16px;
-          border-radius: 100px;
-          border: 1px solid var(--border-color);
-          &.is-active {
-            border-color: var(--yellow-color);
-            background-color: var(--yellow-color);
-          }
         }
         &-result {
           &-list {
             display: flex;
-            padding-bottom: 70px;
+          }
+          .swiper {
+            padding: 5px 30px;
           }
           &-swiper-button {
             @include swiperArrowsIndexPage;
@@ -481,8 +515,12 @@
         }
       }
       &-avaliability {
+        &-list {
+          height: 373px;
+          overflow-x: hidden;
+        }
         &-item {
-          padding: 23px 0;
+          padding: 23px 30px 23px 0;
           display: flex;
           align-items: center;
           justify-content: space-between;

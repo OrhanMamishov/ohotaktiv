@@ -40,9 +40,6 @@
 }
 @mixin fontSize17 {
   font-size: 17px;
-  @media only screen and (max-width: 1023px) {
-    font-size: 17px;
-  }
   @media only screen and (max-width: 767px) {
     font-size: 14px;
   }
@@ -67,12 +64,6 @@
 }
 @mixin fontSize13 {
   font-size: 13px;
-  @media only screen and (max-width: 1023px) {
-    font-size: 13px;
-  }
-  @media only screen and (max-width: 767px) {
-    font-size: 12px;
-  }
 }
 @mixin fontSize12 {
   font-size: 12px;
@@ -87,32 +78,17 @@
 @mixin closeButton {
   position: absolute;
   cursor: pointer;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--black-color);
-    transform: rotate(45deg) translate(0, -50%);
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--black-color);
-    transform: rotate(-45deg) translate(0, -50%);
-  }
+  width: 40px;
+  height: 40px;
+  background-image: url('../../../img/close-button.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 @mixin miniCloseButton {
   width: 8px;
   height: 8px;
   cursor: pointer;
-  background-image: url('../../../img/close-button.svg');
+  background-image: url('../../../img/close-button-mini.svg');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -133,13 +109,14 @@
   }
   &.is-not-valid {
     border-color: var(--red-color);
-    color: var(--red-color);
     animation: 0.1s tremor ease-out 1; 
   }
 }
 @mixin swiperArrowsIndexPage {
   &-prev,
   &-next {
+    top: 0;
+    height: 100%;
     border-radius: 100px;
     &::after {
       font-size: 20px;
@@ -183,7 +160,7 @@
   flex-wrap: wrap;
   gap: 18px;
   li {
-    @include fontSize14;
+    @include fontSize13;
     padding: 13px 22px;
     border-radius: 100px;
     border: 1px solid var(--darkness-white-color);

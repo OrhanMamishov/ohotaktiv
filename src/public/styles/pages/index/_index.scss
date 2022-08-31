@@ -31,6 +31,7 @@
     &__button {
       @include contentButton;
       @include fontSize13;
+      width: fit-content;
     }
   }
   .bestsellers {
@@ -135,12 +136,11 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: 385px 245px;
-      gap: 35px;
+      gap: 25px;
     }
     &__item {
       position: relative;
       overflow: hidden;
-      border-radius: 20px;
       &-text {
         @include fontSize22;
         padding-right: 30px;
@@ -190,31 +190,19 @@
       left: unset;
       width: unset;
       height: fit-content;
+      border-bottom: 1px solid var(--border-color);
       .swiper-pagination-bullet {
         @include fontSize14;
         padding: 10px 20px;
         width: auto;
         height: auto;
-        background: var(--light-grey-color);
-        border-radius: 100px;
+        color: var(--black-color);
+        background: transparent;
+        border-radius: 0;
         font-weight: 500;
         opacity: 1;
         &-active {
-          padding-left: 40px;  
-          position: relative;
-          background: var(--black-color);
-          color: var(--white-color);
-          &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            width: 15px;
-            height: 10px;
-            transform: translate(0, -50%);
-            background-image: url('../../../img/checked--white.svg');
-            background-repeat: no-repeat;
-          }
+          border-bottom: 2px solid var(--black-color);
         }
       }
     }
@@ -666,7 +654,7 @@
   .main {
     .banners {
       &__img {
-        height: 164px;
+        height: 220px;
       }
       &__text {
         width: 100%;
@@ -684,9 +672,6 @@
       margin-bottom: 25px;
       &__title {
         margin-bottom: 25px;
-      }
-      .swiper {
-        max-width: 520px;
       }
     }
     .bonuscard {
@@ -714,9 +699,6 @@
       &__title {
         margin-bottom: 25px;
       }
-      .swiper {
-        max-width: 520px;
-      }
     }
     .popular {
       margin-bottom: 25px;
@@ -739,9 +721,6 @@
       &__title {
         margin-bottom: 25px;
       }
-      .swiper {
-        max-width: 520px;
-      }
     }
     .ready {
       margin-bottom: 25px;
@@ -754,6 +733,11 @@
         padding: 0 16px;
       }
       &__item {
+        &-img {
+          &:hover {
+            transform: none;
+          }
+        }
         &-text {
           padding-right: 0;
           font-size: 12px;
@@ -780,6 +764,7 @@
         position: unset;
         margin-bottom: 25px;
         text-align: unset;
+        width: fit-content;
         .swiper-pagination-bullet {
           margin: 0;
           &:not(:last-child) {
