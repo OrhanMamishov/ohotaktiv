@@ -1,0 +1,49 @@
+.main {
+  .contacts {
+    padding-bottom: 164px;
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__title {
+      width: 100%;
+    }
+    &__item {
+      padding-top: 87px;
+      width: 370px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      background-repeat: no-repeat;
+      background-position: top left;
+      &:nth-child(3) {
+        background-image: url('../../../img/call-us.svg');
+      }
+      &:nth-child(4) {
+        background-image: url('../../../img/feedback.svg');
+      }
+      &:last-child {
+        background-image: url('../../../img/office.svg');
+      }
+      &:not(:last-child) {
+        margin-right: 123px;
+      }
+      &-title {
+        font-size: 20px;
+        margin-bottom: 14px;
+        font-weight: 900;
+      }
+      &-text {
+        @include fontSize15;
+        line-height: 28px;
+        margin-bottom: 25px;
+      }
+      &-link {
+        @include contentButton;
+        @include fontSize15;
+        padding: 8px 20px;
+        margin-top: auto;
+      }
+    }
+  }
+}

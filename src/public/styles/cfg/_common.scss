@@ -455,6 +455,21 @@ main {
     font-weight: 300;
   }
 }
+.input-wrap-file {
+  input {
+    display: none;
+  }
+  label {
+    @include fontSize14;
+    padding: 6px 50px 6px 30px;
+    color: var(--grey-form-color);
+    background-image: url('../../../img/file.svg');
+    background-repeat: no-repeat;
+    background-position: left center;
+    border-bottom: 2px solid var(--border-color);
+    cursor: pointer;
+  }
+}
 .checkbox {
   &__label {
     @include fontSize13;

@@ -1,0 +1,114 @@
+.main {
+  .banner {
+    background-image: url('../../../img/partners-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    &__wrap {
+      padding-top: 119px;
+      padding-bottom: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__title {
+      width: 640px;
+      margin-bottom: 33px;
+      line-height: 55px;
+      font-weight: 900;
+      font-size: 40px;
+      color: var(--white-color);
+      text-align: center;
+    }
+    &__link {
+      @include contentButton;
+      @include fontSize14;
+    }
+  }
+  .description {
+    &__wrap {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      display: flex;
+      justify-content: space-around;
+    }
+    &__item {
+      padding-top: 87px;
+      width: 290px;
+      text-align: center;
+      background-repeat: no-repeat;
+      background-position: top center;
+      &-title {
+        margin-bottom: 14px;
+        font-size: 20px;
+        font-weight: 900;
+      }
+      &-text {
+        @include fontSize15;
+        line-height: 28px;
+      }
+      &:first-child {
+        background-image: url('../../../img/blank.svg');
+      }
+      &:nth-child(2) {
+        background-image: url('../../../img/feedback.svg');
+      }
+      &:last-child {
+        background-image: url('../../../img/contract.svg');
+      }
+    }
+  }
+  .blank {
+    &__wrap {
+      max-width: 942px;
+    }
+    &__title {
+      margin-bottom: 70px;
+      text-align: center;
+    }
+    &__form {
+      &-item {
+        margin-bottom: 80px;
+        .input-wrap {
+          padding: 8px 0;
+          width: 100%;
+          border-bottom: 2px solid var(--border-color);
+          input {
+            @include fontSize14;
+          }
+          &:not(:last-child) {
+            margin-bottom: 30px;
+          }
+        }
+        &:nth-child(5) {
+          .blank__form-title {
+            margin-bottom: 10px;
+          }
+        }
+      }
+      &-radio-wrap {
+        label {
+          &:not(:last-child) {
+            margin-right: 60px;
+          }
+        }
+      }
+      &-title {
+        @include fontSize17;
+        margin-bottom: 40px;
+        font-weight: 800;
+      }
+      &-text {
+        @include fontSize14;
+        margin-bottom: 50px;
+      }
+      &-button {
+        @include contentButton;
+        @include fontSize14;
+        margin-bottom: 5px;
+      }
+      &-subtext {
+        @include fontSize12;
+      }
+    }
+  }
+}

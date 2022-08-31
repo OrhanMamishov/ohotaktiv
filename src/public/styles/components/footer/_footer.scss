@@ -17,7 +17,7 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      height: 500px;
+      height: 450px;
     }
     &-title {
       @include fontSize13;
@@ -29,7 +29,7 @@
   &__buyer {
     &-list {
       &:nth-child(4) {
-        margin-bottom: 61px;
+        margin-bottom: 57px;
       }
     }
     &-item {
@@ -197,7 +197,7 @@
     }
     &__lists {
       &-wrap {
-        height: 475px;
+        height: 425px;
         grid-area: 1 / 1 / 3 / 2;
       }
       &-title {
