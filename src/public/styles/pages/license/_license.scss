@@ -1,0 +1,28 @@
+.main {
+  .license {
+    padding-bottom: 131px;
+    &__tabs-list {
+      @include tabsMiniList;
+      margin-bottom: 44px;
+    }
+    &__result {
+      width: 948px;
+      display: none;
+      &.is-open {
+        display: block;
+      }
+      &-title {
+        @include fontSize17;
+        margin-bottom: 15px;
+        font-weight: 800;
+      }
+      &-text {
+        @include fontSize15;
+        line-height: 28px;
+        &:not(:last-child) {
+          margin-bottom: 55px;
+        }
+      }
+    }
+  }
+}
