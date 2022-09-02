@@ -88,19 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitButton = document.getElementById("submit-button");
   submitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    let trigger = false;
     const inputs = document.querySelectorAll(".cabinet__profile-form-input");
     inputs.forEach((input) => {
       if (input.type == "date") return;
-      trigger = true;
       if (!input.validity.valid) {
         input.classList.add("is-not-valid");
-        trigger = false;
       }
     });
-    if (trigger) {
-      console.log("post");
-    }
   });
   Inputmask({
     mask: "*{30}",

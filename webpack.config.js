@@ -38,6 +38,7 @@ module.exports = {
     contactsEntry: "./src/public/scripts/pages/contacts.js",
     requisitesEntry: "./src/public/scripts/pages/requisites.js",
     deliveryEntry: "./src/public/scripts/pages/delivery.js",
+    optEntry: "./src/public/scripts/pages/opt.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -250,6 +251,14 @@ module.exports = {
       filename: "delivery.html",
       template: path.resolve(__dirname, "./src/public/delivery.html"),
       chunks: ["deliveryEntry"],
+      inject: "head",
+      scriptLoading: "blocking",
+    }),
+    new HtmlWebpackPlugin({
+      // favicon: "src/assets/img/favicon.svg",
+      filename: "opt.html",
+      template: path.resolve(__dirname, "./src/public/opt.html"),
+      chunks: ["optEntry"],
       inject: "head",
       scriptLoading: "blocking",
     }),

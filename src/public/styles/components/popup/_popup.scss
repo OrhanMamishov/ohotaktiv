@@ -80,7 +80,8 @@
     }
   }
 }
-#popup-bonuscard {
+#popup-bonuscard,
+#popup-vacancy {
   .popup {
     &__wrap {
       width: 702px;
@@ -259,6 +260,22 @@
             &:not(:last-child) {
               margin-bottom: 10px;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+#popup-vacancy {
+  .popup {
+    &__personal {
+      &-wrap {
+        .input-wrap-file {
+          grid-area: 3 / 1 / 4 / 3;
+          label {
+            padding: 11px 30px;
+            border-bottom: 2px solid var(--grey-form-color);
           }
         }
       }

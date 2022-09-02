@@ -461,6 +461,7 @@ main {
   }
   label {
     @include fontSize14;
+    display: block;
     padding: 6px 50px 6px 30px;
     color: var(--grey-form-color);
     background-image: url('../../../img/file.svg');
