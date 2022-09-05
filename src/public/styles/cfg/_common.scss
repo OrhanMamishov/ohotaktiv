@@ -2,46 +2,39 @@
 @import 'mixin';
 
 @font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300;
-  src: url('/src/public/fonts/inter-v12-latin_cyrillic-300.woff2') format('woff2'),
-       url('/src/public/fonts/inter-v12-latin_cyrillic-300.woff') format('woff'),
-}
-@font-face {
-  font-family: 'Inter';
+  font-family: 'GT';
   font-style: normal;
   font-weight: 400;
-  src: url('/src/public/fonts/inter-v12-latin_cyrillic-regular.woff2') format('woff2'),
-       url('/src/public/fonts/inter-v12-latin_cyrillic-regular.woff') format('woff'),
+  src: url('/src/public/fonts/GTEestiProDisplay-Regular.woff2') format('woff2'),
+       url('/src/public/fonts/GTEestiProDisplay-Regular.woff') format('woff'),
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'GT';
   font-style: normal;
   font-weight: 500;
-  src: url('/src/public/fonts/inter-v12-latin_cyrillic-500.woff2') format('woff2'),
-       url('/src/public/fonts/inter-v12-latin_cyrillic-500.woff') format('woff'),
+  src: url('/src/public/fonts/GTEestiProDisplay-Medium.woff2') format('woff2'),
+       url('/src/public/fonts/GTEestiProDisplay-Medium.woff') format('woff'),
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'GT';
   font-style: normal;
   font-weight: 700;
-  src: url('/src/public/fonts/inter-v12-latin_cyrillic-700.woff2') format('woff2'),
-       url('/src/public/fonts/inter-v12-latin_cyrillic-700.woff') format('woff'),
+  src: url('/src/public/fonts/GTEestiProDisplay-Bold.woff2') format('woff2'),
+       url('/src/public/fonts/GTEestiProDisplay-Bold.woff') format('woff'),
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'GT';
   font-style: normal;
   font-weight: 800;
-  src: url('/src/public/fonts/inter-v12-latin_cyrillic-800.woff2') format('woff2'),
-       url('/src/public/fonts/inter-v12-latin_cyrillic-800.woff') format('woff'),
+  src: url('/src/public/fonts/GTEestiProDisplay-UltraBold.woff2') format('woff2'),
+       url('/src/public/fonts/GTEestiProDisplay-UltraBold.woff') format('woff'),
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'GT';
   font-style: normal;
   font-weight: 900;
-  src: url('/src/public/fonts/inter-v12-latin_cyrillic-900.woff2') format('woff2'),
-       url('/src/public/fonts/inter-v12-latin_cyrillic-900.woff') format('woff'),
+  src: url('/src/public/fonts/GTEestiProDisplay-UltraBold.woff2') format('woff2'),
+       url('/src/public/fonts/GTEestiProDisplay-UltraBold.woff') format('woff'),
 }
 
 * {
@@ -68,7 +61,7 @@
   --light-green-color: #40CC80;
   --green-color: #1AB28F;
   --red-color: #FF153F;
-  --black-color: #000000;
+  --black-color: #161616;
   --white-color: #FFFFFF;
   --dark-grey-color: #545454;
   --black-footer-color: #2C2C2C;
@@ -77,7 +70,7 @@ body,
 html {
   min-width: 320px;
   font-size: 15px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'GT', sans-serif;
   font-weight: 500;
   background-color: var(--white-color);
   color: var(--black-color);
@@ -101,6 +94,19 @@ input {
   background-color: transparent;
   border: none;
   outline: none;
+  &[type="number"] {
+    appearance: none;
+    -moz-appearance: textfield;
+    &:hover,
+    &:focus {
+      appearance: none;
+      -moz-appearance: textfield;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
 }
 button {
   @include clearStyles;
@@ -141,6 +147,7 @@ section {
 }
 main {
   padding-top: 123px;
+  padding-bottom: 100px;
   @media only screen and (max-width: 1560px) {
     padding-top: 119px;
   }
@@ -438,9 +445,17 @@ main {
 }
 .input-wrap {
   position: relative;
+  input {
+    @include contentInput;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
+    &:focus {
+      border-bottom: 1px solid var(--black-color);
+    }
+  }
   label {
-    @include fontSize13;
-    font-weight: 500;
+    @include fontSize14;
+    font-weight: 400;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -452,7 +467,6 @@ main {
   input:not(:placeholder-shown) ~ label {
     top: 0%;
     font-size: 10px;
-    font-weight: 300;
   }
 }
 .input-wrap-file {
@@ -462,12 +476,12 @@ main {
   label {
     @include fontSize14;
     display: block;
-    padding: 6px 50px 6px 30px;
+    padding: 14px 50px 14px 30px;
     color: var(--grey-form-color);
     background-image: url('../../../img/file.svg');
     background-repeat: no-repeat;
     background-position: left center;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px dashed var(--grey-form-color);
     cursor: pointer;
   }
 }
@@ -659,7 +673,7 @@ main {
     }
     &-item {
       border-radius: 6px;
-      width: 176px;
+      width: 184px;
       background-color: var(--white-color);
       &:not(:last-child) {
         margin-right: 25px;
@@ -667,7 +681,7 @@ main {
     }
     &-link {
       @include fontSize12;
-      padding: 6px 14px 11px 49px;
+      padding: 9px 14px 9px 49px;
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
@@ -724,7 +738,6 @@ main {
   @media only screen and (max-width: 1365px) {
     &__img {
       width: 237px;
-      margin-right: 0;
     }
     &__description {
       &-wrap {
@@ -734,14 +747,14 @@ main {
     &__text {
       padding: 15px 0 22px 141px;
       margin-bottom: 23px;
-      background-size: 25%;
+      background-size: 24%;
       font-size: 28px;
       line-height: 38px;
     }
     &__wrap {
-      max-width: 695px;
+      max-width: 894px;
       &-item {
-        width: 135px;
+        width: 141px;
         &:not(:last-child) {
           margin-right: 17px;
         }
@@ -757,6 +770,11 @@ main {
       }
     }
   }
+  @media only screen and (max-width: 1023px) {
+    &__wrap {
+      max-width: 795px;
+    }
+  }
   @media only screen and (max-width: 767px) {
     padding-top: 21px;
     &__img {
@@ -767,7 +785,7 @@ main {
       padding: 0;
       margin-bottom: 12px;
       background-image: unset;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 21px;
     }
     &__wrap {
@@ -800,7 +818,9 @@ main {
   align-items: flex-end;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  &:not(:last-child) {
+    margin-bottom: 18px;
+  }
   &__prop {
     position: relative;
     width: 70%;

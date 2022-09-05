@@ -26,6 +26,9 @@
 @mixin fontSize22 {
   font-size: 22px;
 }
+@mixin fontSize20 {
+  font-size: 20px;
+}
 @mixin fontSize19 {
   font-size: 19px;
 }
@@ -93,9 +96,9 @@
   background-size: contain;
 }
 @mixin contentInput {
-  @include fontSize13;
+  @include fontSize14;
   width: 100%;
-  border-bottom: 2px solid var(--grey-form-color);
+  border-bottom: 1px solid var(--grey-form-color);
   transition: border .2s ease;
   &::placeholder {
     color: var(--grey-color);
@@ -104,8 +107,7 @@
     border-color: var(--dark-grey-color);
   }
   &:focus {
-    border-width: 2px;
-    border-color: var(--dark-grey-color);
+    border-color: var(--black-color);
   }
   &.is-not-valid {
     border-color: var(--red-color);

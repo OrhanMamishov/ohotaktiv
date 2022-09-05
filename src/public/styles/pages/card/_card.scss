@@ -1,8 +1,9 @@
 .main {
+  padding-bottom: 0;
   .card {
     margin-bottom: 50px;
     &__title {
-      margin-bottom: 10px;
+      margin-bottom: 16px;
       &.skeleton {
         width: 800px;
         height: 20px;
@@ -23,8 +24,8 @@
     }
     &__code {
       &-wrap {
-        margin-bottom: 20px;
         display: flex;
+        margin-bottom: 30px;
       }
       &-article {
         @include fontSize13;
@@ -71,9 +72,6 @@
             }
             &::after {
               @include fontSize13;
-            }
-            &:not(:last-child) {
-              margin-bottom: 12px;
             }
           }
         }
@@ -237,14 +235,14 @@
         border-radius: 20px;
         .not-clicked-rate {
           &-wrap {
-            margin-bottom: 14px;
+            margin-bottom: 18px;
           }
           &-karma {
             @include fontSize13;
           }
         }
         .card-item__description-stock-wrap {
-          margin-bottom: 18px;
+          margin-bottom: 20px;
         }
         &.skeleton {
           width: 330px;
@@ -267,7 +265,7 @@
       }
       &-price {
         @include fontSize24;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         font-weight: 900;
       }
       &-count {
@@ -283,14 +281,14 @@
         }
         &-input {
           @include fontSize13;
-          max-width: 24px;
+          max-width: 40px;
           text-align: center;
         }
         &-button {
           &-wrap {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 18px;
+            margin-bottom: 24px;
           }
           &-addtocart {
             @include contentButton;
@@ -304,7 +302,7 @@
             font-weight: 700;
           }
           &:not(:last-child) {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
           }
         }
       }
@@ -334,9 +332,6 @@
           }
           &::after {
             @include fontSize14;
-          }
-          &:not(:last-child) {
-            margin-bottom: 12px;
           }
         }
         &.skeleton {
@@ -561,6 +556,7 @@
     padding: 57px 0;
     background-color: var(--lightness-white-color);
     &__title {
+      @include fontSize20;
       margin-bottom: 0;
     }
     &__wrap {
@@ -585,7 +581,7 @@
       background-position: left center;
       span {
         display: block;
-        margin-bottom: 2px;
+        margin-bottom: 8px;
         font-weight: 700;
       }
       &.call {

@@ -61,10 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="popup__wrap">
           <button class="popup__wrap-close"></button>
           <div class="popup__wrap-top">
-            <p class="popup__wrap-subtitle">
+            <p class="popup__wrap-top-title">
               Выбор города
             </p>
-            <p class="popup__wrap-text">
+            <p class="popup__wrap-top-text">
               Ваш город Кострома?
             </p>
             <div class="popup__wrap-button-wrap">
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
           <div class="choose-cities__wrap">
-            <p class="choose-cities__title">
+            <p class="popup__wrap-top-title">
               Выберите свой город
             </p>
             <input type="text" class="choose-cities__input" placeholder="Начните вводить название города">

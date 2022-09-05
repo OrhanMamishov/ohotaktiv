@@ -1,6 +1,5 @@
 .main {
   .sert {
-    margin-bottom: 50px;
     &__title {
       margin-bottom: 40px;
     }
@@ -10,25 +9,6 @@
     &__info {
       &-wrap {
         display: flex;
-      }
-      &-stats {
-        margin-bottom: 25px;
-        &-wrap {
-          .dot {
-            @include fontSize13;
-            max-width: 445px;
-            color: var(--darkness-white-color);
-            &__value {
-              color: var(--black-color);
-            }
-            &::after {
-              @include fontSize13;
-            }
-            &:not(:last-child) {
-              margin-bottom: 12px;
-            }
-          }
-        }
       }
       &-social {
         &-text {
@@ -69,13 +49,13 @@
           max-width: 445px;
           display: flex;
           flex-wrap: wrap;
-          gap: 10px;
+          gap: 12px;
         }
         &-item {
           @include fontSize13;
-          padding: 5px 16px;
+          padding: 8px 14px;
           border-radius: 100px;
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--footer-title-color);
           cursor: pointer;
           &.is-active {
             border: 1px solid var(--yellow-color);
@@ -132,7 +112,7 @@
       }
       &-price {
         @include fontSize24;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         font-weight: 900;
       }
       &-description {

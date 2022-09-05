@@ -23,7 +23,6 @@
     }
   }
   .goods {
-    margin-bottom: 70px;
     &__wrap {
       .swiper {
         padding: 5px 30px;
@@ -36,50 +35,6 @@
       max-width: 948px;
       display: flex;
       justify-content: space-between;
-    }
-  }
-  .liked {
-    &__wrap {
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 703px;
-      padding: 30px 50px;
-      border: 1px dashed var(--grey-form-color);
-      border-radius: 6px;
-    }
-    &__text {
-      @include fontSize13;
-      width: 367px;
-      line-height: 22px;
-    }
-    &__list {
-      display: flex;
-    }
-    &__item {
-      &:not(:last-child) {
-        margin-right: 24px;
-      }
-    }
-    &__link {
-      width: 22px;
-      height: 22px;
-      display: block;
-      background-repeat: no-repeat;
-      background-size: contain;
-      &.vk {
-        background-image: url('../../../img/vk-black.svg');
-      }
-      &.tg {
-        background-image: url('../../../img/tg-black.svg');
-      }
-      &.whatsapp {
-        background-image: url('../../../img/whatsapp-black.svg');
-      }
-      &.ok {
-        background-image: url('../../../img/ok-black.svg');
-      }
     }
   }
 }
@@ -118,19 +73,6 @@
     .article {
       max-width: 736px;
       padding: 0 16px;
-    }
-    .liked {
-      &__wrap {
-        min-width: 280px;
-        width: min-content;
-        padding: 14px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      &__text {
-        margin-bottom: 10px;
-        width: 100%;
-      }
     }
   }
 }

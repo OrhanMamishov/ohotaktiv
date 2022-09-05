@@ -15,13 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     "swiper-recommended",
   ];
   templateSwipers.forEach((swiper) => {
-    new Swiper("." + swiper, {
+    const swiperNew = new Swiper("." + swiper, {
       spaceBetween: 10,
       modules: [Navigation],
+      loop: true,
       navigation: {
         nextEl: `.${swiper.split("-").reverse().join("__")}-button-next`,
         prevEl: `.${swiper.split("-").reverse().join("__")}-button-prev`,
       },
+
       breakpoints: {
         1559: {
           slidesPerView: 5,
@@ -46,7 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       },
     });
+    swiperNew.loopDestroy();
   });
+
   //eslint-disable-next-line
   const mainBannerSwiper = new Swiper(".swiper-banner", {
     modules: [Pagination],
@@ -156,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
           Получить бонусную карту ОхотАктив
         </h2>
         <form action="#" class="popup__form">
-          <h3 class="popup__form-title">
+          <h3 class="popup__wrap-subtitle">
             Введите личные данные
           </h3>
           <div class="popup__personal-wrap">
@@ -187,8 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="popup__hobbies-wrap">
             <div class="popup__hobbies-left-column">
-              <h3 class="popup__form-title">
-                Интересы
+              <h3 class="popup__wrap-subtitle">
+                Выберите интересы
               </h3>
               <ul class="popup__hobbies-list">
                 <li class="popup__hobbies-item">
@@ -222,8 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
               </ul>
             </div>
             <div class="popup__hobbies-right-column">
-              <h3 class="popup__form-title">
-                Пол
+              <h3 class="popup__wrap-subtitle">
+                Укажите пол
               </h3>
               <ul class="popup__hobbies-list">
                 <li class="popup__hobbies-item">

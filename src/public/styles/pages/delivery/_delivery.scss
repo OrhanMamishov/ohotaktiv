@@ -3,16 +3,14 @@
     background-image: url('../../../img/delivery-banner.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 510px;
     &__wrap {
-      padding-top: 140px;
-      padding-bottom: 140px;
+      height: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
     &__title {
-      width: 640px;
-      margin-bottom: 33px;
       line-height: 55px;
       font-weight: 900;
       font-size: 40px;
@@ -21,7 +19,7 @@
     }
   }
   .description {
-    padding-bottom: 140px;
+    padding-top: 70px;
     &__wrap {
       display: flex;
       flex-wrap: wrap;

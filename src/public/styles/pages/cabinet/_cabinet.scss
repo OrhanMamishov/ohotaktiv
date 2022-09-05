@@ -23,7 +23,6 @@
   .cabinet {
     &__target {
       display: none;
-      padding-bottom: 50px;
       &.is-active {
         display: block;
       }
@@ -40,7 +39,7 @@
         margin-bottom: 50px;
       }
       &-subtitle {
-        margin-bottom: 31px;
+        margin-bottom: 30px;
       }
       &-user {
         margin-bottom: 35px;
@@ -111,7 +110,6 @@
             margin-bottom: 40px;
             input {
               @include contentInput;
-              padding: 10px 0;
             }
             label {
               left: 0;

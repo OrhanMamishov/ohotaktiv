@@ -8,10 +8,10 @@
     background-image: url('../../../img/banner-vacancy.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 436px;
     &__wrap {
       padding-top: 121px;
       padding-left: 270px;
-      padding-bottom: 145px;
     }
     &__title {
       @include fontSize30;
@@ -100,7 +100,7 @@
       .vacancy__item-button {
         @include contentButton;
         @include fontSize14;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
       }
       &.ac {
         border: none;
@@ -120,7 +120,7 @@
           @include fontSize15;
           width: 749px;
           margin-bottom: 40px;
-          padding-left: 20px;
+          padding: 3px 0 3px 40px;
           font-weight: 800;
           background-image: url('../../../img/tag.svg');
           background-repeat: no-repeat;
@@ -142,7 +142,7 @@
       .ac {
         &-trigger {
           @include fontSize24;
-          padding: 40px 0 40px;
+          padding: 40px 0 50px;
           display: flex;
           flex-direction: column;
           font-weight: 900;

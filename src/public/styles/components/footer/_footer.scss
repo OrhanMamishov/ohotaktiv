@@ -86,6 +86,12 @@
       label {
         transform: translateY(-100%);
       }
+      input {
+        border-bottom: 2px solid var(--footer-title-color);
+        &:focus {
+          border-bottom: 2px solid var(--white-color);
+        }
+      }
     }
   }
   .checkbox {
@@ -154,7 +160,7 @@
       }
       &-item {
         border-radius: 6px;
-        width: 176px;
+        width: 184px;
         background-color: var(--footer-background-color);
         &:not(:last-child) {
           margin-right: 25px;

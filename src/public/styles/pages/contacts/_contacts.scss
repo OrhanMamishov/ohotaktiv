@@ -1,12 +1,12 @@
 .main {
   .contacts {
-    padding-bottom: 164px;
     &__wrap {
       display: flex;
       flex-wrap: wrap;
     }
     &__title {
       width: 100%;
+      margin-bottom: 70px;
     }
     &__item {
       padding-top: 87px;
@@ -20,7 +20,7 @@
         background-image: url('../../../img/call-us.svg');
       }
       &:nth-child(4) {
-        background-image: url('../../../img/feedback.svg');
+        // background-image: url('../../../img/feedback.svg');
       }
       &:last-child {
         background-image: url('../../../img/office.svg');
