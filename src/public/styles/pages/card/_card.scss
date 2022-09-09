@@ -177,12 +177,50 @@
         position: relative;
         display: flex;
         margin-right: 70px;
-        .cards-item__button-wrap {
+        .card-item__photo-button-wrap {
           z-index: 1;
         }
-        .cards-item__text-new {
-          left: 150px;
-          z-index: 2;
+        .share {
+          &-wrap {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 30px;
+            left: -95px;
+            background: var(--white-color);
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            &.is-open {
+              display: flex;
+            }
+          }
+          &-link {
+            @include fontSize14;
+            padding: 14px 60px;
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-position: 20px center;
+            background-size: 12%;
+            &:not(:last-child) {
+              border-bottom: 1px solid var(--border-color);
+            }
+            &:hover {
+              background-color: var(--light-grey-color);
+            }
+            &.button {
+              padding: 14px 16px;
+            }
+            &.vk {
+              background-image: url('../../../img/vk.svg');
+            }
+            &.tg {
+              background-image: url('../../../img/telegram.svg');
+            }
+            &.viber {
+              background-image: url('../../../img/viber.svg');
+            }
+          }
+
         }
       }
       &-mini {

@@ -29,6 +29,7 @@
   src: url('/src/public/fonts/GTEestiProDisplay-UltraBold.woff2') format('woff2'),
        url('/src/public/fonts/GTEestiProDisplay-UltraBold.woff') format('woff'),
 }
+
 @font-face {
   font-family: 'GT';
   font-style: normal;
@@ -251,6 +252,9 @@ main {
       }
       &.remove {
         background-image: url('../../../img/remove.svg');
+      }
+      &.share {
+        background-image: url('../../../img/share.svg');
       }
     }
   }

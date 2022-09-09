@@ -169,4 +169,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
   // миллион табов
+  // Шарим
+  const buttonShare = document.querySelector(".share");
+  const wrapShare = document.querySelector(".share-wrap");
+  const linksShare = document.querySelectorAll(".share-link");
+  buttonShare.addEventListener("click", () => {
+    wrapShare.classList.toggle("is-open");
+  });
+  // Шарим
 });

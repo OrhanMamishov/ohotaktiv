@@ -6,6 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ".remington__tabs-item"
   );
   const remingtonResultTabs = document.querySelectorAll(".remington__tab-list");
+  const target = document.location.href.split("?")[1];
+  if (target) {
+    remingtonTabButtons.forEach((tab) => {
+      tab.classList.remove("is-active");
+      if (tab.getAttribute("data-path") == target)
+        tab.classList.add("is-active");
+    });
+    remingtonResultTabs.forEach((tab) => {
+      tab.classList.remove("is-open");
+      if (tab.getAttribute("data-target") == target)
+        tab.classList.add("is-open");
+    });
+  }
   remingtonTabButtons.forEach((item) => {
     item.addEventListener("click", () => {
       if (item.classList.contains("is-active")) return;

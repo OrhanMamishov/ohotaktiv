@@ -1,0 +1,21 @@
+.main {
+  .brands {
+    &__input {
+      @include fontSize14;
+      width: 700px;
+      display: block;
+      margin: 0 auto 72px auto;
+      padding: 18px 20px 18px 60px;
+      border: 1px solid var(--grey-form-color);
+      border-radius: 100px;
+      background-image: url('../../../img/search.svg');
+      background-repeat: no-repeat;
+      background-position: 25px center;
+      background-size: 2%;
+      &::placeholder {
+        @include fontSize14;
+        color: var(--footer-title-color);
+      }
+    }
+  }
+}

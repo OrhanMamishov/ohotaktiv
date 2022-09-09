@@ -1,39 +1,59 @@
 .main {
-  // background-image: url('../../../img/remington-background.png');
-  // background-repeat: no-repeat;
-  // background-size: 100%;
   padding-bottom: 142px;
+  .banner {
+    background-image: url('../../../img/remington-background.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 312px;
+  }
   .remington {
     &__tabs {
       &-list {
-        @include tabsMiniList;
+        display: flex;
+        justify-content: center;
         margin-bottom: 38px;
+        border-bottom: unset;
+      }
+      &-item {
+        padding: 12px 0px;
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-right: 35px;
+        }
+        &.is-active {
+          border-bottom: 3px solid var(--black-color);
+        }
       }
     }
     &__tab {
       &-list {
         display: none;
         flex-wrap: wrap;
-        gap: 35px;
+        gap: 16px;
         &.is-open {
           display: flex;
         }
       }
+      &-link {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
       &-item {
-        padding: 20px 0;
+        padding: 31px 0;
         width: 260px;
-        border-radius: 20px;
-        background-color: var(--white-color);
+        background-color: var(--lightness-white-color);
         cursor: pointer;
         &-img {
           width: 78%;
           display: block;
-          margin: 0 auto;
+          margin: auto auto 20px auto;
           object-fit: scale-down;
           mix-blend-mode: multiply;
         }
         &-text {
           @include fontSize14;
+          margin-top: auto;
           font-weight: 700;
           text-align: center;
         }
