@@ -1,0 +1,18 @@
+.main {
+  .policy {
+    &__text {
+      max-width: 1106px;
+      line-height: 28px;
+      &:last-child {
+        margin-top: 28px;
+      }
+    }
+    &__list {
+      margin: 28px 0;
+      padding-left: 20px;
+      max-width: 1106px;
+      list-style-type: disc;
+      line-height: 28px;
+    }
+  }
+}
