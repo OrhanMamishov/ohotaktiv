@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-  // слайдеры
+  // селекты
   const selectElements = document.querySelectorAll(".js-select");
   selectElements.forEach((select) => {
     const choices = new Choices(select, {
@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       allowHTML: true,
     });
   });
-  // селекты
   // свайпер
   //eslint-disable-next-line
   const resultSwiper = new Swiper(".swiper-result", {
@@ -99,13 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
       clickable: true,
     },
   });
-  // свайпер
   // аккордеоны
   const accordions = document.querySelectorAll(".accordion-container");
   accordions.forEach((accordion) => {
     new Accordion(accordion);
   });
-  // аккордеоны
   // табы
   const tabsButtons = document.querySelectorAll(".tabs__item");
   const resultList = document.querySelectorAll(".result__wrap");
@@ -115,6 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tabsButtons.forEach((el) => el.classList.remove("is-active"));
       button.classList.add("is-active");
       const target = button.getAttribute("data-path");
+      const baseUrl = document.location.href.split("?")[0];
+      const newUrl = baseUrl + "?" + target.split("-")[1];
+      history.pushState(null, null, newUrl);
       resultList.forEach((list) => {
         list.classList.remove("is-open");
         if (list.getAttribute("data-target") == target)
@@ -122,29 +122,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-  // табы
-
-  // активность
+  // ещё
+  const moreButtons = document.querySelectorAll(".catalog__more");
+  moreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      for (let link of button.parentElement.children) {
+        if (link.tagName == "A") {
+          link.style.display = "block";
+        }
+      }
+      button.classList.add("none");
+    });
+  });
+  // загрузка страницы
   if (document.location.search) {
-    tabsButtons.forEach((button) => {
-      if (
-        button.getAttribute("data-path") ==
-        `tabs-${document.location.search.split("=")[1]}`
-      ) {
-        button.classList.add("is-active");
-      }
+    const catalog = document.querySelector(".catalog");
+    catalog.style.display = "none";
+    const detailCatalog = document.querySelector(".detail-catalog");
+    detailCatalog.style.display = "block";
+    const tabButton = document.querySelector(
+      `[data-path=tabs-${document.location.search.slice(1)}]`
+    );
+    tabButton.classList.add("is-active");
+    const tabTarget = document.querySelector(
+      `[data-target=tabs-${document.location.search.slice(1)}]`
+    );
+    tabTarget.classList.add("is-open");
+    const catalogNavButton = document.querySelector(".catalog-nav");
+    catalogNavButton.addEventListener("click", () => {
+      catalog.style.display = "block";
+      detailCatalog.style.display = "none";
+      const baseUrl = document.location.href.split("?")[0];
+      history.pushState(null, null, baseUrl);
     });
-    resultList.forEach((list) => {
-      if (
-        list.getAttribute("data-target") ==
-        `tabs-${document.location.search.split("=")[1]}`
-      ) {
-        list.classList.add("is-open");
-      }
-    });
-  } else {
-    tabsButtons[0].classList.add("is-active");
-    resultList[0].classList.add("is-open");
   }
-  // активность
 });

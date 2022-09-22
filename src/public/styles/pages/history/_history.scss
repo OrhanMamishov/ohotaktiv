@@ -38,18 +38,30 @@
     }
   }
   .history {
+    position: relative;
     display: flex;
     align-items: flex-start;
+    &__wrap {
+      width: 100%;
+    }
     &__title {
       @include fontSize20;
+      max-width: 825px;
       font-weight: 800;
       margin-bottom: 28px;
     }
     &__text {
+      max-width: 825px;
       line-height: 28px;
       &:not(:last-child) {
         margin-bottom: 28px;
       }
+    }
+    &__img {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      width: 732px;
     }
   }
 }
