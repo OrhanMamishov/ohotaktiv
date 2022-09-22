@@ -1,0 +1,55 @@
+.main {
+  .banner {
+    margin-bottom: 80px;
+    padding: 110px 0 170px 0;
+    background-image: url('../../../img/history-banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    &__title {
+      position: relative;
+      margin-bottom: 0;
+      padding: 60px 0 40px;
+      color: var(--white-color);
+      font-size: 60px;
+      font-weight: 900;
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 2px;
+        background-color: var(--yellow-color);
+        animation: move 1s 1;
+        @keyframes move {
+          0% {
+            width: 0;
+          }
+          100% {
+            width: 150px;
+          }
+        }
+      }
+    }
+    &__text {
+      width: 700px;
+      line-height: 28px;
+      color: var(--white-color);
+    }
+  }
+  .history {
+    display: flex;
+    align-items: flex-start;
+    &__title {
+      @include fontSize20;
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+    &__text {
+      line-height: 28px;
+      &:not(:last-child) {
+        margin-bottom: 28px;
+      }
+    }
+  }
+}
