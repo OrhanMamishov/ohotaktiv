@@ -45,6 +45,7 @@ module.exports = {
     delivery: "./src/public/scripts/pages/delivery.js",
     opt: "./src/public/scripts/pages/opt.js",
     brands: "./src/public/scripts/pages/brands.js",
+    return: "./src/public/scripts/pages/return.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),

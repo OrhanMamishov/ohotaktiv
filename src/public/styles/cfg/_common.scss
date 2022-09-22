@@ -69,8 +69,8 @@
 }
 body,
 html {
+  @include fontSize15; //?
   min-width: 320px;
-  font-size: 15px;
   font-family: 'GT', sans-serif;
   font-weight: 500;
   background-color: var(--white-color);
