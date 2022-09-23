@@ -102,7 +102,6 @@
       &-img {
         margin-bottom: 50px;
         object-fit: none;
-        mix-blend-mode: multiply;
       }
       &-text {
         @include fontSize14;

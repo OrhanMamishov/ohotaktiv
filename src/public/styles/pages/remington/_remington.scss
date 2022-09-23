@@ -49,7 +49,6 @@
           display: block;
           margin: auto auto 20px auto;
           object-fit: scale-down;
-          mix-blend-mode: multiply;
         }
         &-text {
           @include fontSize14;

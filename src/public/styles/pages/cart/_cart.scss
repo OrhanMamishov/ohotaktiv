@@ -80,7 +80,6 @@
             background-color: var(--lightness-grey-color);
             border-radius: 10px;
           }
-          mix-blend-mode: multiply;
         }
         &-description {
           max-width: 300px;
@@ -120,6 +119,9 @@
             max-width: 30px;
             text-align: center;
           }
+        }
+        &-prices {
+          width: 165px;
         }
         &-price {
           margin-bottom: 2px;
