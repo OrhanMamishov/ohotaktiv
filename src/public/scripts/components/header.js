@@ -2,6 +2,9 @@ import "../../styles/components/header/style.scss";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import ucFirst from "../functions/ucFirst";
 document.addEventListener("DOMContentLoaded", () => {
+  if (document.location.href.includes("cart")) {
+    return;
+  }
   // Проверяем есть ли в браузере выбранный город
   const cityTagButtonHeader = document.querySelector(".tag");
   if (!localStorage.getItem("KEY_CITY")) {

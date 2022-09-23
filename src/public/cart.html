@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__wrap-top">
+      <div class="header__wrap-top-content container">
+        <a href="../index/" class="header__logo-link">
+          <img src="img/logo-header.svg" alt="Логотип Охотактив" class="header__logo">
+        </a>
+        <button class="header__pages-item-button tag">
+          Кострома
+        </button>
+        <a href="tel:88007008256" class="header__tel">
+          8 800 700-82-56
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <h1 class="visually-hidden">
+      Корзина
+    </h1>
+    <section class="cart">
+      <div class="cart__wrap container">
+        <h2 class="cart__title">
+          Корзина
+        </h2>
+        <div class="cart__region">
+          <p class="cart__region-city">
+            Кострома
+          </p>
+          <p class="cart__region-text">
+            Доступность товаров может зависеть от выбранного региона
+          </p>
+        </div>
+        <div class="cart__columns">
+          <div class="cart__left">
+            <div class="cart__left-block">
+              <p class="cart__left-block-title">
+                Доставка
+              </p>
+              <div class="cart__left-block-card">
+                <label class="checkbox__label">
+                  <input type="checkbox" class="checkbox visually-hidden" required>
+                  <span class="checkbox__span"></span>
+                </label>
+                <div class="cart__left-block-img-wrap">
+                  <img src="img/card-img.png" alt="Карточка товара" class="cart__left-block-img">
+                </div>
+                <div class="cart__left-block-description">
+                  <p class="cart__left-block-description-text">
+                    Прицел коллиматорный Remington Strike крепление ласточкин хвост
+                  </p>
+                  <p class="cart__left-block-description-status">
+                    Доставка
+                  </p>
+                  <button class="cart__left-block-description-button">
+                    Удалить
+                  </button>
+                </div>
+                <div class="cart__left-block-count">
+                  <button id="discount-button" class="cart__left-block-count-button">
+                    -
+                  </button>
+                  <input class="cart__left-block-count-input" type="number" min="1" max="1000" value="1">
+                  <button id="count-button" class="cart__left-block-count-button">
+                    +
+                  </button>
+                </div>
+                <div class="cart__left-block-prices">
+                  <p class="cart__left-block-price">
+                    33 990 &#8381;
+                  </p>
+                  <p class="cart__left-block-oldprice">
+                    42 790 &#8381;
+                  </p>
+                  <p class="cart__left-block-discount">
+                    - 8 800 &#8381;
+                  </p>
+                </div>
+              </div>
+              <div class="cart__left-block-card">
+                <label class="checkbox__label">
+                  <input type="checkbox" class="checkbox visually-hidden" required>
+                  <span class="checkbox__span"></span>
+                </label>
+                <div class="cart__left-block-img-wrap">
+                  <img src="img/card-img.png" alt="Карточка товара" class="cart__left-block-img">
+                </div>
+                <div class="cart__left-block-description">
+                  <p class="cart__left-block-description-text">
+                    Прицел коллиматорный Remington Strike крепление ласточкин хвост
+                  </p>
+                  <p class="cart__left-block-description-status">
+                    Доставка
+                  </p>
+                  <button class="cart__left-block-description-button">
+                    Удалить
+                  </button>
+                </div>
+                <div class="cart__left-block-count">
+                  <button id="discount-button" class="cart__left-block-count-button">
+                    -
+                  </button>
+                  <input class="cart__left-block-count-input" type="number" min="1" max="1000" value="1">
+                  <button id="count-button" class="cart__left-block-count-button">
+                    +
+                  </button>
+                </div>
+                <div class="cart__left-block-prices">
+                  <p class="cart__left-block-price">
+                    33 990 &#8381;
+                  </p>
+                  <p class="cart__left-block-oldprice">
+                    42 790 &#8381;
+                  </p>
+                  <p class="cart__left-block-discount">
+                    - 8 800 &#8381;
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cart__left-block">
+              <p class="cart__left-block-title">
+                Самовывоз
+              </p>
+              <div class="cart__left-block-card">
+                <label class="checkbox__label">
+                  <input type="checkbox" class="checkbox visually-hidden" required>
+                  <span class="checkbox__span"></span>
+                </label>
+                <div class="cart__left-block-img-wrap">
+                  <img src="img/card-img.png" alt="Карточка товара" class="cart__left-block-img">
+                </div>
+                <div class="cart__left-block-description">
+                  <p class="cart__left-block-description-text">
+                    Прицел коллиматорный Remington Strike крепление ласточкин хвост
+                  </p>
+                  <p class="cart__left-block-description-status">
+                    Самовывоз
+                  </p>
+                  <button class="cart__left-block-description-button">
+                    Удалить
+                  </button>
+                </div>
+                <div class="cart__left-block-count">
+                  <button id="discount-button" class="cart__left-block-count-button">
+                    -
+                  </button>
+                  <input class="cart__left-block-count-input" type="number" min="1" max="1000" value="1">
+                  <button id="count-button" class="cart__left-block-count-button">
+                    +
+                  </button>
+                </div>
+                <div class="cart__left-block-prices">
+                  <p class="cart__left-block-price">
+                    33 990 &#8381;
+                  </p>
+                  <p class="cart__left-block-oldprice">
+                    42 790 &#8381;
+                  </p>
+                  <p class="cart__left-block-discount">
+                    - 8 800 &#8381;
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cart__left-block">
+              <p class="cart__left-block-title">
+                Недоступно
+              </p>
+              <div class="cart__left-block-card">
+                <label class="checkbox__label">
+                  <input type="checkbox" class="checkbox visually-hidden" required>
+                  <span class="checkbox__span"></span>
+                </label>
+                <div class="cart__left-block-img-wrap">
+                  <img src="img/card-img.png" alt="Карточка товара" class="cart__left-block-img">
+                </div>
+                <div class="cart__left-block-description">
+                  <p class="cart__left-block-description-text">
+                    Прицел коллиматорный Remington Strike крепление ласточкин хвост
+                  </p>
+                  <p class="cart__left-block-description-status unavaliable">
+                    Недоступно
+                  </p>
+                  <button class="cart__left-block-description-button">
+                    Удалить
+                  </button>
+                </div>
+                <div class="cart__left-block-count">
+                  <button id="discount-button" class="cart__left-block-count-button">
+                    -
+                  </button>
+                  <input class="cart__left-block-count-input" type="number" min="1" max="1000" value="1">
+                  <button id="count-button" class="cart__left-block-count-button">
+                    +
+                  </button>
+                </div>
+                <div class="cart__left-block-prices">
+                  <p class="cart__left-block-price">
+                    33 990 &#8381;
+                  </p>
+                  <p class="cart__left-block-oldprice">
+                    42 790 &#8381;
+                  </p>
+                  <p class="cart__left-block-discount">
+                    - 8 800 &#8381;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart__right">
+            <p class="cart__right-title">
+              Ваш заказ
+            </p>
+            <div class="cart__right-block">
+              <div class="cart__right-info">
+                <div class="cart__right-text-wrap">
+                  <p class="cart__right-text">
+                    Способ получения
+                  </p>
+                  <p class="cart__right-text">
+                    Доставка,<br>самовывоз
+                  </p>
+                </div>
+                <div class="cart__right-text-wrap">
+                  <p class="cart__right-text">
+                    Стоимость доставки
+                  </p>
+                  <p class="cart__right-text">
+                    1 500 &#8381;
+                  </p>
+                </div>
+                <div class="cart__right-text-wrap">
+                  <p class="cart__right-text">
+                    Товары: 4
+                  </p>
+                  <p class="cart__right-text">
+                    50 480 &#8381;
+                  </p>
+                </div>
+                <div class="cart__right-text-wrap">
+                  <p class="cart__right-text">
+                    Скидка
+                  </p>
+                  <p class="cart__right-text text-red">
+                    - 9 500 &#8381;
+                  </p>
+                </div>
+                <div class="cart__right-text-wrap">
+                  <p class="cart__right-text text-green">
+                    Оплата за перемещение
+                  </p>
+                  <p class="cart__right-text text-green">
+                    5 000 &#8381;
+                  </p>
+                </div>
+              </div>
+              <div class="cart__right-info">
+                <div class="cart__right-text-wrap">
+                  <p class="cart__right-text text-bold">
+                    Общая стоимость
+                  </p>
+                  <p class="cart__right-text text-bold">
+                    45 980 &#8381;
+                  </p>
+                </div>
+                <button class="cart__right-button">
+                  Перейти к оформлению заказа
+                </button>
+                <p class="cart__right-description">
+                  Нажимая на кнопку «Перейти к оплате», вы принимаете условия Публичной оферты и Политику обработки ПДн и даете согласие на обработку ваших ПДн, включая их передачу
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__wrap container">
+      <p class="footer__text">
+        © 1998 – 2022 ООО «ОхотАктив». Все права защищены.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -48,6 +48,7 @@ module.exports = {
     return: "./src/public/scripts/pages/return.js",
     policy: "./src/public/scripts/pages/policy.js",
     history: "./src/public/scripts/pages/history.js",
+    cart: "./src/public/scripts/pages/cart.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
