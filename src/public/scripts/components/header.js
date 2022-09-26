@@ -2,7 +2,10 @@ import "../../styles/components/header/style.scss";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import ucFirst from "../functions/ucFirst";
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.location.href.includes("cart")) {
+  if (
+    document.location.href.includes("cart") ||
+    document.location.href.includes("order")
+  ) {
     return;
   }
   // Проверяем есть ли в браузере выбранный город

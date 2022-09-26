@@ -57,6 +57,7 @@
   // правильные
   --grey-form-color: #A4A4A4;
   --border-color: #EEEEEE;
+  --grey-item-color: #E9E9E9;
   --yellow-color: #FFE53E;
   --light-yellow-color: #FFE484;
   --yellow-active-color: #FFF08E;
@@ -537,8 +538,7 @@ main {
       left: -9999px;
     }
     &:checked + label,
-    &:not(:checked) + label
-    {
+    &:not(:checked) + label {
       @include fontSize13;
       position: relative;
       padding-left: 30px;
@@ -565,8 +565,8 @@ main {
         height: 10px;
         background: var(--yellow-color);
         position: absolute;
-        top: 20%;
-        left: 5px;
+        top: 13%;
+        left: 4px;
         border-radius: 100%;
         transform: translate(0, -50%);
         transition: transform 0.2s ease;
@@ -580,7 +580,7 @@ main {
         transform: scale(1);
     }
     &:checked + label::before {
-      border: 2px solid var(--yellow-color);
+      border: 1px solid var(--yellow-color);
     }
   }
 }

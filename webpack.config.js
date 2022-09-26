@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require("path");
 const autoprefixer = require("autoprefixer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -49,6 +50,7 @@ module.exports = {
     policy: "./src/public/scripts/pages/policy.js",
     history: "./src/public/scripts/pages/history.js",
     cart: "./src/public/scripts/pages/cart.js",
+    order: "./src/public/scripts/pages/order.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
