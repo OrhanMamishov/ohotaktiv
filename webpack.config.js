@@ -55,7 +55,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: BUILD === "dev" ? "../../" : "/",
-    filename: "pages/[name]/[name].bundle.js",
+    filename: "pages/[name]/[name].js",
     chunkFilename: "[id].bundle_[chunkhash].js",
   },
   devServer: {

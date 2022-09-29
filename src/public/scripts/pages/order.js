@@ -2,9 +2,9 @@ import "../imports";
 import "../../styles/pages/order/style.scss";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
+import Inputmask from "inputmask";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // переключение доставок
   const selectElement = document.querySelector(".js-select");
   const choice = new Choices(selectElement, {
     itemSelectText: "",
@@ -15,6 +15,63 @@ document.addEventListener("DOMContentLoaded", () => {
   selectElement.addEventListener("change", function () {
     refreshLeft();
   });
+  const nameInput = document.getElementById("name-input");
+  const surnameInput = document.getElementById("surname-input");
+  const telInput = document.getElementById("tel-input");
+  const emailInput = document.getElementById("email-input");
+  Inputmask({
+    mask: "*{30}",
+    placeholder: "",
+    showMaskOnHover: false,
+    onKeyDown: function () {
+      this.classList.remove("is-not-valid");
+    },
+    definitions: {
+      "*": {
+        validator: "[А-Яа-яЁё-]",
+      },
+    },
+  }).mask(nameInput);
+  Inputmask({
+    mask: "*{30}",
+    placeholder: "",
+    showMaskOnHover: false,
+    onKeyDown: function () {
+      this.classList.remove("is-not-valid");
+    },
+    definitions: {
+      "*": {
+        validator: "[А-Яа-яЁё-]",
+      },
+    },
+  }).mask(surnameInput);
+  Inputmask({
+    mask: "+7 (999) 999-99-99",
+    showMaskOnHover: false,
+    onKeyDown: function () {
+      this.classList.remove("is-not-valid");
+    },
+    onincomplete: function () {
+      this.classList.add("is-not-valid");
+    },
+  }).mask(telInput);
+  Inputmask({
+    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+    greedy: false,
+    showMaskOnHover: false,
+    definitions: {
+      "*": {
+        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+        // casing: "lower",
+      },
+    },
+    onKeyDown: function () {
+      this.classList.remove("is-not-valid");
+    },
+    onincomplete: function () {
+      this.classList.add("is-not-valid");
+    },
+  }).mask(emailInput);
   function refreshLeft() {
     const leftColumn = document.querySelector(".order__left");
     while (leftColumn.children.length > 1) {

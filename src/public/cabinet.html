@@ -859,31 +859,609 @@
     <h1 class="visually-hidden">
       Личный кабинет
     </h1>
-    <section class="tabs">
-      <div class="tabs__wrap container">
-        <ul class="tabs__list">
-          <li class="tabs__item" data-path="profile">
+    <section class="cabinet">
+      <div class="cabinet__wrap container">
+        <div class="cabinet__left">
+          <div class="cabinet__profile-user">
+            <p class="cabinet__profile-user-avatar">
+              КБ
+            </p>
+            <p class="cabinet__profile-user-name">
+              Константин Беляев
+              <span class="change-profile">
+                Изменить профиль
+              </span>
+            </p>
+          </div>
+          <ul class="tabs__list">
+            <li class="tabs__item" data-path="profile">
+              Профиль
+            </li>
+            <li class="tabs__item" data-path="subscription">
+              Управление подпиской
+            </li>
+            <li class="tabs__item" data-path="appeal">
+              Обращения
+            </li>
+            <li class="tabs__item" data-path="ad">
+              Мои объявления
+            </li>
+            <li class="tabs__item" data-path="orders">
+              Мои заказы
+            </li>
+            <li class="tabs__item" data-path="favourites">
+              Избранное
+            </li>
+            <li class="tabs__item" data-path="logout">
+              Выйти из профиля
+            </li>
+          </ul>
+        </div>
+        <div class="cabinet__target" data-target="profile">
+          <h2 class="cabinet__profile-title">
             Профиль
-          </li>
-          <li class="tabs__item" data-path="subscription">
-            Подписка
-          </li>
-          <li class="tabs__item" data-path="appeal">
+          </h2>
+          <div class="cabinet__profile-blocks">
+            <div class="cabinet__profile-block">
+              <p class="cabinet__profile-block-user-avatar">
+                КБ
+              </p>
+              <p class="cabinet__profile-block-user-name">
+                Константин Беляев
+              </p>
+              <p class="cabinet__profile-block-user-birthdate">
+                24 Февраля 1987
+              </p>
+              <p class="cabinet__profile-block-text">
+                <span>Телефон: </span> +7 (962) 455-24-42
+              </p>
+              <p class="cabinet__profile-block-text">
+                <span>Почта: </span> avgustin-2008@mail.ru
+              </p>
+              <button class="cabinet__profile-block-button">
+                Изменить данные
+              </button>
+            </div>
+            <div class="cabinet__profile-block background--whiteness">
+              <p class="cabinet__profile-block-title">
+                Адрес доставки
+              </p>
+              <p class="cabinet__profile-block-text">
+                Костромская область, г. Кострома, Проспект Мира, д. 12, магазин “Печати и Штампы”
+              </p>
+              <button class="cabinet__profile-block-button background--transparent">
+                Изменить адрес
+              </button>
+            </div>
+            <div class="cabinet__profile-block">
+              <p class="cabinet__profile-block-title">
+                Бонусная карта
+              </p>
+              <p class="cabinet__profile-block-text">
+                Если у вас есть бонусная карта, вы можете добавить её здесь и продолжать покупки со скидкой
+              </p>
+              <button class="cabinet__profile-block-button">
+                Добавить или приобрести карту
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="cabinet__target" data-target="subscription">
+          <h2 class="cabinet__profile-title">
+            Управление подпиской
+          </h2>
+          <p class="cabinet__subscription-text">
+            Письма будут приходить на Email указанный в профиле. Вы в любой момент сможете настроить частоту рассылки
+            или отказаться от неё.
+          </p>
+          <ul class="cabinet__subscription-list">
+            <li class="cabinet__subscription-item">
+              <p class="cabinet__subscription-item-title">
+                Акции, бонусы, скидки
+              </p>
+              <p class="cabinet__subscription-item-text">
+                Информация о предстоящих акциях и скидках
+              </p>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </li>
+            <li class="cabinet__subscription-item">
+              <p class="cabinet__subscription-item-title">
+                Персональные предложения
+              </p>
+              <p class="cabinet__subscription-item-text">
+                Персональные скидки, подборки товаров по вашим интересам
+              </p>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </li>
+            <li class="cabinet__subscription-item">
+              <p class="cabinet__subscription-item-title">
+                Лучшее за неделю
+              </p>
+              <p class="cabinet__subscription-item-text">
+                Все самое интересное за неделю
+              </p>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="cabinet__target" data-target="appeal">
+          <h2 class="cabinet__profile-title">
             Обращения
-          </li>
-          <li class="tabs__item" data-path="ad">
+          </h2>
+          <div class="cabinet__appeal">
+            <div class="cabinet__appeal-block">
+              <h3 class="cabinet__profile-subtitle">
+                Обмен и возврат
+              </h3>
+              <ul class="cabinet__appeal-list">
+                <li class="cabinet__appeal-item">
+                  1. Подготовьтесь заранее. Ознакомьтесь с <span>Правилами работы сервисного центра.</span>
+                </li>
+                <li class="cabinet__appeal-item">
+                  2. Принесите товар в пункт выдачи. Найдите ближайший магазин и узнайте режим его работы на <span>Странице адресов.</span>
+                </li>
+                <li class="cabinet__appeal-item">
+                  3. Возьмите с собой полную комплектация товара, чек или номер заказа (можно найти в разделе <span>Все заказы</span>), паспорт.
+                </li>
+                <li class="cabinet__appeal-item">
+                  4. Завершите обращение. Получите в магазине новый товар или денежные средства. При оплате по безналичному расчёту деньги вернутся на карту в течение N дней.
+                </li>
+              </ul>
+            </div>
+            <div class="cabinet__appeal-block">
+              <h3 class="cabinet__profile-subtitle">
+                Ремонт и диагностика
+              </h3>
+              <ul class="cabinet__appeal-list">
+                <li class="cabinet__appeal-item">
+                  1. Подготовьтесь заранее. Убедитесь, что гарантийный талон заполнен. Ознакомьтесь с <span>Правилами работы сервисного центра.</span>
+                </li>
+                <li class="cabinet__appeal-item">
+                  2. Возьмите с собой: гарантийный талон, полную комплектацию товара, чек или номер заказа.
+                </li>
+                <li class="cabinet__appeal-item">
+                  3. Сдайте товар в пункт выдачи заказа. Вы получите акт приема и номер зарегистрированного сообщения. Сроки ремонта зависят от типа оружия, характера поломки и наличия запасных частей.
+                </li>
+                <li class="cabinet__appeal-item">
+                  4. Получите товар. Предъявите паспорт и акт приема инструмента.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="cabinet__target" data-target="ad">
+          <h2 class="cabinet__profile-title">
             Объявления
-          </li>
-          <li class="tabs__item" data-path="orders">
+          </h2>
+          <p class="cabinet__ad-text">
+            У вас пока нет ни одного объявления
+          </p>
+          <button class="cabinet__ad-button">
+            Разместить
+          </button>
+        </div>
+        <div class="cabinet__target" data-target="orders">
+          <h2 class="cabinet__profile-title">
             Мои заказы
-          </li>
-          <li class="tabs__item" data-path="favourites">
+          </h2>
+          <ul class="cabinet__orders-list">
+            <li class="cabinet__orders-item">
+              <p class="cabinet__orders-item-title is-worked">
+                Заказ 25217222-0041 <span>Дата создания: 04.09.2022</span>
+              </p>
+              <div class="cabinet__orders-item-panel">
+                <img class="cabinet__orders-item-panel-img" src="img/card-img.png" alt="Картинка товара">
+                <div class="cabinet__orders-item-panel-status">
+                  <p class="cabinet__orders-item-panel-status-text">
+                    Дата доставки: 06.06.2022
+                  </p>
+                  <p class="cabinet__orders-item-panel-status-text">
+                    Способ доставки: в пункт выдачи
+                  </p>
+                  <p class="cabinet__orders-item-panel-status-text">
+                    <span class="bold">Статус заказа: </span><span class="worked">В обработке</span>
+                  </p>
+                </div>
+                <div class="cabinet__orders-item-panel-count">
+                  <p class="cabinet__orders-item-panel-text">
+                    1 шт
+                  </p>
+                </div>
+                <div class="cabinet__orders-item-panel-price-wrap">
+                  <p class="cabinet__orders-item-panel-price">
+                    157 990 &#8381; 
+                  </p>
+                  <p class="cabinet__orders-item-panel-text">
+                    Оплачено
+                  </p>
+                </div>
+              </div>
+              <div class="cabinet__orders-item-panel">
+                <img class="cabinet__orders-item-panel-img" src="img/card-img.png" alt="Картинка товара">
+                <div class="cabinet__orders-item-panel-status">
+                  <p class="cabinet__orders-item-panel-status-text">
+                    Дата доставки: 06.06.2022
+                  </p>
+                  <p class="cabinet__orders-item-panel-status-text">
+                    Способ доставки: в пункт выдачи
+                  </p>
+                  <p class="cabinet__orders-item-panel-status-text">
+                    <span class="bold">Статус заказа: </span><span class="worked">Комплектуется</span>
+                  </p>
+                </div>
+                <div class="cabinet__orders-item-panel-count">
+                  <p class="cabinet__orders-item-panel-text">
+                    10 шт
+                  </p>
+                </div>
+                <div class="cabinet__orders-item-panel-price-wrap">
+                  <p class="cabinet__orders-item-panel-price">
+                    1 579 900 &#8381; 
+                  </p>
+                  <p class="cabinet__orders-item-panel-text">
+                    Оплачено
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="cabinet__orders-item">
+              <p class="cabinet__orders-item-title">
+                Заказ 25217222-0041 <span>Дата создания: 04.09.2022</span>
+              </p>
+              <div class="cabinet__orders-item-panel">
+                <img class="cabinet__orders-item-panel-img" src="img/card-img.png" alt="Картинка товара">
+                <div class="cabinet__orders-item-panel-status">
+                  <p class="cabinet__orders-item-panel-status-text">
+                    Дата доставки: 06.06.2022
+                  </p>
+                  <p class="cabinet__orders-item-panel-status-text">
+                    Способ доставки: в пункт выдачи
+                  </p>
+                  <p class="cabinet__orders-item-panel-status-text">
+                    <span class="bold">Статус заказа: </span><span>Получено</span>
+                  </p>
+                </div>
+                <div class="cabinet__orders-item-panel-count">
+                  <p class="cabinet__orders-item-panel-text">
+                    2 шт
+                  </p>
+                </div>
+                <div class="cabinet__orders-item-panel-price-wrap">
+                  <p class="cabinet__orders-item-panel-price">
+                    157 990 &#8381; 
+                  </p>
+                  <p class="cabinet__orders-item-panel-text">
+                    Оплачено
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="cabinet__target" data-target="favourites">
+          <h2 class="cabinet__profile-title">
             Избранное
-          </li>
-        </ul>
+          </h2>
+          <div class="swiper swiper-favourite">
+            <ul class="cabinet__favourites-list swiper-wrapper cards-list">
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+              <li class="cabinet__favourites-item swiper-slide card-item">
+                <div class="card-item__wrap">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button compare"></span>
+                        <span class="card-item__photo-button favourite"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">
+                          Что то
+                        </p>
+                        <p class="card-item__photo-text discount">
+                          -10%
+                        </p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+  
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>    
+                        <span class="active"></span>  
+                        <span class="active"></span>    
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">
+                          10
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <button class="card-item__button">
+                    В корзину
+                  </button>
+                </div>
+              </li>
+            </ul>
+            <div class="cabinet__favourites-swiper-button-prev swiper-button-prev"></div>
+            <div class="cabinet__favourites-swiper-button-next swiper-button-next"></div>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="cabinet">
+    <!-- <section class="cabinet">
       <div class="cabinet__wrap container">
         <div class="cabinet__target" data-target="profile">
           <h2 class="cabinet__profile-title">
@@ -1590,7 +2168,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
   <footer class="footer">
     <div class="footer__wrap container">

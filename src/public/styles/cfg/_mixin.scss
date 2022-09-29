@@ -148,6 +148,7 @@
     color: var(--grey-form-color);
     padding: 15px 0;
     cursor: pointer;
+    transition: color .2s ease, border-color .2s ease;
     &.is-active {
       color: var(--black-color);
       border-bottom: 2px solid var(--black-color);
