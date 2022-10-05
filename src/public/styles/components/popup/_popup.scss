@@ -97,6 +97,25 @@
       margin-bottom: 24px; 
       font-weight: 800;
     }
+    &-text {
+      @include fontSize14;
+    }
+    &-textarea {
+      @include fontSize14;
+      width: 100%;
+      padding: 6px;
+      resize: none;
+      &.is-not-valid {
+        border-color: var(--red-color);
+        animation: 0.1s tremor ease-out 1; 
+      }
+    }
+    .attention {
+      display: inline-block; 
+      font-size: 10px; 
+      color: var(--red-color);
+      animation: 0.1s tremor ease-out 1;
+    }
   }
   &__personal {
     &-wrap {
@@ -146,6 +165,23 @@
     &__wrap {
       &-input {
         padding: 14px 0;
+      }
+    }
+  }
+}
+#popup-review {
+  .popup {
+    &__wrap {
+      &-title {
+        margin-bottom: 18px;
+      }
+      .clicked-rate {
+        margin-bottom: 40px;
+      }
+    }
+    &__form {
+      &-textarea {
+        margin-bottom: 41px;
       }
     }
   }

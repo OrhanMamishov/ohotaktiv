@@ -9,6 +9,9 @@ import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
 import { eNumerate } from "../functions/eNumerate";
+import { bodyScrollToggle } from "../functions/scrollBody";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox.css";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const serverName = "https://ohotaktiv.ru";
@@ -20,12 +23,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   )
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      // const id = document.location.search.replace("?", "");
+      // const item = res.catalog.items[id];
+      // console.log(item);
       refreshCard(res);
       refreshViewed(res["viewed"]);
       refreshDescription(res);
     });
-
   // Функции
   function refreshCard(res) {
     const cardSection = document.querySelector(".card");
@@ -65,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               .map((img) => {
                 return `
                 <li class="card__left-slide swiper-slide">
-                  <img src="${
+                  <img data-fancybox="gallery" src="${
                     serverName + img
                   }" alt="Картинка товара" class="card__img-big">
                 </li>
@@ -160,6 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     `;
     cardSection.insertAdjacentHTML("beforeend", element);
+    // свайпер
     const galleryThumbs = new Swiper(".swiper-images", {
       modules: [Pagination, Mousewheel],
       mousewheel: true,
@@ -169,12 +174,31 @@ document.addEventListener("DOMContentLoaded", async () => {
         clickable: true,
       },
     });
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      animated: false,
+      showClass: false,
+      hideClass: false,
+
+      click: false,
+
+      dragToClose: false,
+
+      Image: {
+        zoom: false,
+      },
+
+      Toolbar: {
+        display: [{ id: "counter", position: "center" }, "close"],
+      },
+    });
+    // кнопка расшарить
     const buttonShare = document.querySelector(".share");
     const wrapShare = document.querySelector(".share-wrap");
     const linksShare = document.querySelectorAll(".share-link");
     buttonShare.addEventListener("click", () => {
       wrapShare.classList.toggle("is-open");
     });
+    // кнопки все характеристики и подробнее
     const cardCharactersButton = document.querySelector(
       ".card__right-dots-button"
     );
@@ -215,6 +239,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     });
+    // плавные ссылки
     const anchors = document.querySelectorAll('a[href*="#"]');
     for (let anchor of anchors) {
       anchor.addEventListener("click", (e) => {
@@ -441,7 +466,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="description__tab" data-target="description-review"> 
           <div class="description__tab-review-wrap">
           ${
-            res.reviews.length == 0
+            res.reviews.cnt_reviews == 0
               ? `
             <div class="description__tab-review-empty">
               <h3 class="description__tab-review-title">
@@ -456,42 +481,46 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
           `
               : `
-              
-              <div class="description__tab-review">
+            <div class="description__tab-review">
               <ul class="description__tab-review-list">
-              ${res.reviews
+              ${
+                /*Object.values(res.reviews)
                 .map((review) => {
-                  return `
-                <li class="description__tab-review-item">
-                  <div class="description__tab-review-user">
-                    <p class="description__tab-review-user-avatar">
-                    ${review.author
-                      .split(" ")
-                      .map(function (item) {
-                        return item[0];
-                      })
-                      .join("")}</p>
-                    <p class="description__tab-review-user-name">
-                      ${review.author}
-                    </p>
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        ${review.date}
-                      </p>
-                    </div>
-                  </div>
-                  <p class="description__tab-review-comment">
-                  ${review.text}
-                  </p>
-                </li>
-                `;
+                  console.log(review);
+                  // if (typeof review === Object) {
+                  //   return `
+                  //   <li class="description__tab-review-item">
+                  //     <div class="description__tab-review-user">
+                  //       <p class="description__tab-review-user-avatar">
+                  //       ${review.author
+                  //         .split(" ")
+                  //         .map(function (item) {
+                  //           return item[0];
+                  //         })
+                  //         .join("")}</p>
+                  //       <p class="description__tab-review-user-name">
+                  //         ${review.author}
+                  //       </p>
+                  //       <div class="not-clicked-rate-wrap">
+                  //         <span class="active"></span>
+                  //         <span class="active"></span>
+                  //         <span class="active"></span>
+                  //         <span class="active"></span>
+                  //         <span></span>
+                  //       </div>
+                  //     </div>
+                  //     <p class="description__tab-review-comment">
+                  //       ${review.text}
+                  //     </p>
+                  //     <p class="description__tab-review-date">
+                  //       ${review.date}
+                  //     </p>
+                  //   </li>
+                  //   `;
+                  // }
                 })
-                .join("")}
+              .join("")*/ 1
+              }
               </ul>
               <div class="description__tab-review-result">
                 <div class="not-clicked-rate-wrap">
@@ -651,6 +680,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         },
       },
     });
+    // табы
     const pathsDescriptions = document.querySelectorAll(
       ".description__tabs-item"
     );
@@ -666,6 +696,125 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (el.getAttribute("data-target") == target)
             el.classList.add("is-open");
         });
+      });
+    });
+    // форма с отзывом
+    const reviewButton = document.querySelector(
+      ".description__tab-review-button"
+    );
+    reviewButton.addEventListener("click", () => {
+      bodyScrollToggle();
+      const popupElement = `
+      <div id="popup-review" class="popup">
+        <div class="popup__background"></div>
+          <div class="popup__wrap">
+            <button class="popup__wrap-close"></button>
+            <h2 class="popup__wrap-title">
+              Поделитесь вашим мнением
+            </h2>
+            <div class="clicked-rate">
+              <input class="rate-check" type="radio" id="star-5" name="rating" value="5">
+              <label for="star-5" title="Оценка «5»"></label>
+              <input class="rate-check" type="radio" id="star-4" name="rating" value="4">
+              <label for="star-4" title="Оценка «4»"></label>
+              <input class="rate-check" type="radio" id="star-3" name="rating" value="3">
+              <label for="star-3" title="Оценка «3»"></label>
+              <input class="rate-check" type="radio" id="star-2" name="rating" value="2">
+              <label for="star-2" title="Оценка «2»"></label>
+              <input class="rate-check" type="radio" id="star-1" name="rating" value="1">
+              <label for="star-1" title="Оценка «1»"></label>
+            </div>
+            <form action="#" class="popup__form">
+              <h3 class="popup__wrap-subtitle">
+                Как вам товар?
+              </h3>
+              <textarea rows="5" class="popup__form-textarea" placeholder="Ваш подробный отзыв поможет другим покупателям определиться с выбором"></textarea>
+              <p class="popup__form-text">
+                Перед отправкой отзыва на модерацию, ознакомьтесь с <a href="#" class="popup_link">Правилами публикации</a>
+              </p>
+              <button id="review-button-confirm" class="popup__wrap-button">
+                Оставить отзыв
+              </button>
+            </form>
+          </div>
+        </div>
+      `;
+      document.body.insertAdjacentHTML("beforeend", popupElement);
+      const popupReview = document.getElementById("popup-review");
+      const closePopup = document.querySelector(".popup__wrap-close");
+      const backgroundPopup = document.querySelector(".popup__background");
+      closePopup.addEventListener("click", () => {
+        bodyScrollToggle();
+        popupReview.remove();
+      });
+      backgroundPopup.addEventListener("click", () => closePopup.click());
+      const reviewPostButton = document.getElementById("review-button-confirm");
+      reviewPostButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const attention = document.querySelector(".attention");
+        if (attention) attention.remove();
+        const stars = document.querySelectorAll(".rate-check");
+        const popupForm = document.querySelector(".popup__form");
+        let rate = "";
+        stars.forEach((star) => {
+          if (star.checked) {
+            rate = star.value;
+          }
+        });
+        if (!rate) {
+          const attentionElement = `
+            <p class="attention">Оценка не выставлена, пожалуйста поставьте оценку</p>
+          `;
+          popupForm.insertAdjacentHTML("beforeend", attentionElement);
+          return;
+        }
+        const textArea = document.querySelector(".popup__form-textarea");
+        textArea.addEventListener("input", () => {
+          textArea.classList.remove("is-not-valid");
+        });
+        if (!textArea.value) {
+          textArea.classList.add("is-not-valid");
+          const attentionElement = `
+            <p class="attention">Заполните поле</p>
+          `;
+          popupForm.insertAdjacentHTML("beforeend", attentionElement);
+          return;
+        }
+        try {
+          await fetch(
+            "https://ohotaktiv.ru/12dev/new-design/pages/card/review.php",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                goodId: "231822",
+                userId: "4307",
+                stars: rate,
+                textReview: textArea.value,
+              }),
+            }
+          )
+            .then((res) => res.json())
+            .then((res) => {
+              if (res == 200) {
+                const title = document.querySelector(".popup__wrap-title");
+                title.textContent = "Спасибо за ваш отзыв!";
+                title.style.margin = "0 30px 0 0";
+                const clickedRate = document.querySelector(".clicked-rate");
+                clickedRate.remove();
+                popupForm.remove();
+              } else {
+                const attentionElement = `
+                  <p class="attention">Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${res}</p>
+                `;
+                popupForm.insertAdjacentHTML("beforeend", attentionElement);
+              }
+            });
+        } catch (err) {
+          const attentionElement = `
+          <p class="attention">Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Ошибка: ${err}</p>
+        `;
+          popupForm.insertAdjacentHTML("beforeend", attentionElement);
+        }
       });
     });
   }

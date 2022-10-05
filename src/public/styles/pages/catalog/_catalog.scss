@@ -9,6 +9,8 @@
       width: 334px;
     }
     &__img {
+      height: 206px;
+      object-fit: contain;
       &-wrap {
         margin-bottom: 38px;
         background-color: var(--lightness-grey-color);
@@ -43,7 +45,6 @@
     }
   }
   .detail-catalog {
-    display: none;
     .tabs {
       &__list {
         @include tabsMiniList;
@@ -57,6 +58,8 @@
         }
       }
       &__img {
+        height: 385px;
+        object-fit: contain;
         &-wrap {
           position: relative;
           margin-bottom: 70px;
@@ -65,11 +68,11 @@
           @include fontSize30;
           margin-bottom: 20px;
           font-weight: 900;
-          color: var(--white-color);
+          // color: var(--white-color);
         }
         &-text {
           @include fontSize13;
-          color: var(--white-color);
+          // color: var(--white-color);
           &-wrap {
             position: absolute;
             top: 160px;

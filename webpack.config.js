@@ -51,6 +51,7 @@ module.exports = {
     history: "./src/public/scripts/pages/history.js",
     cart: "./src/public/scripts/pages/cart.js",
     order: "./src/public/scripts/pages/order.js",
+    app: "./src/public/scripts/pages/app.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
