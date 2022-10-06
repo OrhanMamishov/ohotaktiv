@@ -1,30 +1,28 @@
 import "../imports";
 import "../../styles/pages/sert/style.scss";
-import Swiper, { Navigation, Mousewheel, Thumbs } from "swiper";
+import Swiper, { Mousewheel, Navigation, Pagination } from "swiper";
 import "swiper/css/thumbs";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "swiper/css";
-import { numberWithSpaces } from "../functions/numberWithSpaces";
 
 document.addEventListener("DOMContentLoaded", () => {
   // свайперы и чойзы
-  const galleryThumbs = new Swiper(".gallery-thumbs", {
-    modules: [Mousewheel],
-    direction: "vertical",
-    slidesPerView: 3,
-    spaceBetween: 10,
+  const galleryThumbs = new Swiper(".swiper-images", {
+    modules: [Pagination, Mousewheel],
     mousewheel: true,
-    freeMode: true,
-  });
-  const galleryTop = new Swiper(".gallery-top", {
-    modules: [Thumbs],
-    // direction: "vertical",
-    slidesPerView: 1,
-    spaceBetween: 20,
-    mousewheel: true,
-    grabCursor: true,
-    thumbs: {
-      swiper: galleryThumbs,
+    pagination: {
+      el: ".sert__left-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      1023: {
+        direction: "vertical",
+      },
+      320: {
+        spaceBetween: 20,
+        direction: "horizontal",
+      },
     },
   });
   const viewedSwiper = new Swiper(".swiper-viewed", {
@@ -60,16 +58,4 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
   // свайперы и чойзы
-
-  // клики на выбор товара
-  const pricesItems = document.querySelectorAll(".sert__info-prices-item");
-  const priceText = document.querySelector(".sert__pay-price");
-  pricesItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      pricesItems.forEach((el) => el.classList.remove("is-active"));
-      item.classList.add("is-active");
-      priceText.textContent = `${numberWithSpaces(item.textContent)} ₽`;
-    });
-  });
-  // клики на выбор товара
 });

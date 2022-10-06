@@ -1,7 +1,6 @@
 import "../imports";
 import "../../styles/pages/card/style.scss";
 import Swiper, { Mousewheel, Navigation, Pagination } from "swiper";
-import "swiper/css/thumbs";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css";
