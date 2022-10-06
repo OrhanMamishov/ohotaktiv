@@ -1,6 +1,6 @@
 .footer {
   background-color: var(--black-footer-color);
-  background-image: url('../../../img/footer-background.png');
+  background-image: url("../../../img/footer-background.png");
   background-repeat: no-repeat;
   background-size: contain;
   &__wrap {
@@ -23,7 +23,7 @@
       @include fontSize13;
       margin-bottom: 23px;
       font-weight: 600;
-      color: var(--footer-title-color)
+      color: var(--footer-title-color);
     }
   }
   &__buyer {
@@ -127,25 +127,25 @@
       background-position: center;
       background-size: contain;
       &.vk {
-        background-image: url('../../../img/vk.svg');
+        background-image: url("../../../img/vk.svg");
       }
       &.youtube {
-        background-image: url('../../../img/youtube.svg');
+        background-image: url("../../../img/youtube.svg");
       }
       &.telegram {
-        background-image: url('../../../img/telegram.svg');
+        background-image: url("../../../img/telegram.svg");
       }
       &.dzen {
-        background-image: url('../../../img/dzen.svg');
+        background-image: url("../../../img/dzen.svg");
       }
       &.viber {
-        background-image: url('../../../img/viber.svg');
+        background-image: url("../../../img/viber.svg");
       }
       &.ok {
-        background-image: url('../../../img/ok.svg');
+        background-image: url("../../../img/ok.svg");
       }
       &.rutube {
-        background-image: url('../../../img/rutube.svg');
+        background-image: url("../../../img/rutube.svg");
       }
     }
     &-text {
@@ -167,7 +167,6 @@
         }
       }
       &-link {
-        @include fontSize12;
         padding: 9px 14px 9px 49px;
         display: flex;
         flex-direction: column;
@@ -176,19 +175,20 @@
         background-size: auto;
         background-position: 12px center;
         font-weight: 500;
+        font-size: 11px;
         color: var(--footer-title-color);
         span {
-          font-size: 18px;
+          @include fontSize16;
           font-weight: 700;
         }
         &.google-play {
-          background-image: url('../../../img/google-play.svg');
+          background-image: url("../../../img/google-play.svg");
         }
         &.app-store {
-          background-image: url('../../../img/app-store.svg');
+          background-image: url("../../../img/app-store.svg");
         }
         &.app-gallery {
-          background-image: url('../../../img/app-gallery.svg');
+          background-image: url("../../../img/app-gallery.svg");
         }
       }
     }
@@ -351,7 +351,7 @@
         margin-bottom: 28px;
         cursor: pointer;
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           top: 2px;
           left: -29px;
@@ -359,7 +359,8 @@
           height: 6px;
           border-style: solid;
           border-width: 1px;
-          border-color: transparent transparent var(--white-color) var(--white-color);
+          border-color: transparent transparent var(--white-color)
+            var(--white-color);
           transform: rotate(-45deg);
         }
         &.is-active {

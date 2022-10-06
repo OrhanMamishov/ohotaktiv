@@ -2,6 +2,46 @@
   margin: 0;
   padding: 0;
 }
+@mixin fontSize35 {
+  font-size: 35px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 30px;
+  }
+}
+@mixin fontSize30 {
+  font-size: 30px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 24px;
+  }
+}
+@mixin fontSize24 {
+  font-size: 24px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 20px;
+  }
+}
+@mixin fontSize20 {
+  font-size: 20px;
+}
+@mixin fontSize18 {
+  font-size: 18px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 16px;
+  }
+}
+@mixin fontSize16 {
+  font-size: 16px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 14px;
+  }
+}
+@mixin fontSize14 {
+  font-size: 14px;
+}
+@mixin fontSize13 {
+  font-size: 13px;
+}
+// --
 @mixin fontSize32 {
   font-size: 32px;
   @media only screen and (max-width: 1023px) {
@@ -11,35 +51,11 @@
     font-size: 16px;
   }
 }
-@mixin fontSize30 {
-  font-size: 30px;
-}
-@mixin fontSize24 {
-  font-size: 24px;
-  @media only screen and (max-width: 1560px) {
-    font-size: 22px;
-  }
-  @media only screen and (max-width: 767px) {
-    font-size: 18px;
-  }
-}
 @mixin fontSize22 {
   font-size: 22px;
 }
-@mixin fontSize20 {
-  font-size: 20px;
-}
 @mixin fontSize19 {
   font-size: 19px;
-}
-@mixin fontSize18 {
-  font-size: 18px;
-  @media only screen and (max-width: 1023px) {
-    font-size: 14px;
-  }
-  @media only screen and (max-width: 767px) {
-    font-size: 11px;
-  }
 }
 @mixin fontSize17 {
   font-size: 17px;
@@ -56,21 +72,10 @@
     font-size: 12px;
   }
 }
-@mixin fontSize14 {
-  font-size: 14px;
-  @media only screen and (max-width: 1560px) {
-    font-size: 13px;
-  }
-  @media only screen and (max-width: 767px) {
-    font-size: 12px;
-  }
-}
-@mixin fontSize13 {
-  font-size: 13px;
-}
 @mixin fontSize12 {
   font-size: 12px;
 }
+
 @mixin contentButton {
   cursor: pointer;
   padding: 16px 26px;
@@ -83,7 +88,7 @@
   cursor: pointer;
   width: 40px;
   height: 40px;
-  background-image: url('../../../img/close-button.svg');
+  background-image: url("../../../img/close-button.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -91,7 +96,7 @@
   width: 8px;
   height: 8px;
   cursor: pointer;
-  background-image: url('../../../img/close-button-mini.svg');
+  background-image: url("../../../img/close-button-mini.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -99,7 +104,7 @@
   @include fontSize14;
   width: 100%;
   border-bottom: 1px solid var(--grey-form-color);
-  transition: border .2s ease;
+  transition: border 0.2s ease;
   &::placeholder {
     color: var(--grey-color);
   }
@@ -111,7 +116,7 @@
   }
   &.is-not-valid {
     border-color: var(--red-color);
-    animation: 0.1s tremor ease-out 1; 
+    animation: 0.1s tremor ease-out 1;
   }
 }
 @mixin swiperArrowsIndexPage {
@@ -148,7 +153,7 @@
     color: var(--grey-form-color);
     padding: 15px 0;
     cursor: pointer;
-    transition: color .2s ease, border-color .2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease;
     &.is-active {
       color: var(--black-color);
       border-bottom: 2px solid var(--black-color);

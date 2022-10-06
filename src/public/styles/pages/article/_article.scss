@@ -1,9 +1,8 @@
 .main {
   .article {
-    max-width: 943px;
-    margin: 0 auto 50px;
     &__text {
       @include fontSize15;
+      max-width: 1071px;
       line-height: 28px;
       &:not(:last-child) {
         margin-bottom: 40px;
@@ -11,15 +10,18 @@
     }
     &__subtitle {
       @include fontSize13;
+      max-width: 1071px;
       display: inline-block;
       margin-bottom: 30px;
     }
     &__title {
       @include fontSize30;
+      max-width: 1071px;
       margin-bottom: 20px;
     }
     &__img {
       margin-bottom: 40px;
+      max-width: 1071px;
     }
   }
   .goods {
@@ -39,21 +41,8 @@
   }
 }
 
-@media only screen and (max-width: 1365px) {
-  .main {
-    .article {
-      max-width: 1320px;
-      padding: 0 100px;
-    }
-  }
-}
-
 @media only screen and (max-width: 1023px) {
   .main {
-    .article {
-      max-width: 924px;
-      padding: 0 50px;
-    }
     .goods {
       &__wrap {
         .swiper {
@@ -64,15 +53,6 @@
       &__swiper-button-next {
         display: none;
       }
-    }
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .main {
-    .article {
-      max-width: 736px;
-      padding: 0 16px;
     }
   }
 }

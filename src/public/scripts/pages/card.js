@@ -5,15 +5,15 @@ import "swiper/css/thumbs";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css";
-import Choices from "choices.js";
-import "choices.js/public/assets/styles/choices.min.css";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
-import { eNumerate } from "../functions/eNumerate";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox.css";
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  let accordion;
   const serverName = "https://ohotaktiv.ru";
   const arrayFromBase = await fetch(
     "https://ohotaktiv.ru/12dev/new-design/pages/card/hand.php",
@@ -168,10 +168,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     const galleryThumbs = new Swiper(".swiper-images", {
       modules: [Pagination, Mousewheel],
       mousewheel: true,
-      direction: "vertical",
       pagination: {
         el: ".card__left-pagination",
         clickable: true,
+      },
+      breakpoints: {
+        1023: {
+          direction: "vertical",
+        },
+        320: {
+          spaceBetween: 20,
+          direction: "horizontal",
+        },
       },
     });
     Fancybox.bind('[data-fancybox="gallery"]', {
@@ -203,41 +211,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       ".card__right-dots-button"
     );
     cardCharactersButton.addEventListener("click", () => {
-      const pathsDescriptions = document.querySelectorAll(
-        ".description__tabs-item"
-      );
-      pathsDescriptions.forEach((path) => {
-        path.classList.remove("is-active");
-        if (path.getAttribute("data-path") == "description-stats") {
-          path.classList.add("is-active");
-        }
-      });
-      const tabDescriptions = document.querySelectorAll(".description__tab");
-      tabDescriptions.forEach((tab) => {
-        tab.classList.remove("is-open");
-        if (tab.getAttribute("data-target") == "description-stats") {
-          tab.classList.add("is-open");
-        }
-      });
+      accordion.closeAll();
+      accordion.open(0);
     });
     const cardStockButton = document.querySelector(".card__right-stock-link");
     cardStockButton.addEventListener("click", () => {
-      const pathsDescriptions = document.querySelectorAll(
-        ".description__tabs-item"
-      );
-      pathsDescriptions.forEach((path) => {
-        path.classList.remove("is-active");
-        if (path.getAttribute("data-path") == "description-avaliability") {
-          path.classList.add("is-active");
-        }
-      });
-      const tabDescriptions = document.querySelectorAll(".description__tab");
-      tabDescriptions.forEach((tab) => {
-        tab.classList.remove("is-open");
-        if (tab.getAttribute("data-target") == "description-avaliability") {
-          tab.classList.add("is-open");
-        }
-      });
+      accordion.closeAll();
+      accordion.open(3);
     });
     // плавные ссылки
     const anchors = document.querySelectorAll('a[href*="#"]');
@@ -363,297 +343,318 @@ document.addEventListener("DOMContentLoaded", async () => {
     descriptionSection.children[0].remove();
     const element = `
     <div class="description__wrap container">
-      <ul class="description__tabs-list">
-        <li class="description__tabs-item is-active" data-path="description-stats">
-          Описание и характеристики
-        </li>
-        <li class="description__tabs-item" data-path="description-set">
-          Товары в комплект
-        </li>
-        <li class="description__tabs-item" data-path="description-review">
-          Отзывы
-        </li>
-        <li class="description__tabs-item" data-path="description-avaliability">
-          Наличие в магазинах
-        </li>
-      </ul>
-      <div class="description__tab is-open" data-target="description-stats">
-        <div class="description__tab-stats-wrap">
-          <div class="description__tab-stats-left">
-            <div class="description__tab-dots">
-            ${Object.keys(res["properties"])
-              .map((el) => {
-                return `
-                <div class="dot">
-                  <span class="dot__prop"><span>${el}</span></span>
-                  <span class="dot__value">${res["properties"][el]}</span>
+    <h2 class="visually-hidden">Описание товара</h2>
+    <div class="accordion-container">
+      <div class="ac">
+        <p class="ac-header">
+          <button type="button" class="ac-trigger">
+            Описание и характеристики
+          </button>
+        </p>
+        <div class="ac-panel">
+          <div class="description__panel">
+            <div class="description__stats">
+              <div class="description__stats-left">
+                <div class="description__stats-dots">
+                ${Object.keys(res["properties"])
+                  .map((el) => {
+                    return `
+                      <div class="dot">
+                        <span class="dot__prop"><span>${el}</span></span>
+                        <span class="dot__value">${res["properties"][el]}</span>
+                      </div>
+                    `;
+                  })
+                  .join("")}
                 </div>
-              `;
-              })
-              .join("")}
-            </div>
-          </div>
-          <div class="description__tab-stats-right">
-            <div class="description__tab-text">
-            ${res.DETAIL_TEXT}
+              </div>
+              <div class="description__stats-right">
+                  ${res.DETAIL_TEXT}
+              </div>
             </div>
           </div>
         </div>
       </div>
-        <div class="description__tab" data-target="description-set">
-            <div class="swiper swiper-tab">
-              <ul class="description__tab-set-result-list swiper-wrapper cards-list">
-                
-                <li class="description__tab-set-result-item swiper-slide card-item">
-                    <div class="card-item__wrap">
-                      <a href="#" class="card-item__link">
-                        <div class="card-item__photo-wrap">
-                          <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                          <div class="card-item__photo-button-wrap">
-                            <span class="card-item__photo-button compare"></span>
-                            <span class="card-item__photo-button favourite"></span>
-                          </div>
-                          <div class="card-item__photo-texts">
-                            <p class="card-item__photo-text new">
-                              Что то
-                            </p>
-                            <p class="card-item__photo-text discount">
-                              -10%
-                            </p>
-                          </div>
+      <div class="ac">
+        <p class="ac-header">
+          <button type="button" class="ac-trigger">
+            Товары в комплект
+          </button>
+        </p>
+        <div class="ac-panel">
+          <div class="description__panel">
+            <div class="swiper swiper-set">
+              <ul class="description__set-list swiper-wrapper">
+                <li class="description__set-item swiper-slide card-item">
+                  <div class="card-item__wrap">
+                    <a href="#" class="card-item__link">
+                      <div class="card-item__photo-wrap">
+                        <img
+                          src="img/card-img.png"
+                          alt="Фото товара"
+                          class="card-item__photo"
+                        />
+                        <div class="card-item__photo-button-wrap">
+                          <span
+                            class="card-item__photo-button compare"
+                          ></span>
+                          <span
+                            class="card-item__photo-button favourite"
+                          ></span>
                         </div>
-                        <div class="card-item__description-wrap">
-                          <p class="card-item__description-price">
-                            61 290 &#8381; <span>62 490 &#8381;</span>
+                        <div class="card-item__photo-texts">
+                          <p class="card-item__photo-text new">Что то</p>
+                          <p class="card-item__photo-text discount">
+                            -10%
                           </p>
-                          <p class="card-item__description-text">
-                            The 20th century was very notable with its unparalleled
-                          </p>
-                          <div class="card-item__description-stock-wrap">
-                            <p class="card-item__description-stock avaliable">
-                              Склад
-                            </p>
-                            <p class="card-item__description-stock not-avaliable">
-                              Магазин
-                            </p>
-                            <p class="card-item__description-stock">
-                              Нет в наличии
-                            </p>
-                          </div>
-                          <div class="not-clicked-rate-wrap">
-                            <span class="active"></span>    
-                            <span class="active"></span>  
-                            <span class="active"></span>    
-                            <span class="active"></span>
-                            <span></span>
-                            <p class="not-clicked-rate-karma">
-                              10
-                            </p>
-                          </div>
                         </div>
-                      </a>
-                      <button class="card-item__button">
-                        В корзину
-                      </button>
-                    </div>
-                  </li>
-              
-                </ul>
-                <div class="description__tab-set-result-swiper-button-prev swiper-button-prev"></div>
-                <div class="description__tab-set-result-swiper-button-next swiper-button-next"></div>
-              </div>
-        </div>
-        <div class="description__tab" data-target="description-review"> 
-          <div class="description__tab-review-wrap">
-          ${
-            res.reviews.cnt_reviews == 0
-              ? `
-            <div class="description__tab-review-empty">
-              <h3 class="description__tab-review-title">
-                Ваш отзыв будет первым!
-              </h3>
-              <p class="description__tab-review-text">
-                Поделитесь опытом, помогите другим покупателям с выбором.
-              </p>
-              <button class="description__tab-review-button">
-                Оставить отзыв
-              </button>
-            </div>
-          `
-              : `
-            <div class="description__tab-review">
-              <ul class="description__tab-review-list">
-              ${
-                /*Object.values(res.reviews)
-                .map((review) => {
-                  console.log(review);
-                  // if (typeof review === Object) {
-                  //   return `
-                  //   <li class="description__tab-review-item">
-                  //     <div class="description__tab-review-user">
-                  //       <p class="description__tab-review-user-avatar">
-                  //       ${review.author
-                  //         .split(" ")
-                  //         .map(function (item) {
-                  //           return item[0];
-                  //         })
-                  //         .join("")}</p>
-                  //       <p class="description__tab-review-user-name">
-                  //         ${review.author}
-                  //       </p>
-                  //       <div class="not-clicked-rate-wrap">
-                  //         <span class="active"></span>
-                  //         <span class="active"></span>
-                  //         <span class="active"></span>
-                  //         <span class="active"></span>
-                  //         <span></span>
-                  //       </div>
-                  //     </div>
-                  //     <p class="description__tab-review-comment">
-                  //       ${review.text}
-                  //     </p>
-                  //     <p class="description__tab-review-date">
-                  //       ${review.date}
-                  //     </p>
-                  //   </li>
-                  //   `;
-                  // }
-                })
-              .join("")*/ 1
-              }
+                      </div>
+                      <div class="card-item__description-wrap">
+                        <p class="card-item__description-price">
+                          61 290 &#8381; <span>62 490 &#8381;</span>
+                        </p>
+                        <p class="card-item__description-text">
+                          The 20th century was very notable with its
+                          unparalleled
+                        </p>
+                        <div class="not-clicked-rate-wrap">
+                          <span class="active"></span>
+                          <span class="active"></span>
+                          <span class="active"></span>
+                          <span class="active"></span>
+                          <span></span>
+                          <p class="not-clicked-rate-karma">10</p>
+                        </div>
+                      </div>
+                    </a>
+                    <button class="card-item__button">В корзину</button>
+                  </div>
+                </li>
               </ul>
-              <div class="description__tab-review-result">
-                <div class="not-clicked-rate-wrap">
-                  <span class="active"></span>    
-                  <span class="active"></span>  
-                  <span class="active"></span>    
-                  <span class="active"></span>
-                  <span></span>
-                  <p class="not-clicked-rate-karma">
-                    4.5/5
-                  </p>
-                </div>
-                <div class="description__tab-review-starsby">
-                  <div class="review-row">
-                    <p class="label">5 звезд</p>
-                    <div class="percent-line">
-                      <div class="line"></div>
-                    </div>
-                    <div class="review-row-count">
-                      8
-                    </div>
-                  </div>
-                  <div class="review-row">
-                    <p class="label">4 звезды</p>
-                    <div class="percent-line">
-                      <div class="line"></div>
-                    </div>
-                    <div class="review-row-count">
-                      8
-                    </div>
-                  </div>
-                  <div class="review-row">
-                    <p class="label">3 звезды</p>
-                    <div class="percent-line">
-                      <div class="line"></div>
-                    </div>
-                    <div class="review-row-count">
-                      8
-                    </div>
-                  </div>
-                  <div class="review-row">
-                    <p class="label">2 звезды</p>
-                    <div class="percent-line">
-                      <div class="line"></div>
-                    </div>
-                    <div class="review-row-count">
-                      8
-                    </div>
-                  </div>
-                  <div class="review-row">
-                    <p class="label">1 звезда</p>
-                    <div class="percent-line">
-                      <div class="line"></div>
-                    </div>
-                    <div class="review-row-count">
-                      8
-                    </div>
-                  </div>
-                </div>
-                <button class="description__tab-review-button">
-                  Оставить отзыв
-                </button>
-              </div>
-              `
-          }
+              <div
+                class="description__set-swiper-button-prev swiper-button-prev"
+              ></div>
+              <div
+                class="description__set-swiper-button-next swiper-button-next"
+              ></div>
             </div>
           </div>
         </div>
-        <div class="description__tab" data-target="description-avaliability">
-          <div class="description__tab-avaliability-wrap">
-            <ul class="description__tab-avaliability-list">
-              <li class="description__tab-avaliability-item">
-                <a href="#" class="description__tab-avaliability-link"> 
-                  <address class="description__tab-avaliability-address">
-                    г. Владимир, пр. Суздальский, д. 26
-                  </address>
-                  <p class="description__tab-avaliability-text">
-                    Подробнее о магазине
-                  </p>
-                </a>
-              </li>
-              <li class="description__tab-avaliability-item">
-                <a href="#" class="description__tab-avaliability-link"> 
-                  <address class="description__tab-avaliability-address">
-                    г. Владимир, пр. Суздальский, д. 26
-                  </address>
-                  <p class="description__tab-avaliability-text">
-                    Подробнее о магазине
-                  </p>
-                </a>
-              </li>
-              <li class="description__tab-avaliability-item">
-                <a href="#" class="description__tab-avaliability-link"> 
-                  <address class="description__tab-avaliability-address">
-                    г. Владимир, пр. Суздальский, д. 26
-                  </address>
-                  <p class="description__tab-avaliability-text">
-                    Подробнее о магазине
-                  </p>
-                </a>
-              </li>
-              <li class="description__tab-avaliability-item">
-                <a href="#" class="description__tab-avaliability-link"> 
-                  <address class="description__tab-avaliability-address">
-                    г. Владимир, пр. Суздальский, д. 26
-                  </address>
-                  <p class="description__tab-avaliability-text">
-                    Подробнее о магазине
-                  </p>
-                </a>
-              </li>
-              <li class="description__tab-avaliability-item">
-                <a href="#" class="description__tab-avaliability-link"> 
-                  <address class="description__tab-avaliability-address">
-                    г. Владимир, пр. Суздальский, д. 26
-                  </address>
-                  <p class="description__tab-avaliability-text">
-                    Подробнее о магазине
-                  </p>
-                </a>
-              </li>
-            </ul>
+      </div>
+      <div class="ac">
+        <p class="ac-header">
+          <button type="button" class="ac-trigger">Отзывы</button>
+        </p>
+        <div class="ac-panel">
+          <div class="description__panel">
+            <div class="description__review-wrap">
+              <div class="description__review-wrap">
+              ${
+                res.reviews.cnt_reviews == 0
+                  ? `
+                  <div class="description__review-empty">
+                    <h3 class="description__review-title">
+                      Ваш отзыв будет первым!
+                    </h3>
+                    <p class="description__review-text">
+                      Поделитесь опытом, помогите другим покупателям с
+                      выбором.
+                    </p>
+                    <button class="description__review-button">
+                      Оставить отзыв
+                    </button>
+                  </div>
+                `
+                  : `
+                <div class="description__review">
+                  <ul class="description__review-list">
+                  ${Object.values(res.reviews)
+                    .map((review) => {
+                      if (typeof review === "object") {
+                        return `
+                            <li class="description__review-item">
+                              <div class="description__review-user">
+                                <p class="description__review-user-avatar">
+                                ${review.author
+                                  .split(" ")
+                                  .map(function (item) {
+                                    return item[0];
+                                  })
+                                  .join("")}</p>
+                                <p class="description__review-user-name">
+                                  ${review.author}
+                                </p>
+                                <div class="not-clicked-rate-wrap">
+                                  <span class="active"></span>
+                                  <span class="active"></span>
+                                  <span class="active"></span>
+                                  <span class="active"></span>
+                                  <span></span>
+                                </div>
+                              </div>
+                              <p class="description__review-comment">
+                                ${review.text}
+                              </p>
+                              <p class="description__review-date">
+                                ${review.date}
+                              </p>
+                            </li>
+                        `;
+                      }
+                    })
+                    .join("")}
+                  </ul>
+                  <div class="description__review-result">
+                    <div class="not-clicked-rate-wrap">
+                      <p class="not-clicked-rate-karma">Средняя оценка 4.5/5</p>
+                    </div>
+                    <div class="description__review-starsby">
+                      <div class="review-row">
+                        <p class="label">5 звезд</p>
+                        <div class="percent-line">
+                          <div class="line"></div>
+                        </div>
+                        <div class="review-row-count">8</div>
+                      </div>
+                      <div class="review-row">
+                        <p class="label">4 звезды</p>
+                        <div class="percent-line">
+                          <div class="line"></div>
+                        </div>
+                        <div class="review-row-count">8</div>
+                      </div>
+                      <div class="review-row">
+                        <p class="label">3 звезды</p>
+                        <div class="percent-line">
+                          <div class="line"></div>
+                        </div>
+                        <div class="review-row-count">8</div>
+                      </div>
+                      <div class="review-row">
+                        <p class="label">2 звезды</p>
+                        <div class="percent-line">
+                          <div class="line"></div>
+                        </div>
+                        <div class="review-row-count">8</div>
+                      </div>
+                      <div class="review-row">
+                        <p class="label">1 звезда</p>
+                        <div class="percent-line">
+                          <div class="line"></div>
+                        </div>
+                        <div class="review-row-count">8</div>
+                      </div>
+                    </div>
+                    <button class="description__review-button">
+                      Оставить отзыв
+                    </button>
+                  </div>
+                </div>
+                `
+              }
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="ac">
+        <p class="ac-header">
+          <button type="button" class="ac-trigger">
+            Наличие в магазинах
+          </button>
+        </p>
+        <div class="ac-panel">
+          <div class="description__panel">
+            <div class="description__avaliability">
+              <ul class="description__avaliability-list">
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+                <li class="description__avaliability-item">
+                  <a href="#" class="description__avaliability-link">
+                    <address class="description__avaliability-address">
+                      г. Владимир, пр. Суздальский, д. 26
+                    </address>
+                    <p class="description__avaliability-text">
+                      Подробнее о магазине
+                    </p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+    
     `;
     descriptionSection.insertAdjacentHTML("beforeend", element);
-    const tabSwiper = new Swiper(".swiper-tab", {
+    accordion = new Accordion(".accordion-container");
+    accordion.open(0);
+    const tabSwiper = new Swiper(".swiper-set", {
       spaceBetween: 10,
       modules: [Navigation],
       navigation: {
-        nextEl: ".description__tab-set-result-swiper-button-next",
-        prevEl: ".description__tab-set-result-swiper-button-prev",
+        nextEl: ".description__set-swiper-button-next",
+        prevEl: ".description__set-swiper-button-prev",
       },
       breakpoints: {
         1559: {
@@ -680,28 +681,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         },
       },
     });
-    // табы
-    const pathsDescriptions = document.querySelectorAll(
-      ".description__tabs-item"
-    );
-    const targetsDescriptions = document.querySelectorAll(".description__tab");
-    pathsDescriptions.forEach((button) => {
-      button.addEventListener("click", () => {
-        if (button.classList.contains("is-active")) return;
-        pathsDescriptions.forEach((el) => el.classList.remove("is-active"));
-        button.classList.add("is-active");
-        const target = button.getAttribute("data-path");
-        targetsDescriptions.forEach((el) => {
-          el.classList.remove("is-open");
-          if (el.getAttribute("data-target") == target)
-            el.classList.add("is-open");
-        });
-      });
-    });
     // форма с отзывом
-    const reviewButton = document.querySelector(
-      ".description__tab-review-button"
-    );
+    const reviewButton = document.querySelector(".description__review-button");
     reviewButton.addEventListener("click", () => {
       bodyScrollToggle();
       const popupElement = `

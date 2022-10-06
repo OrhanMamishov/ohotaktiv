@@ -1,7 +1,10 @@
 .main {
-  .blog {
-    &__list {
-      padding-bottom: 150px;
+  .blog,
+  .article {
+    &__wrap {
+      .swiper {
+        padding: 5px 30px;
+      }
     }
     &__item {
       &-img {
@@ -38,14 +41,23 @@
         border-radius: 100px;
       }
     }
-    &__swiper-pagination {
-      .swiper-pagination-bullet {
-        width: 20px;
-        height: 20px;
-        background: var(--darkness-white-color);
-        &-active {
-          background: var(--dark-grey-color);
+    &__swiper-button {
+      @include swiperArrowsIndexPage;
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .blog,
+    .article {
+      &__wrap {
+        .swiper {
+          padding: 0;
         }
+      }
+      &__swiper-button-prev,
+      &__swiper-button-next {
+        display: none;
       }
     }
   }

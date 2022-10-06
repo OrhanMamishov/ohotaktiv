@@ -1,46 +1,54 @@
 import "../imports";
 import "../../styles/pages/cabinet/style.scss";
-import Accordion from "accordion-js";
-import "accordion-js/dist/accordion.min.css";
-import Swiper, { Navigation } from "swiper";
+import Swiper, { Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 import "swiper/css";
 import Inputmask from "inputmask";
+import { bodyScrollToggle } from "../functions/scrollBody";
 
 document.addEventListener("DOMContentLoaded", () => {
   const favouriteSwiper = new Swiper(".swiper-favourite", {
     spaceBetween: 10,
-    modules: [Navigation],
+    modules: [Navigation, Pagination],
     navigation: {
       nextEl: ".cabinet__favourites-swiper-button-next",
       prevEl: ".cabinet__favourites-swiper-button-prev",
     },
+    pagination: {
+      el: ".cabinet__favourites-pagination",
+      clickable: true,
+    },
     breakpoints: {
-      1559: {
-        slidesPerView: 4,
-      },
-      1439: {
-        spaceBetween: 30,
+      1560: {
+        spaceBetween: 13,
         slidesPerView: 4,
       },
       1366: {
-        slidesPerView: 4,
+        slidesPerView: 3,
       },
       1023: {
-        // spaceBetween: 30,
-        slidesPerView: 3,
+        slidesPerView: 2,
       },
       767: {
         spaceBetween: 20,
         slidesPerView: 3,
       },
       320: {
-        // spaceBetween: 10,
         slidesPerView: 2,
       },
     },
   });
-
+  // открытие меню
+  const hamburger = document.querySelector(".hamburger-lines");
+  const cabinetLeft = document.querySelector(".cabinet__left");
+  hamburger.addEventListener("click", () => {
+    cabinetLeft.classList.toggle("is-open");
+    hamburger.classList.toggle("is-active");
+    bodyScrollToggle();
+  });
+  cabinetLeft.addEventListener("click", () => hamburger.click());
+  // открытие меню
   // табы
   const tabsList = document.querySelectorAll(".tabs__item");
   const targetsList = document.querySelectorAll(".cabinet__target");
