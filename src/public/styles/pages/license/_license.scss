@@ -1,26 +1,19 @@
 .main {
   .license {
-    &__tabs-list {
-      @include tabsMiniList;
-      margin-bottom: 44px;
-    }
-    &__result {
-      width: 948px;
-      display: none;
-      &.is-open {
-        display: block;
-      }
+    &__item {
+      max-width: 948px;
       &-title {
-        @include fontSize17;
         margin-bottom: 15px;
-        font-weight: 800;
+        font-weight: 700;
       }
       &-text {
-        @include fontSize15;
         line-height: 28px;
         &:not(:last-child) {
           margin-bottom: 55px;
         }
+      }
+      &:not(:last-child) {
+        margin-bottom: 90px;
       }
     }
   }

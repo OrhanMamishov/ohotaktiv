@@ -1,12 +1,11 @@
 .main {
   .contacts {
-    &__wrap {
-      display: flex;
-      flex-wrap: wrap;
-    }
     &__title {
-      width: 100%;
       margin-bottom: 70px;
+    }
+    &__list {
+      display: flex;
+      justify-content: space-between;
     }
     &__item {
       padding-top: 87px;
@@ -16,33 +15,61 @@
       flex-direction: column;
       background-repeat: no-repeat;
       background-position: top left;
-      &:nth-child(3) {
-        background-image: url('../../../img/call-us.svg');
+      background-size: 54px;
+      &:nth-child(1) {
+        background-image: url("../../../img/call-us.svg");
       }
-      &:nth-child(4) {
-        // background-image: url('../../../img/feedback.svg');
+      &:nth-child(2) {
+        background-image: url("../../../img/feedback.svg");
       }
       &:last-child {
-        background-image: url('../../../img/office.svg');
-      }
-      &:not(:last-child) {
-        margin-right: 123px;
+        background-image: url("../../../img/office.svg");
       }
       &-title {
-        font-size: 20px;
+        @include fontSize20;
         margin-bottom: 14px;
         font-weight: 900;
       }
       &-text {
-        @include fontSize15;
         line-height: 28px;
         margin-bottom: 25px;
       }
       &-link {
         @include contentButton;
-        @include fontSize15;
         padding: 8px 20px;
         margin-top: auto;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1365px) {
+  .main {
+    .contacts {
+      &__list {
+        flex-direction: column;
+        gap: 70px;
+      }
+      &__item {
+        width: 540px;
+        padding-top: 0;
+        padding-left: 87px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .contacts {
+      &__list {
+        gap: 60px;
+      }
+      &__item {
+        width: 100%;
+        padding-top: 87px;
+        padding-left: 0;
       }
     }
   }

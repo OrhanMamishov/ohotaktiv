@@ -11,7 +11,6 @@
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
       background-position: 25px center;
-      background-size: 2%;
       &::placeholder {
         @include fontSize14;
         color: var(--footer-title-color);
