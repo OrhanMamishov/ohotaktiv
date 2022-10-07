@@ -5,28 +5,28 @@
     }
   }
   .banner {
-    background-image: url('../../../img/banner-vacancy.jpg');
+    background-image: url("../../../img/banner-vacancy.jpg");
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 436px;
+    height: 510px;
     &__wrap {
-      padding-top: 121px;
-      padding-left: 270px;
+      padding-top: 165px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     &__title {
-      @include fontSize30;
-      margin-bottom: 28px;
-      width: 583px;
-      font-weight: 900;
+      @include fontSize35;
+      margin-bottom: 40px;
+      max-width: 725px;
+      font-weight: 800;
       line-height: 45px;
-      text-align: left;
+      text-align: center;
+      color: var(--white-color);
     }
     &__link {
-      @include fontSize14;
-      display: inline-block;
-      padding: 14px 24px;
-      border: 2px solid var(--black-color);
-      border-radius: 100px;
+      @include contentButton;
     }
   }
   .why {
@@ -36,38 +36,36 @@
       margin-bottom: 100px;
     }
     &__list {
-      width: 1200px;
+      max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
       justify-content: center;
       gap: 110px;
     }
     &__item {
-      @include fontSize15;
       padding-top: 81px;
-      width: 260px;
       background-repeat: no-repeat;
       background-position: top center;
       text-align: center;
       line-height: 28px;
       &:first-child {
-        background-image: url('../../../img/vacancy-why-1.svg');
+        background-image: url("../../../img/vacancy-why-1.svg");
       }
       &:nth-child(2) {
-        background-image: url('../../../img/vacancy-why-2.svg');
+        background-image: url("../../../img/vacancy-why-2.svg");
       }
       &:nth-child(3) {
-        background-image: url('../../../img/vacancy-why-3.svg');
+        background-image: url("../../../img/vacancy-why-3.svg");
       }
       &:nth-child(4) {
-        background-image: url('../../../img/vacancy-why-4.svg');
+        background-image: url("../../../img/vacancy-why-4.svg");
       }
       &:nth-child(5) {
-        background-image: url('../../../img/vacancy-why-5.svg');
+        background-image: url("../../../img/vacancy-why-5.svg");
       }
       &:last-child {
-        background-image: url('../../../img/vacancy-why-6.svg');
+        background-image: url("../../../img/vacancy-why-6.svg");
       }
     }
   }
@@ -75,24 +73,21 @@
     &__img {
       display: block;
       margin: 0 auto;
-      width: 50%;
+      max-width: 906px;
     }
   }
   .vacancy {
     &__input {
-      @include fontSize14;
       width: 700px;
       display: block;
       margin: 0 auto 114px auto;
-      padding: 18px 20px 18px 60px;
+      padding: 18px 60px 18px 35px;
       border: 1px solid var(--grey-form-color);
       border-radius: 100px;
-      background-image: url('../../../img/tag.svg');
+      background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
-      background-position: 25px center;
-      background-size: 2%;
+      background-position: 96% center;
       &::placeholder {
-        @include fontSize14;
         color: var(--footer-title-color);
       }
     }
@@ -108,7 +103,7 @@
           border-bottom: 1px solid var(--black-color) !important;
         }
         .price {
-          @include fontSize17;
+          @include fontSize18;
           margin-top: 12px;
           margin-bottom: 47px;
           padding: 2px 12px;
@@ -117,22 +112,22 @@
           background-color: var(--yellow-color);
         }
         .address {
-          @include fontSize15;
+          @include fontSize16;
           width: 749px;
           margin-bottom: 40px;
           padding: 3px 0 3px 40px;
           font-weight: 800;
-          background-image: url('../../../img/tag.svg');
+          background-image: url("../../../img/tag.svg");
           background-repeat: no-repeat;
           background-size: contain;
         }
         .job {
-          @include fontSize14;
+          @include fontSize16;
           width: 749px;
           font-weight: 500;
           line-height: 24px;
           span {
-            @include fontSize15;
+            @include fontSize16;
             display: block;
             font-weight: 800;
             margin-bottom: 10px;
@@ -155,6 +150,130 @@
           .job {
             margin-bottom: 30px;
           }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .banner {
+      height: 480px;
+      &__wrap {
+        padding-top: 152px;
+      }
+      &__title {
+        margin-bottom: 35px;
+      }
+    }
+    .why {
+      padding-top: 84px;
+      padding-bottom: 180px;
+    }
+  }
+}
+@media only screen and (max-width: 1365px) {
+  .main {
+    .banner {
+      height: 390px;
+      &__wrap {
+        padding-top: 112px;
+      }
+      &__title {
+        margin-bottom: 30px;
+      }
+    }
+    .why {
+      padding-top: 60px;
+      padding-bottom: 160px;
+      &__list {
+        gap: 80px;
+        grid-template-columns: repeat(auto-fit, minmax(206px, 221px));
+      }
+    }
+    .vacancy {
+      &__input {
+        width: 100%;
+        max-width: 634px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .why {
+      &__list {
+        gap: 80px 20px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 208px));
+      }
+      &__item {
+        line-height: 25px;
+      }
+    }
+    .vacancy {
+      &__input {
+        max-width: unset;
+      }
+      &__item {
+        &.ac {
+          .address {
+            width: 100%;
+          }
+          .job {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .banner {
+      height: 470px;
+      &__title {
+        line-height: 40px;
+      }
+    }
+    .why {
+      padding-top: 50px;
+      padding-bottom: 80px;
+      &__title {
+        margin-bottom: 40px;
+      }
+      &__list {
+        gap: 35px;
+      }
+      &__item {
+        padding-top: 0;
+        padding-left: 60px;
+        background-position: left center;
+        background-size: 40px;
+        text-align: left;
+      }
+    }
+    .about {
+      display: none;
+    }
+    .vacancy {
+      &__input {
+        padding: 17px 25px;
+        margin-bottom: 45px;
+      }
+      &__item {
+        &.ac {
+          .name {
+            line-height: 32px;
+          }
+          .address {
+            background: unset;
+            padding-left: 0;
+          }
+        }
+        &-button {
+          width: 100%;
         }
       }
     }

@@ -32,7 +32,8 @@
       @include fontSize14;
       margin-bottom: 14px;
     }
-    .input-wrap, .input-wrap-file {
+    .input-wrap,
+    .input-wrap-file {
       label {
         @include fontSize13;
       }
@@ -94,7 +95,7 @@
   &__form {
     &-title {
       @include fontSize15;
-      margin-bottom: 24px; 
+      margin-bottom: 24px;
       font-weight: 800;
     }
     &-text {
@@ -107,12 +108,12 @@
       resize: none;
       &.is-not-valid {
         border-color: var(--red-color);
-        animation: 0.1s tremor ease-out 1; 
+        animation: 0.1s tremor ease-out 1;
       }
     }
     .attention {
-      display: inline-block; 
-      font-size: 10px; 
+      display: inline-block;
+      font-size: 10px;
       color: var(--red-color);
       animation: 0.1s tremor ease-out 1;
     }
@@ -129,6 +130,9 @@
         &-file {
           grid-area: 3 / 1 / 4 / 3;
         }
+      }
+      @media only screen and (max-width: 767px) {
+        display: block;
       }
     }
   }

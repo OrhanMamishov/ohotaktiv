@@ -12,9 +12,16 @@
   font-family: "Gilroy";
   font-style: normal;
   font-weight: 500;
-  src: url("/src/public/fonts/Gilroy-500.woff2") format("woff2"),
-    url("/src/public/fonts/Gilroy-500.woff") format("woff");
+  src: url("/src/public/fonts/Gilroy-600.woff2") format("woff2"),
+    url("/src/public/fonts/Gilroy-600.woff") format("woff");
 }
+// @font-face {
+//   font-family: "Gilroy";
+//   font-style: normal;
+//   font-weight: 600;
+//   src: url("/src/public/fonts/Gilroy-600.woff2") format("woff2"),
+//     url("/src/public/fonts/Gilroy-600.woff") format("woff");
+// }
 @font-face {
   font-family: "Gilroy";
   font-style: normal;

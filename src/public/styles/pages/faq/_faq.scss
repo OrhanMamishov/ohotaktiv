@@ -1,0 +1,34 @@
+.main {
+  .faq {
+    .accordion-container {
+      max-width: 1071px;
+      .ac {
+        margin-top: 0;
+        border-color: var(--black-color) transparent transparent transparent;
+        .ac-trigger {
+          font: unset;
+          @include fontSize18;
+          font-weight: 700;
+          padding: 20px 0;
+          &:focus {
+            color: unset;
+          }
+        }
+        &.skeleton {
+          width: 100%;
+          height: 72px;
+        }
+        &:last-child {
+          border-color: var(--black-color) transparent var(--black-color)
+            transparent;
+        }
+      }
+    }
+    &__panel {
+      padding: 10px 0 30px;
+      &-text {
+        line-height: 28px;
+      }
+    }
+  }
+}
