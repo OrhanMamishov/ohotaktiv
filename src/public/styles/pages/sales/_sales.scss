@@ -1,36 +1,10 @@
 .main {
   .sales {
     &__list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      grid-row-gap: 35px;
-    }
-    &__item {
-      width: 457px;
-    }
-    &__img {
-      width: 100%;
-    }
-  }
-}
-
-@media only screen and (max-width: 1439px) {
-  .main {
-    .sales {
-      &__item {
-        width: 381px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1199px) {
-  .main {
-    .sales {
-      &__item {
-        width: 319px;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 450px));
+      grid-gap: 35px;
+      justify-content: center;
     }
   }
 }

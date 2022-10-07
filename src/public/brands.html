@@ -1,1431 +1,1398 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brands</title>
-</head>
-<body>
-  <header class="header">
-    <div class="header__wrap-top">
-      <div class="header__wrap-top-content container">
-        <a href="../index/" class="header__logo-link">
-          <img src="img/logo-header.svg" alt="Логотип Охотактив" class="header__logo">
-        </a>
-        <a href="tel:88007008256" class="header__tel for-mobile">
-          8 800 700-82-56
-        </a>
-        <ul class="header__pages-list">
-          <li class="header__pages-item for-mobile">
-            Меню
-            <button class="header__pages-item-button close-menu">
-              Закрыть
-            </button>
-          </li>
-          <li class="header__pages-item">
-            <button class="header__pages-item-button tag">
-              <span class="for-mobile">Город:</span>Кострома
-            </button>
-            <input class="header__pages-item-input for-mobile" placeholder="Введите ваш город" />
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="#" class="header__pages-item-link">
-              Войти / Регистрация
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../catalog/" class="header__pages-item-link">
-              Каталог
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="#" class="header__pages-item-link">
-              Корзина <span>0 товаров / 0 &#8381;</span>
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="#" class="header__pages-item-link">
-              Избранное <span>0 товаров</span>
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../compare/" class="header__pages-item-link">
-              В сравнении <span>0 товаров</span>
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../sales/" class="header__pages-item-link">
-              Акции
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../remington/" class="header__pages-item-link">
-              Remington
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../new/" class="header__pages-item-link">
-              Новинки
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../diskont/" class="header__pages-item-link">
-              Дисконт
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../liquidation/" class="header__pages-item-link">
-              Ликвидация
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../opt/" class="header__pages-item-link">
-              Опт
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../blog/" class="header__pages-item-link">
-              Блог
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a id="status-link" href="#" class="header__pages-link">
-              Статус заказа
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="#" class="header__pages-link">
-              Приложение
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="../shops/" class="header__pages-link">
-              Магазины
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="../sert/" class="header__pages-link">
-              Подарочная карта
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="tel:88008008256" class="header__pages-link header-tel">
-              8 800 800-82-56
-            </a>
-          </li>
-        </ul>
-        <ul class="header__actions-list">
-          <li class="header__actions-item">
-            <a href="../cabinet/?block=favourites" class="header__actions-link favourite"></a>
-            <p class="header__actions-text">
-              Избранное
-            </p>
-          </li>
-          <li class="header__actions-item">
-            <a href="../cabinet/?block=profile" class="header__actions-link personal"></a>
-            <p class="header__actions-text">
-              Профиль
-            </p>
-          </li>
-          <li class="header__actions-item">
-            <a href="../compare/" class="header__actions-link compare"></a>
-            <p class="header__actions-text">
-
-            </p>
-          </li>
-          <li class="header__actions-item">
-            <a href="../cart/" class="header__actions-link basket"></a>
-            <p class="header__actions-text">
-              Корзина
-            </p>
-          </li>
-          <li class="header__actions-item for-mobile">
-            <a href="#" class="header__actions-link menu"></a>
-            <p class="header__actions-text">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brands</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__wrap-top">
+        <div class="header__wrap-top-content container">
+          <a href="../index/" class="header__logo-link">
+            <img
+              src="img/logo-header.svg"
+              alt="Логотип Охотактив"
+              class="header__logo"
+            />
+          </a>
+          <a href="tel:88007008256" class="header__tel for-mobile">
+            8 800 700-82-56
+          </a>
+          <ul class="header__pages-list">
+            <li class="header__pages-item for-mobile">
               Меню
-            </p>
-          </li>
-          <li class="header__actions-item for-mobile">
-            <a href="../index/" class="header__actions-link main"></a>
-            <p class="header__actions-text">
-              Главная
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="header__wrap-bottom">
-      <div class="header__wrap-bottom-content container">
-        <button class="header__button">
-          <span class="header__button-text">
-            Каталог
-          </span>
-        </button>
-        <div class="header__catalog-wrap">
-          <div class="header__catalog-wrap-content container">
-            <button class="header__catalog-wrap-close"></button>
-            <button class="header__catalog-wrap-back">
-              Назад
-            </button>
-            <ul class="header__catalog-tabs-list">
-              <li class="header__catalog-tabs-item fireguns" data-path="fireguns">
-                Огнестрельное оружие
-              </li>
-              <li class="header__catalog-tabs-item ammunition" data-path="ammunition">
-                Патроны и комплектующие
-              </li>
-              <li class="header__catalog-tabs-item airguns" data-path="airguns">
-                Пневматическое оружие
-              </li>
-              <li class="header__catalog-tabs-item optics" data-path="optics">
-                Оптика
-              </li>
-              <li class="header__catalog-tabs-item maintenance" data-path="maintenance">
-                Уход за оружием
-              </li>
-              <li class="header__catalog-tabs-item tuning" data-path="tuning">
-                Тюнинг оружия и ЗИП
-              </li>
-              <li class="header__catalog-tabs-item clothes" data-path="clothes">
-                Одежда и обувь
-              </li>
-              <li class="header__catalog-tabs-item tourism" data-path="tourism">
-                Товары для туризма
-              </li>
-              <li class="header__catalog-tabs-item knife" data-path="knife">
-                Ножи и мультиинструмент
-              </li>
-              <li class="header__catalog-tabs-item equip" data-path="equip">
-                Экипировка
-              </li>
-              <li class="header__catalog-tabs-item comissionguns" data-path="comissionguns">
-                Комиссионное оружие
-              </li>
-              <li class="header__catalog-tabs-item crossbow" data-path="crossbow">
-                Арбалеты, луки, рогатки
-              </li>
-              <li class="header__catalog-tabs-item shootrange" data-path="shootrange">
-                Оборудование для тиров
-              </li>
-              <li class="header__catalog-tabs-item fishing" data-path="fishing">
-                Товары для рыбалки
-              </li>
-              <li class="header__catalog-tabs-item electronics" data-path="electronics">
-                Электроника
-              </li>
-              <li class="header__catalog-tabs-item souvenirs" data-path="souvenirs">
-                Сувенирная продукция
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="fireguns">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Огнестрельное оружие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гладкоствольное
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Нарезное
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Травматическое
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Служебное
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Охолощенное оружие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Макеты оружия
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="ammunition">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Патроны
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Нарезные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гладкоствольные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Травматические
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Служебные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Свето-звуковые
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Испытательные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Комплектующие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Порох
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гильзы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Капсюля
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Дробь
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Картечь/Пуля
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Пыжи/Прокладки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Снаряжение
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="airguns">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Пневматические винтовки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Пневматические пистолеты
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="optics">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Дневная оптика
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Оптические прицелы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Зрительные трубы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Коллиматорные прицелы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Оружейные камеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Дальномеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Монокуляры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Зрительные трубы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Аксессуары для оптики
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="maintenance">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Наборы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Комплектующие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Шомполы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Вишеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Ерши
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Направляющие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Патчи
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Адаптеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Щётки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Химия
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Масла
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Очистители
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Воронение
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Обработка дерева
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Прочее
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="tourism">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Газовое оборудование:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые баллоны
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Комплектующие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые лампы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые обогреватели
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые плиты
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Гермоупаковка
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Туристические коврики
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Компаса и барометры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Туристическая мебель:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гамака
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Кресла
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Кровати
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Наборы мебели
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Столы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Стулья
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Столы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Палатки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Печи для палаток
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Портативные холодильники
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Посуда:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Котелки, казаны
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Кружки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Миски
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Наборы посуды
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Стаканы, стопки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Столовые приборы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Термокружки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Чайники
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Термоса
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link">
-                  Фляжки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Продукты питания
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Рюкзаки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Спальные мешки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Гриль и барбекю:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Коптильни
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Мангалы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Решётки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Треноги костровые
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Шампура
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Средства для розжига:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Жидкое горючее
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Зажигалки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Спички
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Сухое горючее
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Уголь древесный
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Щепа для копчения
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Средства от насекомых
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Тенты
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Оснастка
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Туристический инвентарь
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Канистры и вёдра
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Лопаты
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Пилы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Топоры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Точилки
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="equip">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Наушники и беруши
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Очки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Засидки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Кейсы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Кобуры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Наколенники
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Патронташи
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Ремни
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Сети маскировочные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Футляры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Чехлы
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="header__search-wrap">
-          <input id="header-search-input" type="text" class="header__search-input" placeholder="Поиск">
-          <button class="header__search-button"></button>
-        </div>
-        <ul class="header__bottom-list">
-          <li class="header__bottom-item">
-            <a href="../sales/" class="header__bottom-link">
-              Акции
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../remington/" class="header__bottom-link">
-              Remington
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../new/" class="header__bottom-link">
-              Новинки
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../liquidation/" class="header__bottom-link">
-              Ликвидация
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../opt/" class="header__bottom-link">
-              Опт
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../blog/" class="header__bottom-link">
-              Блог
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../partners/" class="header__bottom-link">
-              Стать поставщиком
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <main class="main">
-    <h1 class="visually-hidden">
-      Бренды
-    </h1>
-    <section class="brands">
-      <div class="brands__wrap container">
-        <nav class="navigation">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a href="#" class="navigation__link back">
-                Назад
+              <button class="header__pages-item-button close-menu">
+                Закрыть
+              </button>
+            </li>
+            <li class="header__pages-item">
+              <button class="header__pages-item-button tag">
+                <span class="for-mobile">Город:</span>Кострома
+              </button>
+              <input
+                class="header__pages-item-input for-mobile"
+                placeholder="Введите ваш город"
+              />
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="#" class="header__pages-item-link">
+                Войти / Регистрация
               </a>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
-                Главная
+            <li class="header__pages-item for-mobile">
+              <a href="../catalog/" class="header__pages-item-link">
+                Каталог
               </a>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
-                Бренды
+            <li class="header__pages-item for-mobile">
+              <a href="#" class="header__pages-item-link">
+                Корзина <span>0 товаров / 0 &#8381;</span>
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="#" class="header__pages-item-link">
+                Избранное <span>0 товаров</span>
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../compare/" class="header__pages-item-link">
+                В сравнении <span>0 товаров</span>
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../sales/" class="header__pages-item-link"> Акции </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../remington/" class="header__pages-item-link">
+                Remington
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../new/" class="header__pages-item-link"> Новинки </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../diskont/" class="header__pages-item-link">
+                Дисконт
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../liquidation/" class="header__pages-item-link">
+                Ликвидация
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../opt/" class="header__pages-item-link"> Опт </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../blog/" class="header__pages-item-link"> Блог </a>
+            </li>
+            <li class="header__pages-item">
+              <a id="status-link" href="#" class="header__pages-link">
+                Статус заказа
+              </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="#" class="header__pages-link"> Приложение </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="../shops/" class="header__pages-link"> Магазины </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="../sert/" class="header__pages-link">
+                Подарочная карта
+              </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="tel:88008008256" class="header__pages-link header-tel">
+                8 800 800-82-56
               </a>
             </li>
           </ul>
-        </nav>
-        <h2 class="brands__title">
-          Бренды
-        </h2>
-        <ul class="brands__start-list">
-          <li class="brands__start-item">
-            Все
-          </li>
-          <li class="brands__start-item">
-            A
-          </li>
-          <li class="brands__start-item">
-            B
-          </li>
-          <li class="brands__start-item">
-            C
-          </li>
-          <li class="brands__start-item">
-            D
-          </li>
-          <li class="brands__start-item">
-            E
-          </li>
-          <li class="brands__start-item">
-            F
-          </li>
-          <li class="brands__start-item">
-            G
-          </li>
-          <li class="brands__start-item">
-            H
-          </li>
-          <li class="brands__start-item">
-            I
-          </li>
-          <li class="brands__start-item">
-            J
-          </li>
-          <li class="brands__start-item">
-            K
-          </li>
-          <li class="brands__start-item">
-            L
-          </li>
-          <li class="brands__start-item">
-            M
-          </li>
-          <li class="brands__start-item">
-            N
-          </li>
-          <li class="brands__start-item">
-            O
-          </li>
-          <li class="brands__start-item">
-            P
-          </li>
-          <li class="brands__start-item">
-            Q
-          </li>
-          <li class="brands__start-item">
-            R
-          </li>
-          <li class="brands__start-item">
-            S
-          </li>
-          <li class="brands__start-item">
-            T
-          </li>
-          <li class="brands__start-item">
-            U
-          </li>
-          <li class="brands__start-item">
-            V
-          </li>
-          <li class="brands__start-item">
-            W
-          </li>
-          <li class="brands__start-item">
-            X
-          </li>
-          <li class="brands__start-item">
-            Y
-          </li>
-          <li class="brands__start-item">
-            Z
-          </li>
-        </ul>
-        <ul class="brands__start-list">
-          <li class="brands__start-item">
-            А
-          </li>
-          <li class="brands__start-item">
-            Б
-          </li>
-          <li class="brands__start-item">
-            В
-          </li>
-          <li class="brands__start-item">
-            Г
-          </li>
-          <li class="brands__start-item">
-            Д
-          </li>
-          <li class="brands__start-item">
-            Е
-          </li>
-          <li class="brands__start-item">
-            Ё
-          </li>
-          <li class="brands__start-item">
-            Ж
-          </li>
-          <li class="brands__start-item">
-            З
-          </li>
-          <li class="brands__start-item">
-            И
-          </li>
-          <li class="brands__start-item">
-            Й
-          </li>
-          <li class="brands__start-item">
-            К
-          </li>
-          <li class="brands__start-item">
-            Л
-          </li>
-          <li class="brands__start-item">
-            М
-          </li>
-          <li class="brands__start-item">
-            Н
-          </li>
-          <li class="brands__start-item">
-            О
-          </li>
-          <li class="brands__start-item">
-            П
-          </li>
-          <li class="brands__start-item">
-            Р
-          </li>
-          <li class="brands__start-item">
-            С
-          </li>
-          <li class="brands__start-item">
-            Т
-          </li>
-          <li class="brands__start-item">
-            У
-          </li>
-          <li class="brands__start-item">
-            Ф
-          </li>
-          <li class="brands__start-item">
-            Х
-          </li>
-          <li class="brands__start-item">
-            Ц
-          </li>
-          <li class="brands__start-item">
-            Ч
-          </li>
-          <li class="brands__start-item">
-            Ш
-          </li>
-          <li class="brands__start-item">
-            Щ
-          </li>
-          <li class="brands__start-item">
-            Ъ
-          </li>
-          <li class="brands__start-item">
-            Ы
-          </li>
-          <li class="brands__start-item">
-            Ь
-          </li>
-          <li class="brands__start-item">
-            Э
-          </li>
-          <li class="brands__start-item">
-            Ю
-          </li>
-          <li class="brands__start-item">
-            Я
-          </li>
-        </ul>
-        <input type="text" class="brands__input" placeholder="Введите название бренда">
-        <ul class="brands__list">
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Hatsan <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Retay <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Legend <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              ATA <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Benelli <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Huglu <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Remington <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Sarzilmaz <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Mossberg <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Akdas <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Beretta <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Aventus <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Vega <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Bernardelli <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Armsan <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Bettinsoli <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Baikal <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Fausti Stefano <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Bronco <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Browning <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              CZ <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Fabarm <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Aselkon <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Strenger <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Blaser <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Sabatti <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Derya <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Pardus <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Beydora <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              ВПО Молот <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Техкрим <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              ТОЗ <span>(125)</span>
-            </a>
-          </li>
-          <li class="brands__item">
-            <a href="#" class="brands__link">
-              Адар <span>(125)</span>
-            </a>
-          </li>
-        </ul>
+          <ul class="header__actions-list">
+            <li class="header__actions-item">
+              <a
+                href="../cabinet/?block=favourites"
+                class="header__actions-link favourite"
+              ></a>
+              <p class="header__actions-text">Избранное</p>
+            </li>
+            <li class="header__actions-item">
+              <a
+                href="../cabinet/?block=profile"
+                class="header__actions-link personal"
+              ></a>
+              <p class="header__actions-text">Профиль</p>
+            </li>
+            <li class="header__actions-item">
+              <a href="../compare/" class="header__actions-link compare"></a>
+              <p class="header__actions-text"></p>
+            </li>
+            <li class="header__actions-item">
+              <a href="../cart/" class="header__actions-link basket"></a>
+              <p class="header__actions-text">Корзина</p>
+            </li>
+            <li class="header__actions-item for-mobile">
+              <a href="#" class="header__actions-link menu"></a>
+              <p class="header__actions-text">Меню</p>
+            </li>
+            <li class="header__actions-item for-mobile">
+              <a href="../index/" class="header__actions-link main"></a>
+              <p class="header__actions-text">Главная</p>
+            </li>
+          </ul>
+        </div>
       </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="footer__wrap container">
-      <div class="footer__lists-wrap">
-        <p class="footer__lists-title" data-path="buyer-footer">
-          Покупателю
-        </p>
-        <ul class="footer__buyer-list" data-target="buyer-footer">
-          <li class="footer__buyer-item">
-            <a href="../license/" class="footer__buyer-link">
-              Правила лицензии
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Как заказать
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Оплата
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../delivery/" class="footer__buyer-link">
-              Доставка
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Часто задаваемые вопросы
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../return/" class="footer__buyer-link">
-              Обмен и возврат
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Сервис
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Гарантия лучшей цены
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../catalog/" class="footer__buyer-link">
-              Каталог
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../brands/" class="footer__buyer-link">
-              Бренды
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Кредит и рассрочка
-            </a>
-          </li>
-        </ul>
-        <p class="footer__lists-title" data-path="contacts-footer">
-          Контакты
-        </p>
-        <ul class="footer__buyer-list" data-target="contacts-footer">
-          <li class="footer__buyer-item">
-            <a href="tel:88007008256" class="footer__buyer-link">
-              8 800 700-82-56
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              с 9.00 до 18.00
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="mailto:info@ohotaktiv.ru" class="footer__buyer-link">
-              info@ohotaktiv.ru
-            </a>
-          </li>
-        </ul>
-        <p class="footer__lists-title" data-path="aboutus-footer">
-          О компании
-        </p>
-        <ul class="footer__buyer-list" data-target="aboutus-footer">
-          <li class="footer__buyer-item">
-            <a href="../contacts/" class="footer__buyer-link">
-              Контакты
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../vacancy/" class="footer__buyer-link">
-              Вакансии
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../requisites/" class="footer__buyer-link">
-              Реквизиты
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../policy/" class="footer__buyer-link">
-              Политика конфиденциальности
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../history/" class="footer__buyer-link">
-              История компании
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Карта сайта
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__form-wrap">
-        <h2 class="footer__form-wrap-title">
-          Новости и акции только для своих
-        </h2>
-        <form action="#" class="footer__form">
-          <div class="input-wrap">
-            <input class="footer__form-input" id="footer-form-input" type="text" placeholder=" ">
-            <label for="footer-form-input">Введите e-mail</label>
-          </div>
-          <button class="footer__form-button">
-            Подписаться
+      <div class="header__wrap-bottom">
+        <div class="header__wrap-bottom-content container">
+          <button class="header__button">
+            <span class="header__button-text"> Каталог </span>
           </button>
-          <label class="checkbox__label">
-            Я принимаю <a href="#" class="checkbox__link">условия использования</a>
-            <input type="checkbox" class="checkbox visually-hidden" required checked>
-            <span class="checkbox__span"></span>
-          </label>
-        </form>
+          <div class="header__catalog-wrap">
+            <div class="header__catalog-wrap-content container">
+              <button class="header__catalog-wrap-close"></button>
+              <button class="header__catalog-wrap-back">Назад</button>
+              <ul class="header__catalog-tabs-list">
+                <li
+                  class="header__catalog-tabs-item fireguns"
+                  data-path="fireguns"
+                >
+                  Огнестрельное оружие
+                </li>
+                <li
+                  class="header__catalog-tabs-item ammunition"
+                  data-path="ammunition"
+                >
+                  Патроны и комплектующие
+                </li>
+                <li
+                  class="header__catalog-tabs-item airguns"
+                  data-path="airguns"
+                >
+                  Пневматическое оружие
+                </li>
+                <li class="header__catalog-tabs-item optics" data-path="optics">
+                  Оптика
+                </li>
+                <li
+                  class="header__catalog-tabs-item maintenance"
+                  data-path="maintenance"
+                >
+                  Уход за оружием
+                </li>
+                <li class="header__catalog-tabs-item tuning" data-path="tuning">
+                  Тюнинг оружия и ЗИП
+                </li>
+                <li
+                  class="header__catalog-tabs-item clothes"
+                  data-path="clothes"
+                >
+                  Одежда и обувь
+                </li>
+                <li
+                  class="header__catalog-tabs-item tourism"
+                  data-path="tourism"
+                >
+                  Товары для туризма
+                </li>
+                <li class="header__catalog-tabs-item knife" data-path="knife">
+                  Ножи и мультиинструмент
+                </li>
+                <li class="header__catalog-tabs-item equip" data-path="equip">
+                  Экипировка
+                </li>
+                <li
+                  class="header__catalog-tabs-item comissionguns"
+                  data-path="comissionguns"
+                >
+                  Комиссионное оружие
+                </li>
+                <li
+                  class="header__catalog-tabs-item crossbow"
+                  data-path="crossbow"
+                >
+                  Арбалеты, луки, рогатки
+                </li>
+                <li
+                  class="header__catalog-tabs-item shootrange"
+                  data-path="shootrange"
+                >
+                  Оборудование для тиров
+                </li>
+                <li
+                  class="header__catalog-tabs-item fishing"
+                  data-path="fishing"
+                >
+                  Товары для рыбалки
+                </li>
+                <li
+                  class="header__catalog-tabs-item electronics"
+                  data-path="electronics"
+                >
+                  Электроника
+                </li>
+                <li
+                  class="header__catalog-tabs-item souvenirs"
+                  data-path="souvenirs"
+                >
+                  Сувенирная продукция
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="fireguns">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Огнестрельное оружие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Гладкоствольное
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Нарезное </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Травматическое
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Служебное
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Охолощенное оружие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Макеты оружия
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="ammunition">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Патроны
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Нарезные </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Гладкоствольные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Травматические
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Служебные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Свето-звуковые
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Испытательные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Порох </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Гильзы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Капсюля </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Дробь </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Картечь/Пуля
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Пыжи/Прокладки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Снаряжение
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="airguns">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Пневматические винтовки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Пневматические пистолеты
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="optics">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Дневная оптика
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Оптические прицелы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Зрительные трубы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Коллиматорные прицелы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Оружейные камеры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Дальномеры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Монокуляры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Зрительные трубы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Аксессуары для оптики
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="maintenance">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Наборы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Шомполы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Вишеры </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Ерши </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Направляющие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Патчи </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Адаптеры </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Щётки </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Химия
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Масла </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Очистители
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Воронение
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Обработка дерева
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Прочее
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="tourism">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Газовое оборудование:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые баллоны
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые лампы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые обогреватели
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые плиты
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Гермоупаковка
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Туристические коврики
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Компаса и барометры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Туристическая мебель:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Гамака </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Кресла </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Кровати </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Наборы мебели
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Столы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Стулья </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Столы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Палатки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Печи для палаток
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Портативные холодильники
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Посуда:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Котелки, казаны
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Кружки </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Миски </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Наборы посуды
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Стаканы, стопки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Столовые приборы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Термокружки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Чайники </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Термоса
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link">
+                    Фляжки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Продукты питания
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Рюкзаки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Спальные мешки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Гриль и барбекю:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Коптильни
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Мангалы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Решётки </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Треноги костровые
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Шампура </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Средства для розжига:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Жидкое горючее
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Зажигалки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Спички </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Сухое горючее
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Уголь древесный
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Щепа для копчения
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Средства от насекомых
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Тенты
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Оснастка
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Туристический инвентарь
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Канистры и вёдра
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Лопаты </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Пилы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Топоры </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Точилки </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="equip">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Наушники и беруши
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Очки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Засидки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Кейсы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Кобуры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Наколенники
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Патронташи
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Ремни
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Сети маскировочные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Футляры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Чехлы
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="header__search-wrap">
+            <input
+              id="header-search-input"
+              type="text"
+              class="header__search-input"
+              placeholder="Поиск"
+            />
+            <button class="header__search-button"></button>
+          </div>
+          <ul class="header__bottom-list">
+            <li class="header__bottom-item">
+              <a href="../sales/" class="header__bottom-link"> Акции </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../remington/" class="header__bottom-link">
+                Remington
+              </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../new/" class="header__bottom-link"> Новинки </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../liquidation/" class="header__bottom-link">
+                Ликвидация
+              </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../opt/" class="header__bottom-link"> Опт </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../blog/" class="header__bottom-link"> Блог </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../partners/" class="header__bottom-link">
+                Стать поставщиком
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="footer__social-wrap">
-        <ul class="footer__social-list">
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link vk"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link telegram"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link dzen"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link viber"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link ok"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link youtube"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link rutube"></a>
-          </li>
-        </ul>
-        <p class="footer__social-text">
-          Скачай мобильное приложение
-        </p>
-        <ul class="footer__social-app-list">
-          <li class="footer__social-app-item">
-            <a href="#" class="footer__social-app-link google-play">
-              <p class="footer__social-app-link-text">
-                Доступно<br><span>Google Play</span>
-              </p>
-            </a>
-          </li>
-          <li class="footer__social-app-item">
-            <a href="#" class="footer__social-app-link app-store">
-              <p class="footer__social-app-link-text">
-                Загрузите в<br><span>AppStore</span>
-              </p>
-            </a>
-          </li>
-          <li class="footer__social-app-item">
-            <a href="#" class="footer__social-app-link app-gallery">
-              <p class="footer__social-app-link-text">
-                Откройте в<br><span>AppGallery</span>
-              </p>
-            </a>
-          </li>
-        </ul>
+    </header>
+    <main class="main">
+      <h1 class="visually-hidden">Бренды</h1>
+      <section class="brands">
+        <div class="brands__wrap container">
+          <nav class="navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item">
+                <a href="#" class="navigation__link back"> Назад </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link"> Главная </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link"> Бренды </a>
+              </li>
+            </ul>
+          </nav>
+          <h2 class="brands__title">Бренды</h2>
+          <input
+            type="text"
+            class="brands__input"
+            placeholder="Введите название бренда"
+          />
+          <p class="brands__word">Популярные бренды</p>
+          <ul class="brands__list">
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Hatsan <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Retay <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Legend <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> ATA <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Benelli <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Huglu <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link">
+                Remington <span>(125)</span>
+              </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link">
+                Sarzilmaz <span>(125)</span>
+              </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Mossberg <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Akdas <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Beretta <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Aventus <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Vega <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link">
+                Bernardelli <span>(125)</span>
+              </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Armsan <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link">
+                Bettinsoli <span>(125)</span>
+              </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Baikal <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link">
+                Fausti Stefano <span>(125)</span>
+              </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Bronco <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Browning <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> CZ <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Fabarm <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Aselkon <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Strenger <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Blaser <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Sabatti <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Derya <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Pardus <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Beydora <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link">
+                ВПО Молот <span>(125)</span>
+              </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Техкрим <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> ТОЗ <span>(125)</span> </a>
+            </li>
+            <li class="brands__item">
+              <a href="#" class="brands__link"> Адар <span>(125)</span> </a>
+            </li>
+          </ul>
+          <button class="brands__button">Показать все бренды</button>
+          <div class="brands__all">
+            <p class="brands__word">А</p>
+            <ul class="brands__list">
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Hatsan <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Retay <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Legend <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> ATA <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Benelli <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Huglu <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Remington <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Sarzilmaz <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Mossberg <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Akdas <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Beretta <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Aventus <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Vega <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Bernardelli <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Armsan <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Bettinsoli <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Baikal <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Fausti Stefano <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Bronco <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Browning <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> CZ <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Fabarm <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Aselkon <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Strenger <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Blaser <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Sabatti <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Derya <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Pardus <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Beydora <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  ВПО Молот <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Техкрим <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> ТОЗ <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Адар <span>(125)</span> </a>
+              </li>
+            </ul>
+            <p class="brands__word">B</p>
+            <ul class="brands__list">
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Hatsan <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Retay <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Legend <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> ATA <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Benelli <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Huglu <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Remington <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Sarzilmaz <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Mossberg <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Akdas <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Beretta <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Aventus <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Vega <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Bernardelli <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Armsan <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Bettinsoli <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Baikal <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Fausti Stefano <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Bronco <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Browning <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> CZ <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Fabarm <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Aselkon <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Strenger <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Blaser <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Sabatti <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Derya <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Pardus <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Beydora <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  ВПО Молот <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link">
+                  Техкрим <span>(125)</span>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> ТОЗ <span>(125)</span> </a>
+              </li>
+              <li class="brands__item">
+                <a href="#" class="brands__link"> Адар <span>(125)</span> </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__wrap container">
+        <div class="footer__lists-wrap">
+          <p class="footer__lists-title" data-path="buyer-footer">Покупателю</p>
+          <ul class="footer__buyer-list" data-target="buyer-footer">
+            <li class="footer__buyer-item">
+              <a href="../license/" class="footer__buyer-link">
+                Правила лицензии
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> Как заказать </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> Оплата </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../delivery/" class="footer__buyer-link"> Доставка </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link">
+                Часто задаваемые вопросы
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../return/" class="footer__buyer-link">
+                Обмен и возврат
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> Сервис </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> Гарантия лучшей цены </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../catalog/" class="footer__buyer-link"> Каталог </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../brands/" class="footer__buyer-link"> Бренды </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> Кредит и рассрочка </a>
+            </li>
+          </ul>
+          <p class="footer__lists-title" data-path="contacts-footer">
+            Контакты
+          </p>
+          <ul class="footer__buyer-list" data-target="contacts-footer">
+            <li class="footer__buyer-item">
+              <a href="tel:88007008256" class="footer__buyer-link">
+                8 800 700-82-56
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> с 9.00 до 18.00 </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="mailto:info@ohotaktiv.ru" class="footer__buyer-link">
+                info@ohotaktiv.ru
+              </a>
+            </li>
+          </ul>
+          <p class="footer__lists-title" data-path="aboutus-footer">
+            О компании
+          </p>
+          <ul class="footer__buyer-list" data-target="aboutus-footer">
+            <li class="footer__buyer-item">
+              <a href="../contacts/" class="footer__buyer-link"> Контакты </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../vacancy/" class="footer__buyer-link"> Вакансии </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../requisites/" class="footer__buyer-link">
+                Реквизиты
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../policy/" class="footer__buyer-link">
+                Политика конфиденциальности
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="../history/" class="footer__buyer-link">
+                История компании
+              </a>
+            </li>
+            <li class="footer__buyer-item">
+              <a href="#" class="footer__buyer-link"> Карта сайта </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__form-wrap">
+          <h2 class="footer__form-wrap-title">
+            Новости и акции только для своих
+          </h2>
+          <form action="#" class="footer__form">
+            <div class="input-wrap">
+              <input
+                class="footer__form-input"
+                id="footer-form-input"
+                type="text"
+                placeholder=" "
+              />
+              <label for="footer-form-input">Введите e-mail</label>
+            </div>
+            <button class="footer__form-button">Подписаться</button>
+            <label class="checkbox__label">
+              Я принимаю
+              <a href="#" class="checkbox__link">условия использования</a>
+              <input
+                type="checkbox"
+                class="checkbox visually-hidden"
+                required
+                checked
+              />
+              <span class="checkbox__span"></span>
+            </label>
+          </form>
+        </div>
+        <div class="footer__social-wrap">
+          <ul class="footer__social-list">
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link vk"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link telegram"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link dzen"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link viber"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link ok"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link youtube"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="#" class="footer__social-link rutube"></a>
+            </li>
+          </ul>
+          <p class="footer__social-text">Скачай мобильное приложение</p>
+          <ul class="footer__social-app-list">
+            <li class="footer__social-app-item">
+              <a href="#" class="footer__social-app-link google-play">
+                <p class="footer__social-app-link-text">
+                  Доступно<br /><span>Google Play</span>
+                </p>
+              </a>
+            </li>
+            <li class="footer__social-app-item">
+              <a href="#" class="footer__social-app-link app-store">
+                <p class="footer__social-app-link-text">
+                  Загрузите в<br /><span>AppStore</span>
+                </p>
+              </a>
+            </li>
+            <li class="footer__social-app-item">
+              <a href="#" class="footer__social-app-link app-gallery">
+                <p class="footer__social-app-link-text">
+                  Откройте в<br /><span>AppGallery</span>
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
