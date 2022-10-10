@@ -53,6 +53,8 @@ module.exports = {
     order: "./src/public/scripts/pages/order.js",
     app: "./src/public/scripts/pages/app.js",
     faq: "./src/public/scripts/pages/faq.js",
+    remingtonpage: "./src/public/scripts/pages/remingtonpage.js",
+    pay: "./src/public/scripts/pages/pay.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),

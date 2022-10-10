@@ -14,18 +14,7 @@
         font-weight: 500;
       }
     }
-    &__tabs {
-      &-list {
-        @include tabsList;
-        margin-bottom: 60px;
-        li {
-          @include fontSize15;
-          font-weight: 700;
-        }
-      }
-    }
     &__result {
-      display: none;
       max-width: 1071px;
       margin-bottom: 40px;
       &-text {
@@ -42,8 +31,9 @@
           margin-bottom: 28px;
         }
       }
-      &.is-open {
-        display: block;
+      &-title {
+        @include fontSize18;
+        font-weight: 700;
       }
     }
   }
