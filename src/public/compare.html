@@ -1,1505 +1,1392 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compare</title>
-</head>
-<body>
-  <header class="header">
-    <div class="header__wrap-top">
-      <div class="header__wrap-top-content container">
-        <a href="../index/" class="header__logo-link">
-          <img src="img/logo-header.svg" alt="Логотип Охотактив" class="header__logo">
-        </a>
-        <a href="tel:88007008256" class="header__tel for-mobile">
-          8 800 700-82-56
-        </a>
-        <ul class="header__pages-list">
-          <li class="header__pages-item for-mobile">
-            Меню
-            <button class="header__pages-item-button close-menu">
-              Закрыть
-            </button>
-          </li>
-          <li class="header__pages-item">
-            <button class="header__pages-item-button tag">
-              <span class="for-mobile">Город:</span>Кострома
-            </button>
-            <input class="header__pages-item-input for-mobile" placeholder="Введите ваш город" />
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="#" class="header__pages-item-link">
-              Войти / Регистрация
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../catalog/" class="header__pages-item-link">
-              Каталог
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="#" class="header__pages-item-link">
-              Корзина <span>0 товаров / 0 &#8381;</span>
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="#" class="header__pages-item-link">
-              Избранное <span>0 товаров</span>
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../compare/" class="header__pages-item-link">
-              В сравнении <span>0 товаров</span>
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../sales/" class="header__pages-item-link">
-              Акции
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../remington/" class="header__pages-item-link">
-              Remington
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../new/" class="header__pages-item-link">
-              Новинки
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../diskont/" class="header__pages-item-link">
-              Дисконт
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../liquidation/" class="header__pages-item-link">
-              Ликвидация
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../opt/" class="header__pages-item-link">
-              Опт
-            </a>
-          </li>
-          <li class="header__pages-item for-mobile">
-            <a href="../blog/" class="header__pages-item-link">
-              Блог
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a id="status-link" href="#" class="header__pages-link">
-              Статус заказа
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="#" class="header__pages-link">
-              Приложение
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="../shops/" class="header__pages-link">
-              Магазины
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="../sert/" class="header__pages-link">
-              Подарочная карта
-            </a>
-          </li>
-          <li class="header__pages-item">
-            <a href="tel:88008008256" class="header__pages-link header-tel">
-              8 800 800-82-56
-            </a>
-          </li>
-        </ul>
-        <ul class="header__actions-list">
-          <li class="header__actions-item">
-            <a href="../cabinet/?block=favourites" class="header__actions-link favourite"></a>
-            <p class="header__actions-text">
-              Избранное
-            </p>
-          </li>
-          <li class="header__actions-item">
-            <a href="../cabinet/?block=profile" class="header__actions-link personal"></a>
-            <p class="header__actions-text">
-              Профиль
-            </p>
-          </li>
-          <li class="header__actions-item">
-            <a href="../compare/" class="header__actions-link compare"></a>
-            <p class="header__actions-text">
-
-            </p>
-          </li>
-          <li class="header__actions-item">
-            <a href="../cart/" class="header__actions-link basket"></a>
-            <p class="header__actions-text">
-              Корзина
-            </p>
-          </li>
-          <li class="header__actions-item for-mobile">
-            <a href="#" class="header__actions-link menu"></a>
-            <p class="header__actions-text">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compare</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__wrap-top">
+        <div class="header__wrap-top-content container">
+          <a href="../index/" class="header__logo-link">
+            <img
+              src="img/logo-header.svg"
+              alt="Логотип Охотактив"
+              class="header__logo"
+            />
+          </a>
+          <a href="tel:88007008256" class="header__tel for-mobile">
+            8 800 700-82-56
+          </a>
+          <ul class="header__pages-list">
+            <li class="header__pages-item for-mobile">
               Меню
-            </p>
-          </li>
-          <li class="header__actions-item for-mobile">
-            <a href="../index/" class="header__actions-link main"></a>
-            <p class="header__actions-text">
-              Главная
-            </p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="header__wrap-bottom">
-      <div class="header__wrap-bottom-content container">
-        <button class="header__button">
-          <span class="header__button-text">
-            Каталог
-          </span>
-        </button>
-        <div class="header__catalog-wrap">
-          <div class="header__catalog-wrap-content container">
-            <button class="header__catalog-wrap-close"></button>
-            <button class="header__catalog-wrap-back">
-              Назад
-            </button>
-            <ul class="header__catalog-tabs-list">
-              <li class="header__catalog-tabs-item fireguns" data-path="fireguns">
-                Огнестрельное оружие
-              </li>
-              <li class="header__catalog-tabs-item ammunition" data-path="ammunition">
-                Патроны и комплектующие
-              </li>
-              <li class="header__catalog-tabs-item airguns" data-path="airguns">
-                Пневматическое оружие
-              </li>
-              <li class="header__catalog-tabs-item optics" data-path="optics">
-                Оптика
-              </li>
-              <li class="header__catalog-tabs-item maintenance" data-path="maintenance">
-                Уход за оружием
-              </li>
-              <li class="header__catalog-tabs-item tuning" data-path="tuning">
-                Тюнинг оружия и ЗИП
-              </li>
-              <li class="header__catalog-tabs-item clothes" data-path="clothes">
-                Одежда и обувь
-              </li>
-              <li class="header__catalog-tabs-item tourism" data-path="tourism">
-                Товары для туризма
-              </li>
-              <li class="header__catalog-tabs-item knife" data-path="knife">
-                Ножи и мультиинструмент
-              </li>
-              <li class="header__catalog-tabs-item equip" data-path="equip">
-                Экипировка
-              </li>
-              <li class="header__catalog-tabs-item comissionguns" data-path="comissionguns">
-                Комиссионное оружие
-              </li>
-              <li class="header__catalog-tabs-item crossbow" data-path="crossbow">
-                Арбалеты, луки, рогатки
-              </li>
-              <li class="header__catalog-tabs-item shootrange" data-path="shootrange">
-                Оборудование для тиров
-              </li>
-              <li class="header__catalog-tabs-item fishing" data-path="fishing">
-                Товары для рыбалки
-              </li>
-              <li class="header__catalog-tabs-item electronics" data-path="electronics">
-                Электроника
-              </li>
-              <li class="header__catalog-tabs-item souvenirs" data-path="souvenirs">
-                Сувенирная продукция
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="fireguns">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Огнестрельное оружие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гладкоствольное
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Нарезное
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Травматическое
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Служебное
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Охолощенное оружие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Макеты оружия
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="ammunition">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Патроны
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Нарезные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гладкоствольные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Травматические
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Служебные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Свето-звуковые
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Испытательные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Комплектующие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Порох
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гильзы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Капсюля
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Дробь
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Картечь/Пуля
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Пыжи/Прокладки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Снаряжение
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="airguns">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Пневматические винтовки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Пневматические пистолеты
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="optics">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Дневная оптика
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Оптические прицелы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Зрительные трубы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Коллиматорные прицелы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Оружейные камеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Дальномеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Монокуляры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Зрительные трубы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Аксессуары для оптики
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="maintenance">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Наборы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Комплектующие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Шомполы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Вишеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Ерши
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Направляющие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Патчи
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Адаптеры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Щётки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Химия
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Масла
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Очистители
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Воронение
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Обработка дерева
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Прочее
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="tourism">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Газовое оборудование:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые баллоны
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Комплектующие
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые лампы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые обогреватели
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Газовые плиты
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Гермоупаковка
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Туристические коврики
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Компаса и барометры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Туристическая мебель:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Гамака
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Кресла
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Кровати
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Наборы мебели
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Столы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Стулья
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Столы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Палатки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Печи для палаток
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Портативные холодильники
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Посуда:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Котелки, казаны
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Кружки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Миски
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Наборы посуды
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Стаканы, стопки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Столовые приборы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Термокружки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Чайники
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Термоса
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link">
-                  Фляжки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Продукты питания
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Рюкзаки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Спальные мешки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Гриль и барбекю:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Коптильни
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Мангалы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Решётки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Треноги костровые
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Шампура
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Средства для розжига:
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Жидкое горючее
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Зажигалки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Спички
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Сухое горючее
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Уголь древесный
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Щепа для копчения
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Средства от насекомых
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Тенты
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Оснастка
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Туристический инвентарь
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Канистры и вёдра
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Лопаты
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Пилы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Топоры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link">
-                  Точилки
-                </a>
-              </li>
-            </ul>
-            <ul class="header__catalog-target-list" data-target="equip">
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Наушники и беруши
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Очки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Засидки
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Кейсы
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Кобуры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Наколенники
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Патронташи
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Ремни
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Сети маскировочные
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Футляры
-                </a>
-              </li>
-              <li class="header__catalog-target-item">
-                <a href="#" class="header__catalog-target-link link-title">
-                  Чехлы
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="header__search-wrap">
-          <input id="header-search-input" type="text" class="header__search-input" placeholder="Поиск">
-          <button class="header__search-button"></button>
-        </div>
-        <ul class="header__bottom-list">
-          <li class="header__bottom-item">
-            <a href="../sales/" class="header__bottom-link">
-              Акции
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../remington/" class="header__bottom-link">
-              Remington
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../new/" class="header__bottom-link">
-              Новинки
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../liquidation/" class="header__bottom-link">
-              Ликвидация
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../opt/" class="header__bottom-link">
-              Опт
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../blog/" class="header__bottom-link">
-              Блог
-            </a>
-          </li>
-          <li class="header__bottom-item">
-            <a href="../partners/" class="header__bottom-link">
-              Стать поставщиком
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <main class="main">
-    <h1 class="visually-hidden">
-      Сравнение товаров
-    </h1>
-    <section class="compare">
-      <div class="compare__wrap container">
-        <nav class="navigation">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a href="#" class="navigation__link back">
-                Назад
+              <button class="header__pages-item-button close-menu">
+                Закрыть
+              </button>
+            </li>
+            <li class="header__pages-item">
+              <button class="header__pages-item-button tag">
+                <span class="for-mobile">Город:</span>Кострома
+              </button>
+              <input
+                class="header__pages-item-input for-mobile"
+                placeholder="Введите ваш город"
+              />
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="#" class="header__pages-item-link">
+                Войти / Регистрация
               </a>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
-                Главная
+            <li class="header__pages-item for-mobile">
+              <a href="../catalog/" class="header__pages-item-link">
+                Каталог
               </a>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
+            <li class="header__pages-item for-mobile">
+              <a href="#" class="header__pages-item-link">
+                Корзина <span>0 товаров / 0 &#8381;</span>
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="#" class="header__pages-item-link">
+                Избранное <span>0 товаров</span>
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../compare/" class="header__pages-item-link">
+                В сравнении <span>0 товаров</span>
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../sales/" class="header__pages-item-link"> Акции </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../remington/" class="header__pages-item-link">
+                Remington
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../new/" class="header__pages-item-link"> Новинки </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../diskont/" class="header__pages-item-link">
+                Дисконт
+              </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../liquidation/" class="header__pages-item-link">
                 Ликвидация
               </a>
             </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../opt/" class="header__pages-item-link"> Опт </a>
+            </li>
+            <li class="header__pages-item for-mobile">
+              <a href="../blog/" class="header__pages-item-link"> Блог </a>
+            </li>
+            <li class="header__pages-item">
+              <a id="status-link" href="#" class="header__pages-link">
+                Статус заказа
+              </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="#" class="header__pages-link"> Приложение </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="../shops/" class="header__pages-link"> Магазины </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="../sert/" class="header__pages-link">
+                Подарочная карта
+              </a>
+            </li>
+            <li class="header__pages-item">
+              <a href="tel:88008008256" class="header__pages-link header-tel">
+                8 800 800-82-56
+              </a>
+            </li>
           </ul>
-        </nav>
-        <h2 class="compare__title">
-          Сравнение товаров
-        </h2>
-        <div class="compare__list-wrap">
-          <ul class="compare__titles-list">
-            <li class="compare__titles-item">
-              Изображение
+          <ul class="header__actions-list">
+            <li class="header__actions-item">
+              <a
+                href="../cabinet/?block=favourites"
+                class="header__actions-link favourite"
+              ></a>
+              <p class="header__actions-text">Избранное</p>
             </li>
-            <li class="compare__titles-item">
-              Описание
+            <li class="header__actions-item">
+              <a
+                href="../cabinet/?block=profile"
+                class="header__actions-link personal"
+              ></a>
+              <p class="header__actions-text">Профиль</p>
             </li>
-            <li class="compare__titles-item">
-              Наличие
+            <li class="header__actions-item">
+              <a href="../compare/" class="header__actions-link compare"></a>
+              <p class="header__actions-text"></p>
             </li>
-            <li class="compare__titles-item">
-              Бренд
+            <li class="header__actions-item">
+              <a href="../cart/" class="header__actions-link basket"></a>
+              <p class="header__actions-text">Корзина</p>
             </li>
-            <li class="compare__titles-item">
-              Характеристики
+            <li class="header__actions-item for-mobile">
+              <a href="#" class="header__actions-link menu"></a>
+              <p class="header__actions-text">Меню</p>
+            </li>
+            <li class="header__actions-item for-mobile">
+              <a href="../index/" class="header__actions-link main"></a>
+              <p class="header__actions-text">Главная</p>
             </li>
           </ul>
-          <div class="swiper swiper-compare">         
-            <ul class="compare__card-list swiper-wrapper">
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
+        </div>
+      </div>
+      <div class="header__wrap-bottom">
+        <div class="header__wrap-bottom-content container">
+          <button class="header__button">
+            <span class="header__button-text"> Каталог </span>
+          </button>
+          <div class="header__catalog-wrap">
+            <div class="header__catalog-wrap-content container">
+              <button class="header__catalog-wrap-close"></button>
+              <button class="header__catalog-wrap-back">Назад</button>
+              <ul class="header__catalog-tabs-list">
+                <li
+                  class="header__catalog-tabs-item fireguns"
+                  data-path="fireguns"
+                >
+                  Огнестрельное оружие
+                </li>
+                <li
+                  class="header__catalog-tabs-item ammunition"
+                  data-path="ammunition"
+                >
+                  Патроны и комплектующие
+                </li>
+                <li
+                  class="header__catalog-tabs-item airguns"
+                  data-path="airguns"
+                >
+                  Пневматическое оружие
+                </li>
+                <li class="header__catalog-tabs-item optics" data-path="optics">
+                  Оптика
+                </li>
+                <li
+                  class="header__catalog-tabs-item maintenance"
+                  data-path="maintenance"
+                >
+                  Уход за оружием
+                </li>
+                <li class="header__catalog-tabs-item tuning" data-path="tuning">
+                  Тюнинг оружия и ЗИП
+                </li>
+                <li
+                  class="header__catalog-tabs-item clothes"
+                  data-path="clothes"
+                >
+                  Одежда и обувь
+                </li>
+                <li
+                  class="header__catalog-tabs-item tourism"
+                  data-path="tourism"
+                >
+                  Товары для туризма
+                </li>
+                <li class="header__catalog-tabs-item knife" data-path="knife">
+                  Ножи и мультиинструмент
+                </li>
+                <li class="header__catalog-tabs-item equip" data-path="equip">
+                  Экипировка
+                </li>
+                <li
+                  class="header__catalog-tabs-item comissionguns"
+                  data-path="comissionguns"
+                >
+                  Комиссионное оружие
+                </li>
+                <li
+                  class="header__catalog-tabs-item crossbow"
+                  data-path="crossbow"
+                >
+                  Арбалеты, луки, рогатки
+                </li>
+                <li
+                  class="header__catalog-tabs-item shootrange"
+                  data-path="shootrange"
+                >
+                  Оборудование для тиров
+                </li>
+                <li
+                  class="header__catalog-tabs-item fishing"
+                  data-path="fishing"
+                >
+                  Товары для рыбалки
+                </li>
+                <li
+                  class="header__catalog-tabs-item electronics"
+                  data-path="electronics"
+                >
+                  Электроника
+                </li>
+                <li
+                  class="header__catalog-tabs-item souvenirs"
+                  data-path="souvenirs"
+                >
+                  Сувенирная продукция
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="fireguns">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Огнестрельное оружие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Гладкоствольное
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Нарезное </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Травматическое
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Служебное
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Охолощенное оружие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Макеты оружия
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="ammunition">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Патроны
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Нарезные </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Гладкоствольные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Травматические
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Служебные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Свето-звуковые
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Испытательные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Порох </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Гильзы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Капсюля </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Дробь </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Картечь/Пуля
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Пыжи/Прокладки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Снаряжение
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="airguns">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Пневматические винтовки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Пневматические пистолеты
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="optics">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Дневная оптика
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Оптические прицелы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Зрительные трубы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Коллиматорные прицелы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Оружейные камеры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Дальномеры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Монокуляры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Зрительные трубы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Аксессуары для оптики
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="maintenance">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Наборы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Шомполы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Вишеры </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Ерши </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Направляющие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Патчи </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Адаптеры </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Щётки </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Химия
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Масла </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Очистители
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Воронение
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Обработка дерева
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Прочее
+                  </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="tourism">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Газовое оборудование:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые баллоны
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Комплектующие
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые лампы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые обогреватели
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Газовые плиты
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Гермоупаковка
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Туристические коврики
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Компаса и барометры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Туристическая мебель:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Гамака </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Кресла </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Кровати </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Наборы мебели
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Столы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Стулья </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Столы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Палатки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Печи для палаток
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Портативные холодильники
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Посуда:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Котелки, казаны
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Кружки </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Миски </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Наборы посуды
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Стаканы, стопки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Столовые приборы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Термокружки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Чайники </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Термоса
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link">
+                    Фляжки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Продукты питания
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Рюкзаки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Спальные мешки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Гриль и барбекю:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Коптильни
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Мангалы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Решётки </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Треноги костровые
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Шампура </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Средства для розжига:
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Жидкое горючее
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Зажигалки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Спички </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Сухое горючее
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Уголь древесный
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Щепа для копчения
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Средства от насекомых
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Тенты
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Оснастка
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Туристический инвентарь
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link">
+                    Канистры и вёдра
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Лопаты </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Пилы </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Топоры </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link"> Точилки </a>
+                </li>
+              </ul>
+              <ul class="header__catalog-target-list" data-target="equip">
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Наушники и беруши
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Очки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Засидки
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Кейсы
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Кобуры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Наколенники
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Патронташи
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Ремни
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Сети маскировочные
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Футляры
+                  </a>
+                </li>
+                <li class="header__catalog-target-item">
+                  <a href="#" class="header__catalog-target-link link-title">
+                    Чехлы
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="header__search-wrap">
+            <input
+              id="header-search-input"
+              type="text"
+              class="header__search-input"
+              placeholder="Поиск"
+            />
+            <button class="header__search-button"></button>
+          </div>
+          <ul class="header__bottom-list">
+            <li class="header__bottom-item">
+              <a href="../sales/" class="header__bottom-link"> Акции </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../remington/" class="header__bottom-link">
+                Remington
+              </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../new/" class="header__bottom-link"> Новинки </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../liquidation/" class="header__bottom-link">
+                Ликвидация
+              </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../opt/" class="header__bottom-link"> Опт </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../blog/" class="header__bottom-link"> Блог </a>
+            </li>
+            <li class="header__bottom-item">
+              <a href="../partners/" class="header__bottom-link">
+                Стать поставщиком
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <h1 class="visually-hidden">Сравнение товаров</h1>
+      <section class="compare">
+        <div class="compare__wrap container">
+          <nav class="navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item">
+                <a href="#" class="navigation__link back"> Назад </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link"> Главная </a>
+              </li>
+              <li class="navigation__item">
+                <a href="#" class="navigation__link"> Ликвидация </a>
+              </li>
+            </ul>
+          </nav>
+          <h2 class="compare__title">Сравнение товаров</h2>
+          <div class="compare__list-wrap">
+            <ul class="compare__titles-list">
+              <li class="compare__titles-item">Изображение</li>
+              <li class="compare__titles-item">Описание</li>
+              <li class="compare__titles-item">Наличие</li>
+              <li class="compare__titles-item">Бренд</li>
+              <li class="compare__titles-item">Характеристики</li>
+            </ul>
+            <div class="swiper swiper-compare">
+              <ul class="compare__card-list swiper-wrapper">
+                <li class="compare__card-item swiper-slide">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
                     </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
+                    <div class="card-item__description-wrap">
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">10</p>
+                      </div>
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
                       </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                    <div class="card-item__description-stock-wrap">
+                      <p class="card-item__description-stock">
+                        В наличии в магазине и на складе
                       </p>
                     </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
+                    <div class="compare__card-item-brand">
+                      <p class="compare__card-item-brand-text">Benelli</p>
+                    </div>
+                    <div class="compare__card-item-stats">
+                      <p class="compare__card-item-stats-text">
+                        Калибр: <span>12x76</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Длина ствола: <span>710мм</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип ствола: <span>Гладкий</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Материал приклада: <span>Пластик</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Емкость магазина: <span>4+1</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип магазина: <span>Трубчатый</span>
                       </p>
                     </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
+                  </a>
+                </li>
+                <li class="compare__card-item swiper-slide">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">10</p>
+                      </div>
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                    <div class="card-item__description-stock-wrap">
+                      <p class="card-item__description-stock">
+                        В наличии в магазине и на складе
+                      </p>
+                    </div>
+                    <div class="compare__card-item-brand">
+                      <p class="compare__card-item-brand-text">Benelli</p>
+                    </div>
+                    <div class="compare__card-item-stats">
+                      <p class="compare__card-item-stats-text">
+                        Калибр: <span>12x76</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Длина ствола: <span>710мм</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип ствола: <span>Гладкий</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Материал приклада: <span>Пластик</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Емкость магазина: <span>4+1</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип магазина: <span>Трубчатый</span>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="compare__card-item swiper-slide">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">10</p>
+                      </div>
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                    <div class="card-item__description-stock-wrap">
+                      <p class="card-item__description-stock">
+                        В наличии в магазине и на складе
+                      </p>
+                    </div>
+                    <div class="compare__card-item-brand">
+                      <p class="compare__card-item-brand-text">Benelli</p>
+                    </div>
+                    <div class="compare__card-item-stats">
+                      <p class="compare__card-item-stats-text">
+                        Калибр: <span>12x76</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Длина ствола: <span>710мм</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип ствола: <span>Гладкий</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Материал приклада: <span>Пластик</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Емкость магазина: <span>4+1</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип магазина: <span>Трубчатый</span>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="compare__card-item swiper-slide">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">10</p>
+                      </div>
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                    <div class="card-item__description-stock-wrap">
+                      <p class="card-item__description-stock">
+                        В наличии в магазине и на складе
+                      </p>
+                    </div>
+                    <div class="compare__card-item-brand">
+                      <p class="compare__card-item-brand-text">Benelli</p>
+                    </div>
+                    <div class="compare__card-item-stats">
+                      <p class="compare__card-item-stats-text">
+                        Калибр: <span>12x76</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Длина ствола: <span>710мм</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип ствола: <span>Гладкий</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Материал приклада: <span>Пластик</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Емкость магазина: <span>4+1</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип магазина: <span>Трубчатый</span>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="compare__card-item swiper-slide">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">10</p>
+                      </div>
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                    <div class="card-item__description-stock-wrap">
+                      <p class="card-item__description-stock">
+                        В наличии в магазине и на складе
+                      </p>
+                    </div>
+                    <div class="compare__card-item-brand">
+                      <p class="compare__card-item-brand-text">Benelli</p>
+                    </div>
+                    <div class="compare__card-item-stats">
+                      <p class="compare__card-item-stats-text">
+                        Калибр: <span>12x76</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Длина ствола: <span>710мм</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип ствола: <span>Гладкий</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Материал приклада: <span>Пластик</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Емкость магазина: <span>4+1</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип магазина: <span>Трубчатый</span>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="compare__card-item swiper-slide">
+                  <a href="#" class="card-item__link">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                    <div class="card-item__description-wrap">
+                      <div class="not-clicked-rate-wrap">
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <p class="not-clicked-rate-karma">10</p>
+                      </div>
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                    <div class="card-item__description-stock-wrap">
+                      <p class="card-item__description-stock">
+                        В наличии в магазине и на складе
+                      </p>
+                    </div>
+                    <div class="compare__card-item-brand">
+                      <p class="compare__card-item-brand-text">Benelli</p>
+                    </div>
+                    <div class="compare__card-item-stats">
+                      <p class="compare__card-item-stats-text">
+                        Калибр: <span>12x76</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Длина ствола: <span>710мм</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип ствола: <span>Гладкий</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Материал приклада: <span>Пластик</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Емкость магазина: <span>4+1</span>
+                      </p>
+                      <p class="compare__card-item-stats-text">
+                        Тип магазина: <span>Трубчатый</span>
+                      </p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div class="compare__card-list-scrollbar swiper-scrollbar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__wrap container">
+        <div class="footer__left">
+          <ul class="footer__list">
+            <li class="footer__item item-title">Покупателю</li>
+            <li class="footer__item">
+              <a href="../license/" class="footer__link"> Правила лицензии </a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link"> Как заказать </a>
+            </li>
+            <li class="footer__item">
+              <a href="../pay/" class="footer__link"> Оплата </a>
+            </li>
+            <li class="footer__item">
+              <a href="../delivery/" class="footer__link"> Доставка </a>
+            </li>
+            <li class="footer__item">
+              <a href="../faq/" class="footer__link">
+                Часто задаваемые вопросы
+              </a>
+            </li>
+            <li class="footer__item">
+              <a href="../return/" class="footer__link"> Обмен и возврат </a>
+            </li>
+            <li class="footer__item">
+              <a href="../catalog/" class="footer__link"> Каталог </a>
+            </li>
+            <li class="footer__item">
+              <a href="../brands/" class="footer__link"> Бренды </a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link"> Кредит и рассрочка </a>
+            </li>
+          </ul>
+          <ul class="footer__list">
+            <li class="footer__item item-title">О компании</li>
+            <li class="footer__item">
+              <a href="../contacts/" class="footer__link"> Контакты </a>
+            </li>
+            <li class="footer__item">
+              <a href="../vacancy/" class="footer__link"> Вакансии </a>
+            </li>
+            <li class="footer__item">
+              <a href="../requisites/" class="footer__link"> Реквизиты </a>
+            </li>
+            <li class="footer__item">
+              <a href="../history/" class="footer__link"> История компании </a>
+            </li>
+            <li class="footer__item">
+              <a href="../policy/" class="footer__link">
+                Политика конфиденциальности
+              </a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link"> Карта сайта </a>
+            </li>
+            <li class="footer__item non-clickable">
+              Режим работы с 9:00 - 18:00
+            </li>
+            <li class="footer__item">
+              <a href="tel:88007008256" class="footer__link">
+                8 800 700-82-56
+              </a>
+            </li>
+            <li class="footer__item">
+              <a href="mailto:info@ohotaktiv.ru" class="footer__link">
+                info@ohotaktiv.ru
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__right">
+          <h3 class="footer__title">Новости и акции только для своих</h3>
+          <form action="#" class="footer__form">
+            <div class="input-wrap">
+              <input
+                class="footer__form-input"
+                id="footer-form-input"
+                type="text"
+                placeholder=" "
+                autocomplete="off"
+              />
+              <label for="footer-form-input">Ваш адрес электронной почты</label>
+              <button class="footer__form-button">→</button>
+            </div>
+            <p class="footer__form-text">
+              Нажимая «Отправить», я принимаю
+              <a href="#" class="footer__form-link">условия использования</a>
+            </p>
+          </form>
+          <ul class="footer__social-list">
+            <li class="footer__social-item">
+              <a
+                href="https://vk.com/ohotaktiv"
+                class="footer__social-link vk"
+              ></a>
+            </li>
+            <li class="footer__social-item">
+              <a
+                href="https://t.me/ohotaktiv_official"
+                class="footer__social-link tg"
+              ></a>
+            </li>
+            <li class="footer__social-item">
+              <a
+                href="https://zen.yandex.ru/id/61d959165d11a84299ef6cec"
+                class="footer__social-link dzen"
+              ></a>
+            </li>
+            <li class="footer__social-item">
+              <a
+                href="https://invite.viber.com/?g2=AQBWGT4o6L4o5kr0rsadyda8rq06tZTTk6JORJfWrI7nOwixL3K85OCKiB502Fsh"
+                class="footer__social-link viber"
+              ></a>
+            </li>
+            <li class="footer__social-item">
+              <a
+                href="https://ok.ru/ohotaktiv"
+                class="footer__social-link ok"
+              ></a>
+            </li>
+            <li class="footer__social-item">
+              <a
+                href="https://www.youtube.com/channel/UCbeXH1XWDsSVL63-d0E43pw"
+                class="footer__social-link youtube"
+              ></a>
+            </li>
+            <li class="footer__social-item">
+              <a
+                href="https://rutube.ru/channel/24618421/"
+                class="footer__social-link rutube"
+              ></a>
+            </li>
+          </ul>
+          <div class="footer__download">
+            <p class="footer__download-title">Скачай мобильное приложение</p>
+            <ul class="footer__download-list">
+              <li class="footer__download-item">
+                <a href="#" class="footer__download-link google">
+                  <span> Доступно </span>
+                  Google Play
                 </a>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
-                    </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
-                      </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
+              <li class="footer__download-item">
+                <a
+                  href="https://play.google.com/store/apps/details?id=ru.ohotaktivv.android&hl=ru&gl=US"
+                  class="footer__download-link appstore"
+                >
+                  <span> Загрузите в </span>
+                  AppStore
                 </a>
               </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
-                    </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
-                      </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
-                    </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
-                      </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
-                    </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
-                      </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li class="compare__card-item swiper-slide">
-                <a href="#" class="card-item__link">
-                  <div class="card-item__photo-wrap">
-                    <img src="img/card-img.png" alt="Фото товара" class="card-item__photo">
-                    <div class="card-item__photo-button-wrap">
-                      <span class="card-item__photo-button remove"></span>
-                    </div>
-                    <div class="card-item__photo-texts">
-                      <p class="card-item__photo-text new">
-                        Что то
-                      </p>
-                      <p class="card-item__photo-text discount">
-                        -10%
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-item__description-wrap">
-                    <div class="not-clicked-rate-wrap">
-                      <span class="active"></span>    
-                      <span class="active"></span>  
-                      <span class="active"></span>    
-                      <span class="active"></span>
-                      <span></span>
-                      <p class="not-clicked-rate-karma">
-                        10
-                      </p>
-                    </div>
-                    <p class="card-item__description-price">
-                      61 290 &#8381; <span>62 490 &#8381;</span>
-                    </p>
-                    <p class="card-item__description-text">
-                      The 20th century was very notable with its unparalleled
-                    </p>
-                    <span class="card-item__button"></span>
-                  </div>
-                  <div class="card-item__description-stock-wrap">
-                    <p class="card-item__description-stock">
-                      В наличии в магазине и на складе
-                    </p>
-                  </div>
-                  <div class="compare__card-item-brand">
-                    <p class="compare__card-item-brand-text">
-                      Benelli
-                    </p>
-                  </div>
-                  <div class="compare__card-item-stats">
-                    <p class="compare__card-item-stats-text">
-                      Калибр: <span>12x76</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Длина ствола: <span>710мм</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип ствола: <span>Гладкий</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Материал приклада: <span>Пластик</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Емкость магазина: <span>4+1</span>
-                    </p>
-                    <p class="compare__card-item-stats-text">
-                      Тип магазина: <span>Трубчатый</span>
-                    </p>
-                  </div>
+              <li class="footer__download-item">
+                <a href="#" class="footer__download-link appgallery">
+                  <span> Откройте в </span>
+                  AppGallery
                 </a>
               </li>
             </ul>
-            <div class="compare__card-list-scrollbar swiper-scrollbar"></div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="footer__wrap container">
-      <div class="footer__lists-wrap">
-        <p class="footer__lists-title" data-path="buyer-footer">
-          Покупателю
-        </p>
-        <ul class="footer__buyer-list" data-target="buyer-footer">
-          <li class="footer__buyer-item">
-            <a href="../license/" class="footer__buyer-link">
-              Правила лицензии
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Как заказать
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Оплата
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../delivery/" class="footer__buyer-link">
-              Доставка
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Часто задаваемые вопросы
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../return/" class="footer__buyer-link">
-              Обмен и возврат
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Сервис
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Гарантия лучшей цены
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../catalog/" class="footer__buyer-link">
-              Каталог
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../brands/" class="footer__buyer-link">
-              Бренды
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Кредит и рассрочка
-            </a>
-          </li>
-        </ul>
-        <p class="footer__lists-title" data-path="contacts-footer">
-          Контакты
-        </p>
-        <ul class="footer__buyer-list" data-target="contacts-footer">
-          <li class="footer__buyer-item">
-            <a href="tel:88007008256" class="footer__buyer-link">
-              8 800 700-82-56
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              с 9.00 до 18.00
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="mailto:info@ohotaktiv.ru" class="footer__buyer-link">
-              info@ohotaktiv.ru
-            </a>
-          </li>
-        </ul>
-        <p class="footer__lists-title" data-path="aboutus-footer">
-          О компании
-        </p>
-        <ul class="footer__buyer-list" data-target="aboutus-footer">
-          <li class="footer__buyer-item">
-            <a href="../contacts/" class="footer__buyer-link">
-              Контакты
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../vacancy/" class="footer__buyer-link">
-              Вакансии
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../requisites/" class="footer__buyer-link">
-              Реквизиты
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../policy/" class="footer__buyer-link">
-              Политика конфиденциальности
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="../history/" class="footer__buyer-link">
-              История компании
-            </a>
-          </li>
-          <li class="footer__buyer-item">
-            <a href="#" class="footer__buyer-link">
-              Карта сайта
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__form-wrap">
-        <h2 class="footer__form-wrap-title">
-          Новости и акции только для своих
-        </h2>
-        <form action="#" class="footer__form">
-          <div class="input-wrap">
-            <input class="footer__form-input" id="footer-form-input" type="text" placeholder=" ">
-            <label for="footer-form-input">Введите e-mail</label>
-          </div>
-          <button class="footer__form-button">
-            Подписаться
-          </button>
-          <label class="checkbox__label">
-            Я принимаю <a href="#" class="checkbox__link">условия использования</a>
-            <input type="checkbox" class="checkbox visually-hidden" required checked>
-            <span class="checkbox__span"></span>
-          </label>
-        </form>
-      </div>
-      <div class="footer__social-wrap">
-        <ul class="footer__social-list">
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link vk"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link telegram"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link dzen"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link viber"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link ok"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link youtube"></a>
-          </li>
-          <li class="footer__social-item">
-            <a href="#" class="footer__social-link rutube"></a>
-          </li>
-        </ul>
-        <p class="footer__social-text">
-          Скачай мобильное приложение
-        </p>
-        <ul class="footer__social-app-list">
-          <li class="footer__social-app-item">
-            <a href="#" class="footer__social-app-link google-play">
-              <p class="footer__social-app-link-text">
-                Доступно<br><span>Google Play</span>
-              </p>
-            </a>
-          </li>
-          <li class="footer__social-app-item">
-            <a href="#" class="footer__social-app-link app-store">
-              <p class="footer__social-app-link-text">
-                Загрузите в<br><span>AppStore</span>
-              </p>
-            </a>
-          </li>
-          <li class="footer__social-app-item">
-            <a href="#" class="footer__social-app-link app-gallery">
-              <p class="footer__social-app-link-text">
-                Откройте в<br><span>AppGallery</span>
-              </p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
