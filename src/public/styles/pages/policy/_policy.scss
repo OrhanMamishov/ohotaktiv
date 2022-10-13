@@ -3,8 +3,8 @@
     &__text {
       max-width: 1106px;
       line-height: 28px;
-      &:last-child {
-        margin-top: 28px;
+      &:not(:last-child) {
+        margin-bottom: 28px;
       }
     }
     &__list {

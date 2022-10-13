@@ -1,11 +1,14 @@
 .main {
   .banner {
-    margin-bottom: 80px;
-    padding: 110px 0 170px 0;
-    background-image: url('../../../img/history-banner.jpg');
+    height: 546px;
+    margin-bottom: 44px;
+    background-image: url("../../../img/history-banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    &__wrap {
+      padding-top: 80px;
+    }
     &__title {
       position: relative;
       margin-bottom: 0;

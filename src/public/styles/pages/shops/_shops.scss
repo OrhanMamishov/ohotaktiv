@@ -1,32 +1,43 @@
 .main {
   padding-bottom: 0;
   .categories {
+    margin-bottom: 55px;
+    &__title {
+      margin-bottom: 80px;
+    }
     &__list {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(auto, 280px));
+      gap: 66px;
       justify-content: space-between;
     }
     &__item {
-      display: flex;
-      flex-direction: column;
-      width: 334px;
-      height: 245px;
-      padding: 25px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
       &-title {
-        @include fontSize17;
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
         font-weight: 800;
+        line-height: 28px;
+        font-size: 16px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 40px;
+          background-color: var(--black-color);
+        }
       }
       &-text {
-        @include fontSize13;
-        margin-top: auto;
-        line-height: 22px;
+        @include fontSize14;
+        line-height: 25px;
       }
     }
   }
   .map {
     margin-bottom: 84px;
-    &__wrap {
+    &__columns {
       display: flex;
       justify-content: space-between;
     }
@@ -35,17 +46,15 @@
       margin-right: 16px;
     }
     &__input {
-      @include fontSize14;
       width: 700px;
       display: block;
-      margin: 0 auto 72px auto;
-      padding: 18px 20px 18px 60px;
+      margin: 0 auto 76px auto;
+      padding: 18px 60px 18px 35px;
       border: 1px solid var(--grey-form-color);
       border-radius: 100px;
-      background-image: url('../../../img/tag.svg');
+      background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
-      background-position: 25px center;
-      background-size: 2%;
+      background-position: 96% center;
       &::placeholder {
         @include fontSize14;
         color: var(--footer-title-color);
@@ -54,34 +63,33 @@
     &__list {
       height: 515px;
       padding-right: 10px;
-      overflow: scroll;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 2px;
+        &-track {
+          background: var(--light-grey-color);
+        }
+        &-thumb {
+          background-color: var(--darkness-white-color);
+        }
+      }
     }
     &__item {
       border-style: solid;
       border-width: 1px;
       &-button {
-        @include fontSize17;
-        font-weight: 800;
         &:focus {
           color: unset !important;
-        }
-        &::after {
-          content: '' !important;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-image: url('../../../img/arrow-down.svg');
-          width: 12px !important;
-          height: 7px;
         }
       }
       &-address {
         @include fontSize14;
-        margin-bottom: 13px;
+        margin-bottom: 3px;
         margin-top: 10px;
         font-style: normal;
+        line-height: 25px;
         span {
-          @include fontSize12;
-          margin-top: 6px;
+          @include fontSize14;
           display: block;
           color: var(--darkness-white-color);
         }
@@ -92,7 +100,7 @@
         margin-bottom: 12px;
       }
       &-link {
-        @include fontSize13;
+        @include fontSize14;
         padding: 4px 12px;
         display: inline-block;
         margin-bottom: 25px;
@@ -103,22 +111,16 @@
         margin-top: 0;
       }
       .ac-trigger {
-        @include fontSize17;
-        padding: 18px 30px 18px 0;
         font: unset;
-        font-weight: 800;
-      }
-      &.is-active {
-        .ac-trigger::after {
-          transform: rotate(180deg) translate(0, -50%);
-          top: 30%;
-        }
+        @include fontSize16;
+        padding: 20px 30px 20px 0;
+        font-weight: 700;
       }
       &:not(:last-child) {
-        border-color: var(--border-color) transparent transparent transparent;
+        border-color: #2d2a28 transparent transparent transparent;
       }
       &:last-child {
-        border-color: var(--border-color) transparent var(--border-color) transparent;  
+        border-color: #2d2a28 transparent #2d2a28 transparent;
       }
     }
     #map {
@@ -131,16 +133,98 @@
 @media only screen and (max-width: 1560px) {
   .main {
     .categories {
-      &__list {
-        justify-content: flex-start;
+      &__title {
+        margin-bottom: 60px;
       }
-      &__item {
-        &:not(:last-child) {
-          margin-right: 30px;
-        }
-        &:last-child {
-          display: none;
-        }
+      &__list {
+        grid-template-columns: repeat(auto-fit, minmax(auto, 250px));
+      }
+    }
+    .map {
+      #map {
+        height: 574px;
+        width: 716px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .main {
+    .categories {
+      &__list {
+        grid-template-columns: repeat(auto-fit, minmax(auto, 230px));
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1365px) {
+  .main {
+    .categories {
+      &__list {
+        grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+        gap: 64px;
+      }
+    }
+    .map {
+      &__input {
+        width: 100%;
+        max-width: 444px;
+      }
+      &__columns {
+        flex-direction: column;
+      }
+      &__left-column {
+        margin-right: 0;
+        margin-bottom: 90px;
+      }
+      #map {
+        width: 100%;
+        height: 472px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    .categories {
+      margin-bottom: 60px;
+      &__list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+      }
+    }
+    .map {
+      &__input {
+        max-width: unset;
+        margin: 0 auto 66px auto;
+      }
+      #map {
+        height: 383px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .categories {
+      margin-bottom: 40px;
+      &__title {
+        margin-bottom: 40px;
+        line-height: 32px;
+      }
+      &__list {
+        grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+      }
+    }
+    .map {
+      &__input {
+        margin: 0 auto 37px auto;
+      }
+      &__left-column {
+        margin-bottom: 40px;
       }
     }
   }

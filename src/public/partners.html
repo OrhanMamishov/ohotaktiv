@@ -853,34 +853,40 @@
               <div class="input-wrap">
                 <input
                   class="blank__form-input"
-                  id="namecompany-form-input"
+                  id="inn-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
                 />
-                <label for="namecompany-form-input">Название компании</label>
+                <label for="inn-form-input">ИНН</label>
               </div>
               <div class="input-wrap">
                 <input
                   class="blank__form-input"
-                  id="addresscompany-form-input"
+                  id="namecompany-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
+                  maxlength="50"
+                  disabled
                 />
-                <label for="addresscompany-form-input"
-                  >Фактический адрес компании</label
+                <label for="namecompany-form-input"
+                  >Наименование организации или ИП</label
                 >
               </div>
               <div class="input-wrap">
                 <input
                   class="blank__form-input"
-                  id="goodscompany-form-input"
+                  id="goods-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
+                  maxlength="50"
                 />
-                <label for="goodscompany-form-input"
+                <label for="goods-form-input"
                   >Предполагаемый перечень товаров</label
                 >
               </div>
@@ -893,6 +899,7 @@
                   id="name-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
                 />
                 <label for="name-form-input">ФИО</label>
@@ -903,6 +910,7 @@
                   id="job-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
                 />
                 <label for="job-form-input">Занимаемая должность</label>
@@ -913,6 +921,7 @@
                   id="tel-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
                 />
                 <label for="tel-form-input">Телефон</label>
@@ -923,6 +932,7 @@
                   id="email-form-input"
                   type="text"
                   placeholder=" "
+                  autocomplete="off"
                   required
                 />
                 <label for="email-form-input">E-mail</label>
@@ -978,6 +988,8 @@
                   id="input-wrap-file"
                   class="input-wrap-file__input"
                   multiple
+                  required
+                  accept=".jpg, .jpeg, .png, .doc, .docx, .pdf, .xls, .xlsx"
                 />
                 <label for="input-wrap-file">
                   Прикрепить файлы .png, .jpg, .doc, .pdf, не более 8МВ

@@ -1,8 +1,10 @@
 .main {
   padding-bottom: 0;
   .shop {
+    padding-bottom: 84px;
     &__title {
       width: 100%;
+      margin-bottom: 65px;
     }
     &__wrap {
       display: flex;
@@ -10,25 +12,30 @@
       justify-content: space-between;
     }
     &__item {
-      width: 360px;
-      padding: 24px 0;
+      width: 457px;
+      padding: 20px 0;
       &-title {
-        @include fontSize17;
+        @include fontSize16;
         margin-bottom: 6px;
-        font-weight: 800;
+        font-weight: 700;
       }
       &-address,
       &-text,
       &-tel {
         @include fontSize14;
+        line-height: 25px;
         font-style: normal;
       }
       &:not(:last-child) {
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid #2d2a28;
       }
     }
     &__slide {
       padding-bottom: 30px;
+    }
+    &__img {
+      height: 100%;
+      object-fit: fill;
     }
     .swiper-pagination {
       bottom: 0;
@@ -42,7 +49,8 @@
       }
     }
     .swiper-shop {
-      max-width: 935px;
+      max-width: 860px;
+      height: 385px;
       margin-right: 0;
     }
   }
@@ -74,21 +82,21 @@
     }
   }
 }
-@media only screen and (max-width: 1365px) {
+@media only screen and (max-width: 1439px) {
   .main {
     .shop {
-      &__item {
-        width: 250px;
-      }
       .swiper-shop {
-        max-width: 537px;
+        max-width: 600px;
       }
     }
   }
 }
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1365px) {
   .main {
     .shop {
+      &__title {
+        margin-bottom: 29px;
+      }
       &__wrap {
         flex-direction: column;
       }
@@ -98,23 +106,40 @@
       &__item {
         width: 100%;
       }
+      &__img {
+        object-fit: contain;
+      }
+      &__slide {
+        padding-bottom: 0;
+      }
       .swiper-shop {
         max-width: 100%;
+        // height: 360px;
         margin-right: auto;
+        .swiper-pagination {
+          display: none;
+        }
       }
     }
-    .services {
-      margin-bottom: 58px;
-      &__list {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 20px;
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .shop {
+      .swiper-shop {
+        height: 292px;
       }
-      &__item {
-        &:not(:last-child) {
-          margin-right: 0;
-        }
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main {
+    .shop {
+      &__title {
+        margin-bottom: 14px;
+      }
+      .swiper-shop {
+        height: 160px;
       }
     }
   }

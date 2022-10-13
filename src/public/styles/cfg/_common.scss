@@ -42,7 +42,7 @@
 }
 
 :root {
-  --lightness-white-color: #f8f8f8;
+  --lightness-white-color: hwb(0 97% 3%);
   --darkness-white-color: #7f7f7f;
   --light-white-color: #e7e7e7;
   --background-color: #ebebeb;
@@ -57,7 +57,7 @@
   --grey-form-color: #a4a4a4;
   --border-color: #eeeeee;
   --grey-item-color: #e9e9e9;
-  --yellow-color: #ffe53e;
+  --yellow-color: #ffd53c;
   --light-yellow-color: #ffe484;
   --yellow-active-color: #fff08e;
   --lightness-grey-color: #f8f8f8;
@@ -103,7 +103,7 @@ a {
 input {
   @include clearStyles;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   background-color: transparent;
   border: none;
   outline: none;
@@ -123,7 +123,7 @@ input {
 }
 button {
   @include clearStyles;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   font-weight: 500;
   border: none;
   cursor: pointer;
@@ -205,9 +205,7 @@ main {
     height: 100%;
     object-fit: contain;
     &-wrap {
-      height: 300px;
       position: relative;
-      padding: 30px 0;
       margin-bottom: 18px;
       background-color: var(--lightness-grey-color);
       border-radius: 10px;
@@ -362,7 +360,6 @@ main {
     &__photo {
       &-wrap {
         margin-bottom: 14px;
-        padding: 26px 0;
       }
       &-button {
         &-wrap {
@@ -374,7 +371,6 @@ main {
   @media only screen and (max-width: 1439px) {
     &__photo {
       &-wrap {
-        padding: 27px 0;
         margin-bottom: 17px;
       }
       &-button {
@@ -394,7 +390,6 @@ main {
   @media only screen and (max-width: 767px) {
     &__photo {
       &-wrap {
-        padding: 16px 0;
         margin-bottom: 16px;
       }
       &-button {
@@ -477,7 +472,6 @@ main {
   }
   label {
     @include fontSize14;
-    font-weight: 400;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -505,6 +499,14 @@ main {
     background-position: left center;
     border-bottom: 1px dashed var(--grey-form-color);
     cursor: pointer;
+    &.is-not-valid {
+      border-color: var(--red-color);
+      animation: 0.1s tremor ease-out 1;
+    }
+    &.is-valid {
+      background: url("../../../img/file.svg") no-repeat left center,
+        url("../../../img/is-valid.svg") no-repeat center right;
+    }
   }
 }
 .checkbox {

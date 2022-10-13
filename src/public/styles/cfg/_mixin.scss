@@ -118,6 +118,11 @@
     border-color: var(--red-color);
     animation: 0.1s tremor ease-out 1;
   }
+  &.is-valid {
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-image: url("../../../img/is-valid.svg");
+  }
 }
 @mixin swiperArrowsIndexPage {
   &-prev,

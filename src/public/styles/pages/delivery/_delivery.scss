@@ -1,6 +1,7 @@
 .main {
   .banner {
-    background-image: url('../../../img/delivery-banner.jpg');
+    background-position: center center;
+    background-image: url("../../../img/delivery-banner.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 510px;
@@ -21,27 +22,9 @@
   .description {
     padding-top: 70px;
     &__wrap {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      grid-row-gap: 50px;
-    }
-    &__item {
-      width: 637px;
-      &:last-child {
-        width: 1000px;
-        padding: 20px 35px;
-        background-color: var(--yellow-color);
-        border-radius: 10px;
-        .description__title {
-          @include fontSize15;
-          font-weight: 800;
-          margin-bottom: 0;
-        }
-        .description__text {
-          @include fontSize14;
-        }
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+      grid-column-gap: 101px;
     }
     &__subtext {
       @include fontSize14;
@@ -54,15 +37,56 @@
     }
     &__title {
       @include fontSize24;
-      font-weight: 900;
       margin-bottom: 25px;
+      font-weight: 700;
     }
     &__text {
       @include fontSize14;
-      line-height: 24px;
+      margin-bottom: 40px;
+      line-height: 25px;
       span {
         display: block;
         padding: 25px 0;
+      }
+    }
+    &__warn {
+      @include fontSize14;
+      padding: 20px 35px;
+      background-color: var(--yellow-color);
+      border-radius: 10px;
+      line-height: 25px;
+      span {
+        @include fontSize16;
+        display: block;
+        font-weight: 700;
+        line-height: 28px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .banner {
+      height: 480px;
+    }
+    .description {
+      padding-top: 60px;
+      &__wrap {
+        grid-template-columns: repeat(auto-fit, minmax(668px, 1fr));
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .description {
+      &__wrap {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 600px));
+      }
+      &__warn {
+        padding: 20px 28px;
       }
     }
   }

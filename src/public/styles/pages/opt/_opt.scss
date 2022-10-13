@@ -1,8 +1,9 @@
 .main {
   .banner {
-    background-image: url('../../../img/opt-banner.jpg');
+    background-image: url("../../../img/opt-banner.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     height: 510px;
     &__wrap {
       height: 100%;
@@ -12,10 +13,10 @@
       justify-content: center;
     }
     &__title {
-      margin-bottom: 33px;
-      line-height: 55px;
-      font-weight: 900;
-      font-size: 40px;
+      @include fontSize35;
+      margin-bottom: 37px;
+      line-height: 45px;
+      font-weight: 800;
       color: var(--white-color);
       text-align: center;
     }
@@ -26,46 +27,49 @@
   }
   .description {
     &__wrap {
-      padding-top: 100px;
-      padding-bottom: 100px;
-      display: flex;
-      justify-content: space-around;
+      padding-top: 128px;
+      padding-bottom: 128px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(auto, 141px));
+      align-items: center;
+      justify-content: center;
+      grid-column-gap: 140px;
     }
     &__item {
       padding-top: 87px;
-      width: 170px;
       text-align: center;
       background-repeat: no-repeat;
-      background-position: top center;
+      background-position: center 15px;
       &-title {
-        @include fontSize17;
-        margin-bottom: 14px;
-        font-weight: 900;
+        @include fontSize16;
+        font-weight: 700;
+        line-height: 28px;
       }
       &:first-child {
-        background-image: url('../../../img/opt-img.svg');
+        background-image: url("../../../img/opt-img.svg");
       }
       &:nth-child(2) {
-        background-image: url('../../../img/opt-img-2.svg');
+        background-image: url("../../../img/opt-img-2.svg");
       }
       &:nth-child(3) {
-        background-image: url('../../../img/opt-img-3.svg');
+        background-image: url("../../../img/opt-img-3.svg");
       }
       &:nth-child(4) {
-        background-image: url('../../../img/opt-img-4.svg');
+        background-image: url("../../../img/opt-img-4.svg");
       }
       &:last-child {
-        background-image: url('../../../img/opt-img-5.svg');
+        background-image: url("../../../img/opt-img-5.svg");
       }
     }
   }
   .addresses {
+    margin-bottom: 83px;
     position: relative;
-    background-color: #F7F8F9;
+    background-color: #f7f8f9;
     background-clip: content-box;
     &__wrap {
-      padding-top: 84px;
-      padding-bottom: 84px;
+      padding-top: 100px;
+      padding-bottom: 114px;
     }
     &__list {
       width: 920px;
@@ -76,10 +80,6 @@
     }
     &__item {
       width: 400px;
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-image: url('../../../img/tag.svg');
-      padding-left: 30px;
     }
     &__address {
       font-style: normal;
@@ -88,6 +88,7 @@
       }
     }
     &__tel {
+      @include fontSize16;
       position: absolute;
       bottom: 10px;
       left: 50%;
@@ -101,7 +102,7 @@
   }
   .blank {
     &__text {
-      margin-bottom: 47px;
+      margin-bottom: 40px;
       line-height: 28px;
     }
     &__wrap {
@@ -109,9 +110,31 @@
     }
     &__title {
       margin-bottom: 20px;
-      text-align: center;
     }
     &__form {
+      position: relative;
+      &-dropdown {
+        max-width: 470px;
+        position: absolute;
+        top: 115px;
+        left: 0;
+        border-radius: 10px;
+        background-color: var(--white-color);
+        box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        &-item {
+          @include fontSize14;
+          padding: 14px 30px;
+          transition: background 0.2s ease;
+          cursor: pointer;
+          &:not(:last-child) {
+            border-bottom: 1px solid var(--black-color);
+          }
+          &:hover {
+            background-color: var(--light-grey-color);
+          }
+        }
+      }
       &-item {
         margin-bottom: 80px;
         .input-wrap {
@@ -129,8 +152,11 @@
           }
         }
       }
+      &-input {
+        padding-right: 25px;
+      }
       &-title {
-        @include fontSize17;
+        @include fontSize18;
         margin-bottom: 40px;
         font-weight: 800;
       }
@@ -140,11 +166,112 @@
       }
       &-button {
         @include contentButton;
-        @include fontSize14;
+        width: 100%;
       }
       &-subtext {
-        @include fontSize12;
-        margin-bottom: 15px;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .banner {
+      height: 480px;
+    }
+    .description {
+      &__wrap {
+        grid-column-gap: 87px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1365px) {
+  .main {
+    .banner {
+      height: 390px;
+      &__title {
+        margin-bottom: 30px;
+        font-size: 30px;
+      }
+    }
+    .description {
+      &__wrap {
+        padding-top: 96px;
+        padding-bottom: 124px;
+        gap: 20px;
+      }
+    }
+    .addresses {
+      &__wrap {
+        padding-top: 65px;
+        padding-bottom: 78px;
+      }
+      &__tel {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    .description {
+      &__wrap {
+        grid-template-columns: repeat(auto-fit, minmax(auto, 130px));
+        gap: 4px;
+      }
+    }
+    .addresses {
+      &__list {
+        width: 100%;
+        justify-content: center;
+        gap: 25px 102px;
+      }
+      &__item {
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .banner {
+      height: 470px;
+      background-position: 35%;
+    }
+    .description {
+      &__wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 36px;
+        padding-top: 30px;
+        padding-bottom: 46px;
+      }
+      &__item {
+        padding: 12px 0 12px 67px;
+        background-size: 40px;
+        background-position: left center;
+        text-align: left;
+      }
+    }
+    .addresses {
+      &__list {
+        justify-content: unset;
+      }
+      &__item {
+        width: 216px;
+      }
+      &__wrap {
+        padding-top: 42px;
+        padding-bottom: 62px;
+      }
+      &__tel {
+        width: 280px;
       }
     }
   }

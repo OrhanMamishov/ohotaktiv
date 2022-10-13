@@ -840,6 +840,7 @@
         </div>
       </section>
       <section class="addresses">
+        <h2 class="visually-hidden">Адреса</h2>
         <div class="addresses__wrap container">
           <ul class="addresses__list">
             <li class="addresses__item">
@@ -898,30 +899,6 @@
               <div class="input-wrap">
                 <input
                   class="blank__form-input"
-                  id="namecompany-form-input"
-                  type="text"
-                  placeholder=" "
-                  autocomplete="off"
-                  required
-                />
-                <label for="namecompany-form-input"
-                  >Наименование организации или ИП</label
-                >
-              </div>
-              <div class="input-wrap">
-                <input
-                  class="blank__form-input"
-                  id="addresscompany-form-input"
-                  type="text"
-                  placeholder=" "
-                  autocomplete="off"
-                  required
-                />
-                <label for="addresscompany-form-input">Фактический адрес</label>
-              </div>
-              <div class="input-wrap">
-                <input
-                  class="blank__form-input"
                   id="inn-form-input"
                   type="text"
                   placeholder=" "
@@ -929,6 +906,21 @@
                   required
                 />
                 <label for="inn-form-input">ИНН</label>
+              </div>
+              <div class="input-wrap">
+                <input
+                  class="blank__form-input"
+                  id="namecompany-form-input"
+                  type="text"
+                  placeholder=" "
+                  autocomplete="off"
+                  required
+                  maxlength="50"
+                  disabled
+                />
+                <label for="namecompany-form-input"
+                  >Наименование организации или ИП</label
+                >
               </div>
             </div>
             <div class="blank__form-item">

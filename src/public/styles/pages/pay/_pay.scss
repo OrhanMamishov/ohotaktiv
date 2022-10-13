@@ -17,6 +17,12 @@
           line-height: 28px;
         }
       }
+      &-link {
+        transition: color 0.2s ease;
+        &:hover {
+          color: var(--yellow-color);
+        }
+      }
       &:not(:last-child) {
         margin-bottom: 30px;
       }
