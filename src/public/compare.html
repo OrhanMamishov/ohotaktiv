@@ -824,401 +824,596 @@
                 <a href="#" class="navigation__link"> Главная </a>
               </li>
               <li class="navigation__item">
-                <a href="#" class="navigation__link"> Ликвидация </a>
+                <a href="#" class="navigation__link"> Сравнение </a>
               </li>
             </ul>
           </nav>
           <h2 class="compare__title">Сравнение товаров</h2>
-          <div class="compare__list-wrap">
-            <ul class="compare__titles-list">
-              <li class="compare__titles-item">Изображение</li>
-              <li class="compare__titles-item">Описание</li>
-              <li class="compare__titles-item">Наличие</li>
-              <li class="compare__titles-item">Бренд</li>
-              <li class="compare__titles-item">Характеристики</li>
-            </ul>
-            <div class="swiper swiper-compare">
-              <ul class="compare__card-list swiper-wrapper">
-                <li class="compare__card-item swiper-slide">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img
-                        src="img/card-img.png"
-                        alt="Фото товара"
-                        class="card-item__photo"
-                      />
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button remove"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">Что то</p>
-                        <p class="card-item__photo-text discount">-10%</p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">10</p>
-                      </div>
-                      <p class="card-item__description-price">
-                        61 290 &#8381; <span>62 490 &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        The 20th century was very notable with its unparalleled
-                      </p>
-                      <span class="card-item__button"></span>
-                    </div>
-                    <div class="card-item__description-stock-wrap">
-                      <p class="card-item__description-stock">
-                        В наличии в магазине и на складе
-                      </p>
-                    </div>
-                    <div class="compare__card-item-brand">
-                      <p class="compare__card-item-brand-text">Benelli</p>
-                    </div>
-                    <div class="compare__card-item-stats">
-                      <p class="compare__card-item-stats-text">
-                        Калибр: <span>12x76</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Длина ствола: <span>710мм</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип ствола: <span>Гладкий</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Материал приклада: <span>Пластик</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Емкость магазина: <span>4+1</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип магазина: <span>Трубчатый</span>
-                      </p>
-                    </div>
-                  </a>
+          <ul class="compare__path-list">
+            <li class="compare__path is-active" data-path="gun-path">Оружие</li>
+            <li class="compare__path" data-path="clothes-path">Одежда</li>
+            <li class="compare__path" data-path="optics-path">Оптика</li>
+          </ul>
+          <div class="compare__result is-open" data-target="gun-target">
+            <div class="compare__select-wrap">
+              <button class="compare__select">Выберите характеристики</button>
+              <ul class="compare__select-list">
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Калибр
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
                 </li>
-                <li class="compare__card-item swiper-slide">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img
-                        src="img/card-img.png"
-                        alt="Фото товара"
-                        class="card-item__photo"
-                      />
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button remove"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">Что то</p>
-                        <p class="card-item__photo-text discount">-10%</p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">10</p>
-                      </div>
-                      <p class="card-item__description-price">
-                        61 290 &#8381; <span>62 490 &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        The 20th century was very notable with its unparalleled
-                      </p>
-                      <span class="card-item__button"></span>
-                    </div>
-                    <div class="card-item__description-stock-wrap">
-                      <p class="card-item__description-stock">
-                        В наличии в магазине и на складе
-                      </p>
-                    </div>
-                    <div class="compare__card-item-brand">
-                      <p class="compare__card-item-brand-text">Benelli</p>
-                    </div>
-                    <div class="compare__card-item-stats">
-                      <p class="compare__card-item-stats-text">
-                        Калибр: <span>12x76</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Длина ствола: <span>710мм</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип ствола: <span>Гладкий</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Материал приклада: <span>Пластик</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Емкость магазина: <span>4+1</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип магазина: <span>Трубчатый</span>
-                      </p>
-                    </div>
-                  </a>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Длина ствола
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
                 </li>
-                <li class="compare__card-item swiper-slide">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img
-                        src="img/card-img.png"
-                        alt="Фото товара"
-                        class="card-item__photo"
-                      />
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button remove"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">Что то</p>
-                        <p class="card-item__photo-text discount">-10%</p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">10</p>
-                      </div>
-                      <p class="card-item__description-price">
-                        61 290 &#8381; <span>62 490 &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        The 20th century was very notable with its unparalleled
-                      </p>
-                      <span class="card-item__button"></span>
-                    </div>
-                    <div class="card-item__description-stock-wrap">
-                      <p class="card-item__description-stock">
-                        В наличии в магазине и на складе
-                      </p>
-                    </div>
-                    <div class="compare__card-item-brand">
-                      <p class="compare__card-item-brand-text">Benelli</p>
-                    </div>
-                    <div class="compare__card-item-stats">
-                      <p class="compare__card-item-stats-text">
-                        Калибр: <span>12x76</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Длина ствола: <span>710мм</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип ствола: <span>Гладкий</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Материал приклада: <span>Пластик</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Емкость магазина: <span>4+1</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип магазина: <span>Трубчатый</span>
-                      </p>
-                    </div>
-                  </a>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Тип ствола
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
                 </li>
-                <li class="compare__card-item swiper-slide">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img
-                        src="img/card-img.png"
-                        alt="Фото товара"
-                        class="card-item__photo"
-                      />
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button remove"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">Что то</p>
-                        <p class="card-item__photo-text discount">-10%</p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">10</p>
-                      </div>
-                      <p class="card-item__description-price">
-                        61 290 &#8381; <span>62 490 &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        The 20th century was very notable with its unparalleled
-                      </p>
-                      <span class="card-item__button"></span>
-                    </div>
-                    <div class="card-item__description-stock-wrap">
-                      <p class="card-item__description-stock">
-                        В наличии в магазине и на складе
-                      </p>
-                    </div>
-                    <div class="compare__card-item-brand">
-                      <p class="compare__card-item-brand-text">Benelli</p>
-                    </div>
-                    <div class="compare__card-item-stats">
-                      <p class="compare__card-item-stats-text">
-                        Калибр: <span>12x76</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Длина ствола: <span>710мм</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип ствола: <span>Гладкий</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Материал приклада: <span>Пластик</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Емкость магазина: <span>4+1</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип магазина: <span>Трубчатый</span>
-                      </p>
-                    </div>
-                  </a>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Материал приклада
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
                 </li>
-                <li class="compare__card-item swiper-slide">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img
-                        src="img/card-img.png"
-                        alt="Фото товара"
-                        class="card-item__photo"
-                      />
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button remove"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">Что то</p>
-                        <p class="card-item__photo-text discount">-10%</p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">10</p>
-                      </div>
-                      <p class="card-item__description-price">
-                        61 290 &#8381; <span>62 490 &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        The 20th century was very notable with its unparalleled
-                      </p>
-                      <span class="card-item__button"></span>
-                    </div>
-                    <div class="card-item__description-stock-wrap">
-                      <p class="card-item__description-stock">
-                        В наличии в магазине и на складе
-                      </p>
-                    </div>
-                    <div class="compare__card-item-brand">
-                      <p class="compare__card-item-brand-text">Benelli</p>
-                    </div>
-                    <div class="compare__card-item-stats">
-                      <p class="compare__card-item-stats-text">
-                        Калибр: <span>12x76</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Длина ствола: <span>710мм</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип ствола: <span>Гладкий</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Материал приклада: <span>Пластик</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Емкость магазина: <span>4+1</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип магазина: <span>Трубчатый</span>
-                      </p>
-                    </div>
-                  </a>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Ёмкость магазина
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
                 </li>
-                <li class="compare__card-item swiper-slide">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img
-                        src="img/card-img.png"
-                        alt="Фото товара"
-                        class="card-item__photo"
-                      />
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button remove"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">Что то</p>
-                        <p class="card-item__photo-text discount">-10%</p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">10</p>
-                      </div>
-                      <p class="card-item__description-price">
-                        61 290 &#8381; <span>62 490 &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        The 20th century was very notable with its unparalleled
-                      </p>
-                      <span class="card-item__button"></span>
-                    </div>
-                    <div class="card-item__description-stock-wrap">
-                      <p class="card-item__description-stock">
-                        В наличии в магазине и на складе
-                      </p>
-                    </div>
-                    <div class="compare__card-item-brand">
-                      <p class="compare__card-item-brand-text">Benelli</p>
-                    </div>
-                    <div class="compare__card-item-stats">
-                      <p class="compare__card-item-stats-text">
-                        Калибр: <span>12x76</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Длина ствола: <span>710мм</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип ствола: <span>Гладкий</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Материал приклада: <span>Пластик</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Емкость магазина: <span>4+1</span>
-                      </p>
-                      <p class="compare__card-item-stats-text">
-                        Тип магазина: <span>Трубчатый</span>
-                      </p>
-                    </div>
-                  </a>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Тип магазина
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Бренд
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
                 </li>
               </ul>
-              <div class="compare__card-list-scrollbar swiper-scrollbar"></div>
+            </div>
+            <div class="compare__tbl">
+              <ul class="compare__tbl-thead">
+                <li class="compare__tbl-th">
+                  <span>Изображение</span><span>Описание</span>
+                </li>
+                <li class="compare__tbl-th">Описание</li>
+                <li class="compare__tbl-th">Характеристики</li>
+              </ul>
+              <ul class="compare__tbl-tbody">
+                <li class="compare__tbl-tr">
+                  <div class="compare__tbl-td">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <ul class="compare__card-item-stats">
+                      <li class="compare__card-item-stats-item">
+                        Калибр: 12x76
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Длина ствола: 710мм
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Тип ствола: Гладкий
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Материал приклада: Пластик
+                      </li>
+                      <li class="compare__card-item-stats-item">Рейтинг: 5</li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="compare__tbl-tr">
+                  <div class="compare__tbl-td">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <ul class="compare__card-item-stats">
+                      <li class="compare__card-item-stats-item">
+                        Калибр: 12x76
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Длина ствола: 710мм
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Тип ствола: Гладкий
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Материал приклада: Пластик
+                      </li>
+                      <li class="compare__card-item-stats-item">Рейтинг: 5</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="compare__result" data-target="clothes-target">
+            <div class="compare__select-wrap">
+              <button class="compare__select">Выберите характеристики</button>
+              <ul class="compare__select-list">
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Калибр
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Длина ствола
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Тип ствола
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Материал приклада
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Ёмкость магазина
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Тип магазина
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Бренд
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="compare__tbl">
+              <ul class="compare__tbl-thead">
+                <li class="compare__tbl-th">
+                  <span>Изображение</span><span>Описание</span>
+                </li>
+                <li class="compare__tbl-th">Описание</li>
+                <li class="compare__tbl-th">Характеристики</li>
+              </ul>
+              <ul class="compare__tbl-tbody">
+                <li class="compare__tbl-tr">
+                  <div class="compare__tbl-td">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <ul class="compare__card-item-stats">
+                      <li class="compare__card-item-stats-item">
+                        Калибр: 12x76
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Длина ствола: 710мм
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Тип ствола: Гладкий
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Материал приклада: Пластик
+                      </li>
+                      <li class="compare__card-item-stats-item">Рейтинг: 5</li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="compare__tbl-tr">
+                  <div class="compare__tbl-td">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <ul class="compare__card-item-stats">
+                      <li class="compare__card-item-stats-item">
+                        Калибр: 12x76
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Длина ствола: 710мм
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Тип ствола: Гладкий
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Материал приклада: Пластик
+                      </li>
+                      <li class="compare__card-item-stats-item">Рейтинг: 5</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="compare__result" data-target="optics-target">
+            <div class="compare__select-wrap">
+              <button class="compare__select">Выберите характеристики</button>
+              <ul class="compare__select-list">
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Калибр
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Длина ствола
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Тип ствола
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Материал приклада
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Ёмкость магазина
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Тип магазина
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+                <li class="compare__select-item">
+                  <label class="checkbox__label">
+                    Бренд
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      required
+                      checked
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="compare__tbl">
+              <ul class="compare__tbl-thead">
+                <li class="compare__tbl-th">
+                  <span>Изображение</span><span>Описание</span>
+                </li>
+                <li class="compare__tbl-th">Описание</li>
+                <li class="compare__tbl-th">Характеристики</li>
+              </ul>
+              <ul class="compare__tbl-tbody">
+                <li class="compare__tbl-tr">
+                  <div class="compare__tbl-td">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <ul class="compare__card-item-stats">
+                      <li class="compare__card-item-stats-item">
+                        Калибр: 12x76
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Длина ствола: 710мм
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Тип ствола: Гладкий
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Материал приклада: Пластик
+                      </li>
+                      <li class="compare__card-item-stats-item">Рейтинг: 5</li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="compare__tbl-tr">
+                  <div class="compare__tbl-td">
+                    <div class="card-item__photo-wrap">
+                      <img
+                        src="img/card-img.png"
+                        alt="Фото товара"
+                        class="card-item__photo"
+                      />
+                      <div class="card-item__photo-button-wrap">
+                        <span class="card-item__photo-button remove"></span>
+                      </div>
+                      <div class="card-item__photo-texts">
+                        <p class="card-item__photo-text new">Что то</p>
+                        <p class="card-item__photo-text discount">-10%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <div class="card-item__description-wrap">
+                      <p class="card-item__description-price">
+                        61 290 &#8381; <span>62 490 &#8381;</span>
+                      </p>
+                      <p class="card-item__description-text">
+                        The 20th century was very notable with its unparalleled
+                      </p>
+                      <span class="card-item__button"></span>
+                    </div>
+                  </div>
+                  <div class="compare__tbl-td">
+                    <ul class="compare__card-item-stats">
+                      <li class="compare__card-item-stats-item">
+                        Калибр: 12x76
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Длина ствола: 710мм
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Тип ствола: Гладкий
+                      </li>
+                      <li class="compare__card-item-stats-item">
+                        Материал приклада: Пластик
+                      </li>
+                      <li class="compare__card-item-stats-item">Рейтинг: 5</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

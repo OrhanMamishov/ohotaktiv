@@ -153,10 +153,10 @@
   display: flex;
   border-bottom: 1px solid var(--border-color);
   li {
-    @include fontSize17;
-    font-weight: 800;
-    color: var(--grey-form-color);
+    @include fontSize16;
     padding: 15px 0;
+    color: var(--grey-form-color);
+    font-weight: 700;
     cursor: pointer;
     transition: color 0.2s ease, border-color 0.2s ease;
     &.is-active {
@@ -173,9 +173,8 @@
   flex-wrap: wrap;
   gap: 18px;
   li {
-    @include fontSize13;
+    @include fontSize16;
     padding: 13px 22px;
-    border-radius: 100px;
     border: 1px solid var(--darkness-white-color);
     cursor: pointer;
     &.is-active {

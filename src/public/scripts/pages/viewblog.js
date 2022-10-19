@@ -1,8 +1,9 @@
 import "../imports";
 import "../../styles/pages/viewblog/style.scss";
-import Swiper, { Navigation } from "swiper";
+import Swiper, { Navigation, Mousewheel } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/mousewheel";
 document.addEventListener("DOMContentLoaded", () => {
   // swipers
   //eslint-disable-next-line
@@ -32,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
   const asideSwiper = new Swiper(".swiper-aside", {
-    modules: [Navigation],
+    modules: [Navigation, Mousewheel],
+    mousewheel: true,
     spaceBetween: 35,
     direction: "vertical",
     freeMode: true,

@@ -137,7 +137,7 @@ section {
   padding-bottom: 30px;
   h2 {
     margin-bottom: 26px;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 24px;
     &.skeleton {
       height: 27px;
@@ -452,12 +452,6 @@ main {
       font-size: 12px;
       font-weight: 500;
     }
-  }
-}
-.for-mobile {
-  display: none;
-  @media only screen and (max-width: 1365px) {
-    display: inherit;
   }
 }
 .input-wrap {

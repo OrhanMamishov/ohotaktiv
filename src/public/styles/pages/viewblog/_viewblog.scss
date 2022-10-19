@@ -14,19 +14,20 @@
         margin-bottom: 20px;
       }
       &-date {
-        @include fontSize12;
-        margin-bottom: 9px;
+        @include fontSize14;
+        margin-bottom: 10px;
         color: var(--dark-grey-color);
       }
       &-title {
         @include fontSize24;
+        line-height: 34px;
         margin-bottom: 14px;
-        font-weight: 900;
+        font-weight: 700;
       }
       &-text {
         @include fontSize14;
         margin-bottom: 27px;
-        line-height: 22px;
+        line-height: 25px;
       }
     }
     &__aside {
@@ -35,9 +36,7 @@
         width: 350px;
       }
       &-title {
-        @include fontSize19;
-        margin-bottom: 25px;
-        font-weight: 800;
+        display: none;
       }
       &-link {
         display: flex;
@@ -136,6 +135,26 @@
     .goods {
       .swiper {
         padding: 0;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main {
+    .viewblog {
+      &__item {
+        &-date {
+          margin-bottom: 17px;
+        }
+      }
+      &__aside {
+        margin-bottom: 43px;
+        &-title {
+          @include fontSize18;
+          display: block;
+          margin-bottom: 14px;
+          font-weight: 700;
+        }
       }
     }
   }

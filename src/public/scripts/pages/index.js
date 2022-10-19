@@ -1,9 +1,7 @@
 import "../imports";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import "swiper/css/bundle";
 import "../../styles/pages/index/style.scss";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const swiperNew = new Swiper("." + swiper, {
       spaceBetween: 10,
       modules: [Navigation],
-      loop: true,
+      allowTouchMove: false,
       navigation: {
         nextEl: `.${swiper.split("-").reverse().join("__")}-button-next`,
         prevEl: `.${swiper.split("-").reverse().join("__")}-button-prev`,

@@ -1,19 +1,28 @@
 import "../imports";
 import "../../styles/pages/compare/style.scss";
-import Swiper, { Navigation, Mousewheel, Scrollbar } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/scrollbar";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const compareSwiper = new Swiper(".swiper-compare", {
-    slidesPerView: 3,
-    modules: [Navigation, Mousewheel, Scrollbar],
-    direction: "vertical",
-    mousewheel: true,
-    scrollbar: {
-      el: ".compare__card-list-scrollbar",
-      draggable: true,
-    },
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("compare__select")) {
+      e.target.nextElementSibling.classList.toggle("is-open");
+      e.target.classList.toggle("is-open");
+    }
+  });
+  const paths = document.querySelectorAll(".compare__path");
+  const targets = document.querySelectorAll(".compare__result");
+  paths.forEach((path) => {
+    path.addEventListener("click", () => {
+      if (path.classList.contains("is-active")) return;
+      paths.forEach((el) => el.classList.remove("is-active"));
+      path.classList.add("is-active");
+      targets.forEach((target) => {
+        target.classList.remove("is-open");
+        if (
+          target.getAttribute("data-target").split("-")[0] ==
+          path.getAttribute("data-path").split("-")[0]
+        )
+          target.classList.add("is-open");
+      });
+    });
   });
 });
