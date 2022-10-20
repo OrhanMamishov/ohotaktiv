@@ -1,95 +1,47 @@
 import "../../styles/components/header/style.scss";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import ucFirst from "../functions/ucFirst";
-document.addEventListener("DOMContentLoaded", () => {
-  // Проверяем есть ли в браузере выбранный город
-  // const cityTagButtonHeader = document.querySelector(".tag");
-  // if (!localStorage.getItem("KEY_CITY")) {
-  //   getUserIp();
-  // }
-  // Проверяем есть ли в браузере выбранный город
-  // Каталог + табы
-  // const headerCatalogTargets = document.querySelectorAll(
-  //   ".header__catalog-target-list"
-  // );
-  // const headerCatalogWrap = document.querySelector(".header__catalog-wrap");
-  // const headerCatalogButton = document.querySelector(".header__button");
-  // headerCatalogButton.addEventListener("click", () => {
-  //   bodyScrollToggle();
-  //   headerCatalogButton.classList.toggle("is-active");
-  //   headerCatalogWrap.classList.toggle("is-open");
-  //   headerCatalogTargets.forEach((target) =>
-  //     target.classList.remove("is-active")
-  //   );
-  // });
-  // const headerCatalogTabs = document.querySelectorAll(
-  //   ".header__catalog-tabs-item"
-  // );
-  // headerCatalogTabs.forEach((tab) => {
-  //   tab.addEventListener("mouseover", () => {
-  //     headerCatalogTargets.forEach((target) => {
-  //       target.classList.remove("is-active");
-  //       if (
-  //         target.getAttribute("data-target") == tab.getAttribute("data-path")
-  //       ) {
-  //         target.classList.add("is-active");
-  //       }
-  //     });
-  //   });
-  // });
-  // const headerCatalogClose = document.querySelector(
-  //   ".header__catalog-wrap-close"
-  // );
-  // headerCatalogClose.addEventListener("click", () =>
-  //   headerCatalogButton.click()
-  // );
-  // const headerBackButton = document.querySelector(".header__catalog-wrap-back");
-  // headerBackButton.addEventListener("click", () => {
-  //   headerCatalogTargets.forEach((target) =>
-  //     target.classList.remove("is-active")
-  //   );
-  // });
-  // // Каталог + табы
-  // async function getUserIp() {
-  //   await fetch("https://ipapi.co/json/")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       return getUserLocation(res.ip);
-  //     });
-  // }
-  // async function getUserLocation(ip) {
-  //   await fetch(
-  //     `https://api.ipgeolocation.io/ipgeo?apiKey=5e01da5475ba486da5b4b4d332a34862&ip=${ip}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       localStorage.setItem(
-  //         "KEY_CITY",
-  //         JSON.stringify({ key: res.geoname_id, city: res.city })
-  //       );
-  //     });
-  // }
-  // // Выбор города
-  // // Открытие менюшки на таблетке
-  // const menuButtonHeader = document.querySelector(".menu");
-  // const menuHeader = document.querySelector(".header__pages-list");
-  // menuButtonHeader.addEventListener("click", () => {
-  //   bodyScrollToggle();
-  //   menuHeader.classList.toggle("is-open");
-  // });
-  // const menuCloseHeader = document.querySelector(".close-menu");
-  // menuCloseHeader.addEventListener("click", () => {
-  //   bodyScrollToggle();
-  //   menuHeader.classList.remove("is-open");
-  // });
-  // menuHeader.addEventListener("click", (e) => {
-  //   if (e.offsetX < 0) menuCloseHeader.click();
-  // });
-  // Открытие менюшки на таблетке
+import gsap from "gsap";
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
 
-  // new
+document.addEventListener("DOMContentLoaded", () => {
+  const tlMenu = gsap.timeline({ paused: true });
+  const tlCatalog = gsap.timeline({ paused: true });
   const header = document.querySelector(".header");
-  const headerMenu = document.querySelector(".header__menu-wrap");
+  const headerMenuWrap = document.querySelector(".header__menu-wrap");
+  const headerMenu = document.querySelector(".header__menu");
+  const headerCatalogWrap = document.querySelector(".header__catalog-wrap");
+  const headerCatalog = document.querySelector(".header__catalog");
+  const allAccordions = document.querySelectorAll(
+    ".header__accordion-container"
+  );
+  allAccordions.forEach((accordion) => {
+    if (window.innerWidth < 1024) new Accordion(accordion);
+  });
+  tlCatalog
+    .fromTo(
+      headerCatalogWrap,
+      { visibility: "hidden", opacity: 0, duration: 0.1 },
+      { visibility: "visible", opacity: 1, duration: 0.1 }
+    )
+    .fromTo(
+      headerCatalog,
+      window.innerWidth < 1024
+        ? { x: "-100%", duration: 0.2 }
+        : { y: "-10px", duration: 0.2 },
+      window.innerWidth < 1024
+        ? { x: 0, duration: 0.2 }
+        : { y: 0, duration: 0.2 }
+    );
+
+  tlMenu
+    .fromTo(
+      headerMenuWrap,
+      { visibility: "hidden", opacity: 0, duration: 0.1 },
+      { visibility: "visible", opacity: 1, duration: 0.1 }
+    )
+    .fromTo(headerMenu, { x: "100%", duration: 0.2 }, { x: 0, duration: 0.2 });
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();
@@ -224,13 +176,34 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
     if (e.target.className == "header__openmenu") {
-      headerMenu.classList.add("is-open");
+      bodyScrollToggle();
+      tlMenu.play();
     }
     if (
       e.target.className == "header__menu-close" ||
       e.target.className == "header__menu-background"
     ) {
-      headerMenu.classList.remove("is-open");
+      bodyScrollToggle();
+      tlMenu.reverse();
+    }
+    if (e.target.classList.contains("catalog")) {
+      if (headerCatalogWrap.style.visibility === "visible") {
+        document.querySelector(".header__catalog-close").click();
+        return;
+      }
+      bodyScrollToggle();
+      e.target.classList.toggle("is-active");
+      tlCatalog.play();
+    }
+    if (
+      e.target.className == "header__catalog-close" ||
+      e.target.className == "header__catalog-background"
+    ) {
+      document
+        .querySelector(".header__catalog-button")
+        .classList.remove("is-active");
+      bodyScrollToggle();
+      tlCatalog.reverse();
     }
   });
 });

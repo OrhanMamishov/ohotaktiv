@@ -1,62 +1,269 @@
-.main {
-  padding-bottom: 142px;
-  .banner {
-    background-image: url('../../../img/remington-background.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 312px;
+body {
+  overscroll-behavior: none;
+  background-color: var(--black-color);
+}
+section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.header {
+  padding: 32px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f0ebe1;
+  z-index: 1;
+  opacity: 0;
+  animation: ani 2.5s forwards;
+  &__wrap {
+    display: flex;
+    justify-content: center;
   }
-  .remington {
-    &__tabs {
-      &-list {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 38px;
-        border-bottom: unset;
+  &__list {
+    display: flex;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+  &__link {
+    position: relative;
+    font-weight: 700;
+    &:hover {
+      &::after {
+        width: 100%;
       }
-      &-item {
-        padding: 12px 0px;
-        cursor: pointer;
+    }
+    &::after {
+      content: "";
+      width: 0;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: var(--black-color);
+      transition: width 0.2s ease;
+    }
+  }
+}
+.main {
+  padding-top: 80px;
+  padding-bottom: 0;
+  opacity: 0;
+  animation: ani 2.5s forwards;
+  #content {
+    will-change: transform;
+  }
+  .banner {
+    height: 100vh !important;
+    .parallax-img {
+      top: 0 !important;
+    }
+    &__logo {
+      margin-bottom: 70px;
+      max-width: 634px;
+      z-index: 1;
+    }
+    &__button {
+      @include contentButton;
+      @include fontSize15;
+      padding: 22px 36px;
+      background-color: #f0ebe1;
+      z-index: 1;
+    }
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    &__bot {
+      position: absolute;
+      bottom: 93px;
+      left: 50%;
+      width: 55px;
+      height: 55px;
+      border: 3px solid #f0ebe1;
+      border-radius: 100px;
+      background-image: url("../../../img/arrow-down-white.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translate(-50%, 0);
+      z-index: 1;
+    }
+  }
+  .swiperblock {
+    padding-top: 75px;
+    padding-bottom: 140px;
+    background-color: #251f07;
+    &__title {
+      @include fontSize35;
+      color: #f0ebe1;
+    }
+    &__item {
+      padding: 21px 34px;
+      height: 630px;
+      background-color: #f0ebe1;
+    }
+    &__link {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    &__img {
+      width: 360px;
+      max-height: 524px;
+      height: 100%;
+      object-fit: contain;
+      align-self: center;
+    }
+    &__text {
+      @include fontSize15;
+      font-weight: 800;
+      margin-top: auto;
+    }
+  }
+  .shoes {
+    background-color: #f0ebe1;
+    .swiperblock__title {
+      color: #251f07;
+    }
+    .swiperblock__item {
+      background-color: var(--white-color);
+    }
+  }
+  .img-container {
+    position: relative;
+    overflow: hidden;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    &.background--black {
+      color: #f0ebe1;
+      background-color: #251f07;
+      a {
+        color: #f0ebe1;
+        &::before {
+          background-color: #f0ebe1;
+        }
+      }
+    }
+    &.background--white {
+      color: #251f07;
+      background-color: #f0ebe1;
+      a {
+        color: #251f07;
+        &::before {
+          background-color: #251f07;
+        }
+      }
+    }
+    .parallax-img {
+      width: 60vw;
+      position: absolute;
+      height: 120%;
+      bottom: 0;
+      object-fit: cover;
+      &--full {
+        width: 100%;
+      }
+    }
+    .description {
+      padding: 68px 0;
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      width: 30vw;
+      &__title {
+        @include fontSize35;
+        margin-bottom: 35px;
+        z-index: 1;
+      }
+      &__list {
+        z-index: 1;
+      }
+      &__item {
         &:not(:last-child) {
-          margin-right: 35px;
-        }
-        &.is-active {
-          border-bottom: 3px solid var(--black-color);
+          margin-bottom: 15px;
         }
       }
-    }
-    &__tab {
-      &-list {
-        display: none;
-        flex-wrap: wrap;
-        gap: 16px;
-        &.is-open {
-          display: flex;
-        }
-      }
-      &-link {
-        display: flex;
-        flex-direction: column;
+      &__link {
+        @include fontSize18;
+        position: relative;
         height: 100%;
-      }
-      &-item {
-        padding: 31px 0;
-        width: 260px;
-        background-color: var(--lightness-white-color);
-        cursor: pointer;
-        &-img {
-          width: 78%;
-          display: block;
-          margin: auto auto 20px auto;
-          object-fit: scale-down;
+        font-weight: 800;
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          transition: width 0.5s ease;
         }
-        &-text {
-          @include fontSize14;
-          margin-top: auto;
-          font-weight: 700;
-          text-align: center;
+        &:hover {
+          &::before {
+            width: 100%;
+          }
         }
       }
     }
+  }
+  .optics {
+    .description {
+      margin-left: 17%;
+    }
+    .parallax-img {
+      width: 42vw;
+      max-height: 50vh;
+      right: 10%;
+    }
+  }
+  .care {
+    .parallax-img {
+      width: 42vw;
+      max-height: 50vh;
+      left: 10%;
+    }
+  }
+  .tourism {
+    background-color: #142507;
+  }
+  .swiper-button {
+    @include swiperArrowsIndexPage;
+    &-prev,
+    &-next {
+      top: 50%;
+      width: 55px;
+      height: 55px;
+      background-color: #505420;
+      &::after {
+        content: "";
+        width: 17px;
+        height: 11px;
+        background-image: url("../../../img/arrow-down-white.svg");
+        background-repeat: no-repeat;
+      }
+    }
+    &-next {
+      right: 10px;
+    }
+    &-prev {
+      left: 10px;
+    }
+    &-disabled {
+      display: none;
+    }
+  }
+}
+@keyframes ani {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

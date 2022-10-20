@@ -1,35 +1,59 @@
-import "../imports";
 import "../../styles/pages/remington/style.scss";
+import Swiper, { Navigation } from "swiper";
+import "swiper/css/bundle";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const remingtonTabButtons = document.querySelectorAll(
-    ".remington__tabs-item"
-  );
-  const remingtonResultTabs = document.querySelectorAll(".remington__tab-list");
-  const target = document.location.href.split("?")[1];
-  if (target) {
-    remingtonTabButtons.forEach((tab) => {
-      tab.classList.remove("is-active");
-      if (tab.getAttribute("data-path") == target)
-        tab.classList.add("is-active");
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  const smoother = ScrollSmoother.create({
+    content: "#content",
+    effects: true,
+    smooth: 1,
+  });
+  smoother.effects(".parallax-img", { speed: "auto" });
+  const swipers = document.querySelectorAll(".swiper");
+  swipers.forEach((swiper) => {
+    new Swiper(swiper, {
+      modules: [Navigation],
+      spaceBetween: 30,
+      allowTouchMove: false,
+      navigation: {
+        nextEl: `.${swiper.parentElement.parentElement.id}__swiper-button-next`,
+        prevEl: `.${swiper.parentElement.parentElement.id}__swiper-button-prev`,
+      },
+
+      breakpoints: {
+        1559: {
+          spaceBetween: 35,
+          slidesPerView: 3,
+        },
+        1439: {
+          // spaceBetween: 30,
+          // slidesPerView: 4,
+        },
+        500: {
+          // spaceBetween: 30,
+          // slidesPerView: 3,
+        },
+        320: {
+          // spaceBetween: 10,
+          // slidesPerView: 2,
+        },
+      },
     });
-    remingtonResultTabs.forEach((tab) => {
-      tab.classList.remove("is-open");
-      if (tab.getAttribute("data-target") == target)
-        tab.classList.add("is-open");
+  });
+  const headerLinks = document.querySelectorAll(".header__link");
+  headerLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      smoother.scrollTo(link.getAttribute("href"), true, "top 80px");
     });
-  }
-  remingtonTabButtons.forEach((item) => {
-    item.addEventListener("click", () => {
-      if (item.classList.contains("is-active")) return;
-      remingtonTabButtons.forEach((el) => el.classList.remove("is-active"));
-      item.classList.add("is-active");
-      const target = item.getAttribute("data-path");
-      remingtonResultTabs.forEach((tab) => {
-        tab.classList.remove("is-open");
-        if (tab.getAttribute("data-target") == target)
-          tab.classList.add("is-open");
-      });
-    });
+  });
+  const arrowButton = document.querySelector(".banner__bot");
+  arrowButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    smoother.scrollTo(arrowButton.getAttribute("href"), true, "top 80px");
   });
 });

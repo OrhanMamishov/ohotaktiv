@@ -4,1448 +4,615 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Remington</title>
+    <title>REMINGTON</title>
   </head>
   <body>
     <header class="header">
-      <div class="header__wrap-top">
-        <div class="header__wrap-top-content container">
-          <a href="../index/" class="header__logo-link">
-            <img
-              src="img/logo-header.svg"
-              alt="Логотип Охотактив"
-              class="header__logo"
-            />
-          </a>
-          <a href="tel:88007008256" class="header__tel for-mobile">
-            8 800 700-82-56
-          </a>
-          <ul class="header__pages-list">
-            <li class="header__pages-item for-mobile">
-              Меню
-              <button class="header__pages-item-button close-menu">
-                Закрыть
-              </button>
-            </li>
-            <li class="header__pages-item">
-              <button class="header__pages-item-button tag">
-                <span class="for-mobile">Город:</span>Кострома
-              </button>
-              <input
-                class="header__pages-item-input for-mobile"
-                placeholder="Введите ваш город"
-              />
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="#" class="header__pages-item-link">
-                Войти / Регистрация
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../catalog/" class="header__pages-item-link">
-                Каталог
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="#" class="header__pages-item-link">
-                Корзина <span>0 товаров / 0 &#8381;</span>
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="#" class="header__pages-item-link">
-                Избранное <span>0 товаров</span>
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../compare/" class="header__pages-item-link">
-                В сравнении <span>0 товаров</span>
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../sales/" class="header__pages-item-link"> Акции </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../remington/" class="header__pages-item-link">
-                Remington
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../new/" class="header__pages-item-link"> Новинки </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../diskont/" class="header__pages-item-link">
-                Дисконт
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../liquidation/" class="header__pages-item-link">
-                Ликвидация
-              </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../opt/" class="header__pages-item-link"> Опт </a>
-            </li>
-            <li class="header__pages-item for-mobile">
-              <a href="../blog/" class="header__pages-item-link"> Блог </a>
-            </li>
-            <li class="header__pages-item">
-              <a id="status-link" href="#" class="header__pages-link">
-                Статус заказа
-              </a>
-            </li>
-            <li class="header__pages-item">
-              <a href="#" class="header__pages-link"> Приложение </a>
-            </li>
-            <li class="header__pages-item">
-              <a href="../shops/" class="header__pages-link"> Магазины </a>
-            </li>
-            <li class="header__pages-item">
-              <a href="../sert/" class="header__pages-link">
-                Подарочная карта
-              </a>
-            </li>
-            <li class="header__pages-item">
-              <a href="tel:88008008256" class="header__pages-link header-tel">
-                8 800 800-82-56
-              </a>
-            </li>
-          </ul>
-          <ul class="header__actions-list">
-            <li class="header__actions-item">
-              <a
-                href="../cabinet/?block=favourites"
-                class="header__actions-link favourite"
-              ></a>
-              <p class="header__actions-text">Избранное</p>
-            </li>
-            <li class="header__actions-item">
-              <a
-                href="../cabinet/?block=profile"
-                class="header__actions-link personal"
-              ></a>
-              <p class="header__actions-text">Профиль</p>
-            </li>
-            <li class="header__actions-item">
-              <a href="../compare/" class="header__actions-link compare"></a>
-              <p class="header__actions-text"></p>
-            </li>
-            <li class="header__actions-item">
-              <a href="../cart/" class="header__actions-link basket"></a>
-              <p class="header__actions-text">Корзина</p>
-            </li>
-            <li class="header__actions-item for-mobile">
-              <a href="#" class="header__actions-link menu"></a>
-              <p class="header__actions-text">Меню</p>
-            </li>
-            <li class="header__actions-item for-mobile">
-              <a href="../index/" class="header__actions-link main"></a>
-              <p class="header__actions-text">Главная</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="header__wrap-bottom">
-        <div class="header__wrap-bottom-content container">
-          <button class="header__button">
-            <span class="header__button-text"> Каталог </span>
-          </button>
-          <div class="header__catalog-wrap">
-            <div class="header__catalog-wrap-content container">
-              <button class="header__catalog-wrap-close"></button>
-              <button class="header__catalog-wrap-back">Назад</button>
-              <ul class="header__catalog-tabs-list">
-                <li
-                  class="header__catalog-tabs-item fireguns"
-                  data-path="fireguns"
-                >
-                  Огнестрельное оружие
-                </li>
-                <li
-                  class="header__catalog-tabs-item ammunition"
-                  data-path="ammunition"
-                >
-                  Патроны и комплектующие
-                </li>
-                <li
-                  class="header__catalog-tabs-item airguns"
-                  data-path="airguns"
-                >
-                  Пневматическое оружие
-                </li>
-                <li class="header__catalog-tabs-item optics" data-path="optics">
-                  Оптика
-                </li>
-                <li
-                  class="header__catalog-tabs-item maintenance"
-                  data-path="maintenance"
-                >
-                  Уход за оружием
-                </li>
-                <li class="header__catalog-tabs-item tuning" data-path="tuning">
-                  Тюнинг оружия и ЗИП
-                </li>
-                <li
-                  class="header__catalog-tabs-item clothes"
-                  data-path="clothes"
-                >
-                  Одежда и обувь
-                </li>
-                <li
-                  class="header__catalog-tabs-item tourism"
-                  data-path="tourism"
-                >
-                  Товары для туризма
-                </li>
-                <li class="header__catalog-tabs-item knife" data-path="knife">
-                  Ножи и мультиинструмент
-                </li>
-                <li class="header__catalog-tabs-item equip" data-path="equip">
-                  Экипировка
-                </li>
-                <li
-                  class="header__catalog-tabs-item comissionguns"
-                  data-path="comissionguns"
-                >
-                  Комиссионное оружие
-                </li>
-                <li
-                  class="header__catalog-tabs-item crossbow"
-                  data-path="crossbow"
-                >
-                  Арбалеты, луки, рогатки
-                </li>
-                <li
-                  class="header__catalog-tabs-item shootrange"
-                  data-path="shootrange"
-                >
-                  Оборудование для тиров
-                </li>
-                <li
-                  class="header__catalog-tabs-item fishing"
-                  data-path="fishing"
-                >
-                  Товары для рыбалки
-                </li>
-                <li
-                  class="header__catalog-tabs-item electronics"
-                  data-path="electronics"
-                >
-                  Электроника
-                </li>
-                <li
-                  class="header__catalog-tabs-item souvenirs"
-                  data-path="souvenirs"
-                >
-                  Сувенирная продукция
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="fireguns">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Огнестрельное оружие
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Гладкоствольное
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Нарезное </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Травматическое
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Служебное
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Охолощенное оружие
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Макеты оружия
-                  </a>
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="ammunition">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Патроны
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Нарезные </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Гладкоствольные
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Травматические
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Служебные
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Свето-звуковые
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Испытательные
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Комплектующие
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Порох </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Гильзы </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Капсюля </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Дробь </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Картечь/Пуля
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Пыжи/Прокладки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Снаряжение
-                  </a>
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="airguns">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Пневматические винтовки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Пневматические пистолеты
-                  </a>
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="optics">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Дневная оптика
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Оптические прицелы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Зрительные трубы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Коллиматорные прицелы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Оружейные камеры
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Дальномеры
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Монокуляры
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Зрительные трубы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Аксессуары для оптики
-                  </a>
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="maintenance">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Наборы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Комплектующие
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Шомполы </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Вишеры </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Ерши </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Направляющие
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Патчи </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Адаптеры </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Щётки </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Химия
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Масла </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Очистители
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Воронение
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Обработка дерева
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Прочее
-                  </a>
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="tourism">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Газовое оборудование:
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Газовые баллоны
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Комплектующие
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Газовые лампы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Газовые обогреватели
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Газовые плиты
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Гермоупаковка
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Туристические коврики
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Компаса и барометры
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Туристическая мебель:
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Гамака </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Кресла </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Кровати </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Наборы мебели
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Столы </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Стулья </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Столы </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Палатки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Печи для палаток
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Портативные холодильники
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Посуда:
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Котелки, казаны
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Кружки </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Миски </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Наборы посуды
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Стаканы, стопки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Столовые приборы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Термокружки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Чайники </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Термоса
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link">
-                    Фляжки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Продукты питания
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Рюкзаки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Спальные мешки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Гриль и барбекю:
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Коптильни
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Мангалы </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Решётки </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Треноги костровые
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Шампура </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Средства для розжига:
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Жидкое горючее
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Зажигалки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Спички </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Сухое горючее
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Уголь древесный
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Щепа для копчения
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Средства от насекомых
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Тенты
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Оснастка
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Туристический инвентарь
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link">
-                    Канистры и вёдра
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Лопаты </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Пилы </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Топоры </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link"> Точилки </a>
-                </li>
-              </ul>
-              <ul class="header__catalog-target-list" data-target="equip">
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Наушники и беруши
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Очки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Засидки
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Кейсы
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Кобуры
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Наколенники
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Патронташи
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Ремни
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Сети маскировочные
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Футляры
-                  </a>
-                </li>
-                <li class="header__catalog-target-item">
-                  <a href="#" class="header__catalog-target-link link-title">
-                    Чехлы
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="header__search-wrap">
-            <input
-              id="header-search-input"
-              type="text"
-              class="header__search-input"
-              placeholder="Поиск"
-            />
-            <button class="header__search-button"></button>
-          </div>
-          <ul class="header__bottom-list">
-            <li class="header__bottom-item">
-              <a href="../sales/" class="header__bottom-link"> Акции </a>
-            </li>
-            <li class="header__bottom-item">
-              <a href="../remington/" class="header__bottom-link">
-                Remington
-              </a>
-            </li>
-            <li class="header__bottom-item">
-              <a href="../new/" class="header__bottom-link"> Новинки </a>
-            </li>
-            <li class="header__bottom-item">
-              <a href="../liquidation/" class="header__bottom-link">
-                Ликвидация
-              </a>
-            </li>
-            <li class="header__bottom-item">
-              <a href="../opt/" class="header__bottom-link"> Опт </a>
-            </li>
-            <li class="header__bottom-item">
-              <a href="../blog/" class="header__bottom-link"> Блог </a>
-            </li>
-            <li class="header__bottom-item">
-              <a href="../partners/" class="header__bottom-link">
-                Стать поставщиком
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="header__wrap container">
+        <ul class="header__list">
+          <li class="header__item">
+            <a href="#clothes" class="header__link"> Одежда </a>
+          </li>
+          <li class="header__item">
+            <a href="#shoes" class="header__link"> Обувь </a>
+          </li>
+          <li class="header__item">
+            <a href="#equip" class="header__link"> Экипировка </a>
+          </li>
+          <li class="header__item">
+            <a href="#optics" class="header__link"> Оптика </a>
+          </li>
+          <li class="header__item">
+            <a href="#tourism" class="header__link"> Товары для туризма </a>
+          </li>
+          <li class="header__item">
+            <a href="#care" class="header__link"> Уход за оружием </a>
+          </li>
+          <li class="header__item">
+            <a href="#spare" class="header__link"> ЗИП </a>
+          </li>
+          <li class="header__item">
+            <a href="#sportsshooting" class="header__link">
+              Спортивная стрельба
+            </a>
+          </li>
+        </ul>
       </div>
     </header>
     <main class="main">
-      <h1 class="visually-hidden">Товары Remington</h1>
-      <section class="banner"></section>
-      <section class="remington">
-        <div class="remington__wrap container">
-          <h2 class="remington__title visually-hidden">Remington</h2>
-          <ul class="remington__tabs-list">
-            <li class="remington__tabs-item is-active" data-path="clothes">
-              Одежда
-            </li>
-            <li class="remington__tabs-item" data-path="shoes">Обувь</li>
-            <li class="remington__tabs-item" data-path="equipment">
-              Экипировка
-            </li>
-            <li class="remington__tabs-item" data-path="optics">Оптика</li>
-            <li class="remington__tabs-item" data-path="tourism">Туризм</li>
-            <li class="remington__tabs-item" data-path="weapon-care">
-              Уход за оружием
-            </li>
-            <li class="remington__tabs-item" data-path="spare">ЗИП</li>
-            <li class="remington__tabs-item" data-path="crossbows">Арбалеты</li>
-            <li class="remington__tabs-item" data-path="sports-shooting">
-              Спортивная стрельба
-            </li>
-          </ul>
-          <div class="remington__tab-wrap">
-            <ul class="remington__tab-list is-open" data-target="clothes">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-costumes.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Костюмы</p>
-                </a>
+      <section id="content">
+        <h1 class="visually-hidden">Remington</h1>
+        <section id="banner" class="banner img-container">
+          <h2 class="visually-hidden">Remington</h2>
+          <img
+            class="parallax-img parallax-img--full"
+            src="img/remington-banner-parallax.jpg"
+            alt="Баннер REMINGTON"
+          />
+          <div class="banner__wrap container">
+            <img
+              src="img/remington-logo.png"
+              alt="Логотип REMINGTON"
+              class="banner__logo"
+            />
+            <button class="banner__button">Вернуться в ОхотАктив</button>
+            <a href="#clothes" class="banner__bot"></a>
+          </div>
+        </section>
+        <section id="clothes" class="clothes swiperblock">
+          <div class="swiperblock__wrap container">
+            <h2 class="swiperblock__title">Одежда</h2>
+            <div class="swiper swiper-clothes">
+              <ul class="swiperblock__list swiper-wrapper">
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-costumes.png"
+                      alt="Костюмы Remington"
+                    />
+                    <p class="swiperblock__text">Костюмы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-jackets.png"
+                      alt="Куртки и жилеты Remington"
+                    />
+                    <p class="swiperblock__text">Куртки и жилеты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shorts.png"
+                      alt="Брюки и шорты Remington"
+                    />
+                    <p class="swiperblock__text">Брюки и шорты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shirts.png"
+                      alt="Рубашки Remington"
+                    />
+                    <p class="swiperblock__text">Рубашки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-thermal.png"
+                      alt="Термобелье Remington"
+                    />
+                    <p class="swiperblock__text">Термобелье</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-sweater.png"
+                      alt="Джемпера Remington"
+                    />
+                    <p class="swiperblock__text">Джемпера</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-tshirts.png"
+                      alt="Футболки Remington"
+                    />
+                    <p class="swiperblock__text">Футболки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-hats.png"
+                      alt="Головные уборы Remington"
+                    />
+                    <p class="swiperblock__text">Головные уборы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-gloves.png"
+                      alt="Перчатки и варежки Remington"
+                    />
+                    <p class="swiperblock__text">Перчатки и варежки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-accessories.png"
+                      alt="Аксессуары Remington"
+                    />
+                    <p class="swiperblock__text">Аксессуары</p>
+                  </a>
+                </li>
+              </ul>
+              <div class="clothes__swiper-button-prev swiper-button-prev"></div>
+              <div class="clothes__swiper-button-next swiper-button-next"></div>
+            </div>
+          </div>
+        </section>
+        <section id="shoes" class="shoes swiperblock">
+          <div class="swiperblock__wrap container">
+            <h2 class="swiperblock__title">Обувь</h2>
+            <div class="swiper swiper-shoes">
+              <ul class="swiperblock__list swiper-wrapper">
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-costumes.png"
+                      alt="Костюмы Remington"
+                    />
+                    <p class="swiperblock__text">Костюмы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-jackets.png"
+                      alt="Куртки и жилеты Remington"
+                    />
+                    <p class="swiperblock__text">Куртки и жилеты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shorts.png"
+                      alt="Брюки и шорты Remington"
+                    />
+                    <p class="swiperblock__text">Брюки и шорты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shirts.png"
+                      alt="Рубашки Remington"
+                    />
+                    <p class="swiperblock__text">Рубашки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-thermal.png"
+                      alt="Термобелье Remington"
+                    />
+                    <p class="swiperblock__text">Термобелье</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-sweater.png"
+                      alt="Джемпера Remington"
+                    />
+                    <p class="swiperblock__text">Джемпера</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-tshirts.png"
+                      alt="Футболки Remington"
+                    />
+                    <p class="swiperblock__text">Футболки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-hats.png"
+                      alt="Головные уборы Remington"
+                    />
+                    <p class="swiperblock__text">Головные уборы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-gloves.png"
+                      alt="Перчатки и варежки Remington"
+                    />
+                    <p class="swiperblock__text">Перчатки и варежки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-accessories.png"
+                      alt="Аксессуары Remington"
+                    />
+                    <p class="swiperblock__text">Аксессуары</p>
+                  </a>
+                </li>
+              </ul>
+              <div class="shoes__swiper-button-prev swiper-button-prev"></div>
+              <div class="shoes__swiper-button-next swiper-button-next"></div>
+            </div>
+          </div>
+        </section>
+        <section id="equip" class="equip img-container background--black">
+          <img
+            class="parallax-img"
+            src="img/remington-equip-parallax.jpg"
+            alt="Баннер REMINGTON"
+          />
+          <div class="description">
+            <h2 class="description__title">Экипировка</h2>
+            <ul class="description__list">
+              <li class="description__item">
+                <a href="#" class="description__link">Чехлы</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-jackets.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Куртки и жилеты</p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Рюкзаки</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-shorts.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Брюки и шорты</p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Наушники</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-shirts.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Рубашки</p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Очки</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-thermal.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Термобелье</p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Футляры и ящики</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-sweater.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Джемпера</p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Ремни и патронташ</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-tshirts.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Футболки</p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Маскировка</a>
               </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-hats.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Головные уборы</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-gloves.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Перчатки и варежки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-accessories.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Аксессуары</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="shoes">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-boots.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Ботинки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-wellingtons.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Сапоги</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-sandals.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Сандалии</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="equipment">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-cases.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Чехлы</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-backpacks.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Рюкзаки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-headphones.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Наушники</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-glasses.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Очки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-boxes.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Футляры и ящики</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-belts.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Ремни и патронташ</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-disguises.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Маскировка</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-dummy.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Манки и муляжи</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="optics">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-optical.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Оптические</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-collimator.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Коллиматорные</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-fasteners.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Крепления</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-lights.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Фонари</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-laserbullets.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Лазерные патроны</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="tourism">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-tents.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Палатки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-furniture.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Мебель</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-dishes.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Посуда</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-stove.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Плиты</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-instruments.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Инструменты</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-knifes.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Ножи</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="weapon-care">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-cleaning.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Наборы для чистки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-oils.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Масла</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="spare">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-magazines.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Магазины</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-bipods.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Сошки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-complete.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Комплектующие</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-antabka.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Антабки</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-spare-accessories.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Аксессуары к оружию</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="crossbows">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-crossbows.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">Арбалеты</p>
-                </a>
-              </li>
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-crossbows-accessories.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">
-                    Комплектующие и аксессуары
-                  </p>
-                </a>
-              </li>
-            </ul>
-            <ul class="remington__tab-list" data-target="sports-shooting">
-              <li class="remington__tab-item">
-                <a href="#" class="remington__tab-link">
-                  <img
-                    class="remington__tab-item-img"
-                    src="img/remington-targets.png"
-                    alt="Категория товара Remington"
-                  />
-                  <p class="remington__tab-item-text">
-                    Мишени и устройства для запуска
-                  </p>
-                </a>
+              <li class="description__item">
+                <a href="#" class="description__link">Манки и муляжи</a>
               </li>
             </ul>
           </div>
-        </div>
+        </section>
+        <section id="optics" class="optics img-container background--white">
+          <img
+            class="parallax-img"
+            src="img/remington-optics-parallax.jpg"
+            alt="Баннер REMINGTON"
+          />
+          <div class="description">
+            <h2 class="description__title">Оптика</h2>
+            <ul class="description__list">
+              <li class="description__item">
+                <a href="#" class="description__link">Оптические прицелы</a>
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link">Коллиматорные прицелы</a>
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link">Крепления</a>
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link">Фонари</a>
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link">Лазерные патроны</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section id="tourism" class="tourism swiperblock">
+          <div class="swiperblock__wrap container">
+            <h2 class="swiperblock__title">Товары для туризма</h2>
+            <div class="swiper swiper-tourism">
+              <ul class="swiperblock__list swiper-wrapper">
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-costumes.png"
+                      alt="Костюмы Remington"
+                    />
+                    <p class="swiperblock__text">Костюмы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-jackets.png"
+                      alt="Куртки и жилеты Remington"
+                    />
+                    <p class="swiperblock__text">Куртки и жилеты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shorts.png"
+                      alt="Брюки и шорты Remington"
+                    />
+                    <p class="swiperblock__text">Брюки и шорты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shirts.png"
+                      alt="Рубашки Remington"
+                    />
+                    <p class="swiperblock__text">Рубашки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-thermal.png"
+                      alt="Термобелье Remington"
+                    />
+                    <p class="swiperblock__text">Термобелье</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-sweater.png"
+                      alt="Джемпера Remington"
+                    />
+                    <p class="swiperblock__text">Джемпера</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-tshirts.png"
+                      alt="Футболки Remington"
+                    />
+                    <p class="swiperblock__text">Футболки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-hats.png"
+                      alt="Головные уборы Remington"
+                    />
+                    <p class="swiperblock__text">Головные уборы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-gloves.png"
+                      alt="Перчатки и варежки Remington"
+                    />
+                    <p class="swiperblock__text">Перчатки и варежки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-accessories.png"
+                      alt="Аксессуары Remington"
+                    />
+                    <p class="swiperblock__text">Аксессуары</p>
+                  </a>
+                </li>
+              </ul>
+              <div class="tourism__swiper-button-prev swiper-button-prev"></div>
+              <div class="tourism__swiper-button-next swiper-button-next"></div>
+            </div>
+          </div>
+        </section>
+        <section id="care" class="care img-container background--white">
+          <img
+            class="parallax-img"
+            src="img/remington-care-parallax.jpg"
+            alt="Баннер REMINGTON"
+          />
+          <div class="description">
+            <h2 class="description__title">Уход за оружием</h2>
+            <ul class="description__list">
+              <li class="description__item">
+                <a href="#" class="description__link">Наборы для чистки</a>
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link">Масла</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section id="spare" class="spare swiperblock">
+          <div class="swiperblock__wrap container">
+            <h2 class="swiperblock__title">ЗИП</h2>
+            <div class="swiper swiper-tourism">
+              <ul class="swiperblock__list swiper-wrapper">
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-costumes.png"
+                      alt="Костюмы Remington"
+                    />
+                    <p class="swiperblock__text">Костюмы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-jackets.png"
+                      alt="Куртки и жилеты Remington"
+                    />
+                    <p class="swiperblock__text">Куртки и жилеты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shorts.png"
+                      alt="Брюки и шорты Remington"
+                    />
+                    <p class="swiperblock__text">Брюки и шорты</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-shirts.png"
+                      alt="Рубашки Remington"
+                    />
+                    <p class="swiperblock__text">Рубашки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-thermal.png"
+                      alt="Термобелье Remington"
+                    />
+                    <p class="swiperblock__text">Термобелье</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-sweater.png"
+                      alt="Джемпера Remington"
+                    />
+                    <p class="swiperblock__text">Джемпера</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-tshirts.png"
+                      alt="Футболки Remington"
+                    />
+                    <p class="swiperblock__text">Футболки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-hats.png"
+                      alt="Головные уборы Remington"
+                    />
+                    <p class="swiperblock__text">Головные уборы</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-gloves.png"
+                      alt="Перчатки и варежки Remington"
+                    />
+                    <p class="swiperblock__text">Перчатки и варежки</p>
+                  </a>
+                </li>
+                <li class="swiperblock__item swiper-slide">
+                  <a href="#" class="swiperblock__link">
+                    <img
+                      class="swiperblock__img"
+                      src="img/remington-accessories.png"
+                      alt="Аксессуары Remington"
+                    />
+                    <p class="swiperblock__text">Аксессуары</p>
+                  </a>
+                </li>
+              </ul>
+              <div class="spare__swiper-button-prev swiper-button-prev"></div>
+              <div class="spare__swiper-button-next swiper-button-next"></div>
+            </div>
+          </div>
+        </section>
+        <section
+          id="sportsshooting"
+          class="sportsshooting img-container background--white"
+        >
+          <img
+            class="parallax-img"
+            src="img/remington-sports-shooting-parallax.jpg"
+            alt="Баннер REMINGTON"
+          />
+          <div class="description">
+            <h2 class="description__title">Спортивная стрельба</h2>
+            <ul class="description__list">
+              <li class="description__item">
+                <a href="#" class="description__link">Арбалеты</a>
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link"
+                  >Комплектующие и аксессуары</a
+                >
+              </li>
+              <li class="description__item">
+                <a href="#" class="description__link"
+                  >Мишени и устройства для запуска</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
       </section>
     </main>
-    <footer class="footer">
-      <div class="footer__wrap container">
-        <div class="footer__left">
-          <ul class="footer__list">
-            <li class="footer__item item-title">Покупателю</li>
-            <li class="footer__item">
-              <a href="../license/" class="footer__link"> Правила лицензии </a>
-            </li>
-            <li class="footer__item">
-              <a href="#" class="footer__link"> Как заказать </a>
-            </li>
-            <li class="footer__item">
-              <a href="../pay/" class="footer__link"> Оплата </a>
-            </li>
-            <li class="footer__item">
-              <a href="../delivery/" class="footer__link"> Доставка </a>
-            </li>
-            <li class="footer__item">
-              <a href="../faq/" class="footer__link">
-                Часто задаваемые вопросы
-              </a>
-            </li>
-            <li class="footer__item">
-              <a href="../return/" class="footer__link"> Обмен и возврат </a>
-            </li>
-            <li class="footer__item">
-              <a href="../catalog/" class="footer__link"> Каталог </a>
-            </li>
-            <li class="footer__item">
-              <a href="../brands/" class="footer__link"> Бренды </a>
-            </li>
-            <li class="footer__item">
-              <a href="#" class="footer__link"> Кредит и рассрочка </a>
-            </li>
-          </ul>
-          <ul class="footer__list">
-            <li class="footer__item item-title">О компании</li>
-            <li class="footer__item">
-              <a href="../contacts/" class="footer__link"> Контакты </a>
-            </li>
-            <li class="footer__item">
-              <a href="../vacancy/" class="footer__link"> Вакансии </a>
-            </li>
-            <li class="footer__item">
-              <a href="../requisites/" class="footer__link"> Реквизиты </a>
-            </li>
-            <li class="footer__item">
-              <a href="../history/" class="footer__link"> История компании </a>
-            </li>
-            <li class="footer__item">
-              <a href="../policy/" class="footer__link">
-                Политика конфиденциальности
-              </a>
-            </li>
-            <li class="footer__item">
-              <a href="#" class="footer__link"> Карта сайта </a>
-            </li>
-            <li class="footer__item non-clickable">
-              Режим работы с 9:00 - 18:00
-            </li>
-            <li class="footer__item">
-              <a href="tel:88007008256" class="footer__link">
-                8 800 700-82-56
-              </a>
-            </li>
-            <li class="footer__item">
-              <a href="mailto:info@ohotaktiv.ru" class="footer__link">
-                info@ohotaktiv.ru
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer__right">
-          <h3 class="footer__title">Новости и акции только для своих</h3>
-          <form action="#" class="footer__form">
-            <div class="input-wrap">
-              <input
-                class="footer__form-input"
-                id="footer-form-input"
-                type="text"
-                placeholder=" "
-                autocomplete="off"
-              />
-              <label for="footer-form-input">Ваш адрес электронной почты</label>
-              <button class="footer__form-button">→</button>
-            </div>
-            <p class="footer__form-text">
-              Нажимая «Отправить», я принимаю
-              <a href="#" class="footer__form-link">условия использования</a>
-            </p>
-          </form>
-          <ul class="footer__social-list">
-            <li class="footer__social-item">
-              <a
-                href="https://vk.com/ohotaktiv"
-                class="footer__social-link vk"
-              ></a>
-            </li>
-            <li class="footer__social-item">
-              <a
-                href="https://t.me/ohotaktiv_official"
-                class="footer__social-link tg"
-              ></a>
-            </li>
-            <li class="footer__social-item">
-              <a
-                href="https://zen.yandex.ru/id/61d959165d11a84299ef6cec"
-                class="footer__social-link dzen"
-              ></a>
-            </li>
-            <li class="footer__social-item">
-              <a
-                href="https://invite.viber.com/?g2=AQBWGT4o6L4o5kr0rsadyda8rq06tZTTk6JORJfWrI7nOwixL3K85OCKiB502Fsh"
-                class="footer__social-link viber"
-              ></a>
-            </li>
-            <li class="footer__social-item">
-              <a
-                href="https://ok.ru/ohotaktiv"
-                class="footer__social-link ok"
-              ></a>
-            </li>
-            <li class="footer__social-item">
-              <a
-                href="https://www.youtube.com/channel/UCbeXH1XWDsSVL63-d0E43pw"
-                class="footer__social-link youtube"
-              ></a>
-            </li>
-            <li class="footer__social-item">
-              <a
-                href="https://rutube.ru/channel/24618421/"
-                class="footer__social-link rutube"
-              ></a>
-            </li>
-          </ul>
-          <div class="footer__download">
-            <p class="footer__download-title">Скачай мобильное приложение</p>
-            <ul class="footer__download-list">
-              <li class="footer__download-item">
-                <a href="#" class="footer__download-link google">
-                  <span> Доступно </span>
-                  Google Play
-                </a>
-              </li>
-              <li class="footer__download-item">
-                <a
-                  href="https://play.google.com/store/apps/details?id=ru.ohotaktivv.android&hl=ru&gl=US"
-                  class="footer__download-link appstore"
-                >
-                  <span> Загрузите в </span>
-                  AppStore
-                </a>
-              </li>
-              <li class="footer__download-item">
-                <a href="#" class="footer__download-link appgallery">
-                  <span> Откройте в </span>
-                  AppGallery
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>
