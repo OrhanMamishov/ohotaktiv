@@ -7,8 +7,7 @@
         border-color: var(--black-color) transparent transparent transparent;
         .ac-trigger {
           font: unset;
-          @include fontSize18;
-          font-weight: 700;
+          @include fontSize16;
           padding: 20px 0;
           &:focus {
             color: unset;

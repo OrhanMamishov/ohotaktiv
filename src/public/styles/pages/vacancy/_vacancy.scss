@@ -11,17 +11,17 @@
     background-size: cover;
     height: 510px;
     &__wrap {
-      padding-top: 165px;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
     &__title {
       @include fontSize35;
       margin-bottom: 40px;
-      max-width: 725px;
+      max-width: 700px;
       font-weight: 800;
-      line-height: 45px;
       text-align: center;
       color: var(--white-color);
     }
@@ -39,7 +39,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 200px));
       justify-content: center;
       gap: 110px;
     }
@@ -48,7 +48,6 @@
       background-repeat: no-repeat;
       background-position: top center;
       text-align: center;
-      line-height: 28px;
       &:first-child {
         background-image: url("../../../img/vacancy-why-1.svg");
       }
@@ -115,17 +114,13 @@
           @include fontSize16;
           width: 749px;
           margin-bottom: 40px;
-          padding: 3px 0 3px 40px;
+          padding: 3px 0;
           font-weight: 800;
-          background-image: url("../../../img/tag.svg");
-          background-repeat: no-repeat;
-          background-size: contain;
         }
         .job {
           @include fontSize16;
           width: 749px;
           font-weight: 500;
-          line-height: 24px;
           span {
             @include fontSize16;
             display: block;
@@ -146,6 +141,9 @@
           &:focus {
             color: unset;
           }
+          &::after {
+            top: 14%;
+          }
         }
         &-panel {
           .job {
@@ -161,16 +159,9 @@
   .main {
     .banner {
       height: 480px;
-      &__wrap {
-        padding-top: 152px;
-      }
       &__title {
         margin-bottom: 35px;
       }
-    }
-    .why {
-      padding-top: 84px;
-      padding-bottom: 180px;
     }
   }
 }
@@ -178,19 +169,13 @@
   .main {
     .banner {
       height: 390px;
-      &__wrap {
-        padding-top: 112px;
-      }
       &__title {
         margin-bottom: 30px;
       }
     }
     .why {
-      padding-top: 60px;
-      padding-bottom: 160px;
       &__list {
         gap: 80px;
-        grid-template-columns: repeat(auto-fit, minmax(206px, 221px));
       }
     }
     .vacancy {
@@ -205,11 +190,8 @@
   .main {
     .why {
       &__list {
-        gap: 80px 20px;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 208px));
-      }
-      &__item {
-        line-height: 25px;
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
       }
     }
     .vacancy {
@@ -233,45 +215,22 @@
   .main {
     .banner {
       height: 470px;
+      background-position: 73%;
       &__title {
-        line-height: 40px;
+        max-width: 400px;
       }
     }
-    .why {
-      padding-top: 50px;
-      padding-bottom: 80px;
-      &__title {
-        margin-bottom: 40px;
-      }
-      &__list {
-        gap: 35px;
-      }
-      &__item {
-        padding-top: 0;
-        padding-left: 60px;
-        background-position: left center;
-        background-size: 40px;
-        text-align: left;
-      }
-    }
+    .why,
     .about {
       display: none;
     }
     .vacancy {
+      padding-top: 30px;
       &__input {
         padding: 17px 25px;
-        margin-bottom: 45px;
+        margin-bottom: 20px;
       }
       &__item {
-        &.ac {
-          .name {
-            line-height: 32px;
-          }
-          .address {
-            background: unset;
-            padding-left: 0;
-          }
-        }
         &-button {
           width: 100%;
         }

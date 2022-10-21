@@ -178,7 +178,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
   function showCategory(res, idCategory) {
-    const catalogSection = document.querySelector(".catalog");
+    const catalogSection = document.getElementById("catalog");
+    console.log(catalogSection);
     catalogSection.remove();
     const [items, sectionList, parentList] = [
       res.catalog.items,

@@ -4,24 +4,10 @@
 @font-face {
   font-family: "Gilroy";
   font-style: normal;
-  font-weight: 400;
-  src: url("/src/public/fonts/Gilroy-400.woff2") format("woff2"),
-    url("/src/public/fonts/Gilroy-400.woff") format("woff");
-}
-@font-face {
-  font-family: "Gilroy";
-  font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   src: url("/src/public/fonts/Gilroy-600.woff2") format("woff2"),
     url("/src/public/fonts/Gilroy-600.woff") format("woff");
 }
-// @font-face {
-//   font-family: "Gilroy";
-//   font-style: normal;
-//   font-weight: 600;
-//   src: url("/src/public/fonts/Gilroy-600.woff2") format("woff2"),
-//     url("/src/public/fonts/Gilroy-600.woff") format("woff");
-// }
 @font-face {
   font-family: "Gilroy";
   font-style: normal;
@@ -42,7 +28,7 @@
 }
 
 :root {
-  --lightness-white-color: hwb(0 97% 3%);
+  --lightness-white-color: #f7f7f7;
   --darkness-white-color: #7f7f7f;
   --light-white-color: #e7e7e7;
   --background-color: #ebebeb;
@@ -71,10 +57,11 @@
 }
 body,
 html {
-  @include fontSize14;
   min-width: 320px;
   font-family: "Gilroy", sans-serif;
-  font-weight: 500;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 600;
   background-color: var(--white-color);
   color: var(--black-color);
 }
@@ -102,7 +89,7 @@ a {
 }
 input {
   @include clearStyles;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.02em;
   background-color: transparent;
   border: none;
@@ -124,7 +111,7 @@ input {
 button {
   @include clearStyles;
   letter-spacing: 0.02em;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -136,17 +123,15 @@ section {
   padding-top: 30px;
   padding-bottom: 30px;
   h2 {
-    margin-bottom: 26px;
-    font-weight: 700;
-    font-size: 24px;
+    @include fontSize24;
+    margin-bottom: 50px;
     &.skeleton {
       height: 27px;
       width: 280px;
     }
   }
   h3 {
-    @include fontSize16;
-    font-weight: 800;
+    @include fontSize20;
   }
   @media only screen and (max-width: 1560px) {
     padding-top: 18px;
@@ -160,7 +145,7 @@ section {
   }
 }
 main {
-  padding-top: 123px;
+  padding-top: 138px;
   padding-bottom: 100px;
   @media only screen and (max-width: 1560px) {
     padding-top: 119px;
@@ -169,7 +154,7 @@ main {
     padding-top: 119px;
   }
   @media only screen and (max-width: 767px) {
-    padding-top: 103px;
+    padding-top: 132px;
   }
 }
 .container {
@@ -197,10 +182,12 @@ main {
   margin: -1px;
 }
 .card-item {
-  width: 211px;
+  width: 275px;
   cursor: pointer;
   padding: 20px;
-  transition: box-shadow 0.2s ease;
+  transition: border 0.2s ease;
+  border: 1px solid transparent;
+  border-radius: 10px;
   &__photo {
     height: 100%;
     object-fit: contain;
@@ -232,11 +219,11 @@ main {
         display: none; // для теста
       }
       &.discount {
-        margin-top: auto; // для теста
+        display: none; // test
         width: 44px;
-        padding: 4px 2px;
+        padding: 0px 2px;
         color: var(--black-color);
-        background-color: var(--yellow-color);
+        border: 1px solid var(--dark-grey-color);
       }
     }
     &-button {
@@ -248,8 +235,8 @@ main {
       background-position: center;
       &-wrap {
         position: absolute;
-        top: 3px;
-        right: 0;
+        top: 8px;
+        right: 8px;
         display: flex;
         align-items: center;
       }
@@ -281,75 +268,34 @@ main {
         @include fontSize13;
         margin-left: 14px;
         text-decoration: line-through;
-        font-weight: 500;
+        font-weight: 600;
       }
     }
     &-text {
       @include fontSize14;
-      margin-bottom: 13px;
-      line-height: 22px;
+      margin-bottom: 6px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    &-stock {
-      @include fontSize13;
-      display: none;
-      position: relative;
-      padding-left: 13px;
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
-      &::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        display: none;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        transform: translateY(-50%);
-      }
-      &.avaliable {
-        display: block;
-        &::before {
-          display: block;
-          background-color: var(--green-color);
-        }
-      }
-      &.not-avaliable {
-        display: block;
-        &::before {
-          display: block;
-          background-color: var(--red-color);
-        }
-      }
-      &-wrap {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-      }
-    }
   }
   &__wrap {
     .not-clicked-rate {
       &-wrap {
-        margin-bottom: 16px;
+        margin-bottom: 17px;
       }
     }
   }
   &__button {
     @include contentButton;
     @include fontSize14;
-    padding: 12px 16px;
+    padding: 10px 18px;
   }
   &:hover {
-    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.12);
-    border-radius: 10px;
-    @media only screen and (max-width: 1439px) {
-      box-shadow: none;
+    border: 1px solid var(--grey-color);
+    @media only screen and (max-width: 1023px) {
+      border: none;
     }
   }
   &.skeleton {
@@ -361,21 +307,12 @@ main {
       &-wrap {
         margin-bottom: 14px;
       }
-      &-button {
-        &-wrap {
-          top: 0;
-        }
-      }
     }
   }
   @media only screen and (max-width: 1439px) {
     &__photo {
       &-wrap {
         margin-bottom: 17px;
-      }
-      &-button {
-        width: 19px;
-        height: 17px;
       }
       &-text {
         &.discount {
@@ -386,15 +323,17 @@ main {
   }
   @media only screen and (max-width: 1023px) {
     padding: 0;
+    border: none;
   }
   @media only screen and (max-width: 767px) {
     &__photo {
       &-wrap {
-        margin-bottom: 16px;
+        margin-bottom: 14px;
       }
       &-button {
         &-wrap {
           top: 0;
+          right: 0;
         }
       }
       &-text {
@@ -409,31 +348,13 @@ main {
     }
     &__description {
       &-price {
-        margin-bottom: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-weight: 800;
-        span {
-          margin-top: 6px;
-          margin-left: 0;
-        }
+        margin-bottom: 5px;
       }
       &-text {
-        margin-bottom: 8px;
-        line-height: 18px;
-        font-weight: 500;
-      }
-      &-stock {
-        font-size: 12px;
-        &:not(:last-child) {
-          margin-bottom: 3px;
-        }
-        &-wrap {
-          margin-bottom: 10px;
-          flex-direction: column;
-          align-items: flex-start;
-        }
+        @include fontSize13;
+        margin-bottom: 4px;
+        font-weight: 600;
+        -webkit-line-clamp: 3;
       }
       &-wrap {
         .not-clicked-rate {
@@ -448,9 +369,9 @@ main {
       }
     }
     &__button {
-      padding: 12px 20px;
-      font-size: 12px;
-      font-weight: 500;
+      @include fontSize13;
+      padding: 10px 20px;
+      font-weight: 600;
     }
   }
 }
@@ -459,10 +380,6 @@ main {
   input {
     @include contentInput;
     padding: 14px 0;
-    border-bottom: 1px solid var(--border-color);
-    &:focus {
-      border-bottom: 1px solid var(--black-color);
-    }
   }
   label {
     @include fontSize14;
@@ -701,7 +618,7 @@ main {
       background-repeat: no-repeat;
       background-size: auto;
       background-position: 12px center;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 11px;
       color: var(--black-color);
       span {
@@ -871,34 +788,27 @@ main {
     display: flex;
     align-items: center;
     span {
+      padding-top: 2px;
       color: var(--yellow-color);
       &:not(:last-child) {
-        margin-right: 3px;
+        margin-right: 4px;
       }
       &::before {
-        content: "";
-        display: block;
-        width: 16px;
-        height: 16px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-image: url("/src/public/img/star.svg");
+        content: "★";
+        font-size: 14px;
+        color: var(--cart-background-footer-color);
       }
       &.active {
         &::before {
-          content: "";
-          display: block;
-          width: 16px;
-          height: 16px;
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-image: url("/src/public/img/star-active.svg");
+          content: "★";
+          font-size: 14px;
+          color: var(--dark-grey-color);
         }
       }
     }
   }
   &-karma {
-    @include fontSize12;
+    @include fontSize13;
     margin-left: 10px;
   }
 }

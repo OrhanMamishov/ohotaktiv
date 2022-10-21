@@ -55,7 +55,7 @@
       &-user {
         margin-bottom: 40px;
         &-avatar {
-          @include fontSize32;
+          @include fontSize30;
           margin-bottom: 15px;
           width: 110px;
           height: 110px;
@@ -94,7 +94,7 @@
         border-radius: 20px;
         &-user {
           &-avatar {
-            @include fontSize32;
+            @include fontSize30;
             margin-bottom: 24px;
             width: 160px;
             height: 160px;
@@ -261,7 +261,7 @@
             }
           }
           &-price {
-            @include fontSize17;
+            @include fontSize18;
             margin-bottom: 10px;
             font-weight: 700;
             &-wrap {

@@ -397,10 +397,6 @@
         background-position: top center;
         background-image: url("../../../img/review-img.svg");
       }
-      &-title {
-        @include fontSize19;
-        margin-bottom: 18px;
-      }
       &-text {
         @include fontSize14;
         margin-bottom: 23px;

@@ -1,4 +1,3 @@
-import "../imports";
 import "../../styles/pages/cart/style.scss";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
 

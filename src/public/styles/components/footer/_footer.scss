@@ -3,8 +3,8 @@
   background-color: var(--black-footer-color);
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 60px;
-  padding-bottom: 112px;
+  padding-top: 80px;
+  padding-bottom: 100px;
   &__wrap {
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@
   &__left {
     display: flex;
     justify-content: space-between;
-    gap: 150px;
+    gap: 200px;
   }
   &__right {
     display: flex;
@@ -21,16 +21,12 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
   }
   &__item {
     @include fontSize14;
     color: var(--grey-form-color);
-    font-weight: 600;
     transition: color 0.2s ease;
-    &:hover {
-      color: var(--yellow-color);
-    }
     &.item-title {
       color: var(--white-color);
     }
@@ -38,6 +34,9 @@
       &:hover {
         color: var(--grey-form-color);
       }
+    }
+    &:hover {
+      color: var(--yellow-color);
     }
   }
   &__link {

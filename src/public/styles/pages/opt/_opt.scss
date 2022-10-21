@@ -15,7 +15,6 @@
     &__title {
       @include fontSize35;
       margin-bottom: 37px;
-      line-height: 45px;
       font-weight: 800;
       color: var(--white-color);
       text-align: center;
@@ -42,8 +41,6 @@
       background-position: center 15px;
       &-title {
         @include fontSize16;
-        font-weight: 700;
-        line-height: 28px;
       }
       &:first-child {
         background-image: url("../../../img/opt-img.svg");
@@ -103,7 +100,6 @@
   .blank {
     &__text {
       margin-bottom: 40px;
-      line-height: 28px;
     }
     &__wrap {
       max-width: 960px;

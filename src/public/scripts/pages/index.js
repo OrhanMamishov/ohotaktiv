@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   templateSwipers.forEach((swiper) => {
     const swiperNew = new Swiper("." + swiper, {
-      spaceBetween: 10,
+      spaceBetween: 16,
       modules: [Navigation],
       allowTouchMove: false,
       navigation: {
@@ -35,18 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
         767: {
           spaceBetween: 20,
           slidesPerView: 3,
+          allowTouchMove: true,
         },
         600: {
           spaceBetween: 20,
           slidesPerView: 3,
+          allowTouchMove: true,
         },
         320: {
-          spaceBetween: 30,
+          spaceBetween: 25,
           slidesPerView: 2,
+          allowTouchMove: true,
         },
       },
     });
-    swiperNew.loopDestroy();
   });
 
   //eslint-disable-next-line

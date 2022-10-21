@@ -1,20 +1,3 @@
-.header {
-  &__wrap {
-    &-top {
-      &-content {
-        padding-top: 19px !important;
-        padding-bottom: 27px !important;
-      }
-    }
-  }
-  .tag {
-    margin-right: 23px;
-    margin-left: auto;
-    padding-right: 0;
-    background: unset;
-    font-weight: 500;
-  }
-}
 .main {
   padding-top: 75px;
   background-color: var(--cart-background-color);
@@ -51,7 +34,7 @@
           }
           &__span {
             &::after {
-              background-image: url('/src/public/img/checked--white.svg');
+              background-image: url("/src/public/img/checked--white.svg");
             }
           }
           &:checked + .checkbox__span {
@@ -87,7 +70,6 @@
           &-text {
             @include fontSize14;
             margin-bottom: 25px;
-            line-height: 25px;
           }
           &-status {
             @include fontSize14;
@@ -116,7 +98,8 @@
           border: 1px solid var(--footer-title-color);
           border-radius: 100px;
           &-input {
-            @include fontSize13;
+            @include fontSize14;
+            padding-top: 2px;
             max-width: 30px;
             text-align: center;
           }
@@ -125,11 +108,12 @@
           width: 165px;
         }
         &-price {
+          @include fontSize16;
           margin-bottom: 2px;
-          font-weight: 700;
+          font-weight: 800;
         }
         &-oldprice {
-          @include fontSize13;
+          @include fontSize14;
           margin-right: 12px;
           display: inline-block;
           text-decoration: line-through;
@@ -193,7 +177,7 @@
       }
       &-description {
         font-size: 11px;
-        line-height: 18px;
+        line-height: 22px;
       }
     }
   }

@@ -13,12 +13,11 @@
     }
     &__item {
       &-title {
+        @include fontSize16;
         position: relative;
         padding-bottom: 15px;
         margin-bottom: 15px;
         font-weight: 800;
-        line-height: 28px;
-        font-size: 16px;
         &::after {
           content: "";
           position: absolute;
@@ -31,7 +30,6 @@
       }
       &-text {
         @include fontSize14;
-        line-height: 25px;
       }
     }
   }
@@ -46,12 +44,11 @@
       margin-right: 16px;
     }
     &__input {
+      @include contentInput;
       width: 700px;
       display: block;
       margin: 0 auto 76px auto;
       padding: 18px 60px 18px 35px;
-      border: 1px solid var(--grey-form-color);
-      border-radius: 100px;
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
       background-position: 96% center;
@@ -61,7 +58,7 @@
       }
     }
     &__list {
-      height: 515px;
+      height: 563px;
       padding-right: 10px;
       overflow-x: hidden;
       &::-webkit-scrollbar {
@@ -87,7 +84,6 @@
         margin-bottom: 3px;
         margin-top: 10px;
         font-style: normal;
-        line-height: 25px;
         span {
           @include fontSize14;
           display: block;
@@ -213,7 +209,6 @@
       margin-bottom: 40px;
       &__title {
         margin-bottom: 40px;
-        line-height: 32px;
       }
       &__list {
         grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
