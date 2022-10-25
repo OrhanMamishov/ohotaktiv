@@ -1,13 +1,16 @@
 .main {
-  .liquidation {
-    padding-top: 0;
-    &__banner {
-      margin-bottom: 70px;
-    }
+  .new {
     &__columns {
       display: flex;
       justify-content: space-between;
       gap: 15px;
+    }
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__subtitle {
+      @include fontSize14;
+      margin-bottom: 50px;
     }
     &__filters {
       flex: 0 1 246px;
@@ -98,7 +101,7 @@
         border-radius: 100px;
         &-wrap {
           position: relative;
-          .liquidation__filter-input {
+          .new__filter-input {
             margin-bottom: 0;
             padding: 9px 25px 9px 50px;
           }
@@ -227,18 +230,12 @@
       width: 30px;
       height: 30px;
     }
-    .swiper-button {
-      @include swiperArrowsIndexPage;
-    }
-    .swiper-recommended {
-      margin-bottom: 60px;
-    }
   }
 }
 
 @media only screen and (max-width: 1560px) {
   .main {
-    .liquidation {
+    .new {
       &__cards {
         max-width: 845px;
       }
@@ -247,7 +244,7 @@
 }
 @media only screen and (max-width: 1365px) {
   .main {
-    .liquidation {
+    .new {
       &__columns {
         display: block;
       }
@@ -290,7 +287,10 @@
 }
 @media only screen and (max-width: 767px) {
   .main {
-    .liquidation {
+    .new {
+      &__subtitle {
+        margin-bottom: 30px;
+      }
       &__cards {
         margin-bottom: 30px;
         &-filter {
