@@ -118,8 +118,16 @@
       }
       &-list {
         @include contentScroll;
-        height: 120px;
+        max-height: 120px;
         overflow-x: hidden;
+        &.category-list {
+          max-height: unset;
+        }
+        &.subcategory-list {
+          margin-top: 25px;
+          margin-bottom: 25px;
+          color: var(--grey-form-color);
+        }
       }
       &-item {
         &:not(:last-child) {
