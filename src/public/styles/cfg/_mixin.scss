@@ -51,6 +51,11 @@
     line-height: 25px;
   }
 }
+@mixin fontSize15 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 28px;
+}
 @mixin fontSize14 {
   font-size: 14px;
   line-height: 25px;
@@ -59,11 +64,6 @@
   font-size: 13px;
   font-weight: 700;
   line-height: 22px;
-}
-@mixin fontSize15 {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 28px;
 }
 
 @mixin contentButton {
@@ -180,6 +180,19 @@
     &.is-active {
       border-color: var(--yellow-color);
       background-color: var(--yellow-color);
+    }
+  }
+}
+@mixin contentScroll {
+  &::-webkit-scrollbar {
+    width: 4px;
+    &-track {
+      border-radius: 10px;
+      background: var(--light-grey-color);
+    }
+    &-thumb {
+      border-radius: 10px;
+      background-color: var(--darkness-white-color);
     }
   }
 }

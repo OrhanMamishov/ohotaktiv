@@ -1,4 +1,3 @@
-import "../imports";
 import "../../styles/pages/order/style.scss";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";

@@ -1,22 +1,32 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--white-color);
+  border-bottom: 1px solid #2d2a28;
+  z-index: 1;
   &__wrap {
-    &-top {
-      &-content {
-        padding-top: 19px !important;
-        padding-bottom: 27px !important;
-      }
-    }
+    display: flex;
+    align-items: center;
   }
-  .tag {
-    margin-right: 23px;
-    margin-left: auto;
-    padding-right: 0;
-    background: unset;
-    font-weight: 500;
+  &__logo {
+    width: 165px;
+  }
+  &__geo {
+    @include fontSize14;
+    margin: 0 25px 0 auto;
+  }
+  &__tel {
+    @include fontSize14;
+    padding: 3px 12px;
+    background-color: var(--yellow-color);
+    border-radius: 100px;
   }
 }
 .main {
-  padding-top: 75px;
+  padding-top: 72px;
   background-color: var(--cart-background-color);
   .order {
     &__back {
@@ -36,10 +46,10 @@
     &__columns {
       display: flex;
       align-items: flex-start;
+      gap: 35px;
     }
     &__left {
-      width: 948px;
-      margin-right: 35px;
+      flex: 1 1 auto;
       &-block {
         padding: 30px 40px;
         border-radius: 15px;
@@ -48,14 +58,12 @@
           margin-bottom: 35px;
         }
         &-title {
-          @include fontSize24;
+          @include fontSize20;
           margin-bottom: 30px;
-          font-weight: 800;
         }
         &-subtitle {
           @include fontSize20;
           margin-bottom: 30px;
-          font-weight: 800;
         }
         &-section {
           &:first-child {
@@ -144,19 +152,18 @@
         &-delivery {
           &-list {
             margin-bottom: 60px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 300px);
+            gap: 30px;
           }
           &-item {
             @include fontSize14;
-            min-width: 340px;
             padding: 25px 35px 30px;
             border: 1px solid var(--grey-item-color);
             border-radius: 15px;
             cursor: pointer;
             &.selected {
-              border: 1px solid var(--black-color);  
+              border: 1px solid var(--black-color);
             }
           }
           &-title {
@@ -172,6 +179,7 @@
             margin-right: 22px;
             background-color: var(--yellow-color);
             border-radius: 100px;
+            font-weight: 700;
           }
           &-date {
             display: inline-block;
@@ -212,7 +220,6 @@
       &-title {
         @include fontSize20;
         padding: 30px 40px;
-        font-weight: 800;
         border-bottom: 1px solid var(--light-white-color);
       }
       &-info {
@@ -237,6 +244,7 @@
         }
         &:last-child {
           text-align: end;
+          font-weight: 700;
         }
         &-wrap {
           display: flex;
@@ -255,12 +263,12 @@
         border: 1px solid var(--yellow-color);
         &:nth-child(3) {
           background-color: transparent;
-          border: 1px solid var(--black-color)
+          border: 1px solid var(--black-color);
         }
       }
       &-description {
         font-size: 11px;
-        line-height: 18px;
+        line-height: 22px;
       }
     }
   }
@@ -273,5 +281,179 @@
     display: block;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .order {
+      &__left {
+        &-block {
+          &-input {
+            width: 339px;
+          }
+        }
+      }
+      &__right {
+        width: 430px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1439px) {
+  .main {
+    .order {
+      &__left {
+        &-block {
+          &-delivery {
+            &-list {
+              grid-template-columns: repeat(2, 275px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1365px) {
+  .main {
+    .order {
+      &__title {
+        margin-bottom: 28px;
+      }
+      &__attention {
+        padding: 20px 40px;
+        border-radius: 15px;
+      }
+      &__columns {
+        flex-direction: column;
+      }
+      &__left {
+        flex: unset;
+        width: 100%;
+        &-block {
+          &-input {
+            width: 404px;
+          }
+          &-section {
+            &:first-child {
+              margin-right: 10vw;
+            }
+          }
+        }
+      }
+      &__right {
+        width: 100%;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .order {
+      &__attention {
+        margin-bottom: 30px;
+      }
+      &__left {
+        &-block {
+          &-section {
+            &-wrap {
+              flex-direction: column;
+              gap: 50px;
+            }
+            &:first-child {
+              margin-right: 0;
+            }
+          }
+          &-input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header {
+    &__geo,
+    &__tel {
+      padding: 0;
+      font-size: 0;
+      border-radius: unset;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+    &__geo {
+      margin: 0 16px 0 auto;
+      width: 20px;
+      height: 25px;
+      background-image: url("../../../img/tag.svg");
+    }
+    &__tel {
+      width: 20px;
+      height: 25px;
+      background-image: url("../../../img/telephone.svg");
+    }
+    &__logo {
+      width: 118px;
+    }
+  }
+  .main {
+    padding-bottom: 30px;
+    .order {
+      &__title {
+        margin-bottom: 25px;
+      }
+      &__attention {
+        padding: 20px 29px;
+      }
+      &__left {
+        &-block {
+          padding: 15px 16px;
+          &-input {
+            padding: 12px 23px;
+            &:not(:last-child) {
+              margin-bottom: 15px;
+            }
+          }
+          &-section {
+            &-wrap {
+              gap: 30px;
+            }
+            .choices__list--single {
+              padding: 5px 15px 4px 15.5px;
+            }
+            &:not(:last-child) {
+              margin-bottom: 30px;
+            }
+          }
+          &-delivery {
+            &-list {
+              display: block;
+              margin-bottom: 0;
+            }
+            &-item {
+              padding: 15px 20px;
+              &:not(:last-child) {
+                margin-bottom: 10px;
+              }
+            }
+          }
+          #map {
+            height: 321px;
+          }
+        }
+      }
+      &__right {
+        &-title {
+          padding: 15px 16px;
+        }
+        &-info {
+          padding: 20px 16px;
+        }
+      }
+    }
   }
 }

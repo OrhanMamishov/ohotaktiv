@@ -1,5 +1,32 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--white-color);
+  border-bottom: 1px solid #2d2a28;
+  z-index: 1;
+  &__wrap {
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    width: 165px;
+  }
+  &__geo {
+    @include fontSize14;
+    margin: 0 25px 0 auto;
+  }
+  &__tel {
+    @include fontSize14;
+    padding: 3px 12px;
+    background-color: var(--yellow-color);
+    border-radius: 100px;
+  }
+}
 .main {
-  padding-top: 75px;
+  padding-top: 72px;
   background-color: var(--cart-background-color);
   .cart {
     &__region {
@@ -18,10 +45,10 @@
     &__columns {
       display: flex;
       align-items: flex-start;
+      gap: 35px;
     }
     &__left {
-      width: 948px;
-      margin-right: 35px;
+      flex: 1 1 auto;
       &-block {
         border-radius: 15px;
         background-color: var(--white-color);
@@ -126,6 +153,7 @@
       }
     }
     &__right {
+      margin-left: auto;
       position: sticky;
       top: 90px;
       width: 457px;
@@ -190,5 +218,177 @@
     display: block;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .cart {
+      &__left {
+        &-block {
+          &-title {
+            padding: 30px 35px;
+          }
+          &-card {
+            padding: 30px 35px;
+          }
+          &-description {
+            max-width: 256px;
+          }
+          &-count {
+            margin-right: 27px;
+          }
+          &-prices {
+            width: 140px;
+          }
+        }
+      }
+      &__right {
+        width: 430px;
+        &-title {
+          padding: 30px 35px;
+        }
+        &-info {
+          padding: 30px 35px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1365px) {
+  .main {
+    .cart {
+      &__columns {
+        flex-direction: column;
+        gap: 30px;
+      }
+      &__left {
+        flex: unset;
+        width: 100%;
+      }
+      &__right {
+        width: 100%;
+        position: unset;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .cart {
+      &__left {
+        &-block {
+          &-description {
+            max-width: 210px;
+          }
+          &-prices {
+            width: unset;
+          }
+          &-oldprice {
+            display: block;
+          }
+          &-count {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header {
+    &__geo,
+    &__tel {
+      padding: 0;
+      font-size: 0;
+      border-radius: unset;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+    &__geo {
+      margin: 0 16px 0 auto;
+      width: 20px;
+      height: 25px;
+      background-image: url("../../../img/tag.svg");
+    }
+    &__tel {
+      width: 20px;
+      height: 25px;
+      background-image: url("../../../img/telephone.svg");
+    }
+    &__logo {
+      width: 118px;
+    }
+  }
+  .main {
+    padding-bottom: 30px;
+    .cart {
+      &__title {
+        margin-bottom: 15px;
+      }
+      &__region {
+        display: block;
+      }
+      &__left {
+        &-block {
+          .checkbox__label {
+            margin-right: 0px;
+          }
+          &-img {
+            &-wrap {
+              margin-right: 15px;
+              margin-bottom: 15px;
+              height: 90px;
+              width: 90px;
+              order: 2;
+            }
+          }
+          &-oldprice {
+            display: inline-block;
+            margin-right: 3px;
+          }
+          &-title {
+            padding: 15px 16px;
+          }
+          &-card {
+            padding: 15px 16px;
+            flex-wrap: wrap;
+            .checkbox__label {
+              order: 1;
+            }
+          }
+          &-prices {
+            order: 3;
+            margin-bottom: 15px;
+          }
+          &-count {
+            order: 4;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 0 15px 0;
+          }
+          &-description {
+            width: 100%;
+            max-width: unset;
+            order: 5;
+          }
+        }
+      }
+      &__right {
+        &-title {
+          padding: 15px 16px;
+        }
+        &-info {
+          padding: 15px 16px;
+        }
+        &-text {
+          &.text-bold {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
   }
 }

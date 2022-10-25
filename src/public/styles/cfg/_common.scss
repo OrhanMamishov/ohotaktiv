@@ -147,12 +147,6 @@ section {
 main {
   padding-top: 138px;
   padding-bottom: 100px;
-  @media only screen and (max-width: 1560px) {
-    padding-top: 119px;
-  }
-  @media only screen and (max-width: 1365px) {
-    padding-top: 119px;
-  }
   @media only screen and (max-width: 767px) {
     padding-top: 132px;
   }
@@ -431,7 +425,8 @@ main {
   }
   &__span {
     position: absolute;
-    top: -2px;
+    top: 50%;
+    transform: translate(0, -50%);
     left: 0;
     width: 17px;
     height: 17px;
@@ -547,8 +542,8 @@ main {
     }
   }
   @media only screen and (max-width: 767px) {
-    padding-top: 42px;
-    padding-bottom: 36px;
+    padding-top: 22px;
+    padding-bottom: 30px;
     margin-bottom: 0;
     &__item {
       font-size: 13px;
