@@ -20,14 +20,12 @@
       }
       &-title {
         @include fontSize24;
-        line-height: 34px;
         margin-bottom: 14px;
         font-weight: 700;
       }
       &-text {
         @include fontSize14;
         margin-bottom: 27px;
-        line-height: 25px;
       }
     }
     &__aside {

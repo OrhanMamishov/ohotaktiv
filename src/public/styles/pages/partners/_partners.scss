@@ -16,7 +16,6 @@
       @include fontSize35;
       max-width: 600px;
       margin-bottom: 37px;
-      line-height: 45px;
       font-weight: 800;
       color: var(--white-color);
       text-align: center;
@@ -49,7 +48,6 @@
       }
       &-text {
         @include fontSize16;
-        line-height: 28px;
       }
       &:first-child {
         background-image: url("../../../img/blank.svg");

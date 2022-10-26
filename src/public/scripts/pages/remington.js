@@ -4,7 +4,6 @@ import "swiper/css/bundle";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother.js";
-
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   const smoother = ScrollSmoother.create({
@@ -25,21 +24,19 @@ document.addEventListener("DOMContentLoaded", () => {
       },
 
       breakpoints: {
-        1559: {
+        1365: {
           spaceBetween: 35,
           slidesPerView: 3,
         },
-        1439: {
-          // spaceBetween: 30,
-          // slidesPerView: 4,
-        },
-        500: {
-          // spaceBetween: 30,
-          // slidesPerView: 3,
+        767: {
+          spaceBetween: 35,
+          slidesPerView: 2,
+          allowTouchMove: true,
         },
         320: {
-          // spaceBetween: 10,
-          // slidesPerView: 2,
+          spaceBetween: 20,
+          slidesPerView: 1.5,
+          allowTouchMove: true,
         },
       },
     });
@@ -55,5 +52,23 @@ document.addEventListener("DOMContentLoaded", () => {
   arrowButton.addEventListener("click", (e) => {
     e.preventDefault();
     smoother.scrollTo(arrowButton.getAttribute("href"), true, "top 80px");
+  });
+  const hamburger = document.querySelector(".hamburger-lines");
+  const tlMenu = gsap.timeline({ paused: true });
+  const menu = document.querySelector(".header__list");
+  menu.addEventListener("click", () => {
+    if (window.outerWidth < 1024) {
+      hamburger.click();
+    }
+  });
+  hamburger.addEventListener("click", () => {
+    tlMenu.to(menu, { visibility: "visible", opacity: 1, duration: 0.1 });
+    if (menu.style.visibility === "visible") {
+      tlMenu.reverse();
+      hamburger.classList.remove("is-active");
+    } else {
+      tlMenu.play();
+      hamburger.classList.add("is-active");
+    }
   });
 });

@@ -64,7 +64,7 @@
           background-color: var(--light-grey-color);
           opacity: unset;
           &-active {
-            background-color: var(--yellow-color);
+            background-color: var(--primary-color);
           }
         }
       }
@@ -148,7 +148,7 @@
           left: 0;
           width: 5px;
           height: 100%;
-          background-color: var(--yellow-color);
+          background-color: var(--primary-color);
         }
       }
       .choices {

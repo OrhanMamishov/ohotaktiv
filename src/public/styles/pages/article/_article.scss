@@ -1,15 +1,16 @@
 .main {
   .article {
     &__text {
-      @include fontSize15;
+      @include fontSize16;
+      font-weight: 600;
       max-width: 1071px;
-      line-height: 28px;
       &:not(:last-child) {
         margin-bottom: 40px;
       }
     }
     &__subtitle {
       @include fontSize13;
+      font-weight: 600;
       max-width: 1071px;
       display: inline-block;
       margin-bottom: 30px;
@@ -25,11 +26,6 @@
     }
   }
   .goods {
-    &__wrap {
-      .swiper {
-        padding: 5px 30px;
-      }
-    }
     &__swiper-button {
       @include swiperArrowsIndexPage;
     }
@@ -44,11 +40,6 @@
 @media only screen and (max-width: 1023px) {
   .main {
     .goods {
-      &__wrap {
-        .swiper {
-          padding: 0;
-        }
-      }
       &__swiper-button-prev,
       &__swiper-button-next {
         display: none;

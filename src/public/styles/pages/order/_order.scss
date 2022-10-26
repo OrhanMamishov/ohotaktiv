@@ -21,7 +21,7 @@
   &__tel {
     @include fontSize14;
     padding: 3px 12px;
-    background-color: var(--yellow-color);
+    background-color: var(--primary-color);
     border-radius: 100px;
   }
 }
@@ -177,7 +177,7 @@
             padding: 2px 9px;
             display: inline-block;
             margin-right: 22px;
-            background-color: var(--yellow-color);
+            background-color: var(--primary-color);
             border-radius: 100px;
             font-weight: 700;
           }
@@ -188,7 +188,7 @@
             display: inline-block;
             padding: 2px 9px;
             margin-bottom: 14px;
-            background-color: var(--yellow-color);
+            background-color: var(--primary-color);
             border-radius: 100px;
           }
         }
@@ -260,7 +260,7 @@
         width: 100%;
         padding: 20px;
         margin-bottom: 20px;
-        border: 1px solid var(--yellow-color);
+        border: 1px solid var(--primary-color);
         &:nth-child(3) {
           background-color: transparent;
           border: 1px solid var(--black-color);

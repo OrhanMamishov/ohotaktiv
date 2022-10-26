@@ -4,7 +4,6 @@
       max-width: 1071px;
       margin-bottom: 50px;
       padding: 35px 45px;
-      line-height: 28px;
       font-weight: 700;
       background-color: var(--lightness-white-color);
       &-link {
@@ -18,7 +17,6 @@
       max-width: 1071px;
       margin-bottom: 40px;
       &-text {
-        line-height: 28px;
         &:not(:last-child) {
           margin-bottom: 28px;
         }
@@ -26,7 +24,6 @@
       &-list {
         padding-left: 20px;
         list-style-type: disc;
-        line-height: 28px;
         &:not(:last-child) {
           margin-bottom: 28px;
         }

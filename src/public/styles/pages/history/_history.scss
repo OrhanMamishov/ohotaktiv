@@ -22,7 +22,7 @@
         left: 0;
         width: 150px;
         height: 2px;
-        background-color: var(--yellow-color);
+        background-color: var(--primary-color);
         animation: move 1s 1;
         @keyframes move {
           0% {
@@ -38,13 +38,12 @@
       @include fontSize16;
       margin-bottom: 30px;
       max-width: 530px;
-      line-height: 28px;
       color: var(--white-color);
     }
     &__link {
       @include fontSize16;
       font-weight: 700;
-      color: var(--yellow-color);
+      color: var(--primary-color);
       transition: color 0.2s ease;
       &:hover {
         color: var(--yellow-active-color);
@@ -59,11 +58,9 @@
       @include fontSize16;
       font-weight: 700;
       margin-bottom: 28px;
-      line-height: 28px;
     }
     &__text {
       @include fontSize16;
-      line-height: 28px;
       &:not(:last-child) {
         margin-bottom: 28px;
       }
@@ -99,11 +96,9 @@
       }
       &__title {
         font-size: 26px;
-        line-height: 40px;
       }
       &__text {
         margin-bottom: 0;
-        line-height: 25px;
       }
       &__link {
         display: none;

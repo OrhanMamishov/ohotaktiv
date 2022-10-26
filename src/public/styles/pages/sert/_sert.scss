@@ -48,7 +48,6 @@
         @include fontSize24;
         margin-bottom: 10px;
         font-weight: 800;
-        line-height: 36px;
         &.skeleton {
           height: 72px;
         }
@@ -59,13 +58,12 @@
         margin-bottom: 40px;
         border-radius: 100px;
         padding: 2px 10px;
-        background-color: var(--yellow-color);
+        background-color: var(--primary-color);
         font-weight: 700;
       }
       &-description {
         @include fontSize14;
         margin-bottom: 55px;
-        line-height: 25px;
       }
       &-button {
         @include contentButton;
@@ -199,14 +197,10 @@
         .input-wrap {
           width: 100%;
         }
-        &-name {
-          line-height: 32px;
-        }
         &-text {
           width: 210px;
           margin: 0 auto;
           text-align: center;
-          line-height: 25px;
         }
       }
     }

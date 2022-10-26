@@ -24,7 +24,7 @@
           width: 10px;
           height: 10px;
           &-active {
-            background: var(--darkness-white-color);
+            background: var(--grey-color);
           }
         }
       }
@@ -102,7 +102,7 @@
         display: inline-block;
         padding: 2px 10px;
         margin-bottom: 15px;
-        background-color: var(--yellow-color);
+        background-color: var(--primary-color);
         border-radius: 100px;
         font-weight: 700;
         &.skeleton {
@@ -114,7 +114,6 @@
         @include fontSize24;
         margin-bottom: 10px;
         font-weight: 800;
-        line-height: 36px;
         &.skeleton {
           height: 72px;
         }
@@ -204,12 +203,6 @@
         margin-bottom: 40px;
         width: 380px;
         .dot {
-          &__prop {
-            color: var(--darkness-white-color);
-          }
-          &:not(:last-child) {
-            margin-bottom: 12px;
-          }
           &.skeleton {
             height: 16px;
           }
@@ -259,9 +252,6 @@
     }
     &__panel {
       padding: 25px 0 68px;
-      .swiper {
-        padding: 5px 30px;
-      }
     }
     &__stats {
       display: flex;
@@ -271,13 +261,11 @@
       &-right {
         max-width: 707px;
         @include fontSize14;
-        line-height: 24px;
         p,
         a,
         span,
         li {
           @include fontSize14;
-          line-height: 24px;
         }
         p {
           &:not(:last-child) {
@@ -298,7 +286,6 @@
         width: 579px;
         .dot {
           @include fontSize14;
-          color: var(--darkness-white-color);
           &__value {
             color: var(--black-color);
           }
@@ -349,7 +336,6 @@
       }
       &-comment {
         @include fontSize14;
-        line-height: 24px;
         margin-bottom: 10px;
       }
       &-user {
@@ -400,7 +386,6 @@
       &-text {
         @include fontSize14;
         margin-bottom: 23px;
-        line-height: 24px;
       }
       &-button {
         @include fontSize13;
@@ -438,7 +423,7 @@
               position: absolute;
               left: 0;
               height: 100%;
-              background-color: var(--yellow-color);
+              background-color: var(--primary-color);
               border-radius: 2px;
               width: 80%;
             }
@@ -493,16 +478,13 @@
     &__list {
       display: flex;
     }
-    .swiper {
-      padding: 5px 30px;
-    }
     &__swiper-button {
       @include swiperArrowsIndexPage;
     }
   }
   .questions {
     padding: 57px 0;
-    background-color: var(--lightness-white-color);
+    background-color: var(--cart-background-color);
     &__title {
       @include fontSize20;
       margin-bottom: 0;
@@ -522,14 +504,12 @@
     }
     &__link {
       @include fontSize14;
-      height: 37px;
       display: block;
       padding-left: 57px;
       background-repeat: no-repeat;
       background-position: left center;
       span {
         display: block;
-        margin-bottom: 8px;
         font-weight: 700;
       }
       &.call {
@@ -592,11 +572,11 @@
   .main {
     .card {
       &__left {
-        width: 444px;
+        width: 56%;
         display: flex;
         align-items: center;
         &-wrap {
-          max-height: 295px;
+          max-height: 400px;
         }
       }
       &__right {
@@ -714,9 +694,6 @@
         }
       }
       &__right {
-        &-name {
-          line-height: 32px;
-        }
         &-article {
           display: block;
           margin-bottom: 10px;
@@ -732,7 +709,6 @@
           width: 210px;
           margin: 0 auto;
           text-align: center;
-          line-height: 25px;
         }
       }
     }

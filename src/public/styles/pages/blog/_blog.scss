@@ -1,11 +1,6 @@
 .main {
   .blog,
   .article {
-    &__wrap {
-      .swiper {
-        padding: 5px 30px;
-      }
-    }
     &__item {
       &-img {
         margin-bottom: 13px;
@@ -18,7 +13,6 @@
       &-title {
         @include fontSize15;
         margin-bottom: 8px;
-        line-height: 22px;
         font-weight: 700;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -28,7 +22,6 @@
       &-text {
         @include fontSize13;
         margin-bottom: 14px;
-        line-height: 22px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -50,11 +43,6 @@
   .main {
     .blog,
     .article {
-      &__wrap {
-        .swiper {
-          padding: 0;
-        }
-      }
       &__swiper-button-prev,
       &__swiper-button-next {
         display: none;

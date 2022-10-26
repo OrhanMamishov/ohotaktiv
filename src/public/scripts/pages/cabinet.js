@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger.addEventListener("click", () => {
     cabinetLeft.classList.toggle("is-open");
     hamburger.classList.toggle("is-active");
-    bodyScrollToggle();
+    if (window.outerWidth < 1024) bodyScrollToggle();
   });
   cabinetLeft.addEventListener("click", () => hamburger.click());
   // открытие меню

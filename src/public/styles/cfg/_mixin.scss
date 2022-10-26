@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 @mixin fontSize35 {
   font-size: 35px;
   font-weight: 800;
@@ -33,6 +34,11 @@
   font-size: 20px;
   font-weight: 800;
   line-height: 32px;
+  @media only screen and (max-width: 1365px) {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+  }
 }
 @mixin fontSize18 {
   font-size: 18px;
@@ -65,10 +71,14 @@
   font-weight: 700;
   line-height: 22px;
 }
+@mixin fontSize11 {
+  font-size: 11px;
+  line-height: 20px;
+}
 
 @mixin contentButton {
-  padding: 18px 26px;
-  background-color: var(--yellow-color);
+  padding: 14px 26px;
+  background-color: var(--primary-color);
   border-radius: 100px;
   color: var(--black-color);
   cursor: pointer;
@@ -93,7 +103,7 @@
 @mixin contentInput {
   @include fontSize14;
   width: 100%;
-  border-bottom: 1px solid var(--black-footer-color);
+  border-bottom: 1px solid var(--secondary-color);
   transition: border 0.2s ease;
   &::placeholder {
     color: var(--grey-color);
@@ -102,7 +112,7 @@
     // border-color: var(--dark-grey-color);
   }
   &:focus {
-    border-color: var(--yellow-color);
+    border-color: var(--primary-color);
   }
   &.is-not-valid {
     border-color: var(--red-color);
@@ -178,21 +188,21 @@
     border: 1px solid var(--darkness-white-color);
     cursor: pointer;
     &.is-active {
-      border-color: var(--yellow-color);
-      background-color: var(--yellow-color);
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
     }
   }
 }
 @mixin contentScroll {
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 3px;
     &-track {
       border-radius: 10px;
-      background: var(--light-grey-color);
+      background: var(--grey-item-color);
     }
     &-thumb {
       border-radius: 10px;
-      background-color: var(--darkness-white-color);
+      background-color: var(--secondary-color);
     }
   }
 }

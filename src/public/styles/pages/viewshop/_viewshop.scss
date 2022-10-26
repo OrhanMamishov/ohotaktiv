@@ -23,7 +23,6 @@
       &-text,
       &-tel {
         @include fontSize14;
-        line-height: 25px;
         font-style: normal;
       }
       &:not(:last-child) {

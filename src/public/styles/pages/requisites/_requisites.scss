@@ -14,7 +14,6 @@
     }
     &__text {
       @include fontSize14;
-      line-height: 24px;
       &:not(:last-child) {
         margin-bottom: 30px;
       }

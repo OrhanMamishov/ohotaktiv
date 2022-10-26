@@ -1,6 +1,6 @@
 .footer {
   background-image: url("../../../img/footer-background.png");
-  background-color: var(--black-footer-color);
+  background-color: var(--secondary-color);
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 80px;
@@ -21,7 +21,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
   }
   &__item {
     @include fontSize14;
@@ -35,15 +35,15 @@
         color: var(--grey-form-color);
       }
     }
-    &:hover {
-      color: var(--yellow-color);
+    &:not(.item-title):hover {
+      color: var(--primary-color);
     }
   }
   &__link {
     color: var(--grey-form-color);
     transition: color 0.2s ease;
     &:hover {
-      color: var(--yellow-color);
+      color: var(--primary-color);
     }
   }
   &__title {
@@ -59,8 +59,12 @@
     &-input {
       min-width: 579px;
       color: var(--white-color);
+      border-color: var(--grey-item-color) !important;
       &:focus {
         border-color: var(--white-color) !important;
+      }
+      &.is-not-valid {
+        border-color: var(--red-color) !important;
       }
     }
     &-button {
@@ -69,10 +73,10 @@
       right: 0;
       transform: translate(0, -50%);
       font-size: 24px;
-      color: var(--yellow-color);
+      color: var(--primary-color);
       transition: color 0.2s ease;
       &:hover {
-        color: var(--yellow-active-color);
+        color: var(--light-primary-color);
       }
     }
     &-text {
@@ -80,10 +84,10 @@
       color: var(--grey-form-color);
     }
     &-link {
-      color: var(--yellow-color);
+      color: var(--primary-color);
       transition: color 0.2s ease;
       &:hover {
-        color: var(--yellow-active-color);
+        color: var(--light-primary-color);
       }
     }
   }
@@ -156,10 +160,10 @@
       color: var(--white-color);
       font-weight: 700;
       span {
-        margin-bottom: 2px;
+        @include fontSize11;
+        line-height: 10px;
         display: block;
         font-weight: 600;
-        font-size: 11px;
       }
       &.google {
         background-image: url("../../../img/google-play.svg");
@@ -261,9 +265,6 @@
     }
     &__form {
       margin-bottom: 20px;
-      &-text {
-        line-height: 22px;
-      }
     }
     &__social {
       &-link {

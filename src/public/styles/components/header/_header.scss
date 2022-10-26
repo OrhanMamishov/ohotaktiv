@@ -9,7 +9,7 @@
   &__tel {
     transition: color 0.2s ease;
     &:hover {
-      color: var(--yellow-color);
+      color: var(--primary-color);
     }
   }
   &__top {
@@ -32,13 +32,13 @@
     margin-left: auto;
     transition: color 0.2s ease;
     &:hover {
-      color: var(--yellow-color);
+      color: var(--primary-color);
     }
   }
   &__input {
     @include contentInput;
     margin: 0 auto;
-    padding: 11px 24px;
+    padding: 10px 24px;
     max-width: 527px;
     border: 1px solid var(--black-color);
     border-radius: 100px;
@@ -50,7 +50,7 @@
     margin-right: 35px;
     transition: color 0.2s ease;
     &:hover {
-      color: var(--yellow-color);
+      color: var(--primary-color);
     }
   }
   &__action {
@@ -110,12 +110,12 @@
       margin-right: 35px;
       position: relative;
       width: 119px;
-      padding: 14px 22px 14px 42px;
+      padding: 16px 22px 16px 42px;
       transition: background 0.2s ease;
       &::before {
         content: "";
         position: absolute;
-        top: 19px;
+        top: 21px;
         left: 22px;
         height: 2px;
         width: 10px;
@@ -125,7 +125,7 @@
       &::after {
         content: "";
         position: absolute;
-        top: 23px;
+        top: 25px;
         left: 22px;
         height: 2px;
         width: 10px;
@@ -133,18 +133,18 @@
         transition: transform 0.2s ease;
       }
       &.is-active {
-        background-color: var(--light-yellow-color);
+        background-color: var(--light-primary-color);
         &::before {
-          top: 21px;
+          top: 23px;
           transform: rotate(45deg);
         }
         &::after {
-          top: 21px;
+          top: 23px;
           transform: rotate(-45deg);
         }
       }
       &:hover {
-        background-color: var(--light-yellow-color);
+        background-color: var(--light-primary-color);
       }
     }
     .header__accordion-container {
@@ -187,7 +187,7 @@
     &-wrap {
       display: block;
       position: absolute;
-      top: 129px;
+      top: 140px;
       right: 0;
       width: 100%;
       height: 100vh;
@@ -249,7 +249,7 @@
     &-link {
       transition: color 0.2s ease;
       &:hover {
-        color: var(--yellow-color);
+        color: var(--primary-color);
       }
     }
   }

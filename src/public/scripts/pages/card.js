@@ -90,7 +90,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="card-item__photo-button-wrap">
                 <button class="card-item__photo-button share"></button>
                 <button class="card-item__photo-button favourite"></button>
-                <button class="card-item__photo-button compare"></button>
                 <div class="share-wrap">
                   <a href="#" class="share-link vk">
                     VK
@@ -255,7 +254,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                         serverName + el.img
                       }" alt="Фото товара" class="card-item__photo">
                       <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button compare"></span>
                         <span class="card-item__photo-button favourite"></span>
                       </div>
                       <div class="card-item__photo-texts">
@@ -394,9 +392,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                           class="card-item__photo"
                         />
                         <div class="card-item__photo-button-wrap">
-                          <span
-                            class="card-item__photo-button compare"
-                          ></span>
                           <span
                             class="card-item__photo-button favourite"
                           ></span>

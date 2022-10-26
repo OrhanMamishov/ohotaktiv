@@ -46,7 +46,6 @@
     "choices.js": "^10.1.0",
     "gsap": "^3.11.3",
     "inputmask": "^5.0.7",
-    "nouislider": "^15.6.0",
     "swiper": "^8.3.2",
     "wnumb": "^1.2.0"
   }

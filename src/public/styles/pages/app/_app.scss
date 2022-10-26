@@ -4,7 +4,7 @@
     padding-top: 0;
     margin-bottom: 100px;
     background-image: url("../../../img/background-app.png");
-    background-size: 100% 80%;
+    background-position: center;
     &__text {
       @include fontSize35;
       padding: 50px 0 32px 0;
@@ -12,10 +12,11 @@
     }
     &__img {
       margin-right: 0;
+      max-width: 525px;
       object-fit: scale-down;
     }
     &__wrap {
-      max-width: 1360px;
+      max-width: 1300px;
       &-list {
         margin-bottom: 50px;
       }
@@ -31,13 +32,11 @@
         background-color: var(--white-color);
       }
       &-img {
-        margin-bottom: 10px;
         margin-right: 23px;
         width: 103px;
       }
       &-text {
-        font-size: 11px;
-        line-height: 18px;
+        @include fontSize11;
       }
     }
   }
@@ -56,11 +55,10 @@
       @include fontSize30;
       width: 334px;
       font-weight: 900;
-      line-height: 40px;
       span {
         padding: 6px 10px;
         border-radius: 100px;
-        background-color: var(--yellow-color);
+        background-color: var(--primary-color);
       }
     }
   }
@@ -81,7 +79,6 @@
           @include fontSize24;
           width: 253px;
           font-weight: 700;
-          line-height: 34px;
           &.text--right {
             @media only screen and (min-width: 1366px) {
               text-align: right;
@@ -191,7 +188,6 @@
         margin-bottom: 40px;
         max-width: 453px;
         width: 100%;
-        line-height: 32px;
         text-align: center;
       }
       &__img {
@@ -206,20 +202,18 @@
   .main {
     .aboutapp {
       &__wrap {
-        position: relative;
         &-list {
           margin-bottom: 0;
         }
         &-item {
           width: 128px;
         }
+        &-link {
+          line-height: 13px;
+        }
       }
       &__img {
         width: 275px;
-        margin-left: 0;
-        position: absolute;
-        top: 0;
-        left: -43px;
       }
       &__qr {
         &-wrap {
@@ -238,7 +232,7 @@
       &__text {
         padding: 30px 0 0;
         font-size: 24px;
-        line-height: 34px;
+        line-height: 35px;
         text-align: right;
       }
     }
@@ -250,7 +244,6 @@
         &-item {
           width: 100%;
           &-text {
-            line-height: 32px;
             margin-bottom: 22px;
           }
           &-img {
