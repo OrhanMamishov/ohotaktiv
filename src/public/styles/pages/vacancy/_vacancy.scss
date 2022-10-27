@@ -69,6 +69,7 @@
     }
   }
   .about {
+    padding-bottom: 80px;
     &__img {
       display: block;
       margin: 0 auto;
@@ -77,18 +78,14 @@
   }
   .vacancy {
     &__input {
+      @include contentInput;
       width: 700px;
       display: block;
-      margin: 0 auto 114px auto;
+      margin: 0 auto 70px auto;
       padding: 18px 60px 18px 35px;
-      border: 1px solid var(--grey-form-color);
-      border-radius: 100px;
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
       background-position: 96% center;
-      &::placeholder {
-        color: var(--footer-title-color);
-      }
     }
     &__item {
       .vacancy__item-button {

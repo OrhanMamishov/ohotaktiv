@@ -4,7 +4,8 @@
     padding-top: 0;
     margin-bottom: 100px;
     background-image: url("../../../img/background-app.png");
-    background-position: center;
+    background-position: top center;
+    background-size: auto 390px;
     &__text {
       @include fontSize35;
       padding: 50px 0 32px 0;
@@ -12,13 +13,22 @@
     }
     &__img {
       margin-right: 0;
-      max-width: 525px;
+      max-width: 215px;
       object-fit: scale-down;
     }
     &__wrap {
-      max-width: 1300px;
+      padding: 30px 0;
+      max-width: unset;
+      align-items: center;
+      justify-content: center;
+      gap: 94px;
       &-list {
         margin-bottom: 50px;
+      }
+    }
+    &__description {
+      &-wrap {
+        padding-top: 0;
       }
     }
     &__qr {
@@ -111,9 +121,6 @@
 @media only screen and (max-width: 1365px) {
   .main {
     .aboutapp {
-      &__img {
-        width: 413px;
-      }
       &__text {
         padding: 50px 0 3px 0;
       }
@@ -176,9 +183,6 @@
           }
         }
       }
-      &__img {
-        margin-left: -40px;
-      }
     }
     .more {
       &__wrap {
@@ -202,6 +206,8 @@
   .main {
     .aboutapp {
       &__wrap {
+        gap: unset;
+        justify-content: space-evenly;
         &-list {
           margin-bottom: 0;
         }
@@ -213,7 +219,8 @@
         }
       }
       &__img {
-        width: 275px;
+        width: unset;
+        max-width: 110px;
       }
       &__qr {
         &-wrap {
@@ -225,7 +232,6 @@
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          margin-left: auto;
           z-index: 1;
         }
       }

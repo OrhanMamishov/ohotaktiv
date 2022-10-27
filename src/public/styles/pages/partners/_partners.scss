@@ -48,6 +48,7 @@
       }
       &-text {
         @include fontSize16;
+        font-weight: 600;
       }
       &:first-child {
         background-image: url("../../../img/blank.svg");
@@ -99,7 +100,7 @@
             @include fontSize14;
           }
           &:not(:last-child) {
-            margin-bottom: 30px;
+            margin-bottom: 50px;
           }
         }
         &:nth-child(5) {
@@ -107,9 +108,6 @@
             margin-bottom: 10px;
           }
         }
-      }
-      &-input {
-        padding-right: 25px;
       }
       &-title {
         @include fontSize18;
@@ -140,6 +138,20 @@
             margin-bottom: -1px;
             animation: 0.1s tremor ease-out 1;
           }
+        }
+      }
+      .input-wrap {
+        input {
+          @include fontSize16;
+          font-weight: 600;
+        }
+        label {
+          @include fontSize16;
+          font-weight: 600;
+        }
+        input:focus ~ label,
+        input:not(:placeholder-shown) ~ label {
+          font-size: 10px;
         }
       }
     }

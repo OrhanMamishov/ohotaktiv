@@ -10,7 +10,7 @@
     <header class="header">
       <div class="header__wrap container">
         <div class="header__top">
-          <a href="#" class="header__logo-link">
+          <a href="../index/" class="header__logo-link">
             <img
               src="img/logo-header.svg"
               alt="Логотип ОхотАктив"
@@ -18,39 +18,36 @@
             />
           </a>
           <button class="header__city">Набережные челны</button>
-          <input
-            class="header__input"
-            type="text"
-            placeholder="Поиск"
-            autocomplete="off"
-          />
+          <button class="header__openmenu"></button>
+          <div class="header__input-wrap">
+            <input
+              class="header__input"
+              type="text"
+              placeholder="Поиск"
+              autocomplete="off"
+            />
+            <button class="header__input-search"></button>
+          </div>
           <button class="header__status">Статус заказа</button>
           <a href="tel:88007008256" class="header__tel"> 8 800 700-82-56 </a>
           <ul class="header__action-list">
             <li class="header__action-item">
-              <a href="../pages/cabinet" class="header__action-link favourite"
+              <a
+                href="../cabinet?block=favourites"
+                class="header__action-link favourite"
                 >Избранное</a
               >
             </li>
             <li class="header__action-item">
-              <a href="../pages/cabinet" class="header__action-link cabinet"
+              <a href="../cabinet" class="header__action-link cabinet"
                 >Профиль</a
               >
             </li>
             <li class="header__action-item">
-              <a href="../pages/compare" class="header__action-link compare"
-                >Сравнение</a
-              >
+              <a href="../cart" class="header__action-link cart">Корзина</a>
             </li>
             <li class="header__action-item">
-              <a href="../pages/cart" class="header__action-link cart"
-                >Корзина</a
-              >
-            </li>
-            <li class="header__action-item">
-              <a href="../pages/index" class="header__action-link main"
-                >Главная</a
-              >
+              <a href="../index" class="header__action-link main">Главная</a>
             </li>
             <li class="header__action-item">
               <a href="#" class="header__action-link catalog">Каталог</a>
@@ -61,40 +58,36 @@
           <button class="header__catalog-button catalog">Каталог</button>
           <ul class="header__pages-list">
             <li class="header__pages-item">
-              <a href="../pages/remington" class="header__pages-link"
-                >Remington</a
-              >
+              <a href="../remington/" class="header__pages-link">Remington</a>
             </li>
             <li class="header__pages-item">
-              <a href="../pages/sales" class="header__pages-link">Акции</a>
+              <a href="../sales/" class="header__pages-link">Акции</a>
             </li>
             <li class="header__pages-item">
-              <a href="#" class="header__pages-link">Новинки</a>
+              <a href="../new/" class="header__pages-link">Новинки</a>
             </li>
             <li class="header__pages-item tablet">
-              <a href="../pages/liquidation" class="header__pages-link"
+              <a href="../liquidation/" class="header__pages-link"
                 >Ликвидация</a
               >
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../pages/sert" class="header__pages-link"
-                >Подарочная карта</a
-              >
+              <a href="../sert/" class="header__pages-link">Подарочная карта</a>
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../pages/shops" class="header__pages-link">Магазины</a>
+              <a href="../shops/" class="header__pages-link">Магазины</a>
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../pages/blog" class="header__pages-link">Блог</a>
+              <a href="../blog/" class="header__pages-link">Блог</a>
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../pages/app" class="header__pages-link">Приложение</a>
+              <a href="../app/" class="header__pages-link">Приложение</a>
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../pages/opt" class="header__pages-link">Опт</a>
+              <a href="../opt/" class="header__pages-link">Опт</a>
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../pages/partners" class="header__pages-link"
+              <a href="../partners/" class="header__pages-link"
                 >Стать поставщиком</a
               >
             </li>
@@ -122,14 +115,8 @@
                 </button>
               </li>
               <li class="header__menu-actions-item">
-                <a href="../pages/cabinet" class="header__menu-link">
+                <a href="../cabinet?block=favourites" class="header__menu-link">
                   Избранное
-                </a>
-                <p class="header__menu-actions-text">0 товаров</p>
-              </li>
-              <li class="header__menu-actions-item">
-                <a href="../pages/compare" class="header__menu-link">
-                  Сравнение
                 </a>
                 <p class="header__menu-actions-text">0 товаров</p>
               </li>
@@ -137,50 +124,46 @@
                 <button class="header__status">Статус заказа</button>
               </li>
               <li class="header__menu-actions-item">
-                <a href="../pages/cart" class="header__menu-link"> Корзина </a>
+                <a href="../cart/" class="header__menu-link"> Корзина </a>
                 <p class="header__menu-actions-text">0 товаров</p>
               </li>
             </ul>
             <ul class="header__menu-list">
               <li class="header__menu-item">
-                <a href="../pages/remington" class="header__menu-link">
+                <a href="../remington/" class="header__menu-link">
                   Remington
                 </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/sales" class="header__menu-link"> Акции </a>
+                <a href="../sales/" class="header__menu-link"> Акции </a>
               </li>
               <li class="header__menu-item">
-                <a href="#" class="header__menu-link"> Новинки </a>
+                <a href="../new/" class="header__menu-link"> Новинки </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/liquidation" class="header__menu-link">
+                <a href="../liquidation/" class="header__menu-link">
                   Ликвидация
                 </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/sert" class="header__menu-link">
+                <a href="../sert/" class="header__menu-link">
                   Подарочная карта
                 </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/shops" class="header__menu-link">
-                  Магазины
-                </a>
+                <a href="../shops/" class="header__menu-link"> Магазины </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/blog" class="header__menu-link"> Блог </a>
+                <a href="../blog/" class="header__menu-link"> Блог </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/app" class="header__menu-link">
-                  Приложение
-                </a>
+                <a href="../app/" class="header__menu-link"> Приложение </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/opt" class="header__menu-link"> Опт </a>
+                <a href="../opt/" class="header__menu-link"> Опт </a>
               </li>
               <li class="header__menu-item">
-                <a href="../pages/partners" class="header__menu-link">
+                <a href="../partners/" class="header__menu-link">
                   Стать поставщиком
                 </a>
               </li>
@@ -379,7 +362,6 @@
       </div>
     </header>
     <main class="main">
-      <h1 class="visually-hidden">Как получить лицензию?</h1>
       <section class="license">
         <div class="license__wrap container">
           <nav class="navigation">
@@ -396,9 +378,9 @@
             </ul>
           </nav>
           <div class="license__item">
-            <h2 class="license__title">
+            <h1 class="license__title">
               Как получить лицензию на покупку оружия?
-            </h2>
+            </h1>
             <p class="license__item-title">1. Получить медицинскую справку.</p>
             <p class="license__item-text">
               Для получения лицензии необходимо два медицинских заключения:<br />
@@ -588,42 +570,49 @@
               <a
                 href="https://vk.com/ohotaktiv"
                 class="footer__social-link vk"
+                target="_blank"
               ></a>
             </li>
             <li class="footer__social-item">
               <a
                 href="https://t.me/ohotaktiv_official"
                 class="footer__social-link tg"
+                target="_blank"
               ></a>
             </li>
             <li class="footer__social-item">
               <a
                 href="https://zen.yandex.ru/id/61d959165d11a84299ef6cec"
                 class="footer__social-link dzen"
+                target="_blank"
               ></a>
             </li>
             <li class="footer__social-item">
               <a
                 href="https://invite.viber.com/?g2=AQBWGT4o6L4o5kr0rsadyda8rq06tZTTk6JORJfWrI7nOwixL3K85OCKiB502Fsh"
                 class="footer__social-link viber"
+                target="_blank"
               ></a>
             </li>
             <li class="footer__social-item">
               <a
                 href="https://ok.ru/ohotaktiv"
                 class="footer__social-link ok"
+                target="_blank"
               ></a>
             </li>
             <li class="footer__social-item">
               <a
                 href="https://www.youtube.com/channel/UCbeXH1XWDsSVL63-d0E43pw"
                 class="footer__social-link youtube"
+                target="_blank"
               ></a>
             </li>
             <li class="footer__social-item">
               <a
                 href="https://rutube.ru/channel/24618421/"
                 class="footer__social-link rutube"
+                target="_blank"
               ></a>
             </li>
           </ul>
@@ -631,24 +620,23 @@
             <p class="footer__download-title">Скачай мобильное приложение</p>
             <ul class="footer__download-list">
               <li class="footer__download-item">
-                <a href="#" class="footer__download-link google">
+                <a
+                  href="https://play.google.com/store/apps/details?id=ru.ohotaktivv.android&hl=ru&gl=US"
+                  class="footer__download-link google"
+                  target="_blank"
+                >
                   <span> Доступно </span>
                   Google Play
                 </a>
               </li>
               <li class="footer__download-item">
                 <a
-                  href="https://play.google.com/store/apps/details?id=ru.ohotaktivv.android&hl=ru&gl=US"
+                  href="https://apps.apple.com/ru/app/%D0%BE%D1%85%D0%BE%D1%82%D0%B0%D0%BA%D1%82%D0%B8%D0%B2-%D0%BE%D1%85%D0%BE%D1%82%D0%B0-%D0%B8-%D1%80%D1%8B%D0%B1%D0%B0%D0%BB%D0%BA%D0%B0/id1590329261"
                   class="footer__download-link appstore"
+                  target="_blank"
                 >
                   <span> Загрузите в </span>
                   AppStore
-                </a>
-              </li>
-              <li class="footer__download-item">
-                <a href="#" class="footer__download-link appgallery">
-                  <span> Откройте в </span>
-                  AppGallery
                 </a>
               </li>
             </ul>

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fill: "row",
     },
     pagination: {
-      el: ".new__cards-swiper-pagination",
+      el: ".detail__cards-swiper-pagination",
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 5,
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
     breakpoints: {
-      1365: {
+      1561: {
         slidesPerView: 4,
         slidesPerGroup: 4,
         grid: {

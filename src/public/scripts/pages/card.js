@@ -112,15 +112,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           <p class="card__right-brand">
             ${res["manufacturer"]}
           </p>
-          <p class="card__right-name">
+          <h1 class="card__right-name">
             ${res["NAME"]}
-          </p>
+          </h1>
           <p class="card__right-article">
             ${res["barcode"] ? `Артикул: ${res["barcode"]}.` : ``} ${
       res["product_code"] ? `Код: ${res["product_code"]}` : ``
     }
           </p>
           <p class="card__right-reviews">
+            ★
             <span>5</span> ${res["reviews"].length} отз.
           </p>
           <p class="card__right-price">

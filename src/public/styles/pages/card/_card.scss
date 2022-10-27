@@ -11,6 +11,8 @@
     }
     &__left {
       width: 742px;
+      display: flex;
+      align-items: center;
       &-wrap {
         max-height: 500px;
         &.swiper {
@@ -133,12 +135,8 @@
         display: inline-block;
         margin-bottom: 30px;
         span {
-          padding-left: 30px;
           margin-right: 16px;
           font-weight: 700;
-          background-image: url("../../../img/star-active.svg");
-          background-repeat: no-repeat;
-          background-position: center;
         }
         &.skeleton {
           width: 96px;
@@ -193,6 +191,7 @@
           margin-left: 10px;
           cursor: pointer;
           text-decoration: underline;
+          text-underline-offset: 3px;
         }
         &.skeleton {
           height: 16px;
@@ -573,8 +572,6 @@
     .card {
       &__left {
         width: 56%;
-        display: flex;
-        align-items: center;
         &-wrap {
           max-height: 400px;
         }
@@ -698,12 +695,6 @@
           display: block;
           margin-bottom: 10px;
           margin-right: 0;
-        }
-        &-reviews {
-          span {
-            padding-left: 20px;
-            background-position: left center;
-          }
         }
         &-text {
           width: 210px;

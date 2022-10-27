@@ -52,10 +52,6 @@
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
       background-position: 96% center;
-      &::placeholder {
-        @include fontSize14;
-        color: var(--footer-title-color);
-      }
     }
     &__list {
       height: 563px;
@@ -82,7 +78,6 @@
       &-address {
         @include fontSize14;
         margin-bottom: 3px;
-        margin-top: 10px;
         font-style: normal;
         span {
           @include fontSize14;

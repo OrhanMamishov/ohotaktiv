@@ -107,6 +107,10 @@ img {
 section {
   padding-top: 30px;
   padding-bottom: 30px;
+  h1 {
+    @include fontSize30;
+    margin-bottom: 40px;
+  }
   h2 {
     @include fontSize24;
     margin-bottom: 50px;
@@ -118,10 +122,6 @@ section {
   h3 {
     @include fontSize20;
   }
-  @media only screen and (max-width: 1560px) {
-    padding-top: 18px;
-    padding-bottom: 18px;
-  }
   @media only screen and (max-width: 1023px) {
     padding-bottom: 6px;
   }
@@ -132,6 +132,9 @@ section {
 main {
   padding-top: 139px;
   padding-bottom: 100px;
+  @media only screen and (max-width: 1023px) {
+    padding-top: 136px;
+  }
   @media only screen and (max-width: 767px) {
     padding-top: 130px;
   }
@@ -174,8 +177,7 @@ main {
     &-wrap {
       position: relative;
       margin-bottom: 18px;
-      background-color: var(--lightness-grey-color);
-      border-radius: 10px;
+      background-color: var(--cart-background-color);
     }
     &-texts {
       position: absolute;
@@ -367,6 +369,7 @@ main {
     left: 0;
     color: var(--grey-form-color);
     transition: top 0.2s ease, font 0.2s ease;
+    font-weight: 600;
   }
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
@@ -717,7 +720,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   &:not(:last-child) {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   &__prop {
     position: relative;
@@ -726,6 +729,7 @@ main {
       align-items: flex-start;
       display: inline;
       padding-right: 3px;
+      padding-bottom: 3px;
       position: relative;
       background-color: var(--white-color);
     }
@@ -784,14 +788,15 @@ main {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  height: 50px;
   &:not(:checked) > input {
     display: none;
   }
   &:not(:checked) > label {
     float: right;
-    padding: 0;
+    padding-top: 10px;
     cursor: pointer;
-    font-size: 54px;
+    font-size: 55px;
     color: var(--primary-color);
   }
   &:not(:checked) > label::before {

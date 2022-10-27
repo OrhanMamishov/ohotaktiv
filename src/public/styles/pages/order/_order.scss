@@ -108,6 +108,17 @@
                 opacity: 1;
               }
             }
+            &.is-open {
+              &.is-flipped {
+                .choices__inner {
+                  border-radius: 100px;
+                }
+                .choices__list {
+                  top: inherit;
+                  bottom: inherit;
+                }
+              }
+            }
           }
         }
         &-input {
@@ -167,13 +178,15 @@
             }
           }
           &-title {
-            margin-bottom: 5px;
+            @include fontSize14;
             font-weight: 700;
           }
           &-text {
+            @include fontSize14;
             margin-bottom: 21px;
           }
           &-price {
+            @include fontSize14;
             padding: 2px 9px;
             display: inline-block;
             margin-right: 22px;
@@ -182,9 +195,11 @@
             font-weight: 700;
           }
           &-date {
+            @include fontSize14;
             display: inline-block;
           }
           &-tel {
+            @include fontSize14;
             display: inline-block;
             padding: 2px 9px;
             margin-bottom: 14px;
@@ -220,21 +235,20 @@
       &-title {
         @include fontSize20;
         padding: 30px 40px;
-        border-bottom: 1px solid var(--light-white-color);
+        border-bottom: 1px solid var(--grey-item-color);
       }
       &-info {
         padding: 30px 40px;
         &:not(:last-child) {
-          border-bottom: 1px solid var(--light-white-color);
+          border-bottom: 1px solid var(--grey-item-color);
         }
       }
       &-text {
         @include fontSize14;
         max-width: 180px;
         &.text-bold {
-          @include fontSize18;
+          @include fontSize16;
           margin-bottom: 30px;
-          font-weight: 700;
         }
         &.text-green {
           color: var(--green-color);
@@ -275,8 +289,6 @@
 }
 .footer {
   padding: 33px 0;
-  background-color: var(--cart-background-footer-color);
-  background-image: unset;
   &__wrap {
     display: block;
     padding-top: 0 !important;

@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     definitions: {
       "*": {
-        validator: "[А-Яа-яЁё-]",
+        validator: "[А-Яа-я- Ёё /]",
       },
     },
   }).mask(nameInput);

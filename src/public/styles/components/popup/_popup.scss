@@ -20,38 +20,30 @@
     max-height: 100vh;
     &-title {
       @include fontSize20;
-      font-weight: 900;
       margin-bottom: 60px;
     }
     &-subtitle {
-      @include fontSize15;
-      margin-bottom: 25px;
-      font-weight: 800;
+      @include fontSize16;
+      margin-bottom: 26px;
     }
     &-text {
       @include fontSize14;
       margin-bottom: 14px;
     }
-    .input-wrap,
-    .input-wrap-file {
-      label {
-        @include fontSize13;
-      }
-    }
     &-input {
       @include contentInput;
-      @include fontSize13;
+      @include fontSize14;
+      font-weight: 600;
     }
     &-button {
       @include contentButton;
-      @include fontSize13;
+      @include fontSize14;
+      padding: 14px 26px;
       margin-top: 25px;
-      padding: 16px 26px;
+      font-weight: 600;
     }
     &-close {
       @include closeButton;
-      top: 30px;
-      right: 30px;
     }
     &-top {
       &-title {
@@ -81,9 +73,11 @@
       }
       &__input {
         @include contentInput;
+        @include fontSize14;
         padding: 14px 0;
         width: 572px;
         margin-bottom: 36px;
+        line-height: initial;
       }
       &__item {
         &:not(:last-child) {
@@ -127,6 +121,9 @@
       .input-wrap {
         width: 273px;
         margin-bottom: 40px;
+        input {
+          line-height: initial;
+        }
         &-file {
           grid-area: 3 / 1 / 4 / 3;
         }
@@ -164,9 +161,11 @@
     }
   }
 }
-#popup-status {
+#popup-status,
+#popup-city {
   .popup {
     &__wrap {
+      padding: 40px 50px;
       &-input {
         padding: 14px 0;
       }

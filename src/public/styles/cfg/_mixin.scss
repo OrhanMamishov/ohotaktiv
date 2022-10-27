@@ -77,7 +77,7 @@
 }
 
 @mixin contentButton {
-  padding: 14px 26px;
+  padding: 16px 26px;
   background-color: var(--primary-color);
   border-radius: 100px;
   color: var(--black-color);
@@ -86,8 +86,10 @@
 @mixin closeButton {
   position: absolute;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  right: 20px;
   background-image: url("../../../img/close-button.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -107,9 +109,6 @@
   transition: border 0.2s ease;
   &::placeholder {
     color: var(--grey-color);
-  }
-  &:hover {
-    // border-color: var(--dark-grey-color);
   }
   &:focus {
     border-color: var(--primary-color);
@@ -159,22 +158,20 @@
   }
 }
 @mixin tabsList {
+  margin-bottom: 50px;
   width: 100%;
   display: flex;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--grey-item-color);
   li {
-    @include fontSize16;
-    padding: 15px 0;
-    color: var(--grey-form-color);
-    font-weight: 700;
+    @include fontSize20;
+    padding: 10px 0;
     cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition: border-color 0.2s ease;
     &.is-active {
-      color: var(--black-color);
       border-bottom: 2px solid var(--black-color);
     }
     &:not(:last-child) {
-      margin-right: 78px;
+      margin-right: 50px;
     }
   }
 }

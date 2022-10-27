@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
     breakpoints: {
-      1365: {
+      1561: {
         slidesPerView: 4,
         slidesPerGroup: 4,
         grid: {

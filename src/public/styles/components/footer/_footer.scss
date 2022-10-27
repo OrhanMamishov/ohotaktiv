@@ -146,7 +146,7 @@
     &-item {
       width: 160px;
       border-radius: 5px;
-      background-color: var(--footer-background-color);
+      background-color: rgba(164, 164, 164, 0.1);
       transition: opacity 0.2s ease;
       &:hover {
         opacity: 0.5;
@@ -154,7 +154,7 @@
     }
     &-link {
       display: block;
-      padding: 9px 23px 9px 43px;
+      padding: 9px 23px 4px 43px;
       background-repeat: no-repeat;
       background-position: 15px center;
       color: var(--white-color);
@@ -166,16 +166,11 @@
         font-weight: 600;
       }
       &.google {
-        background-image: url("../../../img/google-play.svg");
-        background-size: 15px;
+        background-image: url("../../../img/google-play.png");
       }
       &.appstore {
         background-image: url("../../../img/app-store.svg");
         background-size: 17px;
-      }
-      &.appgallery {
-        background-image: url("../../../img/app-gallery.svg");
-        background-size: 20px;
       }
     }
   }

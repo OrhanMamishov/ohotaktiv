@@ -12,8 +12,8 @@
       align-items: center;
     }
     &__title {
-      font-weight: 900;
-      font-size: 40px;
+      @include fontSize35;
+      margin-bottom: 0;
       color: var(--white-color);
       text-align: center;
     }
@@ -24,15 +24,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
       grid-column-gap: 101px;
-    }
-    &__subtext {
-      @include fontSize14;
-      margin-bottom: 30px;
-      display: inline-block;
-      padding: 4px 14px;
-      background-color: var(--light-grey-color);
-      font-weight: 700;
-      border-radius: 100px;
     }
     &__title {
       @include fontSize24;

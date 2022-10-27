@@ -79,6 +79,8 @@
       width: 400px;
     }
     &__address {
+      @include fontSize16;
+      font-weight: 600;
       font-style: normal;
       span {
         font-weight: 700;
@@ -87,7 +89,7 @@
     &__tel {
       @include fontSize16;
       position: absolute;
-      bottom: 10px;
+      bottom: 6px;
       left: 50%;
       transform: translate(-50%, 0);
       text-align: center;
@@ -99,7 +101,9 @@
   }
   .blank {
     &__text {
+      @include fontSize16;
       margin-bottom: 40px;
+      font-weight: 600;
     }
     &__wrap {
       max-width: 960px;
@@ -139,7 +143,7 @@
             @include fontSize14;
           }
           &:not(:last-child) {
-            margin-bottom: 30px;
+            margin-bottom: 50px;
           }
         }
         &:nth-child(5) {
@@ -147,9 +151,6 @@
             margin-bottom: 10px;
           }
         }
-      }
-      &-input {
-        padding-right: 25px;
       }
       &-title {
         @include fontSize18;
@@ -162,10 +163,23 @@
       }
       &-button {
         @include contentButton;
-        width: 100%;
       }
       &-subtext {
         margin-bottom: 50px;
+      }
+      .input-wrap {
+        input {
+          @include fontSize16;
+          font-weight: 600;
+        }
+        label {
+          @include fontSize16;
+          font-weight: 600;
+        }
+        input:focus ~ label,
+        input:not(:placeholder-shown) ~ label {
+          font-size: 10px;
+        }
       }
     }
   }
@@ -206,7 +220,7 @@
         padding-bottom: 78px;
       }
       &__tel {
-        bottom: 0;
+        bottom: 5px;
       }
     }
   }
@@ -221,13 +235,21 @@
       }
     }
     .addresses {
+      &__address {
+        span {
+          display: block;
+        }
+      }
       &__list {
         width: 100%;
         justify-content: center;
         gap: 25px 102px;
       }
       &__item {
-        width: 200px;
+        width: 215px;
+      }
+      &__tel {
+        bottom: -17px;
       }
     }
   }
@@ -240,20 +262,7 @@
       background-position: 35%;
     }
     .description {
-      &__wrap {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 36px;
-        padding-top: 30px;
-        padding-bottom: 46px;
-      }
-      &__item {
-        padding: 12px 0 12px 67px;
-        background-size: 40px;
-        background-position: left center;
-        text-align: left;
-      }
+      display: none;
     }
     .addresses {
       &__list {
