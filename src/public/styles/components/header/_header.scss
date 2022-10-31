@@ -571,16 +571,13 @@
           order: 5;
         }
         &:nth-child(3) {
-          display: none;
-        }
-        &:nth-child(4) {
           order: 3;
         }
-        &:nth-child(5) {
-          display: block;
+        &:nth-child(4) {
           order: 1;
+          display: block;
         }
-        &:nth-child(6) {
+        &:nth-child(5) {
           display: block;
           order: 2;
         }

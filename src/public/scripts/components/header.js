@@ -42,6 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
       { visibility: "visible", opacity: 1, duration: 0.1 }
     )
     .fromTo(headerMenu, { x: "100%", duration: 0.2 }, { x: 0, duration: 0.2 });
+  document.addEventListener("click", (e) => {
+    if (e.target.className == "popup__background") {
+      bodyScrollToggle();
+      e.target.parentElement.remove();
+    }
+    if (e.target.className == "popup__wrap-close") {
+      document.querySelector(".popup__background").click();
+    }
+  });
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();
@@ -62,15 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
       document.body.insertAdjacentHTML("beforeend", popupStatusElement);
       const popupStatus = document.getElementById("popup-status");
-      const closePopup = document.querySelector(".popup__wrap-close");
-      const backgroundPopup = document.querySelector(".popup__background");
       const inputPopup = document.querySelector(".popup__wrap-input");
       const buttonPopup = document.querySelector(".popup__wrap-button");
-      closePopup.addEventListener("click", () => {
-        bodyScrollToggle();
-        popupStatus.remove();
-      });
-      backgroundPopup.addEventListener("click", () => closePopup.click());
       inputPopup.addEventListener("input", (e) => {
         if (inputPopup.classList.contains("is-not-valid"))
           inputPopup.classList.remove("is-not-valid");
@@ -128,21 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
       document.body.insertAdjacentHTML("beforeend", popupCityElement);
-      const popupCity = document.getElementById("popup-city");
-      const closePopup = document.querySelector(".popup__wrap-close");
-      const backgroundPopup = document.querySelector(".popup__background");
-      const cityConfirmButton = document.getElementById("city-confirm");
       const topPopup = document.querySelector(".popup__wrap-top");
       const chooseWrap = document.querySelector(".choose-cities__wrap");
       const cityChangeButton = document.getElementById("city-change");
-      closePopup.addEventListener("click", () => {
-        bodyScrollToggle();
-        popupCity.remove();
-      });
-      backgroundPopup.addEventListener("click", () => closePopup.click());
-      cityConfirmButton.addEventListener("click", () => {
-        closePopup.click();
-      });
       cityChangeButton.addEventListener("click", () => {
         topPopup.style.display = "none";
         chooseWrap.style.display = "block";

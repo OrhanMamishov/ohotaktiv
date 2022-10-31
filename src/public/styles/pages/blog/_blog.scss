@@ -14,13 +14,18 @@
         display: block;
       }
     }
+    &__link {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
     &__item {
+      height: 450px;
       &-img {
         margin-bottom: 20px;
       }
       &-title {
         @include fontSize15;
-        margin-bottom: 10px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -28,6 +33,7 @@
       }
       &-text {
         @include fontSize14;
+        margin-top: auto;
         margin-bottom: 20px;
         display: -webkit-box;
         -webkit-line-clamp: 3;

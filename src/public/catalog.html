@@ -81,15 +81,12 @@
               <a href="../blog/" class="header__pages-link">Блог</a>
             </li>
             <li class="header__pages-item for-desktop">
-              <a href="../app/" class="header__pages-link">Приложение</a>
-            </li>
-            <li class="header__pages-item for-desktop">
-              <a href="../opt/" class="header__pages-link">Опт</a>
-            </li>
-            <li class="header__pages-item for-desktop">
               <a href="../partners/" class="header__pages-link"
                 >Стать поставщиком</a
               >
+            </li>
+            <li class="header__pages-item for-desktop">
+              <a href="../opt/" class="header__pages-link">Опт</a>
             </li>
             <li class="header__pages-item for-mobile">
               <button class="header__status">Статус заказа</button>
@@ -156,9 +153,7 @@
               <li class="header__menu-item">
                 <a href="../blog/" class="header__menu-link"> Блог </a>
               </li>
-              <li class="header__menu-item">
-                <a href="../app/" class="header__menu-link"> Приложение </a>
-              </li>
+
               <li class="header__menu-item">
                 <a href="../opt/" class="header__menu-link"> Опт </a>
               </li>
@@ -394,7 +389,6 @@
               <a href="#" class="catalog__link"> Служебное </a>
               <a href="#" class="catalog__link"> Охолощенное оружие </a>
               <a href="#" class="catalog__link"> Макеты оружия </a>
-              <button class="catalog__more none">Еще 10 категорий</button>
             </li>
             <li class="catalog__item">
               <div class="catalog__img-wrap">
@@ -407,27 +401,81 @@
               <a href="#" class="catalog__link title">
                 Патроны и комплектующие
               </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
+              <div class="catalog__accordion accordion-container">
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Патроны </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Нарезные </a>
+                      <a href="#" class="catalog__link"> Гладкоствольные </a>
+                      <a href="#" class="catalog__link"> Травматические </a>
+                      <a href="#" class="catalog__link"> Служебные </a>
+                      <a href="#" class="catalog__link"> Свето-звуковые </a>
+                      <a href="#" class="catalog__link"> Испытательные </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle">
+                      Комплектующие
+                    </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Порох </a>
+                      <a href="#" class="catalog__link"> Гильзы </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Патроны </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Нарезные </a>
+                      <a href="#" class="catalog__link"> Гладкоствольные </a>
+                      <a href="#" class="catalog__link"> Травматические </a>
+                      <a href="#" class="catalog__link"> Служебные </a>
+                      <a href="#" class="catalog__link"> Свето-звуковые </a>
+                      <a href="#" class="catalog__link"> Испытательные </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Порох </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Гильзы </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="catalog__item">
+              <div class="catalog__img-wrap">
+                <img
+                  src="img/catalog-img.png"
+                  alt="Картинка каталога"
+                  class="catalog__img"
+                />
+              </div>
+              <a href="#" class="catalog__link title"> Огнестрельное оружие </a>
+              <a href="#" class="catalog__link"> Гладкоствольное </a>
+              <a href="#" class="catalog__link"> Нарезное </a>
+              <a href="#" class="catalog__link"> Травматическое </a>
+              <a href="#" class="catalog__link"> Служебное </a>
+              <a href="#" class="catalog__link"> Охолощенное оружие </a>
+              <a href="#" class="catalog__link"> Макеты оружия </a>
             </li>
             <li class="catalog__item">
               <div class="catalog__img-wrap">
@@ -440,17 +488,81 @@
               <a href="#" class="catalog__link title">
                 Патроны и комплектующие
               </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
+              <div class="catalog__accordion accordion-container">
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Патроны </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Нарезные </a>
+                      <a href="#" class="catalog__link"> Гладкоствольные </a>
+                      <a href="#" class="catalog__link"> Травматические </a>
+                      <a href="#" class="catalog__link"> Служебные </a>
+                      <a href="#" class="catalog__link"> Свето-звуковые </a>
+                      <a href="#" class="catalog__link"> Испытательные </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle">
+                      Комплектующие
+                    </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Порох </a>
+                      <a href="#" class="catalog__link"> Гильзы </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Патроны </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Нарезные </a>
+                      <a href="#" class="catalog__link"> Гладкоствольные </a>
+                      <a href="#" class="catalog__link"> Травматические </a>
+                      <a href="#" class="catalog__link"> Служебные </a>
+                      <a href="#" class="catalog__link"> Свето-звуковые </a>
+                      <a href="#" class="catalog__link"> Испытательные </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Порох </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Гильзы </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="catalog__item">
+              <div class="catalog__img-wrap">
+                <img
+                  src="img/catalog-img.png"
+                  alt="Картинка каталога"
+                  class="catalog__img"
+                />
+              </div>
+              <a href="#" class="catalog__link title"> Огнестрельное оружие </a>
+              <a href="#" class="catalog__link"> Гладкоствольное </a>
+              <a href="#" class="catalog__link"> Нарезное </a>
+              <a href="#" class="catalog__link"> Травматическое </a>
+              <a href="#" class="catalog__link"> Служебное </a>
+              <a href="#" class="catalog__link"> Охолощенное оружие </a>
+              <a href="#" class="catalog__link"> Макеты оружия </a>
             </li>
             <li class="catalog__item">
               <div class="catalog__img-wrap">
@@ -463,155 +575,65 @@
               <a href="#" class="catalog__link title">
                 Патроны и комплектующие
               </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
-            </li>
-            <li class="catalog__item">
-              <div class="catalog__img-wrap">
-                <img
-                  src="img/catalog-img.png"
-                  alt="Картинка каталога"
-                  class="catalog__img"
-                />
+              <div class="catalog__accordion accordion-container">
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Патроны </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Нарезные </a>
+                      <a href="#" class="catalog__link"> Гладкоствольные </a>
+                      <a href="#" class="catalog__link"> Травматические </a>
+                      <a href="#" class="catalog__link"> Служебные </a>
+                      <a href="#" class="catalog__link"> Свето-звуковые </a>
+                      <a href="#" class="catalog__link"> Испытательные </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle">
+                      Комплектующие
+                    </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Порох </a>
+                      <a href="#" class="catalog__link"> Гильзы </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Патроны </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Нарезные </a>
+                      <a href="#" class="catalog__link"> Гладкоствольные </a>
+                      <a href="#" class="catalog__link"> Травматические </a>
+                      <a href="#" class="catalog__link"> Служебные </a>
+                      <a href="#" class="catalog__link"> Свето-звуковые </a>
+                      <a href="#" class="catalog__link"> Испытательные </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="ac">
+                  <h2 class="ac-header">
+                    <a href="#" class="catalog__link-subtitle"> Порох </a>
+                    <button type="button" class="ac-trigger"></button>
+                  </h2>
+                  <div class="ac-panel">
+                    <div class="ac-panel-wrap">
+                      <a href="#" class="catalog__link"> Гильзы </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <a href="#" class="catalog__link title">
-                Патроны и комплектующие
-              </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
-            </li>
-            <li class="catalog__item">
-              <div class="catalog__img-wrap">
-                <img
-                  src="img/catalog-img.png"
-                  alt="Картинка каталога"
-                  class="catalog__img"
-                />
-              </div>
-              <a href="#" class="catalog__link title">
-                Патроны и комплектующие
-              </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
-            </li>
-            <li class="catalog__item">
-              <div class="catalog__img-wrap">
-                <img
-                  src="img/catalog-img.png"
-                  alt="Картинка каталога"
-                  class="catalog__img"
-                />
-              </div>
-              <a href="#" class="catalog__link title">
-                Патроны и комплектующие
-              </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
-            </li>
-            <li class="catalog__item">
-              <div class="catalog__img-wrap">
-                <img
-                  src="img/catalog-img.png"
-                  alt="Картинка каталога"
-                  class="catalog__img"
-                />
-              </div>
-              <a href="#" class="catalog__link title">
-                Патроны и комплектующие
-              </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
-            </li>
-            <li class="catalog__item">
-              <div class="catalog__img-wrap">
-                <img
-                  src="img/catalog-img.png"
-                  alt="Картинка каталога"
-                  class="catalog__img"
-                />
-              </div>
-              <a href="#" class="catalog__link title">
-                Патроны и комплектующие
-              </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
-            </li>
-            <li class="catalog__item">
-              <div class="catalog__img-wrap">
-                <img
-                  src="img/catalog-img.png"
-                  alt="Картинка каталога"
-                  class="catalog__img"
-                />
-              </div>
-              <a href="#" class="catalog__link title">
-                Патроны и комплектующие
-              </a>
-              <a href="#" class="catalog__link subtitle"> Патроны </a>
-              <a href="#" class="catalog__link"> Нарезные </a>
-              <a href="#" class="catalog__link"> Гладкоствольные </a>
-              <a href="#" class="catalog__link"> Травматические </a>
-              <a href="#" class="catalog__link"> Служебные </a>
-              <a href="#" class="catalog__link"> Свето-звуковые </a>
-              <a href="#" class="catalog__link"> Испытательные </a>
-              <a href="#" class="catalog__link subtitle"> Комплектующие </a>
-              <a href="#" class="catalog__link"> Порох </a>
-              <a href="#" class="catalog__link"> Гильзы </a>
-              <button class="catalog__more">Еще 10 категорий</button>
             </li>
           </ul>
         </div>

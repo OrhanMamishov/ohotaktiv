@@ -1,12 +1,14 @@
 .main {
   .catalog {
-    display: none;
+    // display: none;
     &__list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 330px));
       gap: 35px;
     }
     &__img {
+      height: inherit;
+      object-fit: scale-down;
       &-wrap {
         margin-bottom: 38px;
         height: 221px;
@@ -15,33 +17,54 @@
     }
     &__link {
       @include fontSize14;
+      position: relative;
       display: block;
+      width: fit-content;
       margin-bottom: 8px;
       &.title {
         @include fontSize18;
         margin-bottom: 28px;
         font-weight: 700;
       }
-      &.subtitle {
-        margin-top: 19px;
-        font-weight: 700;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 0;
+        background-color: var(--black-color);
+        transition: width 0.2s ease;
       }
-      &:nth-child(n + 13) {
-        display: none;
+      &:hover {
+        &::after {
+          width: 100%;
+        }
       }
     }
-    &__more {
-      @include fontSize14;
-      margin-top: 30px;
-      padding: 10px 22px;
-      border: 1px solid var(--grey-form-color);
-      border-radius: 100px;
-      &.none {
-        display: none;
+    &__accordion {
+      .ac {
+        border: none;
+        &-trigger {
+          padding: 0;
+          &:focus {
+            color: unset;
+          }
+        }
+        &-panel {
+          &-wrap {
+            padding-top: 10px;
+          }
+        }
+        &-header {
+          @include fontSize14;
+          display: flex;
+        }
       }
     }
   }
   .detail {
+    display: none;
     &__columns {
       margin-bottom: 100px;
       display: flex;
@@ -184,6 +207,10 @@
         &-button {
           @include fontSize14;
           font-weight: 700;
+          transition: color 0.2s ease;
+          &:hover {
+            color: var(--primary-color);
+          }
         }
         &::before {
           content: "";
@@ -349,11 +376,6 @@
 @media only screen and (max-width: 767px) {
   .main {
     .catalog {
-      &__link {
-        &:nth-child(n + 8) {
-          display: none;
-        }
-      }
       &__list {
         grid-template-columns: repeat(auto-fit, minmax(240px, 410px));
         gap: 35px;

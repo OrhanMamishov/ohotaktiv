@@ -45,27 +45,17 @@
     }
     &__input {
       @include contentInput;
-      width: 700px;
-      display: block;
-      margin: 0 auto 76px auto;
+      margin-bottom: 30px;
       padding: 18px 60px 18px 35px;
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
       background-position: 96% center;
     }
     &__list {
+      @include contentScroll;
       height: 563px;
       padding-right: 10px;
       overflow-x: hidden;
-      &::-webkit-scrollbar {
-        width: 2px;
-        &-track {
-          background: var(--light-grey-color);
-        }
-        &-thumb {
-          background-color: var(--darkness-white-color);
-        }
-      }
     }
     &__item {
       border-style: solid;

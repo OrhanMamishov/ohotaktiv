@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainBannerSwiper = new Swiper(".swiper-banner", {
     modules: [Pagination],
     spaceBetween: 30,
+    loop: true,
     pagination: {
       el: ".banners__pagination",
     },
@@ -63,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const popularSwiper = new Swiper(".swiper-popular", {
     modules: [Navigation],
     freeMode: true,
+    spaceBetween: 35,
+    slidesPerView: 4,
     navigation: {
       nextEl: ".popular__swiper-button-next",
       prevEl: ".popular__swiper-button-prev",
@@ -70,19 +73,23 @@ document.addEventListener("DOMContentLoaded", () => {
     breakpoints: {
       1559: {
         spaceBetween: 35,
-        slidesPerView: 5,
-      },
-      1439: {
-        spaceBetween: 30,
         slidesPerView: 4,
       },
-      500: {
+      1365: {
+        spaceBetween: 30,
+        slidesPerView: 3.5,
+      },
+      769: {
         spaceBetween: 30,
         slidesPerView: 3,
       },
+      600: {
+        spaceBetween: 30,
+        slidesPerView: 2.5,
+      },
       320: {
         spaceBetween: 10,
-        slidesPerView: 2,
+        slidesPerView: 1.5,
       },
     },
   });
@@ -95,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     breakpoints: {
       1559: {
-        spaceBetween: 35,
+        spaceBetween: 80,
         slidesPerView: 3,
       },
       1439: {
@@ -123,25 +130,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   //eslint-disable-next-line
   const readySwiper = new Swiper(".swiper-ready", {
-    modules: [Pagination, Autoplay],
-    // autoplay: {
-    //   delay: 4000,
-    //   pauseOnMouseEnter: true,
-    //   disableOnInteraction: false,
-    // },
-    spaceBetween: 30,
-    pagination: {
-      el: ".ready__pagination",
-      clickable: true,
-      renderBullet: function (index, className) {
-        const names = document.querySelectorAll("[data-name-rus]");
-        return (
-          '<button class="' +
-          className +
-          '">' +
-          names[index].getAttribute("data-name-rus") +
-          "</button>"
-        );
+    modules: [Navigation],
+    navigation: {
+      nextEl: ".ready__swiper-button-next",
+      prevEl: ".ready__swiper-button-prev",
+    },
+    breakpoints: {
+      1559: {
+        spaceBetween: 35,
+        slidesPerView: 3,
+      },
+      1439: {
+        spaceBetween: 30,
+        slidesPerView: 3,
+      },
+      1023: {
+        spaceBetween: 30,
+        slidesPerView: 2.5,
+      },
+      767: {
+        spaceBetween: 30,
+        slidesPerView: 2,
+      },
+      500: {
+        spaceBetween: 10,
+        slidesPerView: 2,
+      },
+      320: {
+        freeMode: true,
+        spaceBetween: 10,
+        slidesPerView: 1.5,
       },
     },
   });

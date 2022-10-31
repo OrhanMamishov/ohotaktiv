@@ -13,11 +13,12 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    overflow-x: hidden;
+    max-height: 100vh;
+    border-radius: 15px;
     background-color: var(--white-color);
     transform: translate(-50%, -50%);
     z-index: 999;
-    overflow-x: hidden;
-    max-height: 100vh;
     &-title {
       @include fontSize20;
       margin-bottom: 60px;
@@ -185,6 +186,16 @@
     &__form {
       &-textarea {
         margin-bottom: 41px;
+      }
+    }
+  }
+}
+#popup-status {
+  .popup {
+    &__wrap {
+      &-button {
+        width: 100%;
+        margin-top: 34px;
       }
     }
   }

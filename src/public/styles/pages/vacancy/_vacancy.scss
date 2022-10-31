@@ -68,14 +68,6 @@
       }
     }
   }
-  .about {
-    padding-bottom: 80px;
-    &__img {
-      display: block;
-      margin: 0 auto;
-      max-width: 906px;
-    }
-  }
   .vacancy {
     &__input {
       @include contentInput;
@@ -217,8 +209,7 @@
         max-width: 400px;
       }
     }
-    .why,
-    .about {
+    .why {
       display: none;
     }
     .vacancy {

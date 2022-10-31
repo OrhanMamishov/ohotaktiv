@@ -1,20 +1,15 @@
 .main {
   .brands {
     &__input {
+      @include contentInput;
       @include fontSize14;
       width: 700px;
       display: block;
-      margin: 0 auto 107px auto;
-      padding: 18px 20px 18px 60px;
-      border: 1px solid var(--grey-form-color);
-      border-radius: 100px;
+      margin: 0 auto 170px auto;
+      padding: 18px 60px 18px 35px;
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
-      background-position: 25px center;
-      &::placeholder {
-        @include fontSize14;
-        color: var(--footer-title-color);
-      }
+      background-position: 96% center;
     }
     &__list {
       margin-bottom: 80px;
