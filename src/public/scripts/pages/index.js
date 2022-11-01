@@ -7,21 +7,20 @@ import "swiper/css/bundle";
 document.addEventListener("DOMContentLoaded", () => {
   // Свайперы
   //eslint-disable-next-line
-  const templateSwipers = [
-    "swiper-bestsellers",
-    "swiper-new",
-    "swiper-recommended",
-  ];
+  const templateSwipers = ["bestsellers", "new", "recommended"];
   templateSwipers.forEach((swiper) => {
-    const swiperNew = new Swiper("." + swiper, {
+    const swiperNew = new Swiper(".swiper-" + swiper, {
       spaceBetween: 16,
-      modules: [Navigation],
+      modules: [Navigation, Pagination],
       allowTouchMove: false,
       navigation: {
-        nextEl: `.${swiper.split("-").reverse().join("__")}-button-next`,
-        prevEl: `.${swiper.split("-").reverse().join("__")}-button-prev`,
+        nextEl: `.${swiper}__swiper-button-next`,
+        prevEl: `.${swiper}__swiper-button-prev`,
       },
-
+      // loop: true,
+      pagination: {
+        el: `.${swiper}__pagination`,
+      },
       breakpoints: {
         1559: {
           slidesPerView: 5,
@@ -62,13 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   //eslint-disable-next-line
   const popularSwiper = new Swiper(".swiper-popular", {
-    modules: [Navigation],
+    modules: [Navigation, Pagination],
     freeMode: true,
     spaceBetween: 35,
     slidesPerView: 4,
+    loop: true,
     navigation: {
       nextEl: ".popular__swiper-button-next",
       prevEl: ".popular__swiper-button-prev",
+    },
+    pagination: {
+      el: ".popular__pagination",
     },
     breakpoints: {
       1559: {
@@ -85,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       600: {
         spaceBetween: 30,
-        slidesPerView: 2.5,
+        slidesPerView: 2,
       },
       320: {
         spaceBetween: 10,
@@ -95,71 +98,69 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   //eslint-disable-next-line
   const blogSwiper = new Swiper(".swiper-blog", {
-    modules: [Navigation],
+    modules: [Navigation, Pagination],
     navigation: {
       nextEl: ".blog__swiper-button-next",
       prevEl: ".blog__swiper-button-prev",
     },
+    pagination: {
+      el: ".blog__pagination",
+    },
+    loop: true,
     breakpoints: {
       1559: {
-        spaceBetween: 80,
+        spaceBetween: 34,
         slidesPerView: 3,
       },
       1439: {
-        spaceBetween: 30,
+        spaceBetween: 37,
         slidesPerView: 3,
       },
       1023: {
-        spaceBetween: 30,
-        slidesPerView: 2.5,
-      },
-      767: {
-        spaceBetween: 30,
+        spaceBetween: 34,
         slidesPerView: 2,
       },
       500: {
-        spaceBetween: 10,
+        spaceBetween: 30,
         slidesPerView: 2,
       },
       320: {
-        freeMode: true,
         spaceBetween: 10,
-        slidesPerView: 1.5,
+        slidesPerView: 1,
       },
     },
   });
   //eslint-disable-next-line
   const readySwiper = new Swiper(".swiper-ready", {
-    modules: [Navigation],
+    modules: [Navigation, Pagination],
     navigation: {
       nextEl: ".ready__swiper-button-next",
       prevEl: ".ready__swiper-button-prev",
     },
+    pagination: {
+      el: ".ready__pagination",
+    },
+    loop: true,
     breakpoints: {
       1559: {
         spaceBetween: 35,
         slidesPerView: 3,
       },
-      1439: {
-        spaceBetween: 30,
-        slidesPerView: 3,
-      },
-      1023: {
+      1144: {
         spaceBetween: 30,
         slidesPerView: 2.5,
       },
-      767: {
+      820: {
         spaceBetween: 30,
         slidesPerView: 2,
       },
       500: {
-        spaceBetween: 10,
-        slidesPerView: 2,
+        spaceBetween: 25,
+        slidesPerView: 1.5,
       },
       320: {
-        freeMode: true,
         spaceBetween: 10,
-        slidesPerView: 1.5,
+        slidesPerView: 1,
       },
     },
   });

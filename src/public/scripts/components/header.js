@@ -42,15 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       { visibility: "visible", opacity: 1, duration: 0.1 }
     )
     .fromTo(headerMenu, { x: "100%", duration: 0.2 }, { x: 0, duration: 0.2 });
-  document.addEventListener("click", (e) => {
-    if (e.target.className == "popup__background") {
-      bodyScrollToggle();
-      e.target.parentElement.remove();
-    }
-    if (e.target.className == "popup__wrap-close") {
-      document.querySelector(".popup__background").click();
-    }
-  });
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();

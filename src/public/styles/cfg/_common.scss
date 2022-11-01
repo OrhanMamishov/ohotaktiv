@@ -107,6 +107,7 @@ img {
 section {
   padding-top: 30px;
   padding-bottom: 30px;
+  background-color: var(--white-color);
   h1 {
     @include fontSize30;
     margin-bottom: 40px;
@@ -164,12 +165,12 @@ main {
   margin: -1px;
 }
 .card-item {
-  width: 275px;
+  background-color: var(--white-color);
   cursor: pointer;
   padding: 20px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
+  // border-width: 1px;
+  // border-style: solid;
+  // border-color: transparent;
   border-radius: 10px;
   &__photo {
     height: 100%;
@@ -271,13 +272,13 @@ main {
     @include fontSize14;
     padding: 10px 18px;
   }
-  &:hover {
-    border-color: var(--grey-color);
-    transition: border-color 0.2s ease;
-    @media only screen and (max-width: 1023px) {
-      border: none;
-    }
-  }
+  // &:hover {
+  //   border-color: var(--grey-color);
+  //   transition: border-color 0.2s ease;
+  //   @media only screen and (max-width: 1023px) {
+  //     border: none;
+  //   }
+  // }
   &.skeleton {
     width: 270px;
     height: 300px;
