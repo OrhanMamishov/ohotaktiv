@@ -9,7 +9,6 @@ import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
-import gsap from "gsap";
 import wNumb from "wnumb";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
 import { bodyScrollToggle } from "../functions/scrollBody";
@@ -38,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fill: "row",
     },
     pagination: {
-      el: ".detail__cards-swiper-pagination",
+      el: ".liquidation__cards-swiper-pagination",
       clickable: true,
       dynamicBullets: true,
       dynamicMainBullets: 5,
@@ -83,24 +82,26 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
-  const tlFilter = gsap.timeline({ paused: true });
   const filterWrap = document.querySelector(".liquidation__filters");
   const filter = document.querySelector(".liquidation__filters-wrap");
   const liquidationSection = document.querySelector(".liquidation");
   liquidationSection.addEventListener("click", (e) => {
     if (e.target.className == "liquidation__cards-filter-open") {
-      tlFilter
-        .to(filterWrap, { visibility: "visible", opacity: 1, duration: 0.1 })
-        .to(filter, { x: 0, duration: 0.2 });
       bodyScrollToggle();
-      tlFilter.play();
+      filterWrap.style.visibility = "visible";
+      filterWrap.style.opacity = 1;
+      filter.style.transform = "translateX(0)";
     }
     if (
       e.target.className == "liquidation__close" ||
       e.target.className == "liquidation__filters-background"
     ) {
       bodyScrollToggle();
-      tlFilter.reverse();
+      filterWrap.style.opacity = 0;
+      filter.style.transform = "translateX(-100%)";
+      setTimeout(() => {
+        filterWrap.style.visibility = "hidden";
+      }, 200);
     }
   });
 });

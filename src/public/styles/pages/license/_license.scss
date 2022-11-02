@@ -3,12 +3,14 @@
     &__item {
       max-width: 948px;
       &-title {
-        margin-bottom: 15px;
-        font-weight: 700;
+        @include fontSize18;
+        margin-bottom: 5px;
       }
       &-text {
+        @include fontSize15;
+        font-weight: 500;
         &:not(:last-child) {
-          margin-bottom: 55px;
+          margin-bottom: 40px;
         }
       }
       &:not(:last-child) {

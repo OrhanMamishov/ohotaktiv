@@ -31,7 +31,8 @@
       font-weight: 700;
     }
     &__text {
-      @include fontSize14;
+      @include fontSize15;
+      font-weight: 600;
       margin-bottom: 40px;
       span {
         display: block;
@@ -39,14 +40,13 @@
       }
     }
     &__warn {
-      @include fontSize14;
+      @include fontSize15;
       padding: 20px 35px;
       background-color: var(--primary-color);
       border-radius: 10px;
       span {
-        @include fontSize16;
-        display: block;
-        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 3px;
       }
     }
   }

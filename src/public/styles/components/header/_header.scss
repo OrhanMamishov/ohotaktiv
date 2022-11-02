@@ -120,6 +120,8 @@
     padding-top: 50px !important;
     padding-bottom: 50px !important;
     overflow-x: hidden;
+    transform: translateY(-10px);
+    transition: transform 0.2s ease;
     &-button {
       @include contentButton;
       margin-right: 35px;
@@ -208,6 +210,9 @@
       height: 100vh;
       visibility: hidden;
       background-color: var(--cart-background-color);
+      transition: visibility 0.2s ease, opacity 0.2s ease;
+      opacity: 0;
+      visibility: hidden;
     }
     &-close {
       @include closeButton;
@@ -269,9 +274,13 @@
     }
   }
   &__menu {
+    transition: transform 0.2s ease;
+    transform: translateX(100%);
     &-wrap {
-      visibility: hidden;
       display: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      visibility: hidden;
     }
   }
 }
@@ -431,6 +440,7 @@
       padding: 30px 50px !important;
       margin: 0 !important;
       background-color: var(--cart-background-color);
+      transform: translateX(-100%);
       &-background {
         background-color: rgba(0, 0, 0, 0.5);
         width: 100%;
@@ -537,7 +547,7 @@
     &__top {
       display: flex;
       flex-wrap: wrap;
-      gap: 25px;
+      gap: 15px;
       padding-bottom: 14px;
       .header__openmenu {
         display: block;

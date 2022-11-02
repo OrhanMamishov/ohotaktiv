@@ -9,7 +9,6 @@ import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
-import gsap from "gsap";
 import wNumb from "wnumb";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
 import { bodyScrollToggle } from "../functions/scrollBody";
@@ -157,24 +156,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     },
   });
-  const tlFilter = gsap.timeline({ paused: true });
   const filterWrap = document.querySelector(".detail__filters");
   const filter = document.querySelector(".detail__filters-wrap");
   const detailSection = document.querySelector(".detail");
   detailSection.addEventListener("click", (e) => {
     if (e.target.className == "detail__cards-filter-open") {
-      tlFilter
-        .to(filterWrap, { visibility: "visible", opacity: 1, duration: 0.1 })
-        .to(filter, { x: 0, duration: 0.2 });
       bodyScrollToggle();
-      tlFilter.play();
+      filterWrap.style.visibility = "visible";
+      filterWrap.style.opacity = 1;
+      filter.style.transform = "translateX(0)";
     }
     if (
       e.target.className == "detail__close" ||
       e.target.className == "detail__filters-background"
     ) {
       bodyScrollToggle();
-      tlFilter.reverse();
+      filterWrap.style.opacity = 0;
+      filter.style.transform = "translateX(-100%)";
+      setTimeout(() => {
+        filterWrap.style.visibility = "hidden";
+      }, 200);
     }
   });
   // const catalogArray = await fetch(

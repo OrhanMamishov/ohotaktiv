@@ -7,8 +7,9 @@
         border-color: var(--black-color) transparent transparent transparent;
         .ac-trigger {
           font: unset;
-          @include fontSize16;
           padding: 20px 0;
+          font-size: 16px;
+          font-weight: 700;
           &:focus {
             color: unset;
           }
@@ -25,7 +26,13 @@
     }
     &__panel {
       padding: 0 0 30px;
+      &-text {
+        @include fontSize15;
+        font-weight: 600;
+      }
       &-link {
+        @include fontSize15;
+        font-weight: 600;
         transition: color 0.2s ease;
         &:hover {
           color: var(--primary-color);

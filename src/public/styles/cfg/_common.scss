@@ -28,7 +28,7 @@
 }
 
 :root {
-  --primary-color: #ffd53c;
+  --primary-color: #ffe53e;
   --secondary-color: #2d2a28;
   --grey-color: #7f7f7f; // ?
   --grey-form-color: #a4a4a4;
@@ -36,7 +36,7 @@
   --cart-background-color: #f7f8f9;
   --green-color: #1ab28f;
   --red-color: #ff153f;
-  --light-primary-color: #ffe53e;
+  --light-primary-color: #ffed76;
   --black-color: #000000;
   --white-color: #ffffff;
 }
@@ -107,7 +107,6 @@ img {
 section {
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: var(--white-color);
   h1 {
     @include fontSize30;
     margin-bottom: 40px;
@@ -118,6 +117,9 @@ section {
     &.skeleton {
       height: 27px;
       width: 280px;
+    }
+    @media only screen and (max-width: 767px) {
+      margin-bottom: 20px;
     }
   }
   h3 {
@@ -137,7 +139,7 @@ main {
     padding-top: 136px;
   }
   @media only screen and (max-width: 767px) {
-    padding-top: 130px;
+    padding-top: 120px;
   }
 }
 .container {
@@ -272,13 +274,8 @@ main {
     @include fontSize14;
     padding: 10px 18px;
   }
-  // &:hover {
-  //   border-color: var(--grey-color);
-  //   transition: border-color 0.2s ease;
-  //   @media only screen and (max-width: 1023px) {
-  //     border: none;
-  //   }
-  // }
+  &:hover {
+  }
   &.skeleton {
     width: 270px;
     height: 300px;
@@ -671,11 +668,6 @@ main {
         }
       }
     }
-    &:focus {
-      + .slider {
-        box-shadow: 0 0 1px #2196f3;
-      }
-    }
   }
   .slider {
     position: absolute;
@@ -685,7 +677,7 @@ main {
     right: 0;
     bottom: 0;
     border-radius: 34px;
-    background-color: var(--grey-color);
+    background-color: var(--grey-item-color);
     transition: transform 0.4s ease, background 0.4s ease;
     &::before {
       content: "";

@@ -201,13 +201,13 @@
     }
   }
   .about {
-    padding-top: 158px;
-    padding-bottom: 158px;
+    padding-top: 90px;
+    padding-bottom: 90px;
     text-align: center;
     &__text {
       @include fontSize14;
       max-width: 948px;
-      margin: 0 auto 55px;
+      margin: 0 auto 30px;
     }
     &__list {
       margin-bottom: 40px;
@@ -285,10 +285,6 @@
     .blog {
       padding-top: 40px;
     }
-    .about {
-      padding-top: 60px;
-      padding-bottom: 67px;
-    }
   }
 }
 @media only screen and (max-width: 1365px) {
@@ -326,10 +322,6 @@
     .blog {
       padding-top: 25px;
       padding-bottom: 68px;
-    }
-    .about {
-      padding-top: 91px;
-      padding-bottom: 99px;
     }
     .ready {
       &__links {
@@ -371,10 +363,11 @@
         max-width: 345px;
       }
       &__title {
-        margin-bottom: 22px;
+        margin-bottom: 10px;
       }
       &__text {
-        margin-bottom: 17px;
+        width: 90%;
+        margin-bottom: 20px;
       }
     }
     .ready {
@@ -414,8 +407,6 @@
       }
     }
     .about {
-      padding-top: 60px;
-      padding-bottom: 100px;
       &__list {
         margin: 0 auto 40px;
         max-width: 450px;
@@ -466,7 +457,6 @@
       }
       &__img {
         margin-bottom: 13px;
-        max-width: unset;
         width: 68%;
       }
       &__title {
@@ -490,8 +480,8 @@
       padding-top: 20px;
     }
     .about {
-      padding-top: 20px;
-      padding-bottom: 44px;
+      padding-top: 50px;
+      padding-bottom: 50px;
       &__title {
         margin-bottom: 20px;
       }

@@ -1,13 +1,10 @@
 import "../../styles/components/header/style.scss";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import ucFirst from "../functions/ucFirst";
-import gsap from "gsap";
 import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const tlMenu = gsap.timeline({ paused: true });
-  const tlCatalog = gsap.timeline({ paused: true });
   const header = document.querySelector(".header");
   const headerMenuWrap = document.querySelector(".header__menu-wrap");
   const headerMenu = document.querySelector(".header__menu");
@@ -19,29 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   allAccordions.forEach((accordion) => {
     if (window.innerWidth < 1024) new Accordion(accordion);
   });
-  tlCatalog
-    .fromTo(
-      headerCatalogWrap,
-      { visibility: "hidden", opacity: 0, duration: 0.1 },
-      { visibility: "visible", opacity: 1, duration: 0.1 }
-    )
-    .fromTo(
-      headerCatalog,
-      window.innerWidth < 1024
-        ? { x: "-100%", duration: 0.2 }
-        : { y: "-10px", duration: 0.2 },
-      window.innerWidth < 1024
-        ? { x: 0, duration: 0.2 }
-        : { y: 0, duration: 0.2 }
-    );
-
-  tlMenu
-    .fromTo(
-      headerMenuWrap,
-      { visibility: "hidden", opacity: 0, duration: 0.1 },
-      { visibility: "visible", opacity: 1, duration: 0.1 }
-    )
-    .fromTo(headerMenu, { x: "100%", duration: 0.2 }, { x: 0, duration: 0.2 });
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();
@@ -158,14 +132,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (e.target.className == "header__openmenu") {
       bodyScrollToggle();
-      tlMenu.play();
+      headerMenuWrap.style.visibility = "visible";
+      headerMenuWrap.style.opacity = 1;
+      headerMenu.style.transform = "translateX(0)";
     }
     if (
       e.target.className == "header__menu-close" ||
       e.target.className == "header__menu-background"
     ) {
       bodyScrollToggle();
-      tlMenu.reverse();
+      headerMenuWrap.style.opacity = 0;
+      headerMenu.style.transform = "translateX(100%)";
+      setTimeout(() => {
+        headerMenuWrap.style.visibility = "hidden";
+      }, 200);
     }
     if (e.target.classList.contains("catalog")) {
       if (headerCatalogWrap.style.visibility === "visible") {
@@ -174,7 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       bodyScrollToggle();
       e.target.classList.toggle("is-active");
-      tlCatalog.play();
+      headerCatalogWrap.style.visibility = "visible";
+      headerCatalogWrap.style.opacity = 1;
+      headerCatalog.style.transform =
+        window.innerWidth < 1024 ? "translateX(0)" : "translateY(0)";
     }
     if (
       e.target.className == "header__catalog-close" ||
@@ -184,7 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelector(".header__catalog-button")
         .classList.remove("is-active");
       bodyScrollToggle();
-      tlCatalog.reverse();
+      headerCatalogWrap.style.opacity = 0;
+      headerCatalog.style.transform =
+        window.innerWidth < 1024 ? "translateX(-100%)" : "translateY(-10px)";
+      setTimeout(() => {
+        headerCatalogWrap.style.visibility = "hidden";
+      }, 200);
     }
   });
 });

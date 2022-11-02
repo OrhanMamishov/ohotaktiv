@@ -1,12 +1,16 @@
 .main {
   .policy {
     &__text {
+      @include fontSize15;
+      font-weight: 600;
       max-width: 1106px;
       &:not(:last-child) {
         margin-bottom: 28px;
       }
     }
     &__list {
+      @include fontSize15;
+      font-weight: 600;
       margin: 28px 0;
       padding-left: 20px;
       max-width: 1106px;

@@ -47,7 +47,7 @@
         font-weight: 700;
       }
       &-text {
-        @include fontSize16;
+        @include fontSize15;
         font-weight: 600;
       }
       &:first-child {
@@ -99,6 +99,12 @@
           input {
             @include fontSize14;
           }
+          &-file {
+            label {
+              @include fontSize15;
+              font-weight: 600;
+            }
+          }
           &:not(:last-child) {
             margin-bottom: 50px;
           }
@@ -115,20 +121,20 @@
         font-weight: 800;
       }
       &-text {
-        @include fontSize14;
+        @include fontSize15;
         margin-bottom: 50px;
+        font-weight: 600;
       }
       &-button {
         @include contentButton;
-        width: 100%;
-      }
-      &-subtext {
-        margin-bottom: 50px;
+        @include fontSize15;
+        font-weight: 600;
       }
       &-radio {
         &-wrap {
-          padding-bottom: 20px;
           label {
+            @include fontSize15;
+            font-weight: 600;
             &:not(:last-child) {
               margin-right: 57px;
             }
@@ -142,12 +148,19 @@
       }
       .input-wrap {
         input {
-          @include fontSize16;
+          @include fontSize15;
           font-weight: 600;
         }
         label {
-          @include fontSize16;
+          @include fontSize15;
           font-weight: 600;
+        }
+        &-file {
+          label {
+            .dots {
+              display: none;
+            }
+          }
         }
         input:focus ~ label,
         input:not(:placeholder-shown) ~ label {
@@ -217,6 +230,32 @@
 
 @media only screen and (max-width: 767px) {
   .main {
+    .blank {
+      &__form {
+        &-title,
+        &-text {
+          margin-bottom: 30px;
+        }
+        &-item {
+          margin-bottom: 50px;
+          .input-wrap {
+            &-file {
+              label {
+                .dots {
+                  display: inline-block;
+                }
+                .another {
+                  display: none;
+                }
+              }
+            }
+            &:not(:last-child) {
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+    }
     .banner {
       height: 470px;
       background-position: 35%;

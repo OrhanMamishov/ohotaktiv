@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     freeMode: true,
     spaceBetween: 35,
     slidesPerView: 4,
-    loop: true,
+    // loop: true,
     navigation: {
       nextEl: ".popular__swiper-button-next",
       prevEl: ".popular__swiper-button-prev",

@@ -53,7 +53,7 @@
     }
     &__list {
       @include contentScroll;
-      height: 563px;
+      height: 469px;
       padding-right: 10px;
       overflow-x: hidden;
     }
@@ -180,6 +180,9 @@
       &__input {
         max-width: unset;
         margin: 0 auto 66px auto;
+      }
+      &__list {
+        height: 340px;
       }
       #map {
         height: 383px;

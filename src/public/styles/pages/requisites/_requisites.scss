@@ -13,7 +13,11 @@
       }
     }
     &__text {
-      @include fontSize14;
+      &:first-child {
+        @include fontSize18;
+      }
+      @include fontSize15;
+      font-weight: 600;
       &:not(:last-child) {
         margin-bottom: 30px;
       }

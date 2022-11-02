@@ -16,15 +16,15 @@
       flex-direction: column;
       background-repeat: no-repeat;
       background-position: top left;
-      background-size: 54px;
+      background-size: 70px;
       &:nth-child(1) {
-        background-image: url("../../../img/call-us.svg");
+        background-image: url("../../../img/call-us.png");
       }
       &:nth-child(2) {
-        background-image: url("../../../img/feedback.svg");
+        background-image: url("../../../img/feedback.png");
       }
       &:last-child {
-        background-image: url("../../../img/office.svg");
+        background-image: url("../../../img/office.png");
       }
       &-title {
         @include fontSize20;

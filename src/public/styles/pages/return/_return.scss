@@ -1,6 +1,7 @@
 .main {
   .return {
     &__info {
+      @include fontSize15;
       max-width: 1071px;
       margin-bottom: 50px;
       padding: 35px 45px;
@@ -17,9 +18,15 @@
       max-width: 1071px;
       margin-bottom: 40px;
       &-text {
+        @include fontSize15;
+        font-weight: 600;
         &:not(:last-child) {
           margin-bottom: 28px;
         }
+      }
+      &-item {
+        @include fontSize15;
+        font-weight: 600;
       }
       &-list {
         padding-left: 20px;

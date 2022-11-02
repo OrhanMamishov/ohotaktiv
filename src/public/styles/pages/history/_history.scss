@@ -108,9 +108,10 @@
       margin-bottom: 20px;
       display: flex;
       &__wrap {
-        justify-content: flex-end;
-        padding-bottom: 40px;
+        width: 100%;
         max-width: 736px;
+        padding-bottom: 40px;
+        justify-content: flex-end;
       }
       &__title {
         font-size: 26px;

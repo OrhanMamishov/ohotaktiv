@@ -3,21 +3,29 @@
     &__item {
       max-width: 1071px;
       &-title {
+        @include fontSize18;
         margin-bottom: 5px;
-        font-weight: 700;
       }
       &-list {
         list-style-type: "—";
         padding-left: 12px;
         &-item {
+          @include fontSize15;
+          font-weight: 600;
           padding-left: 10px;
         }
       }
       &-link {
+        text-underline-offset: 3px;
+        text-decoration: underline;
         transition: color 0.2s ease;
         &:hover {
           color: var(--primary-color);
         }
+      }
+      &-text {
+        @include fontSize15;
+        font-weight: 600;
       }
       &:not(:last-child) {
         margin-bottom: 30px;

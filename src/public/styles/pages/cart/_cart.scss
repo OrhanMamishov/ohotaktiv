@@ -74,7 +74,6 @@
             margin-right: 24px;
             display: flex;
             align-items: center;
-            background-color: var(--lightness-grey-color);
             border-radius: 10px;
           }
         }
@@ -92,7 +91,7 @@
             background-color: var(--primary-color);
             border-radius: 100px;
             &.unavaliable {
-              background-color: var(--grey-item-color);
+              background-color: var(--cart-background-color);
             }
           }
           &-button {
@@ -182,12 +181,14 @@
           }
         }
       }
-      &-button {
+      &-link {
         @include contentButton;
         @include fontSize14;
+        display: block;
         width: 100%;
         padding: 20px;
         margin-bottom: 20px;
+        text-align: center;
       }
       &-description {
         font-size: 11px;
