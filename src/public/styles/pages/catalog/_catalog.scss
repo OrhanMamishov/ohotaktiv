@@ -26,6 +26,9 @@
         margin-bottom: 28px;
         font-weight: 700;
       }
+      &.subtitle {
+        margin-bottom: 0;
+      }
       &::after {
         content: "";
         position: absolute;

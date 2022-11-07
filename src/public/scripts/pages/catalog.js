@@ -16,6 +16,7 @@ import { bodyScrollToggle } from "../functions/scrollBody";
 document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
   const serverName = "https://ohotaktiv.ru";
+  const baseUrl = document.location.href;
   const allSelects = document.querySelectorAll(".js-select");
   allSelects.forEach((select) => {
     new Choices(select, {
@@ -227,7 +228,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const filteredList = catalogDownArray.filter(
                       (cat) => cat.catalog[0].section_parent == list.ID
                     );
-                    // console.log(filteredList);
                     return `
                       <li class="catalog__item">
                         <div class="catalog__img-wrap">
@@ -237,20 +237,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                             class="catalog__img"
                           />
                         </div>
-                        <a href="#" class="catalog__link title"> ${
-                          list.name
-                        } </a>
+                        <a href="${list.url.replace(
+                          "/catalog",
+                          ""
+                        )}" class="catalog__link title"> ${list.name} </a>
                         ${filteredList[0].catalog.section_list
                           .map((el) => {
-                            console.log(el);
                             if (el.depth) {
                               return `
                                 <div class="catalog__accordion accordion-container">
                                   <div class="ac">
                                   <h2 class="ac-header">
-                                    <a href="#" class="catalog__link-subtitle"> ${
-                                      el.name
-                                    } </a>
+                                    <a href="${el.page_url.replace(
+                                      "/catalog",
+                                      ""
+                                    )}" class="catalog__link subtitle"> ${
+                                el.name
+                              } </a>
                                     <button type="button" class="ac-trigger"></button>
                                   </h2>
                                   <div class="ac-panel">
@@ -258,7 +261,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ${el.depth
                                   .map((depth) => {
                                     return `
-                                      <a href="#" class="catalog__link"> ${depth.name} </a>
+                                      <a href="${depth.page_url.replace(
+                                        "/catalog",
+                                        ""
+                                      )}" class="catalog__link"> ${
+                                      depth.name
+                                    } </a>
                                     `;
                                   })
                                   .join("")}
@@ -269,7 +277,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                               `;
                             } else {
                               return `
-                                <a href="#" class="catalog__link">${el.name}</a>
+                                <a href="${el.page_url.replace(
+                                  "/catalog",
+                                  ""
+                                )}" class="catalog__link">${el.name}</a>
                               `;
                             }
                           })
@@ -287,82 +298,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         allAccordions.forEach((accordion) => {
           new Accordion(accordion);
         });
+        const catalogSection = document.querySelector("section.catalog");
+        catalogSection.addEventListener("click", (e) => {
+          if (e.target.classList.contains("catalog__link")) {
+            e.preventDefault();
+            const newUrl = baseUrl + e.target.getAttribute("href");
+            history.pushState(null, null, newUrl);
+            refreshThisCatalog(e.target.getAttribute("href"), catalog);
+          }
+        });
       }
     });
-
-    // console.log(catalogDown);
   }
-  //   const thisCatalog = await fetch(
-  //     `https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/${el.file}`,
-  //     {
-  //       method: "GET",
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-  // function refreshCatalog(res) {
-  //   while (main.firstChild) {
-  //     main.removeChild(main.firstChild);
-  //   }
-  //   const parentList = res.catalog.parent_list;
-  //   const sectionList = res.catalog.section_list;
-  //   parentList.sort((a, b) => (Number(a.sort) > Number(b.sort) ? 1 : -1));
-  //   console.log(res);
-  //   const element = `
-  //     <section class="catalog">
-  //       <div class="catalog__wrap container">
-  //         <nav class="navigation">
-  //           <ul class="navigation__list">
-  //             <li class="navigation__item">
-  //               <a href="#" class="navigation__link back"> Назад </a>
-  //             </li>
-  //             <li class="navigation__item">
-  //               <a href="#" class="navigation__link"> Главная </a>
-  //             </li>
-  //             <li class="navigation__item">
-  //               <a href="#" class="navigation__link"> Каталог </a>
-  //             </li>
-  //           </ul>
-  //         </nav>
-  //         <h1 class="catalog__title">Каталог</h1>
-  //         <ul class="catalog__list">
-  //         ${parentList
-  //           .map((list) => {
-  //             const filteredList = sectionList.filter(
-  //               (section) => section.section_parent == list.ID
-  //             );
-  //             filteredList.sort((a, b) =>
-  //               Number(a.sort) > Number(b.sort) ? 1 : -1
-  //             );
-  //             // console.log(filteredList);
-  //             return `
-  //               <li class="catalog__item">
-  //                 <div class="catalog__img-wrap">
-  //                   <img
-  //                     src="${serverName + list.picture}"
-  //                     alt="${list.name}"
-  //                     class="catalog__img"
-  //                   />
-  //                 </div>
-  //                 <a href="#" class="catalog__link title"> ${list.name} </a>
-  //                 ${filteredList
-  //                   .map((el) => {
-  //                     return `
-  //                       <a href="#" class="catalog__link"> ${el.name} </a>
-  //                     `;
-  //                   })
-  //                   .join("")}
-  //                 <button class="catalog__more none">Еще категории</button>
-  //               </li>
-  //             `;
-  //           })
-  //           .join("")}
-  //         </ul>
-  //       </div>
-  //     </section>
-  //   `;
-  //   main.insertAdjacentHTML("beforeend", element);
-  // }
+  async function refreshThisCatalog(url, catalog) {
+    while (main.firstChild) {
+      main.removeChild(main.firstChild);
+    }
+    const filteredCatalog = catalog.filter(
+      (cat) => cat.url == `/catalog${url}`
+    );
+    const catalogDownArray = [];
+    await fetch(
+      `https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/${filteredCatalog[0].file}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        return catalogDownArray.push(res);
+      });
+    // console.log(url.split("/").length - 2);
+    console.log(catalogDownArray);
+  }
 });
