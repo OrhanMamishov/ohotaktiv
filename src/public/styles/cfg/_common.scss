@@ -490,7 +490,7 @@ main {
   }
 }
 .disable-scroll {
-  overflow: hidden;
+  overflow: unset;
 }
 .navigation {
   margin-bottom: 15px;

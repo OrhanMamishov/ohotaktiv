@@ -1,6 +1,6 @@
 .main {
   .catalog {
-    display: none;
+    // display: none;
     &__list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 330px));
@@ -43,10 +43,16 @@
       }
     }
     &__accordion {
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
       .ac {
+        margin-top: 0;
         border: none;
         &-trigger {
           padding: 0;
+          flex: 1 1 auto;
+          width: unset;
           &:focus {
             color: unset;
           }
@@ -64,7 +70,7 @@
     }
   }
   .detail {
-    // display: none;
+    display: none;
     &__columns {
       margin-bottom: 100px;
       display: flex;
