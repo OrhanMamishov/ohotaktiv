@@ -6,6 +6,12 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 330px));
       gap: 35px;
     }
+    &__item {
+      &.skeleton {
+        width: 330px;
+        height: 612px;
+      }
+    }
     &__img {
       height: inherit;
       object-fit: scale-down;
@@ -63,6 +69,7 @@
         &-panel {
           &-wrap {
             padding-top: 10px;
+            padding-left: 20px;
           }
         }
         &-header {

@@ -110,6 +110,10 @@ section {
   h1 {
     @include fontSize30;
     margin-bottom: 40px;
+    &.skeleton {
+      width: 200px;
+      height: 40px;
+    }
   }
   h2 {
     @include fontSize24;
@@ -499,6 +503,10 @@ main {
   &__list {
     display: flex;
     align-items: center;
+    &.skeleton {
+      width: 280px;
+      height: 25px;
+    }
   }
   &__item {
     &:not(:last-child) {

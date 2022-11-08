@@ -86,32 +86,129 @@ document.addEventListener("DOMContentLoaded", async () => {
                         ${filteredList[0].catalog.section_list
                           .map((el) => {
                             if (el.depth) {
+                              el.depth.sort((a, b) =>
+                                Number(a.sort) > Number(b.sort) ? 1 : -1
+                              );
                               return `
                                 <div class="catalog__accordion accordion-container">
                                   <div class="ac">
-                                  <h2 class="ac-header">
-                                    <a href="${el.page_url.replace(
-                                      "/catalog",
-                                      ""
-                                    )}" class="catalog__link subtitle"> ${
-                                el.name
-                              } </a>
-                                    <button type="button" class="ac-trigger"></button>
-                                  </h2>
-                                  <div class="ac-panel">
-                                    <div class="ac-panel-wrap">
-                                ${el.depth
-                                  .map((depth) => {
-                                    return `
-                                      <a href="${depth.page_url.replace(
+                                    <h2 class="ac-header">
+                                      <a href="${el.page_url.replace(
                                         "/catalog",
                                         ""
-                                      )}" class="catalog__link"> ${
-                                      depth.name
-                                    } </a>
-                                    `;
-                                  })
-                                  .join("")}
+                                      )}" class="catalog__link subtitle"> ${
+                                el.name
+                              } </a>
+                                      <button type="button" class="ac-trigger"></button>
+                                    </h2>
+                                    <div class="ac-panel">
+                                      <div class="ac-panel-wrap">
+                                        ${el.depth
+                                          .map((firstDepth) => {
+                                            if (firstDepth.depth) {
+                                              firstDepth.depth.sort((a, b) =>
+                                                Number(a.sort) > Number(b.sort)
+                                                  ? 1
+                                                  : -1
+                                              );
+                                              return `
+                                                <div class="catalog__accordion accordion-container">
+                                                  <div class="ac">
+                                                    <h2 class="ac-header">
+                                                    <a href="${firstDepth.page_url.replace(
+                                                      "/catalog",
+                                                      ""
+                                                    )}" class="catalog__link subtitle"> ${
+                                                firstDepth.name
+                                              } </a>
+                                                      <button type="button" class="ac-trigger"></button>
+                                                    </h2>
+                                                    <div class="ac-panel">
+                                                      <div class="ac-panel-wrap">
+                                                        ${firstDepth.depth
+                                                          .map(
+                                                            (secondDepth) => {
+                                                              if (
+                                                                secondDepth.depth
+                                                              ) {
+                                                                secondDepth.depth.sort(
+                                                                  (a, b) =>
+                                                                    Number(
+                                                                      a.sort
+                                                                    ) >
+                                                                    Number(
+                                                                      b.sort
+                                                                    )
+                                                                      ? 1
+                                                                      : -1
+                                                                );
+                                                                return `
+                                                                  <div class="catalog__accordion accordion-container">
+                                                                    <div class="ac">
+                                                                      <h2 class="ac-header">
+                                                                      <a href="${secondDepth.page_url.replace(
+                                                                        "/catalog",
+                                                                        ""
+                                                                      )}" class="catalog__link subtitle"> ${
+                                                                  secondDepth.name
+                                                                } </a>
+                                                                        <button type="button" class="ac-trigger"></button>
+                                                                      </h2>
+                                                                      <div class="ac-panel">
+                                                                        <div class="ac-panel-wrap">
+                                                                        ${secondDepth.depth
+                                                                          .map(
+                                                                            (
+                                                                              thirdDepth
+                                                                            ) => {
+                                                                              return `
+                                                                              <a href="${thirdDepth.page_url.replace(
+                                                                                "/catalog",
+                                                                                ""
+                                                                              )}" class="catalog__link">${
+                                                                                thirdDepth.name
+                                                                              }</a>
+                                                                            `;
+                                                                            }
+                                                                          )
+                                                                          .join(
+                                                                            ""
+                                                                          )}
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                `;
+                                                              } else {
+                                                                return `
+                                                                <a href="${secondDepth.page_url.replace(
+                                                                  "/catalog",
+                                                                  ""
+                                                                )}" class="catalog__link">${
+                                                                  secondDepth.name
+                                                                }</a>
+                                                              `;
+                                                              }
+                                                            }
+                                                          )
+                                                          .join("")}
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              `;
+                                            } else {
+                                              return `
+                                              <a href="${firstDepth.page_url.replace(
+                                                "/catalog",
+                                                ""
+                                              )}" class="catalog__link">${
+                                                firstDepth.name
+                                              }</a>
+                                            `;
+                                            }
+                                          })
+                                          .join("")}
                                       </div>
                                     </div>
                                   </div>
