@@ -53,6 +53,7 @@ module.exports = {
     faq: "./src/public/scripts/pages/faq.js",
     pay: "./src/public/scripts/pages/pay.js",
     new: "./src/public/scripts/pages/new.js",
+    catalogview: "./src/public/scripts/pages/catalogview.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
