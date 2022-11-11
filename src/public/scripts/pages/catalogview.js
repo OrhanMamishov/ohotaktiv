@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
   const serverName = "https://ohotaktiv.ru";
   const baseUrl = document.location.href;
-  const urlCatalog = "/full_remington/".split("/");
+  const urlCatalog = "/full_remington/odezhda_rem/".split("/");
   const mainLevel = urlCatalog[1]; // главный каталог
   const level = urlCatalog.length - 2; // уровень этого каталога
   const fetchFromBase = await fetch(
@@ -94,7 +94,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     } else {
-      catalog.items.forEach((item) => items.push(item));
+      if (catalog.items) {
+        catalog.items.forEach((item) => items.push(item));
+      }
       if (catalog.depth) {
         catalog.depth.forEach((firstDepth) => {
           if (firstDepth.items) {
@@ -117,6 +119,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
     }
+    items.sort((item) =>
+      item.properties.Картинки && item.properties["Наличие в магазине"] ? -1 : 1
+    );
     while (main.firstChild) {
       main.removeChild(main.firstChild);
     }
@@ -149,131 +154,41 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="detail__filter">
                   <p class="detail__filter-title">Выберите категорию</p>
                   <ul class="detail__filter-list category-list">
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-1"
-                        name="category"
-                      />
-                      <label for="category-1">Газовое оборудование</label>
-                      <ul class="detail__filter-list subcategory-list">
-                        <li class="detail__filter-item">
-                          <input
-                            class="radio__input"
-                            type="radio"
-                            id="subcategory-1"
-                            name="subcategory"
-                          />
-                          <label for="subcategory-1"
-                            >Газовое оборудование</label
-                          >
-                        </li>
-                        <li class="detail__filter-item">
-                          <input
-                            class="radio__input"
-                            type="radio"
-                            id="subcategory-2"
-                            name="subcategory"
-                          />
-                          <label for="subcategory-2"
-                            >Газовое оборудование</label
-                          >
-                        </li>
-                        <li class="detail__filter-item">
-                          <input
-                            class="radio__input"
-                            type="radio"
-                            id="subcategory-3"
-                            name="subcategory"
-                          />
-                          <label for="subcategory-3"
-                            >Газовое оборудование</label
-                          >
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-2"
-                        name="category"
-                      />
-                      <label for="category-2">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-3"
-                        name="category"
-                      />
-                      <label for="category-3">Комплектующие</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-4"
-                        name="category"
-                      />
-                      <label for="category-4">Газовые лампы</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-5"
-                        name="category"
-                      />
-                      <label for="category-5">Газовые обогреватели</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-6"
-                        name="category"
-                      />
-                      <label for="category-6">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-7"
-                        name="category"
-                      />
-                      <label for="category-7">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-8"
-                        name="category"
-                      />
-                      <label for="category-8">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-9"
-                        name="category"
-                      />
-                      <label for="category-9">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="category-10"
-                        name="category"
-                      />
-                      <label for="category-10">Газовые баллоны</label>
-                    </li>
+                    ${
+                      catalog.depth
+                        ? catalog.depth
+                            .map((section) => {
+                              return `
+                                <li class="detail__filter-item">
+                                  <input
+                                    class="radio__input"
+                                    type="radio"
+                                    id="${section.id}"
+                                    name="category"
+                                  />
+                                  <label for="${section.id}">${section.name}</label>
+                                </li>
+                              `;
+                            })
+                            .join("")
+                        : catalog.length
+                        ? catalog
+                            .map((section) => {
+                              return `
+                            <li class="detail__filter-item">
+                              <input
+                                class="radio__input"
+                                type="radio"
+                                id="${section.section_this}"
+                                name="category"
+                              />
+                              <label for="${section.section_this}">${section.name}</label>
+                            </li>
+                          `;
+                            })
+                            .join("")
+                        : []
+                    }
                   </ul>
                 </div>
                 <div class="detail__filter">
@@ -713,9 +628,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <ul class="detail__cards-list">
                 ${itemsForPage(1, items)}
               </ul>
-              <div class="pagination">
-                <ul class="pagination-list">
-                </ul>
+              <div class="pagination-list">
               </div>
             </div>
           </div>
@@ -865,6 +778,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const filter = document.querySelector(".detail__filters-wrap");
     const detailSection = document.querySelector(".detail");
     changePagination(Math.floor(items.length / 12), 1);
+    let filteredItems = items;
     detailSection.addEventListener("click", (e) => {
       if (e.target.className == "detail__cards-filter-open") {
         bodyScrollToggle();
@@ -885,38 +799,80 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       if (e.target.className == "prev") {
         let active = --document.querySelector(".numb.active").textContent;
-        console.log(active);
-        itemsForPage(active, items, true);
+        itemsForPage(active, filteredItems, true);
         changePagination(
-          Math.floor(items.length / 12),
+          Math.floor(filteredItems.length / 12),
           Number(e.target.getAttribute("data-prev-page"))
         );
       }
       if (e.target.className == "next") {
         let active = ++document.querySelector(".numb.active").textContent;
-        itemsForPage(active, items, true);
+        itemsForPage(active, filteredItems, true);
         changePagination(
-          Math.floor(items.length / 12),
+          Math.floor(filteredItems.length / 12),
           Number(e.target.getAttribute("data-next-page"))
         );
       }
       if (e.target.classList.contains("numb")) {
-        itemsForPage(e.target.textContent, items, true);
+        itemsForPage(e.target.textContent, filteredItems, true);
         if (e.target.getAttribute("data-first")) {
-          changePagination(Math.floor(items.length / 12), Number(1));
+          changePagination(Math.floor(filteredItems.length / 12), Number(1));
           return;
         }
         if (e.target.getAttribute("data-last")) {
           changePagination(
-            Math.floor(items.length / 12),
+            Math.floor(filteredItems.length / 12),
             Number(e.target.getAttribute("data-total-pages"))
           );
           return;
         }
         changePagination(
-          Math.floor(items.length / 12),
+          Math.floor(filteredItems.length / 12),
           Number(e.target.getAttribute("data-page-length"))
         );
+      }
+      if (e.target.className == "radio__input") {
+        filteredItems = [];
+
+        let filteredCatalog;
+        if (catalog.length) {
+          filteredCatalog = catalog.filter(
+            (section) => section.section_this == e.target.id
+          );
+        } else {
+          filteredCatalog = catalog.depth.filter(
+            (section) => section.id == e.target.id
+          );
+        }
+        if (filteredCatalog[0].items) {
+          filteredCatalog[0].items.forEach((item) => filteredItems.push(item));
+        }
+        if (filteredCatalog[0].depth) {
+          filteredCatalog[0].depth.forEach((firstDepth) => {
+            if (firstDepth.items) {
+              firstDepth.items.forEach((item) => filteredItems.push(item));
+            }
+            if (firstDepth.depth) {
+              firstDepth.depth.forEach((secondDepth) => {
+                if (secondDepth.items) {
+                  secondDepth.items.forEach((item) => filteredItems.push(item));
+                }
+                if (secondDepth.depth) {
+                  secondDepth.depth.forEach((thirdDepth) => {
+                    if (thirdDepth.items) {
+                      thirdDepth.items.forEach((item) =>
+                        filteredItems.push(item)
+                      );
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+        filteredItems.sort((item) => (item.properties.Картинки ? -1 : 1));
+        changePagination(Math.floor(filteredItems.length / 12), 1);
+        itemsForPage(1, filteredItems, true);
       }
     });
   }
@@ -1012,12 +968,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     let beforePages = page - 1;
     let afterPages = page + 1;
     if (page > 1) {
-      liTag += `<li class="prev" data-prev-page="${page - 1}">Prev</li>`;
+      liTag += `<button class="prev" data-prev-page="${
+        page - 1
+      }">Prev</button>`;
     }
     if (page > 2) {
-      liTag += `<li class="numb" data-first="true">1</li>`;
+      liTag += `<button class="numb" data-first="true">1</button>`;
       if (page > 3) {
-        liTag += ` <li class="dots">...</li>`;
+        liTag += ` <p class="dots">...</p>`;
       }
     }
     for (let pageLength = beforePages; pageLength <= afterPages; pageLength++) {
@@ -1032,18 +990,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       } else {
         activeLi = "";
       }
-      liTag += `<li class="numb ${activeLi}" data-page-length="${pageLength}">${pageLength}</li>`;
+      liTag += `<button class="numb ${activeLi}" data-page-length="${pageLength}">${pageLength}</button>`;
     }
 
     if (page < totalPages - 1) {
       if (page < totalPages - 2) {
-        liTag += ` <li class="dots">...</li>`;
+        liTag += ` <p class="dots">...</p>`;
       }
-      liTag += `<li class="numb" data-last="true"  data-total-pages="${totalPages}">${totalPages}</li>`;
+      liTag += `<button class="numb" data-last="true"  data-total-pages="${totalPages}">${totalPages}</button>`;
     }
 
     if (page < totalPages) {
-      liTag += `<li class="next" data-next-page="${page + 1}">Next</li>`;
+      liTag += `<button class="next" data-next-page="${
+        page + 1
+      }">Next</button>`;
     }
     paginationList.innerHTML = liTag;
   }
