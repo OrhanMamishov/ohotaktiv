@@ -15,11 +15,10 @@ import "accordion-js/dist/accordion.min.css";
 document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
   const serverName = "https://ohotaktiv.ru";
-  const urlCatalog = "/pnevmaticheskoe_oruzhie/pnevmaticheskie-vintovki/".split(
-    "/"
-  );
+  const urlCatalog = "/pnevmaticheskoe_oruzhie/".split("/");
   const mainLevel = urlCatalog[1]; // главный каталог
   const level = urlCatalog.length - 2; // уровень этого каталога
+  let itemsOnPage = [];
   const fetchFromBase = await fetch(
     `https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/${mainLevel}.json`,
     {
@@ -80,24 +79,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       catalog.forEach((cat) => {
         if (cat.items) {
-          cat.items.forEach((item) => items.push(item));
+          cat.items.forEach((item) => {
+            // нужен норм массив со стороны коробки
+            const hasId = items.some((o) => o.ID == item.ID);
+            if (!hasId) items.push(item);
+          });
         }
         if (cat.depth) {
           cat.depth.forEach((firstDepth) => {
             if (firstDepth.items) {
-              firstDepth.items.forEach((item) => items.push(item));
+              firstDepth.items.forEach((item) => {
+                const hasId = items.some((o) => o.ID == item.ID);
+                if (!hasId) items.push(item);
+              });
             }
             if (firstDepth.depth) {
               firstDepth.depth.forEach((secondDepth) => {
                 if (secondDepth.items) {
-                  secondDepth.items.forEach((item) => items.push(item));
+                  secondDepth.items.forEach((item) => {
+                    const hasId = items.some((o) => o.ID == item.ID);
+                    if (!hasId) items.push(item);
+                  });
                 }
                 if (secondDepth.depth) {
                   secondDepth.depth.forEach((thirdDepth) => {
                     if (thirdDepth.depth) {
                       thirdDepth.depth.forEach((fourthDepth) => {
                         if (fourthDepth.items) {
-                          fourthDepth.items.forEach((item) => items.push(item));
+                          fourthDepth.items.forEach((item) => {
+                            const hasId = items.some((o) => o.ID == item.ID);
+                            if (!hasId) items.push(item);
+                          });
                         }
                       });
                     }
@@ -112,7 +124,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       // если каталог не верхнего уровня (нет длины)
       // если у каталога есть айтемы, пушим их в основной массив
       if (catalog.items) {
-        catalog.items.forEach((item) => items.push(item));
+        catalog.items.forEach((item) => {
+          const hasId = items.some((o) => o.ID == item.ID);
+          if (!hasId) items.push(item);
+        });
       }
       // если у каталога есть подкаталог
       if (catalog.depth) {
@@ -120,7 +135,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         catalog.depth.forEach((firstDepth) => {
           // если у этого подкаталога есть айтемы - пушим в основной массив
           if (firstDepth.items) {
-            firstDepth.items.forEach((item) => items.push(item));
+            firstDepth.items.forEach((item) => {
+              const hasId = items.some((o) => o.ID == item.ID);
+              if (!hasId) items.push(item);
+            });
           }
           // если у подкаталога есть подкаталог
           if (firstDepth.depth) {
@@ -129,12 +147,18 @@ document.addEventListener("DOMContentLoaded", async () => {
               // если у этого подкаталога есть айтемы - пушим в основной массив
               // И ТАК ДАЛЕЕ 4 УРОВНЯ
               if (secondDepth.items) {
-                secondDepth.items.forEach((item) => items.push(item));
+                secondDepth.items.forEach((item) => {
+                  const hasId = items.some((o) => o.ID == item.ID);
+                  if (!hasId) items.push(item);
+                });
               }
               if (secondDepth.depth) {
                 secondDepth.depth.forEach((thirdDepth) => {
                   if (thirdDepth.items) {
-                    thirdDepth.items.forEach((item) => items.push(item));
+                    thirdDepth.items.forEach((item) => {
+                      const hasId = items.some((o) => o.ID == item.ID);
+                      if (!hasId) items.push(item);
+                    });
                   }
                 });
               }
@@ -148,7 +172,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       item.properties.Картинки && item.properties["Наличие в магазине"] ? -1 : 1
     );
     // новая копия айтемов для фильтрации
-    let filteredItems = items;
+    itemsOnPage = items;
     // создаем элемент
     const element = `
       <section class="detail">
@@ -171,7 +195,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </nav>
           <h1 class="detail__title"> ${catalogName} </h1>
           <div class="detail__subtitle-wrap">
-            <p class="detail__subtitle"> ${filteredItems.length} товаров</p>
+            <p class="detail__subtitle"> ${itemsOnPage.length} товаров</p>
             <button class="detail__cards-filter-open"></button>
           </div>
           <div class="detail__columns">
@@ -314,7 +338,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </li>
                   </ul>
                 </div>
-                ${filtersForPage(filteredItems)}
+                ${filtersForPage(itemsOnPage)}
                 <button class="detail__filter-button">Сбросить</button>
               </div>
             </div>
@@ -332,7 +356,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
             <div class="detail__cards-list-wrap">
               <ul class="detail__cards-list">
-                ${itemsForPage(1, filteredItems)}
+                ${itemsForPage(1, itemsOnPage)}
               </ul>
               <div class="pagination-list">
               </div>
@@ -440,7 +464,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const filter = document.querySelector(".detail__filters-wrap");
     const detailSection = document.querySelector(".detail");
     // назначаем пагинацию, общий размер пагинации и активный элемент
-    changePagination(Math.round(items.length / 12), 1);
+    changePagination(1);
     // события на созданном элементе
     detailSection.addEventListener("click", (e) => {
       if (e.target.className == "detail__cards-filter-open") {
@@ -465,46 +489,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         // узнаем активный элемент
         let active = --document.querySelector(".numb.active").textContent;
         // обновляем айтемы на странице, дав ему страницу и фильтрованный массив, так же триггер что это был клик
-        itemsForPage(active, filteredItems, true);
+        itemsForPage(active, itemsOnPage, true);
         // назначаем пагинацию, общий размер пагинации и активный элемент
-        changePagination(
-          Math.round(filteredItems.length / 12),
-          Number(e.target.getAttribute("data-prev-page"))
-        );
+        changePagination(Number(e.target.getAttribute("data-prev-page")));
       }
       if (e.target.className == "next") {
         // тоже самое что и prev, только next
         let active = ++document.querySelector(".numb.active").textContent;
-        itemsForPage(active, filteredItems, true);
-        changePagination(
-          Math.round(filteredItems.length / 12),
-          Number(e.target.getAttribute("data-next-page"))
-        );
+        itemsForPage(active, itemsOnPage, true);
+        changePagination(Number(e.target.getAttribute("data-next-page")));
       }
       if (e.target.classList.contains("numb")) {
         // если нажали на пагинацию на номер
         // то обновляем айтемы у страницы
-        itemsForPage(e.target.textContent, filteredItems, true);
+        itemsForPage(e.target.textContent, itemsOnPage, true);
         if (e.target.getAttribute("data-first")) {
           // если ткнули на первый элемент то возвращаем пагинацию на 1 элемент
-          changePagination(Math.round(filteredItems.length / 12), Number(1));
+          changePagination(1);
           return;
         }
         if (e.target.getAttribute("data-last")) {
           // если ткнули на последний элемент то возвращаем пагинацию на последний элемент
-          changePagination(
-            Math.round(filteredItems.length / 12),
-            Number(e.target.getAttribute("data-total-pages"))
-          );
+          changePagination(Number(e.target.getAttribute("data-total-pages")));
           return;
         }
-        changePagination(
-          Math.round(filteredItems.length / 12),
-          Number(e.target.getAttribute("data-page-length"))
-        );
+        changePagination(Number(e.target.getAttribute("data-page-length")));
       }
       if (e.target.className == "radio__input") {
-        itemsFromRadio(filteredItems, catalog, e.target.id);
+        itemsFromRadio(catalog, e.target.id);
       }
       if (e.target.className == "detail__cards-filter-close") {
         filterGoodsOnPage(items, e.target.previousElementSibling.textContent);
@@ -561,7 +573,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   function itemsForPage(buttonNumber, arr, clicked) {
     const itemsOnPage = 12;
     const startFrom = buttonNumber == 1 ? 1 : (buttonNumber - 1) * itemsOnPage;
-    const data = arr.slice(startFrom, startFrom + itemsOnPage);
+    const data =
+      arr.length <= 12 ? arr : arr.slice(startFrom, startFrom + itemsOnPage);
     let element = ``;
     data.forEach((item) => {
       element += `
@@ -629,7 +642,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       return element;
     }
   }
-  function changePagination(totalPages, page) {
+  function changePagination(page) {
+    const totalPages = Math.round(itemsOnPage.length / 12);
     const paginationList = document.querySelector(".pagination-list");
     let liTag = "";
     let activeLi;
@@ -675,9 +689,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     paginationList.innerHTML = liTag;
   }
-  function itemsFromRadio(filteredItems, catalog, id, clicked) {
+  function itemsFromRadio(catalog, id, clicked) {
     // если ткнули на радиокнопку фильтра то обнуляем фильтровый массив
-    filteredItems = [];
+    itemsOnPage = [];
     // создаем новую переменную для фильтрового каталога
     let filteredCatalog;
     // если каталог имеет длину то есть каталог не содержит подкаталогов
@@ -691,23 +705,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     // если каталог содержит айтемы
     if (filteredCatalog[0].items) {
       // пушим их в основной массив
-      filteredCatalog[0].items.forEach((item) => filteredItems.push(item));
+      filteredCatalog[0].items.forEach((item) => {
+        const hasId = itemsOnPage.some((o) => o.ID == item.ID);
+        if (!hasId) itemsOnPage.push(item);
+      });
     }
     // если каталог содержит подкаталоги то собираем айтемы на 4 уровнях
     if (filteredCatalog[0].depth) {
       filteredCatalog[0].depth.forEach((firstDepth) => {
         if (firstDepth.items) {
-          firstDepth.items.forEach((item) => filteredItems.push(item));
+          firstDepth.items.forEach((item) => {
+            const hasId = itemsOnPage.some((o) => o.ID == item.ID);
+            if (!hasId) itemsOnPage.push(item);
+          });
         }
         if (firstDepth.depth) {
           firstDepth.depth.forEach((secondDepth) => {
             if (secondDepth.items) {
-              secondDepth.items.forEach((item) => filteredItems.push(item));
+              secondDepth.items.forEach((item) => {
+                const hasId = itemsOnPage.some((o) => o.ID == item.ID);
+                if (!hasId) itemsOnPage.push(item);
+              });
             }
             if (secondDepth.depth) {
               secondDepth.depth.forEach((thirdDepth) => {
                 if (thirdDepth.items) {
-                  thirdDepth.items.forEach((item) => filteredItems.push(item));
+                  thirdDepth.items.forEach((item) => {
+                    const hasId = itemsOnPage.some((o) => o.ID == item.ID);
+                    if (!hasId) itemsOnPage.push(item);
+                  });
                 }
               });
             }
@@ -716,33 +742,50 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     }
     // после собранных айтемов фильтруем по картинкам
-    filteredItems.sort((item) => (item.properties.Картинки ? -1 : 1));
+    itemsOnPage.sort((item) => (item.properties.Картинки ? -1 : 1));
     if (clicked) {
-      return filteredItems;
+      return itemsOnPage;
     } else {
       // меняем пагинацию
-      changePagination(Math.round(filteredItems.length / 12), 1);
+      changePagination(1);
       // отрисовываем айтемы
-      itemsForPage(1, filteredItems, true);
-      filtersForPage(filteredItems, true);
+      itemsForPage(1, itemsOnPage, true);
+      filtersForPage(itemsOnPage, true);
     }
   }
   function filterGoodsOnPage(items, catalog) {
-    const idCategory = document.querySelector(".radio__input:checked").id;
-    const filteredItemsFromRadio = itemsFromRadio(
-      items,
-      catalog,
-      idCategory,
-      true
-    );
-    console.log(filteredItemsFromRadio);
-    // const againFiltered
-    // const checkboxes = document.querySelectorAll(".checkbox:checked");
-    // console.log(clicked);
-    // const filteredItems = items;
-    // checkboxes.forEach((checkbox) => {
-    //   console.log(checkbox);
-    // });
+    const idCategory = document.querySelector(".radio__input:checked");
+    const checkboxes = document.querySelectorAll(".checkbox:checked");
+    let filteredItemsFromRadio = idCategory
+      ? itemsFromRadio(catalog, idCategory.id, true)
+      : items;
+    let choosedFilters = {};
+    checkboxes.forEach((checkbox) => {
+      if (!choosedFilters[checkbox.getAttribute("data-filter")]) {
+        choosedFilters[checkbox.getAttribute("data-filter")] = [];
+        choosedFilters[checkbox.getAttribute("data-filter")].push(
+          checkbox.value
+        );
+      } else {
+        choosedFilters[checkbox.getAttribute("data-filter")].push(
+          checkbox.value
+        );
+      }
+    });
+    const nestedFilter = (targetArray, filters) => {
+      let filterKeys = Object.keys(filters);
+      return targetArray.filter(function (eachObj) {
+        return filterKeys.every(function (eachKey) {
+          if (!filters[eachKey].length) {
+            return true;
+          }
+          return filters[eachKey].includes(eachObj.properties[eachKey]);
+        });
+      });
+    };
+    itemsOnPage = nestedFilter(filteredItemsFromRadio, choosedFilters);
+    itemsForPage(1, itemsOnPage, true);
+    changePagination(1);
   }
   function filtersForPage(items, clicked) {
     const filters = {};
@@ -808,6 +851,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <input
                           type="checkbox"
                           class="checkbox visually-hidden"
+                          value="${el}"
+                          data-filter="${filter}"
                         />
                         <span class="checkbox__span"></span>
                       </label>
@@ -844,6 +889,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <input
                               type="checkbox"
                               class="checkbox visually-hidden"
+                              value="${value}"
+                              data-filter="${filter}"
                             />
                             <span class="checkbox__span"></span>
                           </label>
