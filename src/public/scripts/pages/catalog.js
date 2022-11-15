@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   )
     .then((res) => res.json())
     .then((res) => {
-      res.sort((a, b) => (Number(a.sort) > Number(b.sort) ? 1 : -1));
-      return refreshCatalog(res);
+      console.log(res);
+      // res.sort((a, b) => (Number(a.sort) > Number(b.sort) ? 1 : -1));
+      // return refreshCatalog(res);
     });
 
   function refreshCatalog(catalog) {

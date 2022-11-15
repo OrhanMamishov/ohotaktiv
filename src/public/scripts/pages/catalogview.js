@@ -2,21 +2,22 @@ import "../imports";
 import "../../styles/pages/catalogview/style.scss";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
-import Swiper, { Pagination, Grid, Navigation } from "swiper";
+import Swiper, { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/grid";
-import wNumb from "wnumb";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import lozad from "lozad";
+import numWord from "../functions/numWord";
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
   const serverName = "https://ohotaktiv.ru";
-  const baseUrl = document.location.href;
-  const urlCatalog = "/full_remington/odezhda_rem/".split("/");
+  const urlCatalog = "/pnevmaticheskoe_oruzhie/pnevmaticheskie-vintovki/".split(
+    "/"
+  );
   const mainLevel = urlCatalog[1]; // главный каталог
   const level = urlCatalog.length - 2; // уровень этого каталога
   const fetchFromBase = await fetch(
@@ -27,14 +28,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   )
     .then((res) => res.json())
     .then((res) => {
+      // узнаем каталог
       const thisCatalog = res.catalog.section_list.filter((el) =>
         el.page_url.includes(urlCatalog[2])
       );
+      // если каталог не верхнего уровня
       if (urlCatalog.length > 3) {
+        // перебираем полученные каталоги
         for (let i = 3; i <= level; i++) {
+          // перебираем полученные подкаталоги
           thisCatalog[0].depth.forEach((depth) => {
+            // если каталог совпадает с нужным
             if (depth.page_url.includes(urlCatalog[i])) {
+              // пушим его в этот каталог
               thisCatalog.push(depth);
+              // удаляем предыдущий массив
               thisCatalog.shift();
             }
           });
@@ -47,9 +55,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function refreshThisCatalog(catalog) {
     console.log(catalog);
+    // Название каталога в котором находимся
     let catalogName = catalog.name;
+    // Айтемы этого каталога
+    // СОБИРАЕМ АЙТЕМЫ
     const items = [];
+    // если каталог верхнего уровня (если у него есть длина)
     if (catalog.length) {
+      // спрашиваем что это за каталог
       const catalogHighArray = await fetch(
         "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json",
         {
@@ -58,9 +71,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       )
         .then((res) => res.json())
         .then((res) => {
+          // фильтруем полученный результат по нужному каталогу
           const catalogHigh = res.filter(
             (el) => el.file == `${mainLevel}.json`
           );
+          // даем имя полученного каталога
           catalogName = catalogHigh[0].name;
         });
       catalog.forEach((cat) => {
@@ -94,16 +109,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     } else {
+      // если каталог не верхнего уровня (нет длины)
+      // если у каталога есть айтемы, пушим их в основной массив
       if (catalog.items) {
         catalog.items.forEach((item) => items.push(item));
       }
+      // если у каталога есть подкаталог
       if (catalog.depth) {
+        // перебираем его
         catalog.depth.forEach((firstDepth) => {
+          // если у этого подкаталога есть айтемы - пушим в основной массив
           if (firstDepth.items) {
             firstDepth.items.forEach((item) => items.push(item));
           }
+          // если у подкаталога есть подкаталог
           if (firstDepth.depth) {
+            // перебираем его
             firstDepth.depth.forEach((secondDepth) => {
+              // если у этого подкаталога есть айтемы - пушим в основной массив
+              // И ТАК ДАЛЕЕ 4 УРОВНЯ
               if (secondDepth.items) {
                 secondDepth.items.forEach((item) => items.push(item));
               }
@@ -119,12 +143,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
     }
+    // после сбора полученных айтемов сортируем их по наличию картинок и наличию в магазине
     items.sort((item) =>
       item.properties.Картинки && item.properties["Наличие в магазине"] ? -1 : 1
     );
-    while (main.firstChild) {
-      main.removeChild(main.firstChild);
-    }
+    // новая копия айтемов для фильтрации
+    let filteredItems = items;
+    // создаем элемент
     const element = `
       <section class="detail">
         <div class="detail__wrap container">
@@ -145,7 +170,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             </ul>
           </nav>
           <h1 class="detail__title"> ${catalogName} </h1>
-          <p class="detail__subtitle"> ${items.length} товаров</p>
+          <div class="detail__subtitle-wrap">
+            <p class="detail__subtitle"> ${filteredItems.length} товаров</p>
+            <button class="detail__cards-filter-open"></button>
+          </div>
           <div class="detail__columns">
             <div class="detail__filters">
               <div class="detail__filters-background"></div>
@@ -286,331 +314,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </li>
                   </ul>
                 </div>
-                <div class="detail__filter">
-                  <p class="detail__filter-title">Наличие в магазинах</p>
-                  <select class="js-select" id="select-city" name="select">
-                    <option value="">Выберите город</option>
-                    <option value="Кострома">Кострома</option>
-                    <option value="Москва">Москва</option>
-                    <option value="Мурманск">Мурманск</option>
-                    <option value="Набережные челны">Набережные челны</option>
-                  </select>
-                </div>
-                <div class="detail__filter">
-                  <p class="detail__filter-title">Цена</p>
-                  <div class="detail__filter-input-wrap">
-                    <p class="detail__filter-input-text">от</p>
-                    <input type="text" class="detail__filter-input" />
-                    <p class="detail__filter-input-text symbol">&#8381;</p>
-                  </div>
-                  <div class="detail__filter-input-wrap">
-                    <p class="detail__filter-input-text">до</p>
-                    <input type="text" class="detail__filter-input" />
-                    <p class="detail__filter-input-text symbol">&#8381;</p>
-                  </div>
-                </div>
-                <div class="detail__filter">
-                  <p class="detail__filter-title">Бренды</p>
-                  <input
-                    type="text"
-                    class="detail__filter-input"
-                    placeholder="Поиск значения"
-                  />
-                  <ul class="detail__filter-list">
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        Webley & Scott
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        Benelli
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        ВПО "МОЛОТ"
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        Retay
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        Webley & Scott
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        Benelli
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        ВПО "МОЛОТ"
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <label class="checkbox__label">
-                        Retay
-                        <input
-                          type="checkbox"
-                          class="checkbox visually-hidden"
-                        />
-                        <span class="checkbox__span"></span>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="detail__filter accordion-container">
-                  <div class="ac">
-                    <h2 class="ac-header">
-                      <button type="button" class="ac-trigger">
-                        Материал ствола
-                      </button>
-                    </h2>
-                    <div class="ac-panel">
-                      <div class="ac-panel-wrap">
-                        <input
-                          type="text"
-                          class="detail__filter-input"
-                          placeholder="Поиск значения"
-                        />
-                        <ul class="detail__filter-list">
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Webley & Scott
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Benelli
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              ВПО "МОЛОТ"
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Retay
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Webley & Scott
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Benelli
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              ВПО "МОЛОТ"
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Retay
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="detail__filter accordion-container">
-                  <div class="ac">
-                    <h2 class="ac-header">
-                      <button type="button" class="ac-trigger">
-                        Вид сверловки
-                      </button>
-                    </h2>
-                    <div class="ac-panel">
-                      <div class="ac-panel-wrap">
-                        <input
-                          type="text"
-                          class="detail__filter-input"
-                          placeholder="Поиск значения"
-                        />
-                        <ul class="detail__filter-list">
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Webley & Scott
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Benelli
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              ВПО "МОЛОТ"
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Retay
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Webley & Scott
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Benelli
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              ВПО "МОЛОТ"
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                          <li class="detail__filter-item">
-                            <label class="checkbox__label">
-                              Retay
-                              <input
-                                type="checkbox"
-                                class="checkbox visually-hidden"
-                              />
-                              <span class="checkbox__span"></span>
-                            </label>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ${filtersForPage(filteredItems)}
                 <button class="detail__filter-button">Сбросить</button>
-                <div class="detail__filter-contact">
-                  <p class="detail__filter-contact-text">
-                    Что улучшить в фильтрах?
-                  </p>
-                  <button class="detail__filter-contact-button">
-                    Сообщите нам
-                  </button>
-                </div>
               </div>
             </div>
-
           <div class="detail__cards">
             <div class="detail__cards-filters">
               <button class="detail__cards-filter-open"></button>
@@ -623,10 +330,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <button class="detail__cards-filter-close"></button>
               </div>
             </div>
-
             <div class="detail__cards-list-wrap">
               <ul class="detail__cards-list">
-                ${itemsForPage(1, items)}
+                ${itemsForPage(1, filteredItems)}
               </ul>
               <div class="pagination-list">
               </div>
@@ -635,9 +341,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       </section>
     `;
+    // удаляем все элементы DOM дерева
+    while (main.firstChild) {
+      main.removeChild(main.firstChild);
+    }
+    // вставляем созданный элемент в main
     main.insertAdjacentHTML("beforeend", element);
+    // lazy картинки
     const observer = lozad();
     observer.observe();
+    // все селекты и назначение свойств селекту
     const allSelects = document.querySelectorAll(".js-select");
     allSelects.forEach((select) => {
       new Choices(select, {
@@ -646,62 +359,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         allowHTML: true,
       });
     });
-    const swiperCards = new Swiper(".swiper-cards", {
-      modules: [Pagination, Grid],
-      spaceBetween: 10,
-      slidesPerView: 4,
-      slidesPerGroup: 4,
-      loopFillGroupWithBlank: true,
-      grid: {
-        rows: 3,
-        fill: "row",
-      },
-      pagination: {
-        el: ".detail__cards-swiper-pagination",
-        clickable: true,
-        dynamicBullets: true,
-        dynamicMainBullets: 5,
-        renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
-        },
-      },
-      breakpoints: {
-        1561: {
-          slidesPerView: 4,
-          slidesPerGroup: 4,
-          grid: {
-            rows: 3,
-            fill: "row",
-          },
-        },
-        1023: {
-          slidesPerView: 3,
-          slidesPerGroup: 3,
-          grid: {
-            rows: 3,
-            fill: "row",
-          },
-        },
-        600: {
-          slidesPerView: 3,
-          slidesPerGroup: 3,
-          spaceBetween: 30,
-          grid: {
-            rows: 3,
-            fill: "row",
-          },
-        },
-        320: {
-          slidesPerView: 2,
-          slidesPerGroup: 2,
-          spaceBetween: 10,
-          grid: {
-            rows: 2,
-            fill: "row",
-          },
-        },
-      },
-    });
+    // свайперы
     const swiperRecommended = new Swiper(".swiper-recommended", {
       spaceBetween: 16,
       modules: [Navigation],
@@ -774,11 +432,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         },
       },
     });
+    // аккордеоны
+    const allAccordions = document.querySelectorAll(".accordion-container");
+    allAccordions.forEach((acc) => new Accordion(acc));
+    // выбираем фильтры
     const filterWrap = document.querySelector(".detail__filters");
     const filter = document.querySelector(".detail__filters-wrap");
     const detailSection = document.querySelector(".detail");
-    changePagination(Math.floor(items.length / 12), 1);
-    let filteredItems = items;
+    // назначаем пагинацию, общий размер пагинации и активный элемент
+    changePagination(Math.round(items.length / 12), 1);
+    // события на созданном элементе
     detailSection.addEventListener("click", (e) => {
       if (e.target.className == "detail__cards-filter-open") {
         bodyScrollToggle();
@@ -798,88 +461,87 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 200);
       }
       if (e.target.className == "prev") {
+        // если нажали на пагинации стрелку prev то
+        // узнаем активный элемент
         let active = --document.querySelector(".numb.active").textContent;
+        // обновляем айтемы на странице, дав ему страницу и фильтрованный массив, так же триггер что это был клик
         itemsForPage(active, filteredItems, true);
+        // назначаем пагинацию, общий размер пагинации и активный элемент
         changePagination(
-          Math.floor(filteredItems.length / 12),
+          Math.round(filteredItems.length / 12),
           Number(e.target.getAttribute("data-prev-page"))
         );
       }
       if (e.target.className == "next") {
+        // тоже самое что и prev, только next
         let active = ++document.querySelector(".numb.active").textContent;
         itemsForPage(active, filteredItems, true);
         changePagination(
-          Math.floor(filteredItems.length / 12),
+          Math.round(filteredItems.length / 12),
           Number(e.target.getAttribute("data-next-page"))
         );
       }
       if (e.target.classList.contains("numb")) {
+        // если нажали на пагинацию на номер
+        // то обновляем айтемы у страницы
         itemsForPage(e.target.textContent, filteredItems, true);
         if (e.target.getAttribute("data-first")) {
-          changePagination(Math.floor(filteredItems.length / 12), Number(1));
+          // если ткнули на первый элемент то возвращаем пагинацию на 1 элемент
+          changePagination(Math.round(filteredItems.length / 12), Number(1));
           return;
         }
         if (e.target.getAttribute("data-last")) {
+          // если ткнули на последний элемент то возвращаем пагинацию на последний элемент
           changePagination(
-            Math.floor(filteredItems.length / 12),
+            Math.round(filteredItems.length / 12),
             Number(e.target.getAttribute("data-total-pages"))
           );
           return;
         }
         changePagination(
-          Math.floor(filteredItems.length / 12),
+          Math.round(filteredItems.length / 12),
           Number(e.target.getAttribute("data-page-length"))
         );
       }
       if (e.target.className == "radio__input") {
-        filteredItems = [];
-
-        let filteredCatalog;
-        if (catalog.length) {
-          filteredCatalog = catalog.filter(
-            (section) => section.section_this == e.target.id
-          );
-        } else {
-          filteredCatalog = catalog.depth.filter(
-            (section) => section.id == e.target.id
-          );
-        }
-        if (filteredCatalog[0].items) {
-          filteredCatalog[0].items.forEach((item) => filteredItems.push(item));
-        }
-        if (filteredCatalog[0].depth) {
-          filteredCatalog[0].depth.forEach((firstDepth) => {
-            if (firstDepth.items) {
-              firstDepth.items.forEach((item) => filteredItems.push(item));
-            }
-            if (firstDepth.depth) {
-              firstDepth.depth.forEach((secondDepth) => {
-                if (secondDepth.items) {
-                  secondDepth.items.forEach((item) => filteredItems.push(item));
-                }
-                if (secondDepth.depth) {
-                  secondDepth.depth.forEach((thirdDepth) => {
-                    if (thirdDepth.items) {
-                      thirdDepth.items.forEach((item) =>
-                        filteredItems.push(item)
-                      );
-                    }
-                  });
-                }
-              });
-            }
-          });
-        }
-        filteredItems.sort((item) => (item.properties.Картинки ? -1 : 1));
-        changePagination(Math.floor(filteredItems.length / 12), 1);
-        itemsForPage(1, filteredItems, true);
+        itemsFromRadio(filteredItems, catalog, e.target.id);
       }
+      if (e.target.className == "detail__cards-filter-close") {
+        filterGoodsOnPage(items, e.target.previousElementSibling.textContent);
+        e.target.parentElement.remove();
+      }
+      if (e.target.classList.contains("checkbox")) {
+        filterGoodsOnPage(items, catalog);
+      }
+      if (e.target.className == "detail__filter-button") {
+        refreshThisCatalog(catalog);
+      }
+    });
+    // событие на цене
+    const priceFrom = document.getElementById("price-from");
+    const priceTo = document.getElementById("price-to");
+    const pricesInputs = [priceFrom, priceTo];
+    pricesInputs.forEach((input) => {
+      input.addEventListener("input", (e) => {
+        e.currentTarget.value = numberWithSpaces(
+          e.currentTarget.value.replace(/\D/g, "")
+        );
+        if (input == priceFrom) {
+          // const filteredPriceItems = filteredItems.filter(
+          //   (item) =>
+          //     Number(item["PRICE"][5]) >=
+          //     e.currentTarget.value.split(" ").join("")
+          // );
+          // console.log(filteredPriceItems);
+        }
+      });
     });
   }
   function generatePrice(item) {
     const price = item["PRICE"];
+    let trigger = true;
     if (price) {
-      if (price[13]) {
+      if (price[13] && trigger) {
         return `${numberWithSpaces(price[13])} &#8381; <span>${numberWithSpaces(
           price[1]
         )} &#8381;</span>`;
@@ -898,7 +560,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   function itemsForPage(buttonNumber, arr, clicked) {
     const itemsOnPage = 12;
-    const startFrom = buttonNumber * itemsOnPage;
+    const startFrom = buttonNumber == 1 ? 1 : (buttonNumber - 1) * itemsOnPage;
     const data = arr.slice(startFrom, startFrom + itemsOnPage);
     let element = ``;
     data.forEach((item) => {
@@ -956,6 +618,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     if (clicked) {
       const detailList = document.querySelector(".detail__cards-list");
+      const detailSubtitle = document.querySelector(".detail__subtitle");
+      detailSubtitle.textContent = `${arr.length} ${numWord(arr.length, [
+        "товар",
+        "товара",
+        "товаров",
+      ])}`;
       return (detailList.innerHTML = element);
     } else {
       return element;
@@ -1006,5 +674,210 @@ document.addEventListener("DOMContentLoaded", async () => {
       }">Next</button>`;
     }
     paginationList.innerHTML = liTag;
+  }
+  function itemsFromRadio(filteredItems, catalog, id, clicked) {
+    // если ткнули на радиокнопку фильтра то обнуляем фильтровый массив
+    filteredItems = [];
+    // создаем новую переменную для фильтрового каталога
+    let filteredCatalog;
+    // если каталог имеет длину то есть каталог не содержит подкаталогов
+    if (catalog.length) {
+      // фильтруем каталог по ID
+      filteredCatalog = catalog.filter((section) => section.section_this == id);
+    } else {
+      // иначе фильтруем подкаталог по ID
+      filteredCatalog = catalog.depth.filter((section) => section.id == id);
+    }
+    // если каталог содержит айтемы
+    if (filteredCatalog[0].items) {
+      // пушим их в основной массив
+      filteredCatalog[0].items.forEach((item) => filteredItems.push(item));
+    }
+    // если каталог содержит подкаталоги то собираем айтемы на 4 уровнях
+    if (filteredCatalog[0].depth) {
+      filteredCatalog[0].depth.forEach((firstDepth) => {
+        if (firstDepth.items) {
+          firstDepth.items.forEach((item) => filteredItems.push(item));
+        }
+        if (firstDepth.depth) {
+          firstDepth.depth.forEach((secondDepth) => {
+            if (secondDepth.items) {
+              secondDepth.items.forEach((item) => filteredItems.push(item));
+            }
+            if (secondDepth.depth) {
+              secondDepth.depth.forEach((thirdDepth) => {
+                if (thirdDepth.items) {
+                  thirdDepth.items.forEach((item) => filteredItems.push(item));
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+    // после собранных айтемов фильтруем по картинкам
+    filteredItems.sort((item) => (item.properties.Картинки ? -1 : 1));
+    if (clicked) {
+      return filteredItems;
+    } else {
+      // меняем пагинацию
+      changePagination(Math.round(filteredItems.length / 12), 1);
+      // отрисовываем айтемы
+      itemsForPage(1, filteredItems, true);
+      filtersForPage(filteredItems, true);
+    }
+  }
+  function filterGoodsOnPage(items, catalog) {
+    const idCategory = document.querySelector(".radio__input:checked").id;
+    const filteredItemsFromRadio = itemsFromRadio(
+      items,
+      catalog,
+      idCategory,
+      true
+    );
+    console.log(filteredItemsFromRadio);
+    // const againFiltered
+    // const checkboxes = document.querySelectorAll(".checkbox:checked");
+    // console.log(clicked);
+    // const filteredItems = items;
+    // checkboxes.forEach((checkbox) => {
+    //   console.log(checkbox);
+    // });
+  }
+  function filtersForPage(items, clicked) {
+    const filters = {};
+    items.forEach((item) => {
+      Object.keys(item.properties).forEach((prop) => {
+        if (/[а-я]/i.test(prop)) {
+          if (!filters[prop] && !prop.startsWith("Картинки")) {
+            filters[prop] = [];
+          }
+          if (!prop.startsWith("Картинки")) {
+            if (!filters[prop].includes(item.properties[prop])) {
+              filters[prop].push(item.properties[prop]);
+            }
+          }
+        }
+      });
+    });
+    const element = `
+    <div class="detail__filter-all">
+      <div class="detail__filter">
+        <p class="detail__filter-title">Наличие в магазинах</p>
+        <select class="js-select" id="select-city" name="select">
+          <option value="">Выберите город</option>
+          <option value="Кострома">Кострома</option>
+          <option value="Москва">Москва</option>
+          <option value="Мурманск">Мурманск</option>
+          <option value="Набережные челны">Набережные челны</option>
+        </select>
+      </div>
+      <div class="detail__filter">
+        <p class="detail__filter-title">Цена</p>
+        <div class="detail__filter-input-wrap">
+          <p class="detail__filter-input-text">от</p>
+          <input type="text" class="detail__filter-input" id="price-from" maxlength="8"/>
+          <p class="detail__filter-input-text symbol">&#8381;</p>
+        </div>
+        <div class="detail__filter-input-wrap">
+          <p class="detail__filter-input-text">до</p>
+          <input type="text" class="detail__filter-input" id="price-to" maxlength="8"/>
+          <p class="detail__filter-input-text symbol">&#8381;</p>
+        </div>
+      </div>
+      
+    ${Object.keys(filters)
+      .map((filter) => {
+        if (filter == "Наличие в магазине") return;
+        if (filter == "Бренды") {
+          return `
+            <div class="detail__filter">
+              <p class="detail__filter-title">Бренды</p>
+              <input
+                type="text"
+                class="detail__filter-input"
+                placeholder="Поиск Бренда"
+              />
+              <ul class="detail__filter-list">
+                ${filters["Бренды"]
+                  .map((el) => {
+                    return `
+                    <li class="detail__filter-item">
+                      <label class="checkbox__label">
+                        ${el}
+                        <input
+                          type="checkbox"
+                          class="checkbox visually-hidden"
+                        />
+                        <span class="checkbox__span"></span>
+                      </label>
+                    </li>
+                  `;
+                  })
+                  .join("")}
+              </ul>
+          </div>
+          `;
+        } else {
+          return `
+            <div class="detail__filter accordion-container">
+              <div class="ac">
+                <h2 class="ac-header">
+                  <button type="button" class="ac-trigger">
+                    ${filter}
+                  </button>
+                </h2>
+                <div class="ac-panel">
+                  <div class="ac-panel-wrap">
+                    <input
+                      type="text"
+                      class="detail__filter-input"
+                      placeholder="Поиск значения"
+                    />
+                    <ul class="detail__filter-list">
+                    ${Object.values(filters[filter])
+                      .map((value) => {
+                        return `
+                        <li class="detail__filter-item">
+                          <label class="checkbox__label">
+                            ${value}
+                            <input
+                              type="checkbox"
+                              class="checkbox visually-hidden"
+                            />
+                            <span class="checkbox__span"></span>
+                          </label>
+                        </li>
+                      `;
+                      })
+                      .join("")}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      })
+      .join("")}
+      </div>
+    `;
+    if (clicked) {
+      const detailFilterAll = document.querySelector(".detail__filter-all");
+      detailFilterAll.innerHTML = element;
+      const allAccordions = document.querySelectorAll(".accordion-container");
+      allAccordions.forEach((acc) => new Accordion(acc));
+      const allSelects = document.querySelectorAll(".js-select");
+      allSelects.forEach((select) => {
+        new Choices(select, {
+          searchEnabled: false,
+          itemSelectText: "",
+          allowHTML: true,
+        });
+      });
+      return;
+    } else {
+      return element;
+    }
   }
 });

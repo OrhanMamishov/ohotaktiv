@@ -12,7 +12,14 @@
     }
     &__subtitle {
       @include fontSize14;
-      display: inline-block;
+      &-wrap {
+        display: inline-block;
+      }
+      &.skeleton {
+        margin-bottom: 40px;
+        width: 100px;
+        height: 25px;
+      }
     }
     &__filters {
       flex: 0 1 246px;
@@ -78,11 +85,23 @@
           }
         }
       }
+      &-item {
+        .card-item__photo {
+          mix-blend-mode: multiply; // убрать потом
+        }
+      }
     }
     &__filter {
+      &-all {
+        margin-bottom: 35px;
+      }
       &-title {
         @include fontSize18;
         margin-bottom: 20px;
+        &.skeleton {
+          width: 246px;
+          height: 28px;
+        }
       }
       &-list {
         @include contentScroll;
@@ -100,6 +119,10 @@
       &-item {
         &:not(:last-child) {
           margin-bottom: 5px;
+        }
+        &.skeleton {
+          width: 246px;
+          height: 25px;
         }
       }
       &-input {
@@ -139,30 +162,10 @@
         background-color: transparent;
         border: 2px solid var(--black-color);
         border-radius: 100px;
-      }
-      &-contact {
-        position: relative;
-        padding-left: 22px;
-        &-text {
-          @include fontSize14;
-          margin-bottom: 5px;
-        }
-        &-button {
-          @include fontSize14;
-          font-weight: 700;
-          transition: color 0.2s ease;
-          &:hover {
-            color: var(--primary-color);
-          }
-        }
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 5px;
-          height: 100%;
-          background-color: var(--primary-color);
+        &.skeleton {
+          width: 246px;
+          height: 53px;
+          border: none;
         }
       }
       .choices {
@@ -286,6 +289,21 @@
 @media only screen and (max-width: 1365px) {
   .main {
     .detail {
+      &__title {
+        margin-right: 0;
+      }
+      &__wrap {
+        .detail__cards-filter-open {
+          display: inline-block;
+        }
+      }
+      &__subtitle {
+        &-wrap {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
       &__columns {
         display: block;
       }
@@ -317,10 +335,22 @@
       }
       &__cards {
         width: 100%;
-        &-filter {
-          &-open {
-            display: block;
+        &-filters {
+          .detail__cards-filter-open {
+            display: none;
           }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .detail {
+      &__cards {
+        &-list {
+          gap: 30px;
+          justify-content: center;
         }
       }
     }
@@ -330,7 +360,9 @@
   .main {
     .detail {
       &__subtitle {
-        margin-bottom: 30px;
+        &-wrap {
+          margin-bottom: 30px;
+        }
       }
       &__cards {
         margin-bottom: 30px;

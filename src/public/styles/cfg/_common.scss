@@ -285,6 +285,8 @@ main {
   &.skeleton {
     width: 270px;
     height: 300px;
+    margin-bottom: 20px;
+    margin-right: 20px;
   }
   @media only screen and (max-width: 1560px) {
     &__photo {
@@ -554,7 +556,7 @@ main {
   animation: shine 1s linear infinite alternate;
   @keyframes shine {
     0% {
-      background-color: hsl(200, 20%, 80%);
+      background-color: hsl(0, 0%, 93%);
     }
     100% {
       background-color: hsl(200, 20%, 95%);
