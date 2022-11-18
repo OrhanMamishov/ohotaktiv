@@ -1,7 +1,5 @@
 import "../imports";
 import "../../styles/pages/catalogview/style.scss";
-import Choices from "choices.js";
-import "choices.js/public/assets/styles/choices.min.css";
 import Swiper, { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,6 +9,7 @@ import lozad from "lozad";
 import numWord from "../functions/numWord";
 import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
+import ucFirst from "../functions/ucFirst";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
@@ -168,9 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
     // после сбора полученных айтемов сортируем их по наличию картинок и наличию в магазине
-    items.sort((item) =>
-      item.properties.Картинки && item.properties["Наличие в магазине"] ? -1 : 1
-    );
+    items.sort((item) => (item.PREVIEW_PICTURE ? -1 : 1));
     // новая копия айтемов для фильтрации
     itemsOnPage = items;
     // создаем элемент
@@ -211,131 +208,186 @@ document.addEventListener("DOMContentLoaded", async () => {
                         ? catalog.depth
                             .map((section) => {
                               return `
-                                <li class="detail__filter-item">
-                                  <input
-                                    class="radio__input"
-                                    type="radio"
-                                    id="${section.id}"
-                                    name="category"
-                                  />
-                                  <label for="${section.id}">${section.name}</label>
-                                </li>
-                              `;
+                            <li class="detail__filter-item">
+                              <input
+                                class="radio__input"
+                                type="radio"
+                                id="${section.id}"
+                                name="category"
+                              />
+                              <label for="${section.id}">${section.name}</label>
+                              ${
+                                section.depth
+                                  ? `<ul class="detail__filter-list subcategory-list">
+                                    ${section.depth
+                                      .map((firstDepth) => {
+                                        return `
+                                        <li class="detail__filter-item">
+                                          <input
+                                            class="radio__input"
+                                            type="radio"
+                                            id="${firstDepth.id}"
+                                            name="category"
+                                          />
+                                          <label for="${firstDepth.id}">${
+                                          firstDepth.name
+                                        }</label>
+                                          ${
+                                            firstDepth.depth
+                                              ? `
+                                            <ul class="detail__filter-list subcategory-list">
+                                              ${firstDepth.depth
+                                                .map((secondDepth) => {
+                                                  return `
+                                                  <li class="detail__filter-item">
+                                                    <input
+                                                      class="radio__input"
+                                                      type="radio"
+                                                      id="${secondDepth.id}"
+                                                      name="category"
+                                                    />
+                                                    <label for="${
+                                                      secondDepth.id
+                                                    }">${
+                                                    secondDepth.name
+                                                  }</label>
+                                                    ${
+                                                      secondDepth.depth
+                                                        ? `
+                                                    <ul class="detail__filter-list subcategory-list">
+                                                      ${secondDepth.depth
+                                                        .map((thirdDepth) => {
+                                                          return `
+                                                          <li class="detail__filter-item">
+                                                            <input
+                                                              class="radio__input"
+                                                              type="radio"
+                                                              id="${thirdDepth.id}"
+                                                              name="category"
+                                                            />
+                                                            <label for="${thirdDepth.id}">${thirdDepth.name}</label>
+                                                          </li>
+                                                        `;
+                                                        })
+                                                        .join("")}
+                                                    </ul>
+                                                    `
+                                                        : ``
+                                                    }
+                                                  </li>
+                                                `;
+                                                })
+                                                .join("")}
+                                            </ul>
+                                          `
+                                              : ``
+                                          }
+                                      </li>
+                                      `;
+                                      })
+                                      .join("")}
+                                  </ul>`
+                                  : ``
+                              }
+                            </li>
+                          `;
                             })
                             .join("")
                         : catalog.length
                         ? catalog
                             .map((section) => {
                               return `
-                            <li class="detail__filter-item">
-                              <input
-                                class="radio__input"
-                                type="radio"
-                                id="${section.section_this}"
-                                name="category"
-                              />
-                              <label for="${section.section_this}">${section.name}</label>
-                            </li>
-                          `;
+                                <li class="detail__filter-item">
+                                  <input
+                                    class="radio__input"
+                                    type="radio"
+                                    id="${section.section_this}"
+                                    name="category"
+                                  />
+                                  <label for="${section.section_this}">${
+                                section.name
+                              }</label>
+                                  ${
+                                    section.depth
+                                      ? `<ul class="detail__filter-list subcategory-list">
+                                        ${section.depth
+                                          .map((firstDepth) => {
+                                            return `
+                                            <li class="detail__filter-item">
+                                              <input
+                                                class="radio__input"
+                                                type="radio"
+                                                id="${firstDepth.id}"
+                                                name="category"
+                                              />
+                                              <label for="${firstDepth.id}">${
+                                              firstDepth.name
+                                            }</label>
+                                              ${
+                                                firstDepth.depth
+                                                  ? `
+                                                <ul class="detail__filter-list subcategory-list">
+                                                  ${firstDepth.depth
+                                                    .map((secondDepth) => {
+                                                      return `
+                                                      <li class="detail__filter-item">
+                                                        <input
+                                                          class="radio__input"
+                                                          type="radio"
+                                                          id="${secondDepth.id}"
+                                                          name="category"
+                                                        />
+                                                        <label for="${
+                                                          secondDepth.id
+                                                        }">${
+                                                        secondDepth.name
+                                                      }</label>
+                                                        ${
+                                                          secondDepth.depth
+                                                            ? `
+                                                        <ul class="detail__filter-list subcategory-list">
+                                                          ${secondDepth.depth
+                                                            .map(
+                                                              (thirdDepth) => {
+                                                                return `
+                                                              <li class="detail__filter-item">
+                                                                <input
+                                                                  class="radio__input"
+                                                                  type="radio"
+                                                                  id="${thirdDepth.id}"
+                                                                  name="category"
+                                                                />
+                                                                <label for="${thirdDepth.id}">${thirdDepth.name}</label>
+                                                              </li>
+                                                            `;
+                                                              }
+                                                            )
+                                                            .join("")}
+                                                        </ul>
+                                                        `
+                                                            : ``
+                                                        }
+                                                      </li>
+                                                    `;
+                                                    })
+                                                    .join("")}
+                                                </ul>
+                                              `
+                                                  : ``
+                                              }
+                                          </li>
+                                          `;
+                                          })
+                                          .join("")}
+                                      </ul>`
+                                      : ``
+                                  }
+                                </li>
+                              `;
                             })
                             .join("")
                         : []
                     }
-                  </ul>
-                </div>
-                <div class="detail__filter">
-                  <p class="detail__filter-title">Тут доп категория</p>
-                  <ul class="detail__filter-list">
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-1"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-1">Газовое оборудование</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-2"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-2">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-3"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-3">Комплектующие</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-4"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-4">Газовые лампы</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-5"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-5">Газовые обогреватели</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-6"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-6">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-7"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-7">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-8"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-8">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-9"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-9">Газовые баллоны</label>
-                    </li>
-                    <li class="detail__filter-item">
-                      <input
-                        class="radio__input"
-                        type="radio"
-                        id="addcategory-10"
-                        name="addcategory"
-                      />
-                      <label for="addcategory-10">Газовые баллоны</label>
-                    </li>
                   </ul>
                 </div>
                 ${filtersForPage(itemsOnPage)}
@@ -344,15 +396,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
           <div class="detail__cards">
             <div class="detail__cards-filters">
-              <button class="detail__cards-filter-open"></button>
-              <div class="detail__cards-filter">
-                <p class="detail__cards-text">Газовое оборудование</p>
-                <button class="detail__cards-filter-close"></button>
-              </div>
-              <div class="detail__cards-filter">
-                <p class="detail__cards-text">Газовые баллоны</p>
-                <button class="detail__cards-filter-close"></button>
-              </div>
+
             </div>
             <div class="detail__cards-list-wrap">
               <ul class="detail__cards-list">
@@ -374,15 +418,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // lazy картинки
     const observer = lozad();
     observer.observe();
-    // все селекты и назначение свойств селекту
-    const allSelects = document.querySelectorAll(".js-select");
-    allSelects.forEach((select) => {
-      new Choices(select, {
-        searchEnabled: false,
-        itemSelectText: "",
-        allowHTML: true,
-      });
-    });
     // свайперы
     const swiperRecommended = new Swiper(".swiper-recommended", {
       spaceBetween: 16,
@@ -466,6 +501,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // назначаем пагинацию, общий размер пагинации и активный элемент
     changePagination(1);
     // события на созданном элементе
+    // -------------------------------------------------------------------------------------
     detailSection.addEventListener("click", (e) => {
       if (e.target.className == "detail__cards-filter-open") {
         bodyScrollToggle();
@@ -519,8 +555,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         itemsFromRadio(catalog, e.target.id);
       }
       if (e.target.className == "detail__cards-filter-close") {
-        filterGoodsOnPage(items, e.target.previousElementSibling.textContent);
+        filterGoodsOnPage(items, catalog);
         e.target.parentElement.remove();
+        console.log(e.target.parentElement);
       }
       if (e.target.classList.contains("checkbox")) {
         filterGoodsOnPage(items, catalog);
@@ -545,6 +582,24 @@ document.addEventListener("DOMContentLoaded", async () => {
           //     e.currentTarget.value.split(" ").join("")
           // );
           // console.log(filteredPriceItems);
+        }
+      });
+    });
+    // события в поиске магазина
+    const magazinesInput = document.querySelector(".detail__filter-input");
+    const chooseMagazinesItems = document.querySelectorAll(
+      `[data-filter="STORE_AVAILABLE"]`
+    );
+    magazinesInput.addEventListener("input", (e) => {
+      e.currentTarget.value = e.currentTarget.value.replace(
+        /[^а-я, ^А-Я, '']/,
+        ""
+      );
+      chooseMagazinesItems.forEach((el) => {
+        if (!el.value.startsWith(ucFirst(magazinesInput.value))) {
+          el.parentElement.style.display = "none";
+        } else {
+          el.parentElement.style.display = "block";
         }
       });
     });
@@ -583,14 +638,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           <a href="../../card/?id=${item.ID}" class="card-item__link">
             <div class="card-item__photo-wrap">
               <img
-                src="${
-                  item.properties.Картинки
-                    ? item.properties.Картинки[0]
-                      ? serverName + item.properties.Картинки[0]
-                      : serverName +
-                        `/local/templates/ohota2021/img/no_photo.png`
-                    : serverName + `/local/templates/ohota2021/img/no_photo.png`
-                }"
+                src="${serverName}${
+        item.PREVIEW_PICTURE
+          ? item.PREVIEW_PICTURE
+          : item.properties.MORE_PHOTO
+          ? item.properties.MORE_PHOTO.FILES
+          : `/local/templates/ohota2021/img/no_photo.png`
+      }"
                 alt="${item.name}"
                 class="card-item__photo lozad"
               />
@@ -697,22 +751,75 @@ document.addEventListener("DOMContentLoaded", async () => {
     // если каталог имеет длину то есть каталог не содержит подкаталогов
     if (catalog.length) {
       // фильтруем каталог по ID
-      filteredCatalog = catalog.filter((section) => section.section_this == id);
+      catalog.forEach((el) => {
+        if (el.section_this !== id) {
+          if (el.depth) {
+            el.depth.forEach((firstDepth) => {
+              if (firstDepth.id !== id) {
+                if (firstDepth.depth) {
+                  firstDepth.depth.forEach((secondDepth) => {
+                    if (secondDepth.id !== id) {
+                      if (secondDepth.depth) {
+                        secondDepth.depth.forEach((thirdDepth) => {
+                          filteredCatalog = thirdDepth;
+                        });
+                      }
+                    } else {
+                      filteredCatalog = secondDepth;
+                    }
+                  });
+                }
+              } else {
+                filteredCatalog = firstDepth;
+              }
+            });
+          }
+        } else {
+          filteredCatalog = el;
+        }
+      });
     } else {
       // иначе фильтруем подкаталог по ID
-      filteredCatalog = catalog.depth.filter((section) => section.id == id);
+      catalog.depth.forEach((el) => {
+        if (el.id !== id) {
+          if (el.depth) {
+            el.depth.forEach((firstDepth) => {
+              if (firstDepth.id !== id) {
+                if (firstDepth.depth) {
+                  firstDepth.depth.forEach((secondDepth) => {
+                    if (secondDepth.id !== id) {
+                      if (secondDepth.depth) {
+                        secondDepth.depth.forEach((thirdDepth) => {
+                          filteredCatalog = thirdDepth;
+                        });
+                      }
+                    } else {
+                      filteredCatalog = secondDepth;
+                    }
+                  });
+                }
+              } else {
+                filteredCatalog = firstDepth;
+              }
+            });
+          }
+        } else {
+          filteredCatalog = el;
+        }
+      });
     }
+    //
     // если каталог содержит айтемы
-    if (filteredCatalog[0].items) {
+    if (filteredCatalog.items) {
       // пушим их в основной массив
-      filteredCatalog[0].items.forEach((item) => {
+      filteredCatalog.items.forEach((item) => {
         const hasId = itemsOnPage.some((o) => o.ID == item.ID);
         if (!hasId) itemsOnPage.push(item);
       });
     }
     // если каталог содержит подкаталоги то собираем айтемы на 4 уровнях
-    if (filteredCatalog[0].depth) {
-      filteredCatalog[0].depth.forEach((firstDepth) => {
+    if (filteredCatalog.depth) {
+      filteredCatalog.depth.forEach((firstDepth) => {
         if (firstDepth.items) {
           firstDepth.items.forEach((item) => {
             const hasId = itemsOnPage.some((o) => o.ID == item.ID);
@@ -742,7 +849,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     }
     // после собранных айтемов фильтруем по картинкам
-    itemsOnPage.sort((item) => (item.properties.Картинки ? -1 : 1));
+    itemsOnPage.sort((item) => (item.PREVIEW_PICTURE ? -1 : 1));
+    console.log(itemsOnPage);
     if (clicked) {
       return itemsOnPage;
     } else {
@@ -751,6 +859,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       // отрисовываем айтемы
       itemsForPage(1, itemsOnPage, true);
       filtersForPage(itemsOnPage, true);
+      // события в поиске магазина
+      const magazinesInput = document.querySelector(".detail__filter-input");
+      const chooseMagazinesItems = document.querySelectorAll(
+        `[data-filter="STORE_AVAILABLE"]`
+      );
+      magazinesInput.addEventListener("input", (e) => {
+        e.currentTarget.value = e.currentTarget.value.replace(
+          /[^а-я, ^А-Я, '']/,
+          ""
+        );
+        chooseMagazinesItems.forEach((el) => {
+          if (!el.value.startsWith(ucFirst(magazinesInput.value))) {
+            el.parentElement.style.display = "none";
+          } else {
+            el.parentElement.style.display = "block";
+          }
+        });
+      });
     }
   }
   function filterGoodsOnPage(items, catalog) {
@@ -763,57 +889,135 @@ document.addEventListener("DOMContentLoaded", async () => {
     checkboxes.forEach((checkbox) => {
       if (!choosedFilters[checkbox.getAttribute("data-filter")]) {
         choosedFilters[checkbox.getAttribute("data-filter")] = [];
-        choosedFilters[checkbox.getAttribute("data-filter")].push(
-          checkbox.value
-        );
+      }
+      if (checkbox.getAttribute("data-filter") == "STORE_AVAILABLE") {
+        choosedFilters[checkbox.getAttribute("data-filter")].push(checkbox.id);
       } else {
         choosedFilters[checkbox.getAttribute("data-filter")].push(
           checkbox.value
         );
       }
     });
-    const nestedFilter = (targetArray, filters) => {
-      let filterKeys = Object.keys(filters);
+    let mergedArr = [];
+    if (choosedFilters["STORE_AVAILABLE"]) {
+      filteredItemsFromRadio.forEach((item) => {
+        let trigger = 0;
+        for (let i = 0; i < choosedFilters["STORE_AVAILABLE"].length; i++) {
+          if (!item.properties) continue;
+          if (!item.properties.STORE_AVAILABLE) continue;
+          if (
+            item.properties.STORE_AVAILABLE[
+              choosedFilters["STORE_AVAILABLE"][i]
+            ]
+          )
+            trigger++;
+        }
+        if (trigger === choosedFilters["STORE_AVAILABLE"].length) {
+          mergedArr.push(item);
+        }
+      });
+    }
+    itemsOnPage = nestedFilter(
+      mergedArr.length ? mergedArr : filteredItemsFromRadio,
+      choosedFilters
+    );
+    console.log(mergedArr);
+    console.log(itemsOnPage);
+    itemsForPage(1, itemsOnPage, true);
+    changePagination(1);
+    const miniFiltersContainer = document.querySelector(
+      ".detail__cards-filters"
+    );
+    const element = `
+      ${Object.values(checkboxes)
+        .map((checkbox) => {
+          return `
+            <div class="detail__cards-filter">
+              <p class="detail__cards-text">${checkbox.value}</p>
+              <button class="detail__cards-filter-close"></button>
+            </div>
+        `;
+        })
+        .join("")}
+    `;
+    miniFiltersContainer.innerHTML = element;
+    function nestedFilter(targetArray, filters) {
+      const filterKeys = Object.keys(filters).filter(
+        (key) => key !== "STORE_AVAILABLE"
+      );
       return targetArray.filter(function (eachObj) {
         return filterKeys.every(function (eachKey) {
           if (!filters[eachKey].length) {
             return true;
           }
-          return filters[eachKey].includes(eachObj.properties[eachKey]);
+          if (eachObj.properties) {
+            if (eachObj.properties[eachKey]) {
+              return filters[eachKey].includes(
+                eachObj.properties[eachKey].VALUE
+              );
+            }
+          }
         });
       });
-    };
-    itemsOnPage = nestedFilter(filteredItemsFromRadio, choosedFilters);
-    itemsForPage(1, itemsOnPage, true);
-    changePagination(1);
+    }
   }
   function filtersForPage(items, clicked) {
     const filters = {};
+    const filtersCode = {};
     items.forEach((item) => {
-      Object.keys(item.properties).forEach((prop) => {
-        if (/[а-я]/i.test(prop)) {
-          if (!filters[prop] && !prop.startsWith("Картинки")) {
-            filters[prop] = [];
+      if (item.properties) {
+        Object.values(item.properties).forEach((prop) => {
+          if (prop.NAME == "Картинки") return;
+          if (!prop.NAME) {
+            Object.values(prop).forEach((el) => {
+              if (!el.NAME) return;
+              if (!filters["Магазины"]) filters["Магазины"] = [];
+              if (!filtersCode["Магазины"])
+                filtersCode["Магазины"] = "STORE_AVAILABLE";
+              const isContain = filters["Магазины"].find(
+                (shop) => shop.VALUE === el.VALUE
+              );
+              if (!isContain) {
+                filters["Магазины"].push({ VALUE: el.VALUE, NAME: el.NAME });
+              }
+            });
           }
-          if (!prop.startsWith("Картинки")) {
-            if (!filters[prop].includes(item.properties[prop])) {
-              filters[prop].push(item.properties[prop]);
-            }
-          }
-        }
-      });
+          if (!filters[prop.NAME]) filters[prop.NAME] = [];
+          if (!filtersCode[prop.NAME]) filtersCode[prop.NAME] = prop.CODE;
+          if (!filters[prop.NAME].includes(prop.VALUE))
+            filters[prop.NAME].push(prop.VALUE);
+        });
+      }
     });
     const element = `
     <div class="detail__filter-all">
       <div class="detail__filter">
         <p class="detail__filter-title">Наличие в магазинах</p>
-        <select class="js-select" id="select-city" name="select">
-          <option value="">Выберите город</option>
-          <option value="Кострома">Кострома</option>
-          <option value="Москва">Москва</option>
-          <option value="Мурманск">Мурманск</option>
-          <option value="Набережные челны">Набережные челны</option>
-        </select>
+          <input
+            type="text"
+            class="detail__filter-input"
+            placeholder="Поиск магазина"
+          />
+        <ul class="detail__filter-list">
+        ${filters["Магазины"]
+          .map((el) => {
+            return `
+              <li class="detail__filter-item">
+                <label class="checkbox__label">
+                  ${el.NAME}
+                  <input
+                    type="checkbox"
+                    class="checkbox visually-hidden"
+                    value="${el.NAME}"
+                    data-filter="STORE_AVAILABLE"
+                    id="${el.VALUE}"
+                  />
+                  <span class="checkbox__span"></span>
+                </label>
+              </li>
+            `;
+          })
+          .join("")}
       </div>
       <div class="detail__filter">
         <p class="detail__filter-title">Цена</p>
@@ -828,19 +1032,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           <p class="detail__filter-input-text symbol">&#8381;</p>
         </div>
       </div>
-      
     ${Object.keys(filters)
       .map((filter) => {
-        if (filter == "Наличие в магазине") return;
+        if (filter == "Магазины" || filter == "undefined") return;
         if (filter == "Бренды") {
           return `
             <div class="detail__filter">
               <p class="detail__filter-title">Бренды</p>
-              <input
-                type="text"
-                class="detail__filter-input"
-                placeholder="Поиск Бренда"
-              />
               <ul class="detail__filter-list">
                 ${filters["Бренды"]
                   .map((el) => {
@@ -874,11 +1072,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </h2>
                 <div class="ac-panel">
                   <div class="ac-panel-wrap">
-                    <input
-                      type="text"
-                      class="detail__filter-input"
-                      placeholder="Поиск значения"
-                    />
                     <ul class="detail__filter-list">
                     ${Object.values(filters[filter])
                       .map((value) => {
@@ -890,7 +1083,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                               type="checkbox"
                               class="checkbox visually-hidden"
                               value="${value}"
-                              data-filter="${filter}"
+                              data-filter="${filtersCode[filter]}"
                             />
                             <span class="checkbox__span"></span>
                           </label>
@@ -914,14 +1107,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       detailFilterAll.innerHTML = element;
       const allAccordions = document.querySelectorAll(".accordion-container");
       allAccordions.forEach((acc) => new Accordion(acc));
-      const allSelects = document.querySelectorAll(".js-select");
-      allSelects.forEach((select) => {
-        new Choices(select, {
-          searchEnabled: false,
-          itemSelectText: "",
-          allowHTML: true,
-        });
-      });
       return;
     } else {
       return element;

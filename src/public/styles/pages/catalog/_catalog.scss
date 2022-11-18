@@ -1,6 +1,5 @@
 .main {
   .catalog {
-    // display: none;
     &__list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 330px));
@@ -29,8 +28,8 @@
       margin-bottom: 8px;
       &.title {
         @include fontSize18;
-        margin-bottom: 28px;
         font-weight: 700;
+        margin-bottom: 0;
       }
       &.subtitle {
         margin-bottom: 0;

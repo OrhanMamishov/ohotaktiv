@@ -35,7 +35,10 @@
         @include fontSize14;
       }
       &-filters {
+        @include contentScroll;
+        padding-bottom: 5px;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 20px;
         margin-bottom: 25px;
@@ -108,12 +111,10 @@
         max-height: 120px;
         overflow-x: hidden;
         &.category-list {
-          max-height: unset;
+          max-height: 500px; // сделать гибкость
         }
         &.subcategory-list {
-          margin-top: 25px;
-          margin-bottom: 25px;
-          color: var(--grey-form-color);
+          padding-left: 20px;
         }
       }
       &-item {
