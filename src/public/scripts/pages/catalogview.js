@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               </li>
             </ul>
           </nav>
-          <h1 class="detail__title"> ${catalogName} </h1>
+          <h1 class="detail__title title-seo"> ${catalogName} </h1>
           <div class="detail__subtitle-wrap">
             <p class="detail__subtitle"> ${itemsOnPage.length} товаров</p>
             <button class="detail__cards-filter-open"></button>
@@ -555,9 +555,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         itemsFromRadio(catalog, e.target.id);
       }
       if (e.target.className == "detail__cards-filter-close") {
-        filterGoodsOnPage(items, catalog);
-        e.target.parentElement.remove();
-        console.log(e.target.parentElement);
+        const checkbox = document.querySelector(
+          `[value = "${e.target.previousElementSibling.textContent}"]`
+        );
+        checkbox.click();
       }
       if (e.target.classList.contains("checkbox")) {
         filterGoodsOnPage(items, catalog);
@@ -575,14 +576,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.currentTarget.value = numberWithSpaces(
           e.currentTarget.value.replace(/\D/g, "")
         );
-        if (input == priceFrom) {
-          // const filteredPriceItems = filteredItems.filter(
-          //   (item) =>
-          //     Number(item["PRICE"][5]) >=
-          //     e.currentTarget.value.split(" ").join("")
-          // );
-          // console.log(filteredPriceItems);
-        }
+        // if (input == priceFrom) {
+        // }
       });
     });
     // события в поиске магазина
@@ -850,7 +845,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     // после собранных айтемов фильтруем по картинкам
     itemsOnPage.sort((item) => (item.PREVIEW_PICTURE ? -1 : 1));
-    console.log(itemsOnPage);
     if (clicked) {
       return itemsOnPage;
     } else {
@@ -921,8 +915,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       mergedArr.length ? mergedArr : filteredItemsFromRadio,
       choosedFilters
     );
-    console.log(mergedArr);
-    console.log(itemsOnPage);
     itemsForPage(1, itemsOnPage, true);
     changePagination(1);
     const miniFiltersContainer = document.querySelector(
