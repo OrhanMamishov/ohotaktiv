@@ -598,6 +598,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
     });
+    console.log(document.location);
   }
   function generatePrice(item) {
     const price = item["PRICE"];
@@ -880,7 +881,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       ? itemsFromRadio(catalog, idCategory.id, true)
       : items;
     let choosedFilters = {};
-    checkboxes.forEach((checkbox) => {
+    const baseUrl = document.location.href.split("?")[0];
+    let newUrl = baseUrl + "?";
+    checkboxes.forEach((checkbox, index) => {
       if (!choosedFilters[checkbox.getAttribute("data-filter")]) {
         choosedFilters[checkbox.getAttribute("data-filter")] = [];
       }
@@ -891,7 +894,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           checkbox.value
         );
       }
+      newUrl += `${index == 0 ? `` : `&`}${checkbox.getAttribute(
+        "data-filter"
+      )}=${checkbox.value}`;
     });
+    history.pushState(null, null, newUrl);
     let mergedArr = [];
     if (choosedFilters["STORE_AVAILABLE"]) {
       filteredItemsFromRadio.forEach((item) => {
