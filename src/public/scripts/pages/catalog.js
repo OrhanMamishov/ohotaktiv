@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <ul class="catalog__list">
           ${catalog
             .map((list) => {
+              if (list.name == "other") return;
               return `
                 <li class="catalog__item">
                   <div class="catalog__img-wrap">

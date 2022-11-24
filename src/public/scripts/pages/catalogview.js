@@ -396,7 +396,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
           <div class="detail__cards">
             <div class="detail__cards-filters">
-
             </div>
             <div class="detail__cards-list-wrap">
               <ul class="detail__cards-list">
@@ -427,7 +426,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         nextEl: ".recommended__swiper-button-next",
         prevEl: ".recommended__swiper-button-prev",
       },
-
       breakpoints: {
         1559: {
           slidesPerView: 5,
@@ -556,7 +554,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       if (e.target.className == "detail__cards-filter-close") {
         const checkbox = document.querySelector(
-          `[value = "${e.target.previousElementSibling.textContent}"]`
+          `[value = "${e.target.value}"]`
         );
         checkbox.click();
       }
@@ -576,8 +574,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.currentTarget.value = numberWithSpaces(
           e.currentTarget.value.replace(/\D/g, "")
         );
-        // if (input == priceFrom) {
-        // }
       });
     });
     // события в поиске магазина
@@ -591,20 +587,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         ""
       );
       chooseMagazinesItems.forEach((el) => {
-        if (!el.value.startsWith(ucFirst(magazinesInput.value))) {
+        if (
+          !el
+            .getAttribute("data-ru-value")
+            .startsWith(ucFirst(magazinesInput.value))
+        ) {
           el.parentElement.style.display = "none";
         } else {
           el.parentElement.style.display = "block";
         }
       });
     });
-    console.log(document.location);
+    const url = new URL(document.location);
+    url.searchParams.forEach((value, key) => {
+      // console.log(key);
+      // console.log(value);
+      const values = value.split("%");
+      values.forEach((el) => {
+        const checkbox = document.querySelector(`[value=${el}]`);
+        checkbox.click();
+      });
+    });
   }
   function generatePrice(item) {
     const price = item["PRICE"];
-    let trigger = true;
     if (price) {
-      if (price[13] && trigger) {
+      if (price[13]) {
         return `${numberWithSpaces(price[13])} &#8381; <span>${numberWithSpaces(
           price[1]
         )} &#8381;</span>`;
@@ -865,7 +873,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           ""
         );
         chooseMagazinesItems.forEach((el) => {
-          if (!el.value.startsWith(ucFirst(magazinesInput.value))) {
+          if (
+            !el
+              .getAttribute("data-ru-value")
+              .startsWith(ucFirst(magazinesInput.value))
+          ) {
             el.parentElement.style.display = "none";
           } else {
             el.parentElement.style.display = "block";
@@ -881,8 +893,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       ? itemsFromRadio(catalog, idCategory.id, true)
       : items;
     let choosedFilters = {};
-    const baseUrl = document.location.href.split("?")[0];
-    let newUrl = baseUrl + "?";
     checkboxes.forEach((checkbox, index) => {
       if (!choosedFilters[checkbox.getAttribute("data-filter")]) {
         choosedFilters[checkbox.getAttribute("data-filter")] = [];
@@ -898,7 +908,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         "data-filter"
       )}=${checkbox.value}`;
     });
-    history.pushState(null, null, newUrl);
     let mergedArr = [];
     if (choosedFilters["STORE_AVAILABLE"]) {
       filteredItemsFromRadio.forEach((item) => {
@@ -924,6 +933,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     itemsForPage(1, itemsOnPage, true);
     changePagination(1);
+    let neededUrl = "?";
+    Object.keys(choosedFilters).forEach((filter, index) => {
+      neededUrl += `${index == 0 ? `` : `&`}${filter.toLowerCase()}=`;
+      if (filter == "STORE_AVAILABLE") {
+        console.log(choosedFilters);
+        choosedFilters[filter].forEach(
+          (el, index) =>
+            (neededUrl += `${index == 0 ? `` : `%`}${document
+              .getElementById(el)
+              .value.toLowerCase()}`)
+        );
+      } else {
+        choosedFilters[filter].forEach(
+          (el, index) =>
+            (neededUrl += `${index == 0 ? `` : `%`}${el.toLowerCase()}`)
+        );
+      }
+    });
+    const baseUrl = document.location.href.split("?")[0];
+    let newUrl = baseUrl + neededUrl;
+    history.pushState(null, null, newUrl);
     const miniFiltersContainer = document.querySelector(
       ".detail__cards-filters"
     );
@@ -932,8 +962,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         .map((checkbox) => {
           return `
             <div class="detail__cards-filter">
-              <p class="detail__cards-text">${checkbox.value}</p>
-              <button class="detail__cards-filter-close"></button>
+              <p class="detail__cards-text">${checkbox.getAttribute(
+                "data-ru-value"
+              )}</p>
+              <button class="detail__cards-filter-close" value="${
+                checkbox.value
+              }"></button>
             </div>
         `;
         })
@@ -962,29 +996,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   function filtersForPage(items, clicked) {
     const filters = {};
-    const filtersCode = {};
     items.forEach((item) => {
       if (item.properties) {
         Object.values(item.properties).forEach((prop) => {
           if (prop.NAME == "Картинки") return;
           if (!prop.NAME) {
-            Object.values(prop).forEach((el) => {
-              if (!el.NAME) return;
+            Object.keys(prop).forEach((el) => {
+              if (!prop[el].NAME) return;
               if (!filters["Магазины"]) filters["Магазины"] = [];
-              if (!filtersCode["Магазины"])
-                filtersCode["Магазины"] = "STORE_AVAILABLE";
               const isContain = filters["Магазины"].find(
-                (shop) => shop.VALUE === el.VALUE
+                (shop) => shop.VALUE === prop[el].VALUE
               );
               if (!isContain) {
-                filters["Магазины"].push({ VALUE: el.VALUE, NAME: el.NAME });
+                filters["Магазины"].push({
+                  VALUE: prop[el].VALUE,
+                  NAME: prop[el].NAME,
+                  ID: el,
+                });
               }
             });
           }
           if (!filters[prop.NAME]) filters[prop.NAME] = [];
-          if (!filtersCode[prop.NAME]) filtersCode[prop.NAME] = prop.CODE;
-          if (!filters[prop.NAME].includes(prop.VALUE))
-            filters[prop.NAME].push(prop.VALUE);
+          const isContain = filters[prop.NAME].find(
+            (filter) => filter.VALUE === prop.VALUE
+          );
+          if (!isContain)
+            filters[prop.NAME].push({
+              NAME: prop.NAME,
+              VALUE: prop.VALUE,
+              PRINT: prop.VALUE_PRINT,
+              CODE: prop.CODE,
+            });
         });
       }
     });
@@ -1007,9 +1049,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <input
                     type="checkbox"
                     class="checkbox visually-hidden"
-                    value="${el.NAME}"
+                    value="${el.VALUE}"
                     data-filter="STORE_AVAILABLE"
-                    id="${el.VALUE}"
+                    id="${el.ID}"
+                    data-ru-value="${el.NAME}"
                   />
                   <span class="checkbox__span"></span>
                 </label>
@@ -1077,12 +1120,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         return `
                         <li class="detail__filter-item">
                           <label class="checkbox__label">
-                            ${value}
+                            ${value.PRINT}
                             <input
                               type="checkbox"
                               class="checkbox visually-hidden"
-                              value="${value}"
-                              data-filter="${filtersCode[filter]}"
+                              value="${value.VALUE}"
+                              data-filter="${value.CODE}"
+                              data-ru-value="${value.PRINT}"
                             />
                             <span class="checkbox__span"></span>
                           </label>
