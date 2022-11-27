@@ -562,6 +562,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         filterGoodsOnPage(items, catalog);
       }
       if (e.target.className == "detail__filter-button") {
+        const baseUrl = document.location;
+        let newUrl = baseUrl.origin + baseUrl.pathname;
+        history.pushState(null, null, newUrl);
         refreshThisCatalog(catalog);
       }
     });
@@ -599,12 +602,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
     const url = new URL(document.location);
-    url.searchParams.forEach((value, key) => {
-      // console.log(key);
-      // console.log(value);
+    url.searchParams.forEach((value) => {
       const values = value.split("%");
       values.forEach((el) => {
-        const checkbox = document.querySelector(`[value=${el}]`);
+        const checkbox = document.querySelector(`.checkbox[value="${el}"]`);
         checkbox.click();
       });
     });
@@ -635,20 +636,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data =
       arr.length <= 12 ? arr : arr.slice(startFrom, startFrom + itemsOnPage);
     let element = ``;
-    data.forEach((item) => {
-      element += `
+    if (data.length == 0) {
+      element += `<li class="goods-not-found__wrap">
+          <p class="goods-not-found__text">
+            По заданным фильтрам товары не найдены!<br>Попробуйте изменить фильтр или сбросить его.
+          </p>
+          <button class="detail__filter-button">Сбросить</button>
+      </li>`;
+    } else {
+      data.forEach((item) => {
+        element += `
       <li class="detail__cards-item card-item">
         <div class="card-item__wrap">
           <a href="../../card/?id=${item.ID}" class="card-item__link">
             <div class="card-item__photo-wrap">
               <img
                 src="${serverName}${
-        item.PREVIEW_PICTURE
-          ? item.PREVIEW_PICTURE
-          : item.properties.MORE_PHOTO
-          ? item.properties.MORE_PHOTO.FILES
-          : `/local/templates/ohota2021/img/no_photo.png`
-      }"
+          item.PREVIEW_PICTURE
+            ? item.PREVIEW_PICTURE
+            : item.properties.MORE_PHOTO
+            ? item.properties.MORE_PHOTO.FILES
+            : `/local/templates/ohota2021/img/no_photo.png`
+        }"
                 alt="${item.name}"
                 class="card-item__photo lozad"
               />
@@ -686,7 +695,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       </li>
     `;
-    });
+      });
+    }
     if (clicked) {
       const detailList = document.querySelector(".detail__cards-list");
       const detailSubtitle = document.querySelector(".detail__subtitle");
@@ -744,6 +754,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       liTag += `<button class="next" data-next-page="${
         page + 1
       }">Next</button>`;
+    }
+    if (totalPages == 0) {
+      liTag = "";
     }
     paginationList.innerHTML = liTag;
   }
@@ -937,7 +950,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     Object.keys(choosedFilters).forEach((filter, index) => {
       neededUrl += `${index == 0 ? `` : `&`}${filter.toLowerCase()}=`;
       if (filter == "STORE_AVAILABLE") {
-        console.log(choosedFilters);
         choosedFilters[filter].forEach(
           (el, index) =>
             (neededUrl += `${index == 0 ? `` : `%`}${document

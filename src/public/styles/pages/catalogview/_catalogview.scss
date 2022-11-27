@@ -73,6 +73,14 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
         margin-bottom: 100px;
+        .goods-not-found {
+          &__wrap {
+            text-align: center;
+          }
+          &__text {
+            margin-bottom: 15px;
+          }
+        }
       }
       &-swiper-pagination {
         .swiper-pagination-bullet {
