@@ -1,4 +1,10 @@
 .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
   &__background {
     position: fixed;
     top: 0;
@@ -6,7 +12,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(#282828, 0.5);
-    z-index: 998;
   }
   &__wrap {
     padding: 50px 60px;
@@ -18,7 +23,7 @@
     border-radius: 15px;
     background-color: var(--white-color);
     transform: translate(-50%, -50%);
-    z-index: 999;
+    z-index: 1;
     &-title {
       @include fontSize20;
       margin-bottom: 60px;
@@ -42,6 +47,9 @@
       padding: 14px 26px;
       margin-top: 25px;
       font-weight: 600;
+      &:disabled {
+        background-color: var(--cart-background-color);
+      }
     }
     &-close {
       @include closeButton;
@@ -197,6 +205,183 @@
       &-button {
         width: 100%;
         margin-top: 34px;
+      }
+    }
+  }
+}
+#popup-authorize {
+  .popup {
+    &__wrap {
+      max-width: 430px;
+      &-input {
+        padding: 8px 0;
+        margin-bottom: 25px;
+      }
+      &-button {
+        width: 100%;
+        margin-top: 0;
+        &.forgot-password {
+          background: unset;
+          padding: 0;
+        }
+        &:not(.forgot-password) {
+          margin-bottom: 13px;
+        }
+      }
+    }
+  }
+}
+#popup-change-userdata,
+#popup-change-password {
+  .popup {
+    &__personal {
+      &-wrap {
+        display: block;
+        .input-wrap {
+          width: 421px;
+        }
+      }
+    }
+    &__form {
+      .buttons-wrap {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__wrap {
+      &-button {
+        &.background--transparent {
+          background: transparent;
+        }
+      }
+      .input-wrap {
+        .show-password {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 21px;
+          height: 19px;
+          background-repeat: no-repeat;
+          background-position: center;
+          transform: translate(0, -50%);
+          &.showed {
+            background-image: url("../../../img/showed.svg");
+          }
+          &.hidden {
+            background-image: url("../../../img/hidden.svg");
+          }
+        }
+        .dropdown-cities {
+          &-list {
+            @include contentScroll;
+            max-width: 470px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            border-radius: 10px;
+            background-color: var(--white-color);
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+          }
+          &-item {
+            @include fontSize14;
+            padding: 14px 30px;
+            transition: background 0.2s ease;
+            cursor: pointer;
+            &:not(:last-child) {
+              border-bottom: 1px solid var(--black-color);
+            }
+            &:hover {
+              background-color: var(--light-grey-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#popup-ad {
+  .popup {
+    &__ad {
+      &-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(280px, 334px));
+        gap: 35px 50px;
+        &:nth-child(2) {
+          margin-bottom: 60px;
+        }
+        &:nth-child(4) {
+          margin-bottom: 50px;
+        }
+        .choices {
+          &__inner {
+            background-color: transparent;
+            border-radius: 100px;
+            border: 1px solid var(--grey-form-color);
+          }
+          &__list {
+            &--single {
+              padding: 9px 16px 6px 20px;
+            }
+            &--dropdown {
+              box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.08);
+              border-radius: 27px;
+              border: none;
+              .choices__placeholder {
+                display: none;
+              }
+              .choices__input {
+                padding: 15px 30px;
+              }
+              .choices__item {
+                @include fontSize14;
+                padding: 15px 30px;
+                &.is-selected {
+                  background-color: var(--cart-background-color);
+                }
+                &:hover {
+                  background-color: var(--cart-background-color);
+                }
+              }
+            }
+            .choices__placeholder {
+              color: var(--grey-color);
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    &__form {
+      .textarea {
+        @include contentScroll;
+        @include fontSize14;
+        width: 100%;
+        padding: 15px 20px;
+        min-height: 130px;
+        height: 100%;
+        border: 1px solid var(--secondary-color);
+        border-radius: 10px;
+        resize: none;
+        &-wrap {
+          margin-bottom: 30px;
+          position: relative;
+          width: 100%;
+          .text-for-textarea {
+            @include fontSize11;
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            color: var(--grey-form-color);
+          }
+        }
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+        }
+      }
+      .input-wrap-file {
+        margin-bottom: 50px;
       }
     }
   }

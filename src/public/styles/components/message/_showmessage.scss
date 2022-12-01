@@ -1,0 +1,43 @@
+.message {
+  width: 400px;
+  padding: 40px 30px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 35px rgba(0, 0, 0, 0.08);
+  background-color: var(--white-color);
+  opacity: 1;
+  z-index: 999;
+  transition: opacity 2s ease;
+}
+
+.title-message {
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 28px;
+  &.success {
+    padding-left: 30px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 17px;
+      width: 21px;
+      transform: translate(0, -50%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("../../../img/checked.svg");
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .message {
+    width: 300px;
+    right: 10px;
+  }
+}

@@ -3,6 +3,8 @@ import { bodyScrollToggle } from "../functions/scrollBody";
 import ucFirst from "../functions/ucFirst";
 import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
+import Inputmask from "inputmask";
+import { showMessage } from "../functions/showMessage";
 
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header");
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   allAccordions.forEach((accordion) => {
     if (window.innerWidth < 1024) new Accordion(accordion);
   });
+  const IS_AUTHORIZED = false;
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();
@@ -174,5 +177,104 @@ document.addEventListener("DOMContentLoaded", () => {
         headerCatalogWrap.style.visibility = "hidden";
       }, 200);
     }
+    if (
+      e.target.className == "header__action-link cabinet" ||
+      e.target.className == "header__action-link favourite" ||
+      e.target.className == "header__action-link cart"
+    ) {
+      e.preventDefault();
+      if (IS_AUTHORIZED) {
+        window.location.href = e.target.href;
+      } else {
+        const element = `
+        <div id="popup-authorize" class="popup">
+          <div class="popup__background"></div>
+          <div class="popup__wrap">
+            <button class="popup__wrap-close"></button>
+            <p class="popup__wrap-title">
+              Вход или регистрация
+            </p>
+            <input type="text" id="email-input-authorize" class="popup__wrap-input" placeholder="E-mail*">
+            <input type="password" id="password-input-authorize" class="popup__wrap-input" placeholder="Пароль*">
+            <button id="authorize-button" class="popup__wrap-button">
+              Войти
+            </button>
+            <button class="popup__wrap-button forgot-password">Напомнить пароль</button>
+          </div>
+        </div>
+      `;
+        document.body.insertAdjacentHTML("beforeend", element);
+        const emailInput = document.getElementById("email-input-authorize");
+        Inputmask({
+          mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+          greedy: false,
+          showMaskOnHover: false,
+          definitions: {
+            "*": {
+              validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+            },
+          },
+          onKeyDown: function () {
+            this.classList.remove("is-not-valid");
+          },
+          onincomplete: function () {
+            this.classList.add("is-not-valid");
+          },
+        }).mask(emailInput);
+        const passwordInput = document.getElementById(
+          "password-input-authorize"
+        );
+        Inputmask({
+          onKeyDown: function () {
+            this.classList.remove("is-not-valid");
+          },
+        }).mask(passwordInput);
+        const popupAuthorize = document.getElementById("popup-authorize");
+        const authorizeButton = document.getElementById("authorize-button");
+        authorizeButton.addEventListener("click", async () => {
+          authorizeButton.disabled = true;
+          const popups = document.querySelectorAll(".popup__wrap-input");
+          const [popupEmail, popupPassword] = popups;
+          if (!popupEmail.value.length) {
+            popupEmail.classList.add("is-not-valid");
+          }
+          if (!popupPassword.value.length) {
+            popupPassword.classList.add("is-not-valid");
+          }
+          if (
+            !popupEmail.classList.contains("is-not-valid") &&
+            !popupPassword.classList.contains("is-not-valid")
+          ) {
+            const fetchFromBase = await fetch(
+              `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?get_user_login=${popupEmail.value}&password=${popupPassword.value}`,
+              {
+                method: "GET",
+              }
+            )
+              .then((res) => res.json())
+              .then((res) => {
+                console.log(res);
+                if (res) {
+                  showMessage(
+                    "Вы успешно авторизованы!",
+                    "Теперь вам доступны товары со скидкой",
+                    "success"
+                  );
+                  popupAuthorize.remove();
+                } else {
+                  authorizeButton.removeAttribute("disabled");
+                  showMessage(
+                    "Неверный логин или пароль!",
+                    "Пожалуйста, повторите попытку",
+                    "error"
+                  );
+                }
+              });
+          }
+        });
+      }
+    }
   });
+  // постоянный запрос
+  //
 });

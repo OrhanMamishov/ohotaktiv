@@ -47,6 +47,7 @@
     "gsap": "^3.11.3",
     "inputmask": "^5.0.7",
     "lozad": "^1.16.0",
+    "qr-code-styling": "^1.6.0-rc.1",
     "swiper": "^8.3.2",
     "wnumb": "^1.2.0"
   }

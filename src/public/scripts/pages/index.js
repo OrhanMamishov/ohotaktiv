@@ -166,11 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   // Свайперы
   // Попапчики
-  // Вывод попапчика с оформлением заказа
+  // Вывод попапчика
   const bonuscardButtonIndex = document.getElementById(
     "index-bonuscard-button"
   );
-  const popupBonuscardElement = `
+  bonuscardButtonIndex.addEventListener("click", () => {
+    bodyScrollToggle();
+    const popupBonuscardElement = `
     <div id="popup-bonuscard" class="popup">
       <div class="popup__background"></div>
       <div class="popup__wrap">
@@ -272,8 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
   `;
-  bonuscardButtonIndex.addEventListener("click", () => {
-    bodyScrollToggle();
     document.body.insertAdjacentHTML("beforeend", popupBonuscardElement);
     const popupBonuscard = document.getElementById("popup-bonuscard");
     const closePopup = document.querySelector(".popup__wrap-close");
@@ -284,5 +284,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     backgroundPopup.addEventListener("click", () => closePopup.click());
   });
-  // Вывод попапчика с оформлением заказа
+  // Вывод попапчика
 });

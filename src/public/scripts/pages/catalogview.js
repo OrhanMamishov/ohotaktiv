@@ -10,6 +10,7 @@ import numWord from "../functions/numWord";
 import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
 import ucFirst from "../functions/ucFirst";
+import { generatePrice } from "../functions/generatePrice";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const main = document.querySelector("main");
@@ -609,26 +610,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         checkbox.click();
       });
     });
-  }
-  function generatePrice(item) {
-    const price = item["PRICE"];
-    if (price) {
-      if (price[13]) {
-        return `${numberWithSpaces(price[13])} &#8381; <span>${numberWithSpaces(
-          price[1]
-        )} &#8381;</span>`;
-      } else {
-        if (price[5]) {
-          return `${numberWithSpaces(
-            price[5]
-          )} &#8381; <span>${numberWithSpaces(price[1])} &#8381;</span>`;
-        } else {
-          return numberWithSpaces(price[1]);
-        }
-      }
-    } else {
-      return "Нет в наличии";
-    }
   }
   function itemsForPage(buttonNumber, arr, clicked) {
     const itemsOnPage = 12;
