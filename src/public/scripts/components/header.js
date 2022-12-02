@@ -5,8 +5,11 @@ import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
 import Inputmask from "inputmask";
 import { showMessage } from "../functions/showMessage";
+import { getUserData } from "../functions/getUserData";
+import { updateCountGoods } from "../functions/updateCountGoods";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  const userInfo = await getUserData();
   const header = document.querySelector(".header");
   const headerMenuWrap = document.querySelector(".header__menu-wrap");
   const headerMenu = document.querySelector(".header__menu");
@@ -18,7 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
   allAccordions.forEach((accordion) => {
     if (window.innerWidth < 1024) new Accordion(accordion);
   });
-  const IS_AUTHORIZED = false;
+  // console.log(authorized);
+  const IS_AUTHORIZED = userInfo.personal ? true : false;
+  IS_AUTHORIZED ? updateCountGoods(userInfo) : updateCountGoods(userInfo);
+  // const IS_AUTHORIZED = false;
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();
@@ -194,19 +200,54 @@ document.addEventListener("DOMContentLoaded", () => {
             <p class="popup__wrap-title">
               Вход или регистрация
             </p>
-            <input type="text" id="email-input-authorize" class="popup__wrap-input" placeholder="E-mail*">
-            <input type="password" id="password-input-authorize" class="popup__wrap-input" placeholder="Пароль*">
-            <button id="authorize-button" class="popup__wrap-button">
-              Войти
-            </button>
-            <button class="popup__wrap-button forgot-password">Напомнить пароль</button>
+            <div class="authorize-switcher">
+              <button class="authorize-switcher__button active" data-path="authorization">
+                Вход
+              </button>
+              <button class="authorize-switcher__button" data-path="registration">
+                Регистрация
+              </button>
+            </div>
+            <div class="tab__target active" data-target="authorization">
+              <input type="text" id="email-input-authorize" class="popup__wrap-input" placeholder="E-mail*">
+              <input type="password" id="password-input-authorize" class="popup__wrap-input" placeholder="Пароль*">
+              <button id="authorize-button" class="popup__wrap-button">
+                Войти
+              </button>
+              <button class="popup__wrap-button forgot-password">Напомнить пароль</button>
+            </div>
+            <div class="tab__target" data-target="registration">
+              <input type="text" id="email-input-registration" class="popup__wrap-input" placeholder="E-mail*">
+              <input type="password" id="password-input-registration" class="popup__wrap-input" placeholder="Пароль*">
+              <button id="registration-button" class="popup__wrap-button">
+                Зарегистрироваться
+              </button>
+            </div>
+            <div class="tab__target" data-target="forgot-password">
+              <input type="text" id="forgot-input" class="popup__wrap-input" placeholder="E-mail*">
+              <button id="forgot-password-button" class="popup__wrap-button">
+                Напомнить пароль
+              </button>
+            </div>
           </div>
         </div>
       `;
         document.body.insertAdjacentHTML("beforeend", element);
-        const emailInput = document.getElementById("email-input-authorize");
+        const emailInputAuthorization = document.getElementById(
+          "email-input-authorize"
+        );
+        const passwordInputAuthorization = document.getElementById(
+          "password-input-authorize"
+        );
+        const emailInputRegistration = document.getElementById(
+          "email-input-registration"
+        );
+        const passwordInputRegistration = document.getElementById(
+          "password-input-registration"
+        );
+        const emailInputForgot = document.getElementById("forgot-input");
         Inputmask({
-          mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+          mask: "*{1,100}[.*{1,100}][.*{1,100}][.*{1,100}]@*{1,100}[.*{1,100}][.*{1,100}]",
           greedy: false,
           showMaskOnHover: false,
           definitions: {
@@ -220,61 +261,169 @@ document.addEventListener("DOMContentLoaded", () => {
           onincomplete: function () {
             this.classList.add("is-not-valid");
           },
-        }).mask(emailInput);
-        const passwordInput = document.getElementById(
-          "password-input-authorize"
-        );
+        }).mask(emailInputAuthorization);
         Inputmask({
           onKeyDown: function () {
             this.classList.remove("is-not-valid");
           },
-        }).mask(passwordInput);
+        }).mask(passwordInputAuthorization);
+        Inputmask({
+          mask: "*{1,100}[.*{1,100}][.*{1,100}][.*{1,100}]@*{1,100}[.*{1,100}][.*{1,100}]",
+          greedy: false,
+          showMaskOnHover: false,
+          definitions: {
+            "*": {
+              validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+            },
+          },
+          onKeyDown: function () {
+            this.classList.remove("is-not-valid");
+          },
+          onincomplete: function () {
+            this.classList.add("is-not-valid");
+          },
+        }).mask(emailInputRegistration);
+        Inputmask({
+          onKeyDown: function () {
+            this.classList.remove("is-not-valid");
+          },
+        }).mask(passwordInputRegistration);
+        Inputmask({
+          mask: "*{1,100}[.*{1,100}][.*{1,100}][.*{1,100}]@*{1,100}[.*{1,100}][.*{1,100}]",
+          greedy: false,
+          showMaskOnHover: false,
+          definitions: {
+            "*": {
+              validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+            },
+          },
+          onKeyDown: function () {
+            this.classList.remove("is-not-valid");
+          },
+          onincomplete: function () {
+            this.classList.add("is-not-valid");
+          },
+        }).mask(emailInputForgot);
         const popupAuthorize = document.getElementById("popup-authorize");
-        const authorizeButton = document.getElementById("authorize-button");
-        authorizeButton.addEventListener("click", async () => {
-          authorizeButton.disabled = true;
-          const popups = document.querySelectorAll(".popup__wrap-input");
-          const [popupEmail, popupPassword] = popups;
-          if (!popupEmail.value.length) {
-            popupEmail.classList.add("is-not-valid");
-          }
-          if (!popupPassword.value.length) {
-            popupPassword.classList.add("is-not-valid");
-          }
-          if (
-            !popupEmail.classList.contains("is-not-valid") &&
-            !popupPassword.classList.contains("is-not-valid")
-          ) {
-            const fetchFromBase = await fetch(
-              `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?get_user_login=${popupEmail.value}&password=${popupPassword.value}`,
-              {
-                method: "GET",
-              }
-            )
-              .then((res) => res.json())
-              .then((res) => {
-                console.log(res);
-                if (res) {
-                  showMessage(
-                    "Вы успешно авторизованы!",
-                    "Теперь вам доступны товары со скидкой",
-                    "success"
-                  );
-                  popupAuthorize.remove();
-                } else {
-                  authorizeButton.removeAttribute("disabled");
-                  showMessage(
-                    "Неверный логин или пароль!",
-                    "Пожалуйста, повторите попытку",
-                    "error"
-                  );
+        popupAuthorize.addEventListener("click", async (e) => {
+          if (e.target.id == "authorize-button") {
+            e.target.setAttribute("disabled", true);
+            const [popupEmail, popupPassword] = [
+              emailInputAuthorization,
+              passwordInputAuthorization,
+            ];
+            if (!popupEmail.value.length) {
+              popupEmail.classList.add("is-not-valid");
+              e.target.removeAttribute("disabled");
+            }
+            if (!popupPassword.value.length) {
+              popupPassword.classList.add("is-not-valid");
+              e.target.removeAttribute("disabled");
+            }
+            if (
+              !popupEmail.classList.contains("is-not-valid") &&
+              !popupPassword.classList.contains("is-not-valid")
+            ) {
+              const fetchFromBase = await fetch(
+                `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?get_user_login=${popupEmail.value}&password=${popupPassword.value}`,
+                {
+                  method: "GET",
                 }
-              });
+              )
+                .then((res) => res.json())
+                .then(async (res) => {
+                  if (res.success) {
+                    const userInfoAfterAuthorize = await authorized();
+                    updateCountGoods(userInfoAfterAuthorize);
+                    showMessage(
+                      "Вы успешно авторизованы!",
+                      res.success,
+                      "success"
+                    );
+                    popupAuthorize.remove();
+                  }
+                  if (res.error) {
+                    e.target.removeAttribute("disabled");
+                    showMessage(
+                      "Неверный логин или пароль!",
+                      res.error,
+                      "error"
+                    );
+                  }
+                });
+            }
+          }
+          if (e.target.classList.contains("authorize-switcher__button")) {
+            if (e.target.classList.contains("active")) return;
+            const buttons = document.querySelectorAll(
+              ".authorize-switcher__button"
+            );
+            buttons.forEach((button) => button.classList.remove("active"));
+            e.target.classList.add("active");
+            const targets = document.querySelectorAll(".tab__target");
+            targets.forEach((target) => target.classList.remove("active"));
+            document
+              .querySelector(
+                `[data-target=${e.target.getAttribute("data-path")}]`
+              )
+              .classList.add("active");
+          }
+          if (e.target.className == "popup__wrap-button forgot-password") {
+            const buttons = document.querySelectorAll(
+              ".authorize-switcher__button"
+            );
+            buttons.forEach((button) => button.classList.remove("active"));
+            const targets = document.querySelectorAll(".tab__target");
+            targets.forEach((target) => target.classList.remove("active"));
+            document
+              .querySelector(`[data-target=forgot-password]`)
+              .classList.add("active");
+          }
+          if (e.target.id == "registration-button") {
+            e.target.setAttribute("disabled", true);
+            const [popupEmail, popupPassword] = [
+              emailInputRegistration,
+              passwordInputRegistration,
+            ];
+            if (!popupEmail.value.length) {
+              popupEmail.classList.add("is-not-valid");
+              e.target.removeAttribute("disabled");
+            }
+            if (!popupPassword.value.length) {
+              popupPassword.classList.add("is-not-valid");
+              e.target.removeAttribute("disabled");
+            }
+            if (
+              !popupEmail.classList.contains("is-not-valid") &&
+              !popupPassword.classList.contains("is-not-valid")
+            ) {
+              const fetchFromBase = await fetch(
+                `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?user_registration=yes&email=${popupEmail.value}&password=${popupPassword.value}`,
+                {
+                  method: "GET",
+                }
+              )
+                .then((res) => res.json())
+                .then((res) => {
+                  console.log(res);
+                  if (res.success) {
+                    showMessage(
+                      "Вы успешно зарегистрированы!",
+                      res.success +
+                        `. На указанный электронный адрес отправлено письмо с подтверждением`,
+                      "success"
+                    );
+                    popupAuthorize.remove();
+                  }
+                  if (res.error) {
+                    e.target.removeAttribute("disabled");
+                    showMessage("Ошибка!", res.error, "error");
+                  }
+                });
+            }
           }
         });
       }
     }
   });
-  // постоянный запрос
-  //
 });

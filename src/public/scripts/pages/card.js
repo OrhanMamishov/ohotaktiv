@@ -4,30 +4,34 @@ import Swiper, { Mousewheel, Navigation, Pagination } from "swiper";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css";
-import { numberWithSpaces } from "../functions/numberWithSpaces";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox.css";
 import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
+import { getUserData } from "../functions/getUserData";
+import { generatePrice } from "../functions/generatePrice";
+import { generateCard } from "../functions/generateCard";
+import { showMessage } from "../functions/showMessage";
+import Inputmask from "inputmask";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const idGood = document.location.search.split("?id=")[1];
+  const userInfo = await getUserData();
   let accordion;
   const serverName = "https://ohotaktiv.ru";
   const arrayFromBase = await fetch(
-    "https://ohotaktiv.ru/12dev/new-design/pages/card/hand.php",
+    `https://ohotaktiv.ru/12dev/new-design/pages/card/hand.php?the_id=${idGood}`,
     {
       method: "GET",
     }
   )
     .then((res) => res.json())
     .then((res) => {
-      // const id = document.location.search.replace("?", "");
-      // const item = res.catalog.items[id];
-      // console.log(item);
+      console.log(res);
       refreshCard(res);
-      refreshViewed(res["viewed"]);
       refreshDescription(res);
+      refreshViewed(userInfo.viewed);
     });
   // Функции
   function refreshCard(res) {
@@ -64,22 +68,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="card__left">
           <div class="card__left-wrap swiper swiper-images">
             <ul class="swiper-wrapper">
-            ${res["Картинки"]
-              .map((img) => {
-                return `
+            ${
+              res["Картинки"]
+                ? res["Картинки"]
+                    .map((img) => {
+                      return `
                 <li class="card__left-slide swiper-slide">
-                  <img data-fancybox="gallery" src="${
-                    serverName + img
-                  }" alt="Картинка товара" class="card__img-big">
+                  <img data-fancybox="gallery" src="${serverName + img}" alt="${
+                        res.NAME
+                      }" class="card__img-big">
                 </li>
               `;
-              })
-              .join("")}
+                    })
+                    .join("")
+                : `
+                  <li class="card__left-slide swiper-slide">
+                    <img data-fancybox="gallery" src="${
+                      serverName + `/local/templates/ohota2021/img/no_photo.png`
+                    }" alt="${res.NAME}" class="card__img-big">
+                  </li>
+                `
+            }
             </ul>
             <div class="card__left-pagination swiper-pagination"></div>
             <div class="card__left-infoblock">
             ${
-              res["is_license"] == true
+              res.properties &&
+              res.properties["ИМ Лицензия"] &&
+              res.properties["ИМ Лицензия"] == "true"
                 ? `
                 <p class="card__left-infoblock-text license">
                   Лицензионный товар
@@ -109,9 +125,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
         </div>
         <div class="card__right">
-          <p class="card__right-brand">
-            ${res["manufacturer"]}
-          </p>
+          ${
+            res["manufacturer"]
+              ? `
+            <p class="card__right-brand">
+              ${res["manufacturer"]}
+            </p>
+            `
+              : ``
+          }
           <h1 class="card__right-name">
             ${res["NAME"]}
           </h1>
@@ -122,47 +144,78 @@ document.addEventListener("DOMContentLoaded", async () => {
           </p>
           <p class="card__right-reviews">
             ★
-            <span>5</span> ${res["reviews"].length} отз.
+            <span>5</span> ${res["reviews"] ? res["reviews"].length : 0} отз.
           </p>
+          ${
+            res["warehouse"] == "0" && !res["Наличие в магазине"]
+              ? `<div class="card__right-text">
+                Цена последней поставки:
+              </div>`
+              : ""
+          }
           <p class="card__right-price">
-          ${
-            res["PRICE"][13]
-              ? numberWithSpaces(res["PRICE"][13])
-              : numberWithSpaces(res["PRICE"][5])
-          } &#8381; <span>${numberWithSpaces(res["PRICE"][1])} &#8381;</span>
+            ${generatePrice(res)}
           </p>
           ${
-            res["warehouse"] == "0" && res["Наличие в магазине"].length == 0
-              ? `<p class="card__right-stock not-avaliable">Отсутствует в наличии</p>`
+            res["warehouse"] == "0" && !res["Наличие в магазине"]
+              ? `<p class="card__right-stock not-avaliable">Нет в наличии</p>`
               : `<p class="card__right-stock avaliable">В наличии <a class="card__right-stock-link" href="#description">Подробнее</a></p>`
           }
           <div class="card__right-dots">
-          ${Object.keys(res["properties"])
-            .map((el, index) => {
-              if (index < 4) {
-                return `
-                <div class="dot">
-                  <span class="dot__prop"><span>${el}</span></span>
-                  <span class="dot__value">${res["properties"][el]}</span>
-                </div>
-              `;
-              }
-            })
-            .join("")}
-            <a href="#description" class="card__right-dots-button">
-              Все характеристики
-            </a>
+          ${
+            res["properties"]
+              ? Object.keys(res["properties"])
+                  .map((el, index) => {
+                    if (index < 4) {
+                      return `
+                        <div class="dot">
+                          <span class="dot__prop"><span>${el}</span></span>
+                          <span class="dot__value">${
+                            res["properties"][el] == "true"
+                              ? "Да"
+                              : res["properties"][el] == "false"
+                              ? "Нет"
+                              : res["properties"][el]
+                          }</span>
+                        </div>
+                      `;
+                    }
+                  })
+                  .join("")
+              : ``
+          }
+          ${
+            res["properties"]
+              ? `
+                <a href="#description" class="card__right-dots-button">
+                Все характеристики
+              </a>
+          `
+              : ``
+          }
           </div>
-          <button class="card__right-button">
-            В корзину
+          <button class="card__right-button" ${
+            res["warehouse"] == "0" && !res["Наличие в магазине"]
+              ? `data-available="not-available"`
+              : ""
+          }>
+            ${
+              res["warehouse"] == "0" && !res["Наличие в магазине"]
+                ? "Подобрать аналог"
+                : "В корзину"
+            }
           </button>
-          <div class="card__right-text">
-            Самовывоз: 12 июня. Курьером: 14 июня, от 280 ₽
-          </div>
         </div>
       </div>
     `;
     cardSection.insertAdjacentHTML("beforeend", element);
+    cardSection.addEventListener("click", (e) => {
+      if (e.target.className == "card__right-button") {
+        if (e.target.getAttribute("data-available") == "not-available") {
+          openPopupAnalogue();
+        }
+      }
+    });
     // свайпер
     const galleryThumbs = new Swiper(".swiper-images", {
       modules: [Pagination, Mousewheel],
@@ -185,15 +238,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       animated: false,
       showClass: false,
       hideClass: false,
-
       click: false,
-
       dragToClose: false,
-
       Image: {
         zoom: false,
       },
-
       Toolbar: {
         display: [{ id: "counter", position: "center" }, "close"],
       },
@@ -209,15 +258,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const cardCharactersButton = document.querySelector(
       ".card__right-dots-button"
     );
-    cardCharactersButton.addEventListener("click", () => {
-      accordion.closeAll();
-      accordion.open(0);
-    });
+    if (cardCharactersButton) {
+      cardCharactersButton.addEventListener("click", () => {
+        accordion.closeAll();
+        accordion.open(0);
+      });
+    }
     const cardStockButton = document.querySelector(".card__right-stock-link");
-    cardStockButton.addEventListener("click", () => {
-      accordion.closeAll();
-      accordion.open(3);
-    });
+    if (cardStockButton) {
+      cardStockButton.addEventListener("click", () => {
+        accordion.closeAll();
+        accordion.open(document.querySelectorAll(".js-enabled").length - 1);
+      });
+    }
     // плавные ссылки
     const anchors = document.querySelectorAll('a[href*="#"]');
     for (let anchor of anchors) {
@@ -238,70 +291,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     viewedSection.children[0].remove();
     if (!arr) return;
     const viewedElement = `
-    <div class="viewed__wrap container">
-      <h2 class="viewed__title">
-        Просмотренные товары
-      </h2>
-      <div class="swiper swiper-viewed">
-        <ul class="viewed__list swiper-wrapper cards-list">
-          ${arr
-            .map((el) => {
-              return `
-              <li class="viewed__item swiper-slide card-item">
-                <div class="card-item__wrap">
-                  <a href="#" class="card-item__link">
-                    <div class="card-item__photo-wrap">
-                      <img src="${
-                        serverName + el.img
-                      }" alt="Фото товара" class="card-item__photo">
-                      <div class="card-item__photo-button-wrap">
-                        <span class="card-item__photo-button favourite"></span>
-                      </div>
-                      <div class="card-item__photo-texts">
-                        <p class="card-item__photo-text new">
-                          Что то
-                        </p>
-                        <p class="card-item__photo-text discount">
-                          -10%
-                        </p>
-                      </div>
-                    </div>
-                    <div class="card-item__description-wrap">
-                      <p class="card-item__description-price">
-                      ${
-                        el.PRICE["13"]
-                          ? numberWithSpaces(el.PRICE["13"])
-                          : numberWithSpaces(el.PRICE["5"])
-                      } &#8381; <span>${numberWithSpaces(
-                el.PRICE["1"]
-              )} &#8381;</span>
-                      </p>
-                      <p class="card-item__description-text">
-                        ${el.NAME}
-                      </p>
-                      <div class="not-clicked-rate-wrap">
-                        <span class="active"></span>    
-                        <span class="active"></span>  
-                        <span class="active"></span>    
-                        <span class="active"></span>
-                        <span></span>
-                        <p class="not-clicked-rate-karma">
-                          10
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                  <button class="card-item__button" data-id="asd">
-                    В корзину
-                  </button>
-                </div>
-              </li>`;
-            })
-            .join("")}
-        </ul>
+      <div class="viewed__wrap container">
+        <h2 class="viewed__title">
+          Просмотренные товары
+        </h2>
+        <div class="swiper swiper-viewed">
+          <ul class="viewed__list swiper-wrapper cards-list">
+            ${Object.entries(arr)
+              .map((el) => {
+                return generateCard(el, ["favourite"], false, userInfo);
+              })
+              .join("")}
+          </ul>
+        </div>
       </div>
-    </div>
-    `;
+      `;
     viewedSection.insertAdjacentHTML("beforeend", viewedElement);
     const viewedSwiper = new Swiper(".swiper-viewed", {
       spaceBetween: 10,
@@ -343,99 +347,52 @@ document.addEventListener("DOMContentLoaded", async () => {
     <div class="description__wrap container">
     <h2 class="visually-hidden">Описание товара</h2>
     <div class="accordion-container">
-      <div class="ac">
-        <p class="ac-header">
-          <button type="button" class="ac-trigger">
-            Описание и характеристики
-          </button>
-        </p>
-        <div class="ac-panel">
-          <div class="description__panel">
-            <div class="description__stats">
-              <div class="description__stats-left">
-                <div class="description__stats-dots">
-                ${Object.keys(res["properties"])
-                  .map((el) => {
-                    return `
-                      <div class="dot">
-                        <span class="dot__prop"><span>${el}</span></span>
-                        <span class="dot__value">${res["properties"][el]}</span>
-                      </div>
-                    `;
-                  })
-                  .join("")}
+    ${
+      res.properties || res.DETAIL_TEXT
+        ? `
+        <div class="ac">
+          <p class="ac-header">
+            <button type="button" class="ac-trigger">
+              Описание и характеристики
+            </button>
+          </p>
+          <div class="ac-panel">
+            <div class="description__panel">
+              <div class="description__stats">
+                <div class="description__stats-left">
+                  <div class="description__stats-dots">
+                  ${
+                    res.properties
+                      ? Object.keys(res["properties"])
+                          .map((el) => {
+                            return `
+                        <div class="dot">
+                          <span class="dot__prop"><span>${el}</span></span>
+                          <span class="dot__value">${
+                            res["properties"][el] == "true"
+                              ? "Да"
+                              : res["properties"][el] == "false"
+                              ? "Нет"
+                              : res["properties"][el]
+                          }</span>
+                        </div>
+                      `;
+                          })
+                          .join("")
+                      : ``
+                  }
+                  </div>
+                </div>
+                <div class="description__stats-right">
+                  ${res.DETAIL_TEXT}
                 </div>
               </div>
-              <div class="description__stats-right">
-                  ${res.DETAIL_TEXT}
-              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="ac">
-        <p class="ac-header">
-          <button type="button" class="ac-trigger">
-            Товары в комплект
-          </button>
-        </p>
-        <div class="ac-panel">
-          <div class="description__panel">
-            <div class="swiper swiper-set">
-              <ul class="description__set-list swiper-wrapper">
-                <li class="description__set-item swiper-slide card-item">
-                  <div class="card-item__wrap">
-                    <a href="#" class="card-item__link">
-                      <div class="card-item__photo-wrap">
-                        <img
-                          src="img/card-img.png"
-                          alt="Фото товара"
-                          class="card-item__photo"
-                        />
-                        <div class="card-item__photo-button-wrap">
-                          <span
-                            class="card-item__photo-button favourite"
-                          ></span>
-                        </div>
-                        <div class="card-item__photo-texts">
-                          <p class="card-item__photo-text new">Что то</p>
-                          <p class="card-item__photo-text discount">
-                            -10%
-                          </p>
-                        </div>
-                      </div>
-                      <div class="card-item__description-wrap">
-                        <p class="card-item__description-price">
-                          61 290 &#8381; <span>62 490 &#8381;</span>
-                        </p>
-                        <p class="card-item__description-text">
-                          The 20th century was very notable with its
-                          unparalleled
-                        </p>
-                        <div class="not-clicked-rate-wrap">
-                          <span class="active"></span>
-                          <span class="active"></span>
-                          <span class="active"></span>
-                          <span class="active"></span>
-                          <span></span>
-                          <p class="not-clicked-rate-karma">10</p>
-                        </div>
-                      </div>
-                    </a>
-                    <button class="card-item__button">В корзину</button>
-                  </div>
-                </li>
-              </ul>
-              <div
-                class="description__set-swiper-button-prev swiper-button-prev"
-              ></div>
-              <div
-                class="description__set-swiper-button-next swiper-button-next"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
+        `
+        : ``
+    }
       <div class="ac">
         <p class="ac-header">
           <button type="button" class="ac-trigger">Отзывы</button>
@@ -443,10 +400,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         <div class="ac-panel">
           <div class="description__panel">
             <div class="description__review-wrap">
-              <div class="description__review-wrap">
               ${
-                res.reviews.cnt_reviews == 0
-                  ? `
+                res.reviews
+                  ? res.reviews.cnt_reviews == 0
+                    ? `
                   <div class="description__review-empty">
                     <h3 class="description__review-title">
                       Ваш отзыв будет первым!
@@ -460,7 +417,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </button>
                   </div>
                 `
-                  : `
+                    : `
                 <div class="description__review">
                   <ul class="description__review-list">
                   ${Object.values(res.reviews)
@@ -546,97 +503,83 @@ document.addEventListener("DOMContentLoaded", async () => {
                   </div>
                 </div>
                 `
+                  : `
+                    <div class="description__review-empty">
+                      <h3 class="description__review-title">
+                        Ваш отзыв будет первым!
+                      </h3>
+                      <p class="description__review-text">
+                        Поделитесь опытом, помогите другим покупателям с
+                        выбором.
+                      </p>
+                      <button class="description__review-button">
+                        Оставить отзыв
+                      </button>
+                    </div>
+                `
               }
-              </div>
             </div>
           </div>
         </div>
       </div>
+      ${
+        res["Наличие в магазине"] || res.warehouse !== "0"
+          ? `
       <div class="ac">
-        <p class="ac-header">
-          <button type="button" class="ac-trigger">
-            Наличие в магазинах
-          </button>
-        </p>
-        <div class="ac-panel">
-          <div class="description__panel">
-            <div class="description__avaliability">
-              <ul class="description__avaliability-list">
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-                <li class="description__avaliability-item">
-                  <a href="#" class="description__avaliability-link">
-                    <address class="description__avaliability-address">
-                      г. Владимир, пр. Суздальский, д. 26
-                    </address>
-                    <p class="description__avaliability-text">
-                      Подробнее о магазине
-                    </p>
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <p class="ac-header">
+        <button type="button" class="ac-trigger">
+          Наличие в магазинах
+        </button>
+      </p>
+      <div class="ac-panel">
+        <div class="description__panel">
+          <div class="description__availability">
+            <ul class="description__availability-list">
+            ${
+              res.warehouse !== "0"
+                ? `
+              <li class="description__availability-item">
+                <a href="#" class="description__availability-link sklad">
+                  <address class="description__availability-address">
+                    г. Кострома, ул. Юбилейная д.28
+                  </address>
+                  <p class="description__availability-text">
+                    Склад
+                  </p>
+                </a>
+              </li>
+            `
+                : ``
+            }
+              ${
+                res["Наличие в магазине"]
+                  ? Object.entries(res["Наличие в магазине"])
+                      .map((shop) => {
+                        return `
+                  <li class="description__availability-item">
+                    <a href="../viewshop?id=${shop[0]}" class="description__availability-link" target="_blank">
+                      <address class="description__availability-address">
+                        ${shop[1].NAME}
+                      </address>
+                      <p class="description__availability-text">
+                        Подробнее о магазине
+                      </p>
+                    </a>
+                  </li>
+                `;
+                      })
+                      .join("")
+                  : ``
+              }
+            </ul>
           </div>
         </div>
       </div>
+    </div>
+      `
+          : ``
+      }
+      
     </div>
   </div>
     
@@ -717,13 +660,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       `;
       document.body.insertAdjacentHTML("beforeend", popupElement);
       const popupReview = document.getElementById("popup-review");
-      const closePopup = document.querySelector(".popup__wrap-close");
-      const backgroundPopup = document.querySelector(".popup__background");
-      closePopup.addEventListener("click", () => {
-        bodyScrollToggle();
-        popupReview.remove();
-      });
-      backgroundPopup.addEventListener("click", () => closePopup.click());
       const reviewPostButton = document.getElementById("review-button-confirm");
       reviewPostButton.addEventListener("click", async (e) => {
         e.preventDefault();
@@ -772,26 +708,119 @@ document.addEventListener("DOMContentLoaded", async () => {
             .then((res) => res.json())
             .then((res) => {
               if (res == 200) {
-                const title = document.querySelector(".popup__wrap-title");
-                title.textContent = "Спасибо за ваш отзыв!";
-                title.style.margin = "0 30px 0 0";
-                const clickedRate = document.querySelector(".clicked-rate");
-                clickedRate.remove();
-                popupForm.remove();
+                popupReview.remove();
+                showMessage(
+                  "Отзыв оставлен!",
+                  "Спасибо за ваш отзыв! Отзыв будет опубликован после модерации.",
+                  "success"
+                );
               } else {
-                const attentionElement = `
-                  <p class="attention">Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${res}</p>
-                `;
-                popupForm.insertAdjacentHTML("beforeend", attentionElement);
+                showMessage(
+                  "Ошибка!",
+                  `Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${res}.`,
+                  "error"
+                );
               }
             });
         } catch (err) {
-          const attentionElement = `
-          <p class="attention">Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Ошибка: ${err}</p>
-        `;
-          popupForm.insertAdjacentHTML("beforeend", attentionElement);
+          showMessage(
+            "Ошибка!",
+            `Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${err}.`,
+            "error"
+          );
         }
       });
+    });
+  }
+  function openPopupAnalogue() {
+    const element = `
+    <div id="popup-analog" class="popup">
+      <div class="popup__background"></div>
+      <div class="popup__wrap">
+        <button class="popup__wrap-close"></button>
+        <p class="popup__wrap-title">
+          Подобрать аналог
+        </p>
+        <form action="#" class="popup__form">
+          <p class="popup__wrap-subtitle">
+            Заказать звонок для подбора аналога
+          </p>
+          <div class="input-wrap">
+            <input class="popup__wrap-input" id="client-tel-input" type="text" placeholder=" " autocomplete="off">
+            <label for="client-tel-input">Введите номер телефона</label>
+          </div>
+          <label class="checkbox__label">
+            Нажимая кнопку «Заказать звонок», вы соглашаетесь с условиями политики конфиденциальности
+            <input
+              type="checkbox"
+              class="checkbox visually-hidden"
+              value=""
+            />
+            <span class="checkbox__span"></span>
+          </label>
+          <div class="buttons-wrap">
+            <button id="submit-button" class="popup__wrap-button">
+              Заказать звонок
+            </button>
+          </div>             
+        </form>
+      </div>
+    </div>
+    `;
+    document.body.insertAdjacentHTML("beforeend", element);
+    const popupAnalog = document.getElementById("popup-analog");
+    const telInput = document.getElementById("client-tel-input");
+    Inputmask({
+      mask: "+7 (999) 999-99-99",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      onincomplete: function () {
+        this.classList.add("is-not-valid");
+      },
+    }).mask(telInput);
+    popupAnalog.addEventListener("click", async (e) => {
+      if (e.target.id == "submit-button") {
+        e.preventDefault();
+        const checkbox = document.querySelector(".checkbox");
+        if (!telInput.value.length) telInput.classList.add("is-not-valid");
+        if (checkbox.checked) {
+          document
+            .querySelector(".checkbox__span")
+            .classList.remove("is-not-valid");
+        } else {
+          document
+            .querySelector(".checkbox__span")
+            .classList.add("is-not-valid");
+        }
+        const isNotValid = document.querySelectorAll(".is-not-valid");
+        if (!isNotValid.length) {
+          console.log("POST");
+          // const changeDataFetch = await fetch(
+          //   `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_info=change&name=${nameInput.value}&last_name=${surnameInput.value}&phone=${telInput.value}&address=${addressInput.value}`,
+          //   {
+          //     method: "GET",
+          //   }
+          // )
+          //   .then((res) => res.json())
+          //   .then((res) => {
+          //     if (res == true) {
+          //       e.target.setAttribute("disabled", true);
+          //       refreshThisPage("profile", "", true);
+          //       popupUserdata.remove();
+          //       showMessage(
+          //         "Данные успешно обновлены!",
+          //         "Ваши данные обновлены",
+          //         "success"
+          //       );
+          //     } else {
+          //       e.target.removeAttribute("disabled");
+          //       showMessage("Ошибка!", res, "error");
+          //     }
+          //   });
+        }
+      }
     });
   }
 });

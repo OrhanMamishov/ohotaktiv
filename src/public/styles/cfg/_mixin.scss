@@ -91,6 +91,7 @@
   }
   &:disabled {
     background-color: var(--cart-background-color);
+    cursor: default;
   }
 }
 @mixin closeButton {

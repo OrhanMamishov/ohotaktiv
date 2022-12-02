@@ -220,18 +220,26 @@ main {
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+      transition: background 0.2s ease;
       &-wrap {
         position: absolute;
         top: 8px;
         right: 8px;
         display: flex;
         align-items: center;
+        z-index: 2;
       }
       &:not(:last-child) {
         margin-right: 12px;
       }
       &.favourite {
         background-image: url("../../../img/favourite.svg");
+        &:hover {
+          background-image: url("../../../img/favourite-in.svg");
+        }
+        &.is-in {
+          background-image: url("../../../img/favourite-in.svg");
+        }
       }
       &.remove {
         background-image: url("../../../img/remove.svg");
@@ -265,6 +273,7 @@ main {
     }
   }
   &__wrap {
+    position: relative;
     .not-clicked-rate {
       &-wrap {
         margin-bottom: 17px;
@@ -438,6 +447,9 @@ main {
       transform: translate(-50%, -50%);
       transition: opacity 0.2s ease;
       opacity: 0;
+    }
+    &.is-not-valid {
+      border-color: var(--red-color);
     }
   }
   &:checked + .checkbox__span {

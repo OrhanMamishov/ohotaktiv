@@ -195,6 +195,8 @@
     &__form {
       &-textarea {
         margin-bottom: 41px;
+        outline: none;
+        border: 1px solid var(--black-color);
       }
     }
   }
@@ -213,6 +215,9 @@
   .popup {
     &__wrap {
       max-width: 430px;
+      &-title {
+        margin-bottom: 18px;
+      }
       &-input {
         padding: 8px 0;
         margin-bottom: 25px;
@@ -221,11 +226,61 @@
         width: 100%;
         margin-top: 0;
         &.forgot-password {
+          width: fit-content;
+          display: block;
+          margin: 0 auto;
+          position: relative;
           background: unset;
           padding: 0;
+          transition: text 0.2s ease;
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--black-color);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+          }
+          &:hover {
+            &::before {
+              opacity: 1;
+            }
+          }
         }
         &:not(.forgot-password) {
           margin-bottom: 13px;
+        }
+      }
+      .authorize-switcher {
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px;
+        background-color: var(--cart-background-color);
+        border-radius: 100px;
+        &__button {
+          @include fontSize14;
+          padding: 9px 40px;
+          color: var(--grey-form-color);
+          border-radius: 100px;
+          transition: background 0.2s ease;
+          &.active {
+            background-color: var(--white-color);
+            color: var(--black-color);
+          }
+          &:hover {
+            background-color: var(--white-color);
+          }
+        }
+      }
+      .tab__target {
+        display: none;
+        &.active {
+          display: block;
         }
       }
     }
@@ -382,6 +437,18 @@
       }
       .input-wrap-file {
         margin-bottom: 50px;
+      }
+    }
+  }
+}
+#popup-analog {
+  .popup {
+    &__wrap {
+      max-width: 450px;
+    }
+    &__form {
+      .input-wrap {
+        margin-bottom: 15px;
       }
     }
   }

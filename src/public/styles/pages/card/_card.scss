@@ -14,6 +14,8 @@
       display: flex;
       align-items: center;
       &-wrap {
+        height: 100%;
+        width: 100%;
         max-height: 500px;
         &.swiper {
           padding-left: 30px;
@@ -35,6 +37,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        background-color: var(--white-color);
         z-index: 1;
         &-text {
           @include fontSize14;
@@ -92,6 +95,9 @@
       }
       &-slide {
         cursor: zoom-in;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       &.skeleton {
         height: 500px;
@@ -211,17 +217,21 @@
         @include contentButton;
         @include fontSize14;
         width: 100%;
-        margin-bottom: 12px;
         &.skeleton {
           height: 48px;
         }
       }
       &-text {
         @include fontSize14;
-        text-align: center;
+        margin-bottom: 12px;
         &.skeleton {
           height: 16px;
         }
+      }
+    }
+    &__img {
+      &-big {
+        width: auto;
       }
     }
   }
@@ -373,7 +383,6 @@
         }
       }
       &-empty {
-        display: none;
         padding-top: 85px;
         width: 346px;
         margin: auto;
@@ -442,9 +451,10 @@
         color: var(--darkness-white-color);
       }
     }
-    &__avaliability {
+    &__availability {
       &-list {
-        height: 373px;
+        @include contentScroll;
+        max-height: 373px;
         overflow-x: hidden;
       }
       &-item {
@@ -467,7 +477,7 @@
         justify-content: space-between;
         cursor: pointer;
         transition: background-color 0.2s ease;
-        &:hover {
+        &:not(.sklad):hover {
           background-color: var(--cart-background-color);
         }
       }
@@ -742,7 +752,7 @@
           order: 3;
         }
       }
-      &__avaliability {
+      &__availability {
         &-link {
           gap: 10px;
           flex-wrap: wrap;

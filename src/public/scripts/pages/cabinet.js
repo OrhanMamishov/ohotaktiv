@@ -10,39 +10,19 @@ import { phoneFormat } from "../functions/phoneFormat";
 import { showMessage } from "../functions/showMessage";
 import QRCodeStyling from "qr-code-styling";
 import { numberWithSpaces } from "../../scripts/functions/numberWithSpaces";
-import { generatePrice } from "../functions/generatePrice";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
+import { generateCard } from "../functions/generateCard";
+import { getUserData } from "../functions/getUserData";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  let userInfo = await getUserData();
   const serverName = "https://ohotaktiv.ru";
   const main = document.querySelector("main");
-  const fetchFromBase = await fetch(
-    "https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?get_user_info=personal",
-    {
-      method: "GET",
-    }
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      console.log(res);
-      return refreshCabinet(res);
-    });
-
+  refreshCabinet(userInfo);
   async function refreshThisPage(page, data, clicked) {
     let pageElement = ``;
-    if (clicked) {
-      const fetchFromBase = await fetch(
-        "https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?get_user_info=personal",
-        {
-          method: "GET",
-        }
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          data = res;
-        });
-    }
+    if (clicked) data = await getUserData();
     switch (page) {
       case "profile":
         pageElement = `
@@ -106,6 +86,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
         break;
       case "subscription":
+        // await fetch(
+        //   "https://api.mindbox.ru/v3/operations/async?endpointId=ohotaktiv-website-test&operation=getCustomer",
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       Accept: "application/json",
+        //       "Content-Type": "application/json",
+        //       Authorization: `Mindbox secretKey="RTh6yZ1o696DtaSS8RDA"`,
+        //     },
+        //     body: JSON.stringify({
+        //       customer: {
+        //         ids: {
+        //           webSiteUserId: data.personal.ID,
+        //         },
+        //       },
+        //     }),
+        //   }
+        // )
+        //   .then((res) => res.json())
+        //   .then((res) => {
+        //     console.log(res);
+        //   });
         pageElement = `
           <div class="cabinet__target" data-target="subscription">
             <h2 class="cabinet__profile-title">Управление подпиской</h2>
@@ -189,7 +191,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 order[1].cart
                                   ? order[1].cart
                                       .map((el) => {
-                                        console.log(el);
                                         return `
                                 <div class="cabinet__orders-item-panel">
                                   <img
@@ -226,7 +227,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                   <div class="cabinet__orders-item-panel-price-wrap">
                                     <p class="cabinet__orders-item-panel-price">
                                       ${numberWithSpaces(
-                                        Number(el.BASE_PRICE) *
+                                        Number(el.FINAL_PRICE) *
                                           Number(el.QUANTITY)
                                       )} &#8381;
                                     </p>
@@ -262,53 +263,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <ul class="cabinet__favourites-list swiper-wrapper cards-list">
                   ${Object.entries(data.favorites)
                     .map((favourite) => {
-                      return `
-                      <li class="cabinet__favourites-item swiper-slide card-item">
-                        <div class="card-item__wrap">
-                          <a id="${
-                            favourite[0]
-                          }" href="#" class="card-item__link">
-                            <div class="card-item__photo-wrap">
-                              <img
-                                src="${serverName}${
-                        favourite[1].PREVIEW_PICTURE
-                          ? favourite[1].PREVIEW_PICTURE
-                          : `/local/templates/ohota2021/img/no_photo.png`
-                      }"
-                                alt="${favourite[1].NAME}"
-                                class="card-item__photo"
-                              />
-                              <div class="card-item__photo-button-wrap">
-                                <span
-                                  class="card-item__photo-button remove"
-                                ></span>
-                              </div>
-                              <div class="card-item__photo-texts">
-                                <p class="card-item__photo-text new">Что то</p>
-                                <p class="card-item__photo-text discount">-10%</p>
-                              </div>
-                            </div>
-                            <div class="card-item__description-wrap">
-                              <p class="card-item__description-price">
-                                ${generatePrice(favourite[1])}
-                              </p>
-                              <p class="card-item__description-text">
-                                ${favourite[1].NAME}
-                              </p>
-                              <div class="not-clicked-rate-wrap">
-                                <span class="active"></span>
-                                <span class="active"></span>
-                                <span class="active"></span>
-                                <span class="active"></span>
-                                <span></span>
-                                <p class="not-clicked-rate-karma">10</p>
-                              </div>
-                            </div>
-                          </a>
-                          <button class="card-item__button">В корзину</button>
-                        </div>
-                      </li>
-                      `;
+                      return generateCard(favourite, ["remove"], false, data);
                     })
                     .join("")}
                 </ul>
@@ -445,7 +400,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       `[data-path = ${document.location.search ? thisPage : `profile`}]`
     );
     hashPath.classList.add("is-active");
-    main.addEventListener("click", (e) => {
+    main.addEventListener("click", async (e) => {
       if (e.target.id == "change-user-data") {
         openPopupChangeUserData();
       }
@@ -463,14 +418,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (e.target.id == "ad-post-button") {
         openPopupAd();
       }
-      if (e.target.className == "card-item__photo-button remove") {
-        fetch(
-          `https://ohotaktiv.ru/local/ajax/fav_2.php?p_id=${e.target.parentElement.parentElement.parentElement.id}`,
+      if (e.target.className == "card-item__photo-button remove ") {
+        await fetch(
+          `https://ohotaktiv.ru/local/ajax/fav_2.php?p_id=${
+            e.target.parentElement.parentElement.children[
+              e.target.parentElement.parentElement.children.length - 1
+            ].id
+          }`,
           {
             method: "GET",
             mode: "no-cors",
           }
         );
+        refreshThisPage("favourites", "", true);
+        showMessage("Товар убран!", "Товар убран из избранного", "success");
       }
     });
     const hamburger = document.querySelector(".hamburger-lines");

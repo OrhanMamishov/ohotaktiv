@@ -10,9 +10,12 @@ import numWord from "../functions/numWord";
 import Accordion from "accordion-js";
 import "accordion-js/dist/accordion.min.css";
 import ucFirst from "../functions/ucFirst";
-import { generatePrice } from "../functions/generatePrice";
+import { generateCard } from "../functions/generateCard";
+import { getUserData } from "../functions/getUserData";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const userInfo = await getUserData();
+  console.log(userInfo);
   const main = document.querySelector("main");
   const serverName = "https://ohotaktiv.ru";
   const urlCatalog = "/pnevmaticheskoe_oruzhie/".split("/");
@@ -626,56 +629,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </li>`;
     } else {
       data.forEach((item) => {
-        element += `
-      <li class="detail__cards-item card-item">
-        <div class="card-item__wrap">
-          <a href="../../card/?id=${item.ID}" class="card-item__link">
-            <div class="card-item__photo-wrap">
-              <img
-                src="${serverName}${
-          item.PREVIEW_PICTURE
-            ? item.PREVIEW_PICTURE
-            : item.properties.MORE_PHOTO
-            ? item.properties.MORE_PHOTO.FILES
-            : `/local/templates/ohota2021/img/no_photo.png`
-        }"
-                alt="${item.name}"
-                class="card-item__photo lozad"
-              />
-              <div class="card-item__photo-button-wrap">
-                <span
-                  class="card-item__photo-button compare"
-                ></span>
-                <span
-                  class="card-item__photo-button favourite"
-                ></span>
-              </div>
-              <div class="card-item__photo-texts">
-                <p class="card-item__photo-text new">Что то</p>
-                <p class="card-item__photo-text discount">-10%</p>
-              </div>
-            </div>
-            <div class="card-item__description-wrap">
-              <p class="card-item__description-price">
-                ${generatePrice(item)}
-              </p>
-              <p class="card-item__description-text">
-                ${item.name}
-              </p>
-              <div class="not-clicked-rate-wrap">
-                <span class="active"></span>
-                <span class="active"></span>
-                <span class="active"></span>
-                <span class="active"></span>
-                <span></span>
-                <p class="not-clicked-rate-karma">10</p>
-              </div>
-            </div>
-          </a>
-          <button id="${item.ID}" class="card-item__button">В корзину</button>
-        </div>
-      </li>
-    `;
+        element += generateCard(item, ["favourite"], true, userInfo);
       });
     }
     if (clicked) {
