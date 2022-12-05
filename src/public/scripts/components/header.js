@@ -10,6 +10,7 @@ import { updateCountGoods } from "../functions/updateCountGoods";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const userInfo = await getUserData();
+  console.log(userInfo);
   const header = document.querySelector(".header");
   const headerMenuWrap = document.querySelector(".header__menu-wrap");
   const headerMenu = document.querySelector(".header__menu");
@@ -21,7 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   allAccordions.forEach((accordion) => {
     if (window.innerWidth < 1024) new Accordion(accordion);
   });
-  // console.log(authorized);
   const IS_AUTHORIZED = userInfo.personal ? true : false;
   IS_AUTHORIZED ? updateCountGoods(userInfo) : updateCountGoods(userInfo);
   // const IS_AUTHORIZED = false;

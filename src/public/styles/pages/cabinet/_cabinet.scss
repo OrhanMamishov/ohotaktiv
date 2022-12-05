@@ -33,6 +33,10 @@
           &:not(.is-active):hover {
             color: var(--grey-color);
           }
+          &.skeleton {
+            width: 170px;
+            height: 25px;
+          }
         }
       }
     }
@@ -50,6 +54,10 @@
     &__profile {
       &-title {
         margin-bottom: 40px;
+        &.skeleton {
+          width: 200px;
+          height: 35px;
+        }
       }
       &-subtitle {
         display: inline-block;
@@ -64,6 +72,8 @@
           @include fontSize18;
           margin-bottom: 52px;
           &.skeleton {
+            width: 170px;
+            height: 28px;
           }
         }
       }
@@ -104,6 +114,10 @@
           &:not(:last-child) {
             margin-bottom: 6px;
           }
+          &.skeleton {
+            width: 288px;
+            height: 25px;
+          }
         }
         &-button {
           @include contentButton;
@@ -112,7 +126,12 @@
           align-self: flex-start;
           &.background--transparent {
             background: transparent;
+            transition: color 0.2s ease background 0.2s ease;
             border: 2px solid var(--black-color);
+            &:hover {
+              background-color: var(--black-color);
+              color: var(--white-color);
+            }
           }
         }
       }
@@ -320,6 +339,10 @@
           }
           &:not(:last-child) {
             margin-bottom: 30px;
+          }
+          &:not(:first-child) {
+            padding-left: 0;
+            border-left: unset;
           }
         }
       }

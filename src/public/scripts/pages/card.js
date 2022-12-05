@@ -107,14 +107,41 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <button class="card-item__photo-button share"></button>
                 <button class="card-item__photo-button favourite"></button>
                 <div class="share-wrap">
-                  <a href="#" class="share-link vk">
+                  <a href="http://vk.com/share.php?url=${
+                    document.location
+                  }" class="share-link vk" target="_blank">
                     VK
                   </a>
-                  <a href="#" class="share-link tg">
+                  <a href="https://t.me/share/url?url=${
+                    document.location
+                  }&text=${
+      res.NAME
+    } - Купить по низкой цене в интернет-магазине ОхотАктив" class="share-link tg" target="_blank">
                     Telegram
                   </a>
-                  <a href="#" class="share-link viber">
+                  <a href="https://connect.ok.ru/offer?url=${
+                    document.location
+                  }&title=${res.NAME}" class="share-link ok" target="_blank">
+                    Одноклассники
+                  </a>
+                  <a href="viber://forward?text=${
+                    res.NAME
+                  } - Купить по низкой цене в интернет-магазине ОхотАктив ${
+      document.location
+    }" class="share-link viber" target="_blank">
                     Viber
+                  </a>
+                  <a href="https://api.whatsapp.com/send?text=${
+                    res.NAME
+                  } - Купить по низкой цене в интернет-магазине ОхотАктив ${
+      document.location
+    }" class="share-link whatsapp" target="_blank">
+                    Whatsapp
+                  </a>
+                  <a href="https://web.skype.com/share?url=${
+                    document.location
+                  }" class="share-link skype" target="_blank">
+                    Skype
                   </a>
                   <button class="share-link button">
                     Скопировать ссылку
@@ -209,11 +236,39 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     `;
     cardSection.insertAdjacentHTML("beforeend", element);
+    const wrapShare = document.querySelector(".share-wrap");
     cardSection.addEventListener("click", (e) => {
+      const withinBoundaries = e.composedPath().includes(wrapShare);
       if (e.target.className == "card__right-button") {
         if (e.target.getAttribute("data-available") == "not-available") {
           openPopupAnalogue();
         }
+      }
+      if (e.target.classList.contains("share-link")) {
+        wrapShare.classList.toggle("is-open");
+      }
+      if (e.target.className == "card-item__photo-button share") {
+        wrapShare.classList.toggle("is-open");
+      }
+      if (e.target.className == "share-link button") {
+        navigator.clipboard
+          .writeText(document.location)
+          .then(() => {
+            showMessage(
+              "Ссылка скопирована!",
+              "Ссылка скопирована в буфер обмена!",
+              "success"
+            );
+          })
+          .catch((err) => {
+            showMessage("Ошибка!", err, "error");
+          });
+      }
+      if (
+        !withinBoundaries &&
+        e.target.className !== "card-item__photo-button share"
+      ) {
+        wrapShare.classList.remove("is-open");
       }
     });
     // свайпер
@@ -248,12 +303,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
     // кнопка расшарить
-    const buttonShare = document.querySelector(".share");
-    const wrapShare = document.querySelector(".share-wrap");
-    const linksShare = document.querySelectorAll(".share-link");
-    buttonShare.addEventListener("click", () => {
-      wrapShare.classList.toggle("is-open");
-    });
+
     // кнопки все характеристики и подробнее
     const cardCharactersButton = document.querySelector(
       ".card__right-dots-button"

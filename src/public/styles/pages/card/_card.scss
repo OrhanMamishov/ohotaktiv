@@ -67,16 +67,17 @@
           }
           &-link {
             @include fontSize14;
-            padding: 14px 60px;
+            padding: 10px 40px;
             cursor: pointer;
             background-repeat: no-repeat;
-            background-position: 20px center;
+            background-position: 10px center;
             background-size: 12%;
+            border-radius: 10px;
             &:not(:last-child) {
               border-bottom: 1px solid var(--border-color);
             }
             &:hover {
-              background-color: var(--light-grey-color);
+              background-color: var(--cart-background-color);
             }
             &.button {
               padding: 14px 16px;
@@ -90,6 +91,15 @@
             &.viber {
               background-image: url("../../../img/viber.svg");
             }
+            &.ok {
+              background-image: url("../../../img/ok.svg");
+            }
+            // &.whatsapp {
+            //   background-image: url("../../../img/whatsapp.svg");
+            // }
+            // &.skype {
+            //   background-image: url("../../../img/skype.svg");
+            // }
           }
         }
       }

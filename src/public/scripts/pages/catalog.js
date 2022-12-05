@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   )
     .then((res) => res.json())
     .then((res) => {
+      console.log(res);
       return refreshCatalog(res);
     });
 

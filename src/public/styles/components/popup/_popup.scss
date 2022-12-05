@@ -14,6 +14,7 @@
     background-color: rgba(#282828, 0.5);
   }
   &__wrap {
+    @include contentScroll;
     padding: 50px 60px;
     position: fixed;
     top: 50%;
@@ -157,6 +158,9 @@
   }
   @media only screen and (max-width: 767px) {
     &__wrap {
+      padding: 50px 30px;
+      width: 100%;
+      max-height: 80vh;
       &-title {
         font-size: 18px;
         margin-bottom: 20px;
@@ -178,6 +182,11 @@
       &-input {
         padding: 14px 0;
         line-height: 1;
+      }
+      @media only screen and(max-width:767px) {
+        .choose-cities__input {
+          width: 100%;
+        }
       }
     }
   }
@@ -275,6 +284,9 @@
           &:hover {
             background-color: var(--white-color);
           }
+          @media only screen and (max-width: 767px) {
+            padding: 9px 25px;
+          }
         }
       }
       .tab__target {
@@ -287,13 +299,17 @@
   }
 }
 #popup-change-userdata,
-#popup-change-password {
+#popup-change-password,
+#popup-card {
   .popup {
     &__personal {
       &-wrap {
         display: block;
         .input-wrap {
           width: 421px;
+          @media only screen and(max-width:767px) {
+            width: 100%;
+          }
         }
       }
     }
@@ -301,12 +317,19 @@
       .buttons-wrap {
         display: flex;
         justify-content: space-between;
+        @media only screen and(max-width: 767px) {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     }
     &__wrap {
       &-button {
         &.background--transparent {
           background: transparent;
+        }
+        @media only screen and (max-width: 767px) {
+          width: 100%;
         }
       }
       .input-wrap {
@@ -369,14 +392,20 @@
           margin-bottom: 50px;
         }
         .choices {
+          margin-bottom: 0;
           &__inner {
+            padding: 14px 0px;
             background-color: transparent;
-            border-radius: 100px;
-            border: 1px solid var(--grey-form-color);
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid var(--black-color);
+            &.is-not-valid {
+              border-color: var(--red-color);
+            }
           }
           &__list {
             &--single {
-              padding: 9px 16px 6px 20px;
+              padding: 0;
             }
             &--dropdown {
               box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.08);
@@ -405,6 +434,13 @@
             }
           }
         }
+        @media only screen and (max-width: 767px) {
+          display: block;
+          .input-wrap,
+          .choices {
+            margin-bottom: 20px;
+          }
+        }
       }
     }
     &__form {
@@ -413,10 +449,7 @@
         @include fontSize14;
         width: 100%;
         padding: 15px 20px;
-        min-height: 130px;
-        height: 100%;
         border: 1px solid var(--secondary-color);
-        border-radius: 10px;
         resize: none;
         &-wrap {
           margin-bottom: 30px;
@@ -433,6 +466,10 @@
         &:focus {
           outline: none;
           border-color: var(--primary-color);
+        }
+        &.is-not-valid {
+          border-color: var(--red-color);
+          animation: 0.1s tremor ease-out 1;
         }
       }
       .input-wrap-file {

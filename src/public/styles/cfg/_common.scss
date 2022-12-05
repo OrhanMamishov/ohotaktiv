@@ -79,6 +79,7 @@ input {
   background-color: transparent;
   border: none;
   outline: none;
+  border-radius: unset;
   &[type="number"] {
     appearance: none;
     -moz-appearance: textfield;
@@ -100,6 +101,7 @@ button {
   border: none;
   cursor: pointer;
   background-color: transparent;
+  color: var(--black-color);
 }
 img {
   width: 100%;
@@ -688,7 +690,7 @@ main {
       + .slider {
         background-color: var(--black-color);
         &::before {
-          transform: translate(26px, -50%);
+          transform: translate(23px, -50%);
         }
       }
     }

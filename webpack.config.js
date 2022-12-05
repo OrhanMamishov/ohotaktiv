@@ -18,7 +18,7 @@ function setupDevtool() {
     return "eval";
   }
   if (IS_PROD) {
-    return false;
+    return "source-map";
   }
 }
 

@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   refreshCabinet(userInfo);
   async function refreshThisPage(page, data, clicked) {
     let pageElement = ``;
+    let subscriptions;
     if (clicked) data = await getUserData();
     switch (page) {
       case "profile":
@@ -72,12 +73,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                     ? `<div class="qrcode"></div>`
                     : `
                 <p class="cabinet__profile-block-text">
-                Если у вас есть бонусная карта, вы можете добавить её здесь и
-                продолжать покупки со скидкой
-              </p>
-              <button class="cabinet__profile-block-button background--transparent">
-                Добавить или приобрести карту
-              </button>
+                  Если у вас есть бонусная карта, вы можете добавить её здесь и
+                  продолжать покупки со скидкой
+                </p>
+                <button id="append-card" class="cabinet__profile-block-button background--transparent">
+                  Добавить или приобрести карту
+                </button>
                 `
                 }
               </div>
@@ -86,28 +87,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
         break;
       case "subscription":
-        // await fetch(
-        //   "https://api.mindbox.ru/v3/operations/async?endpointId=ohotaktiv-website-test&operation=getCustomer",
-        //   {
-        //     method: "POST",
-        //     headers: {
-        //       Accept: "application/json",
-        //       "Content-Type": "application/json",
-        //       Authorization: `Mindbox secretKey="RTh6yZ1o696DtaSS8RDA"`,
-        //     },
-        //     body: JSON.stringify({
-        //       customer: {
-        //         ids: {
-        //           webSiteUserId: data.personal.ID,
-        //         },
-        //       },
-        //     }),
-        //   }
-        // )
-        //   .then((res) => res.json())
-        //   .then((res) => {
-        //     console.log(res);
-        //   });
+        await fetch(
+          "https://api.mindbox.ru/v3/operations/sync?endpointId=ohotaktiv-website&operation=Website.GetSubscriptionInfo",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Mindbox secretKey="RTh6yZ1o696DtaSS8RDA"`,
+            },
+            body: JSON.stringify({
+              customer: {
+                ids: {
+                  websiteID: data.personal.ID,
+                },
+              },
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            subscriptions = res.customer.subscriptions;
+          });
         pageElement = `
           <div class="cabinet__target" data-target="subscription">
             <h2 class="cabinet__profile-title">Управление подпиской</h2>
@@ -118,36 +119,38 @@ document.addEventListener("DOMContentLoaded", async () => {
             <ul class="cabinet__subscription-list">
               <li class="cabinet__subscription-item">
                 <p class="cabinet__subscription-item-title">
-                  Акции, бонусы, скидки
+                  СМС-уведомления
                 </p>
                 <p class="cabinet__subscription-item-text">
                   Информация о предстоящих акциях и скидках
                 </p>
                 <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider"></span>
+                  <input type="checkbox" ${
+                    subscriptions.filter(
+                      (sub) => sub.pointOfContact == "Sms"
+                    )[2].isSubscribed
+                      ? "checked"
+                      : ""
+                  }/>
+                  <span class="slider" data-subscribe="Sms"></span>
                 </label>
               </li>
               <li class="cabinet__subscription-item">
                 <p class="cabinet__subscription-item-title">
-                  Персональные предложения
+                  Email-уведомления
                 </p>
                 <p class="cabinet__subscription-item-text">
                   Персональные скидки, подборки товаров по вашим интересам
                 </p>
                 <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider"></span>
-                </label>
-              </li>
-              <li class="cabinet__subscription-item">
-                <p class="cabinet__subscription-item-title">Лучшее за неделю</p>
-                <p class="cabinet__subscription-item-text">
-                  Все самое интересное за неделю
-                </p>
-                <label class="switch">
-                  <input type="checkbox" />
-                  <span class="slider"></span>
+                  <input type="checkbox" ${
+                    subscriptions.filter(
+                      (sub) => sub.pointOfContact == "Email"
+                    )[2].isSubscribed
+                      ? "checked"
+                      : ""
+                  }/>
+                  <span class="slider" data-subscribe="Email"></span>
                 </label>
               </li>
             </ul>
@@ -174,6 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ${
                   data.orders
                     ? Object.entries(data.orders)
+                        .reverse()
                         .map((order) => {
                           return `
                             <li class="cabinet__orders-item">
@@ -406,7 +410,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       if (e.target.classList.contains("tabs__item")) {
         if (e.target.classList.contains("is-active")) return;
-        if (e.target.getAttribute("data-path") == "logout") return;
+        if (e.target.getAttribute("data-path") == "logout") {
+          window.location.href = "https://ohotaktiv.ru/?logout=yes";
+          return;
+        }
         const baseUrl = document.location.href.split("?")[0];
         const newUrl = baseUrl + "?block=" + e.target.getAttribute("data-path");
         history.pushState(null, null, newUrl);
@@ -432,6 +439,69 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
         refreshThisPage("favourites", "", true);
         showMessage("Товар убран!", "Товар убран из избранного", "success");
+      }
+      if (e.target.id == "append-card") {
+        openPopupCard();
+      }
+      if (e.target.className == "slider") {
+        await fetch(
+          "https://api.mindbox.ru/v3/operations/sync?endpointId=ohotaktiv-website&operation=Website.EditCustomer",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Mindbox secretKey="RTh6yZ1o696DtaSS8RDA"`,
+            },
+            body: JSON.stringify({
+              customer: {
+                ids: {
+                  websiteID: data.personal.ID,
+                },
+                subscriptions: [
+                  {
+                    pointOfContact: e.target.getAttribute("data-subscribe"),
+                    topic: 1,
+                    isSubscribed: e.target.previousElementSibling.checked
+                      ? false
+                      : true,
+                  },
+                  {
+                    pointOfContact: e.target.getAttribute("data-subscribe"),
+                    topic: 2,
+                    isSubscribed: e.target.previousElementSibling.checked
+                      ? false
+                      : true,
+                  },
+                  {
+                    pointOfContact: e.target.getAttribute("data-subscribe"),
+                    isSubscribed: e.target.previousElementSibling.checked
+                      ? false
+                      : true,
+                  },
+                ],
+              },
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.status == "Success") {
+              showMessage(
+                `Вы ${
+                  e.target.previousElementSibling.checked
+                    ? "подписались"
+                    : "отписались"
+                }`,
+                `Вы успешно ${
+                  e.target.previousElementSibling.checked
+                    ? "подписались на рассылку"
+                    : "отписались от рассылки"
+                }`,
+                "success"
+              );
+            }
+          });
       }
     });
     const hamburger = document.querySelector(".hamburger-lines");
@@ -766,39 +836,39 @@ document.addEventListener("DOMContentLoaded", async () => {
               <option value="ОООП">ОООП</option>
             </select>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="calibr-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="calibr-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="calibr-input">Калибр</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="priklad-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="priklad-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="priklad-input">Материал приклада</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="capacity-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="capacity-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="capacity-input">Емкость магазина</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="num-trunks-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="num-trunks-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="num-trunks-input">Количество стволов</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="location-trunks-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="location-trunks-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="location-trunks-input">Расположение стволов</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="barrel-length-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="barrel-length-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="barrel-length-input">Длина ствола, мм</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="total-length-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="total-length-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="total-length-input">Общая длина, мм</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="principle-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="principle-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="principle-input">Принцип действия</label>
             </div>
               <div class="input-wrap">
-              <input class="popup__wrap-input" id="model-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="model-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="model-input">Производитель</label>
             </div>
           </div>
@@ -807,19 +877,19 @@ document.addEventListener("DOMContentLoaded", async () => {
           </p>
           <div class="popup__ad-wrap">
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="condition-length-input" type="text" placeholder=" " minlength="1">
-              <label for="condition-length-input">Состояние</label>
+              <input class="popup__wrap-input" id="condition-input" type="text" placeholder=" " minlength="1" autocomplete="off">
+              <label for="condition-input">Состояние</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="price-length-input" type="text" placeholder=" " minlength="1">
-              <label for="price-length-input">Цена, р</label>
+              <input class="popup__wrap-input" id="price-input" type="text" placeholder=" " minlength="1" autocomplete="off">
+              <label for="price-input">Цена, р</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="year-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="year-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="year-input">Год выпуска, г</label>
             </div>
             <div class="input-wrap">
-              <input class="popup__wrap-input" id="weight-input" type="text" placeholder=" " minlength="1">
+              <input class="popup__wrap-input" id="weight-input" type="text" placeholder=" " minlength="1" autocomplete="off">
               <label for="weight-input">Вес, г</label>
             </div>
           </div>
@@ -831,7 +901,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               class="input-wrap-file__input"
               multiple
               required
-              accept=".jpg, .jpeg, .png, .doc, .docx, .pdf, .xls, .xlsx"
+              accept=".jpg, .jpeg, .png"
             />
             <label for="input-wrap-file">
               Прикрепить файлы<span class="dots">...</span>
@@ -841,7 +911,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </label>
           </div>
           <div class="textarea-wrap">
-            <textarea class="textarea" name="description" placeholder="Добавьте описание"></textarea>
+            <textarea class="textarea" name="description" placeholder="Добавьте описание" rows="4"></textarea>
             <p class="text-for-textarea">Не менее 250 символов</p>
           </div>
           <label class="checkbox__label">
@@ -854,7 +924,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <span class="checkbox__span"></span>
           </label>
           <div class="buttons-wrap">
-            <button id="submit-button" class="popup__wrap-button">
+            <button id="submit-ad-button" class="popup__wrap-button">
               Разместить объявление
             </button>
           </div>             
@@ -867,6 +937,377 @@ document.addEventListener("DOMContentLoaded", async () => {
     const choice = new Choices(selectElement, {
       itemSelectText: "",
       allowHTML: true,
+      searchEnabled: false,
+    });
+    const popupAd = document.getElementById("popup-ad");
+    const calibrInput = document.getElementById("calibr-input");
+    const prikladInput = document.getElementById("priklad-input");
+    const capacityInput = document.getElementById("capacity-input");
+    const numTrunksInput = document.getElementById("num-trunks-input");
+    const locationTrunksInput = document.getElementById(
+      "location-trunks-input"
+    );
+    const barrelLengthInput = document.getElementById("barrel-length-input");
+    const totalLengthInput = document.getElementById("total-length-input");
+    const principleInput = document.getElementById("principle-input");
+    const modelInput = document.getElementById("model-input");
+    const condititonInput = document.getElementById("condition-input");
+    const priceInput = document.getElementById("price-input");
+    const yearInput = document.getElementById("year-input");
+    const weightInput = document.getElementById("weight-input");
+    const textArea = document.querySelector(".textarea");
+    const fileInput = document.querySelector(".input-wrap-file__input");
+    const checkbox = document.querySelector(".checkbox");
+    const inputs = [
+      calibrInput,
+      prikladInput,
+      capacityInput,
+      numTrunksInput,
+      locationTrunksInput,
+      barrelLengthInput,
+      totalLengthInput,
+      principleInput,
+      modelInput,
+      condititonInput,
+      priceInput,
+      yearInput,
+      weightInput,
+      textArea,
+    ];
+    const labelFile = fileInput.nextElementSibling;
+    fileInput.addEventListener("change", (e) => {
+      labelFile.textContent = "Выбраны файлы: ";
+      let size = 0;
+      Object.values(e.target.files).forEach((el) => {
+        labelFile.textContent += `${el.name}, `;
+        size += el.size;
+      });
+      if (size > 8000000) {
+        labelFile.textContent = "Превышен размер файлов!";
+        return;
+      }
+      if (e.target.files.length < 3) {
+        fileInput.nextElementSibling.classList.add("is-not-valid");
+        return;
+      }
+      fileInput.nextElementSibling.classList.remove("is-not-valid");
+      fileInput.classList.remove("is-not-valid");
+    });
+    Inputmask({
+      mask: "*{25}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[А-Яа-я-Ёё.0-9/*]",
+        },
+      },
+    }).mask(calibrInput);
+    Inputmask({
+      mask: "*{10}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[А-Яа-я]",
+        },
+      },
+    }).mask(prikladInput);
+    Inputmask({
+      mask: "*{5}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9+]",
+        },
+      },
+    }).mask(capacityInput);
+    Inputmask({
+      mask: "*{2}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9]",
+        },
+      },
+    }).mask(numTrunksInput);
+    Inputmask({
+      mask: "*{15}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[А-Яа-я]",
+        },
+      },
+    }).mask(locationTrunksInput);
+    Inputmask({
+      mask: "*{3}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9]",
+        },
+      },
+    }).mask(barrelLengthInput);
+    Inputmask({
+      mask: "*{4}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9]",
+        },
+      },
+    }).mask(totalLengthInput);
+    Inputmask({
+      mask: "*{15}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[А-Яа-я]",
+        },
+      },
+    }).mask(principleInput);
+    Inputmask({
+      mask: "*{15}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[А-Яа-яA-Za-z -]",
+        },
+      },
+    }).mask(modelInput);
+    Inputmask({
+      mask: "*{15}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[А-Яа-я ]",
+        },
+      },
+    }).mask(condititonInput);
+    Inputmask({
+      mask: "*{6}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9]",
+        },
+      },
+    }).mask(priceInput);
+    Inputmask({
+      mask: "*{4}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9]",
+        },
+      },
+    }).mask(yearInput);
+    Inputmask({
+      mask: "*{4}",
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9]",
+        },
+      },
+    }).mask(weightInput);
+    Inputmask({
+      placeholder: "",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+    }).mask(textArea);
+    popupAd.addEventListener("click", (e) => {
+      if (
+        e.target.classList.contains("choices__item") ||
+        e.target.classList.contains("choices__inner")
+      ) {
+        selectElement.parentElement.classList.remove("is-not-valid");
+      }
+      if (e.target.id == "submit-ad-button") {
+        e.preventDefault();
+        selectElement.parentElement.classList.remove("is-not-valid");
+        if (selectElement.children[0].value == "") {
+          selectElement.parentElement.classList.add("is-not-valid");
+        }
+        inputs.forEach((input) => {
+          if (!input.value.length) {
+            input.classList.add("is-not-valid");
+          }
+        });
+        if (textArea.value.length < 250) textArea.classList.add("is-not-valid");
+        if (checkbox.checked) {
+          document
+            .querySelector(".checkbox__span")
+            .classList.remove("is-not-valid");
+        } else {
+          document
+            .querySelector(".checkbox__span")
+            .classList.add("is-not-valid");
+        }
+        if (fileInput.files.length < 3) {
+          fileInput.nextElementSibling.classList.add("is-not-valid");
+        }
+        const isNotValid = document.querySelectorAll(".is-not-valid");
+        if (!isNotValid.length) {
+          console.log("POST");
+          // const changeDataFetch = await fetch(
+          //   `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_info=change&name=${nameInput.value}&last_name=${surnameInput.value}&phone=${telInput.value}&address=${addressInput.value}`,
+          //   {
+          //     method: "GET",
+          //   }
+          // )
+          //   .then((res) => res.json())
+          //   .then((res) => {
+          //     if (res == true) {
+          //       e.target.setAttribute("disabled", true);
+          //       refreshThisPage("profile", "", true);
+          //       popupUserdata.remove();
+          //       showMessage(
+          //         "Данные успешно обновлены!",
+          //         "Ваши данные обновлены",
+          //         "success"
+          //       );
+          //     } else {
+          //       e.target.removeAttribute("disabled");
+          //       showMessage("Ошибка!", res, "error");
+          //     }
+          //   });
+        }
+      }
+    });
+  }
+  function openPopupCard() {
+    const element = `
+    <div id="popup-card" class="popup">
+      <div class="popup__background"></div>
+      <div class="popup__wrap">
+        <button class="popup__wrap-close"></button>
+        <p class="popup__wrap-title">
+          Бонусная карта
+        </p>
+        <form action="#" class="popup__form">
+          <div class="popup__personal-wrap">
+            <div class="input-wrap">
+              <input class="popup__wrap-input" id="card-number-input" type="text" placeholder=" " autocomplete="off">
+              <label for="card-number-input">Введите номер карты</label>
+            </div>
+          </div>
+          <div class="buttons-wrap">
+            <button id="submit-button" class="popup__wrap-button">
+              Сохранить карту
+            </button>
+            <a href="#" class="popup__wrap-button background--transparent" target="_blank">
+              У меня ещё нет карты
+            </a>
+          </div>             
+        </form>
+      </div>
+    </div>
+    `;
+    document.body.insertAdjacentHTML("beforeend", element);
+    const cardNumberInput = document.getElementById("card-number-input");
+    const popupCard = document.getElementById("popup-card");
+    Inputmask({
+      mask: "*{10}",
+      showMaskOnHover: false,
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      onincomplete: function () {
+        this.classList.add("is-not-valid");
+      },
+      definitions: {
+        "*": {
+          validator: "[0-9/]",
+        },
+      },
+    }).mask(cardNumberInput);
+    popupCard.addEventListener("click", async (e) => {
+      if (e.target.id == "submit-button") {
+        e.preventDefault();
+        if (!cardNumberInput.value.length) {
+          cardNumberInput.classList.add("is-not-valid");
+        }
+        const isNotValid = document.querySelectorAll(".is-not-valid");
+        if (!isNotValid.length) {
+          console.log("POST");
+          // const changeDataFetch = await fetch(
+          //   `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_info=change&name=${nameInput.value}&last_name=${surnameInput.value}&phone=${telInput.value}&address=${addressInput.value}`,
+          //   {
+          //     method: "GET",
+          //   }
+          // )
+          //   .then((res) => res.json())
+          //   .then((res) => {
+          //     if (res == true) {
+          //       e.target.setAttribute("disabled", true);
+          //       refreshThisPage("profile", "", true);
+          //       popupUserdata.remove();
+          //       showMessage(
+          //         "Данные успешно обновлены!",
+          //         "Ваши данные обновлены",
+          //         "success"
+          //       );
+          //     } else {
+          //       e.target.removeAttribute("disabled");
+          //       showMessage("Ошибка!", res, "error");
+          //     }
+          //   });
+        }
+      }
     });
   }
   function generateQrCode(value) {
