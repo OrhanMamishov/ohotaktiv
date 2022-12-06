@@ -1,5 +1,6 @@
 import "../../styles/components/footer/style.scss";
 import Inputmask from "inputmask";
+import { showMessage } from "../functions/showMessage";
 
 document.addEventListener("DOMContentLoaded", () => {
   const titleListsFooter = document.querySelectorAll(".item-title");
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.classList.add("is-not-valid");
     },
   }).mask(footerInput);
-  footerSubmitButton.addEventListener("click", (e) => {
+  footerSubmitButton.addEventListener("click", async (e) => {
     e.preventDefault();
     if (footerInput.value.length == 0) {
       footerInput.classList.add("is-not-valid");
@@ -41,7 +42,24 @@ document.addEventListener("DOMContentLoaded", () => {
       footerInput.classList.add("is-not-valid");
       return;
     }
-    console.log("POST");
-    footerInput.value = "";
+    await fetch(
+      "https://api.mindbox.ru/v3/operations/async?endpointId=ohotaktiv-website&operation=Website.SubscriptionInFooter",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Mindbox secretKey="RTh6yZ1o696DtaSS8RDA"`,
+        },
+        body: JSON.stringify({
+          customer: {
+            email: footerInput.value,
+          },
+        }),
+      }
+    ).then(() => {
+      footerInput.value = "";
+      showMessage("Успешно!", "Вы подписались на новости", "success");
+    });
   });
 });

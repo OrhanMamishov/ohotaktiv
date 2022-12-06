@@ -14,9 +14,20 @@ import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
 import { generateCard } from "../functions/generateCard";
 import { getUserData } from "../functions/getUserData";
+import { updateCountGoods } from "../functions/updateCountGoods";
 
 document.addEventListener("DOMContentLoaded", async () => {
   let userInfo = await getUserData();
+  if (!document.location.search && userInfo.personal.ID == null) {
+    const baseUrl = document.location.href.split("?")[0];
+    const newUrl = baseUrl + "?block=favourites";
+    history.pushState(null, null, newUrl);
+  }
+  if (userInfo.personal.ID == null) {
+    const baseUrl = document.location.href.split("?")[0];
+    const newUrl = baseUrl + "?block=favourites";
+    history.pushState(null, null, newUrl);
+  }
   const serverName = "https://ohotaktiv.ru";
   const main = document.querySelector("main");
   refreshCabinet(userInfo);
@@ -282,7 +293,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 ></div>
                 </div>
                   `
-                : `<p class="cabinet__text">У вас пока нет товаров в избранных</p>`
+                : `<p class="cabinet__text">У вас пока нет товаров в избранных. ${
+                    userInfo.personal.ID == null
+                      ? `Для получения большего функционала, пожалуйста <button class="authorize-button">авторизуйтесь.</button>`
+                      : ``
+                  }</p>`
             }
           `;
         break;
@@ -344,17 +359,28 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
           <div class="cabinet__left">
             <p class="cabinet__profile-user-name">Меню ID</p>
-            <ul class="tabs__list">
-              <li class="tabs__item" data-path="profile">Личные данные</li>
-              <li class="tabs__item" data-path="subscription">
-                Управление подпиской
-              </li>
-              <li class="tabs__item" data-path="ad">Мои объявления</li>
-              <li class="tabs__item" data-path="orders">Мои заказы</li>
-              <li class="tabs__item" data-path="favourites">Избранное</li>
-              <li class="tabs__item" data-path="logout">Выйти из профиля</li>
-              <li class="tabs__item" data-path="delete">Удалить аккаунт</li>
-            </ul>
+            ${
+              userInfo.personal.ID !== null
+                ? `
+                <ul class="tabs__list">
+                  <li class="tabs__item" data-path="profile">Личные данные</li>
+                  <li class="tabs__item" data-path="subscription">
+                    Управление подпиской
+                  </li>
+                  <li class="tabs__item" data-path="ad">Мои объявления</li>
+                  <li class="tabs__item" data-path="orders">Мои заказы</li>
+                  <li class="tabs__item" data-path="favourites">Избранное</li>
+                  <li class="tabs__item" data-path="logout">Выйти из профиля</li>
+                  <li class="tabs__item" data-path="delete">Удалить аккаунт</li>
+                </ul>
+            `
+                : `
+                <ul class="tabs__list">
+                  <li class="tabs__item" data-path="favourites">Избранное</li>
+                </ul>
+                `
+            }
+
           </div>
           ${await refreshThisPage(thisPage, data, false)}
         </div>
@@ -403,7 +429,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const hashPath = document.querySelector(
       `[data-path = ${document.location.search ? thisPage : `profile`}]`
     );
-    hashPath.classList.add("is-active");
+    if (hashPath) hashPath.classList.add("is-active");
     main.addEventListener("click", async (e) => {
       if (e.target.id == "change-user-data") {
         openPopupChangeUserData();
@@ -439,6 +465,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
         refreshThisPage("favourites", "", true);
         showMessage("Товар убран!", "Товар убран из избранного", "success");
+        updateCountGoods(await getUserData());
       }
       if (e.target.id == "append-card") {
         openPopupCard();
@@ -502,6 +529,9 @@ document.addEventListener("DOMContentLoaded", async () => {
               );
             }
           });
+      }
+      if (e.target.classList == "authorize-button") {
+        document.querySelector(".header__action-link.cabinet").click();
       }
     });
     const hamburger = document.querySelector(".hamburger-lines");
@@ -676,7 +706,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           )
             .then((res) => res.json())
             .then((res) => {
-              if (res == true) {
+              if (res.success) {
                 e.target.setAttribute("disabled", true);
                 refreshThisPage("profile", "", true);
                 popupUserdata.remove();
@@ -687,7 +717,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 );
               } else {
                 e.target.removeAttribute("disabled");
-                showMessage("Ошибка!", res, "error");
+                showMessage("Ошибка!", res.error, "error");
               }
             });
         }

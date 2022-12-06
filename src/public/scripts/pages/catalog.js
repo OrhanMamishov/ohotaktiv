@@ -62,13 +62,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         </h2>
                         <div class="ac-panel">
                           <div class="ac-panel-wrap">
-                          ${list.depth
-                            .map((el) => {
-                              if (el.depth) {
-                                el.depth.sort((a, b) =>
-                                  Number(a.sort) > Number(b.sort) ? 1 : -1
-                                );
-                                return `
+                          ${
+                            list.depth
+                              ? list.depth
+                                  .map((el) => {
+                                    if (el.depth) {
+                                      el.depth.sort((a, b) =>
+                                        Number(a.sort) > Number(b.sort) ? 1 : -1
+                                      );
+                                      return `
                                   <div class="catalog__accordion accordion-container">
                                     <div class="ac">
                                       <h2 class="ac-header">
@@ -76,8 +78,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                           "/catalog",
                                           ""
                                         )}" class="catalog__link subtitle"> ${
-                                  el.name
-                                } </a>
+                                        el.name
+                                      } </a>
                                       <button type="button" class="ac-trigger"></button>
                                       </h2>
                                       <div class="ac-panel">
@@ -194,16 +196,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     </div>
                                   </div>
                                 `;
-                              } else {
-                                return `
+                                    } else {
+                                      return `
                                   <a href="${el.url.replace(
                                     "/catalog",
                                     ""
                                   )}" class="catalog__link">${el.name}</a>
                                 `;
-                              }
-                            })
-                            .join("")}
+                                    }
+                                  })
+                                  .join("")
+                              : ""
+                          }
                           </div>
                         </div>
                     </div>

@@ -321,12 +321,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                                               <input
                                                 class="radio__input"
                                                 type="radio"
-                                                id="${firstDepth.id}"
+                                                id="${firstDepth.section_this}"
                                                 name="category"
                                               />
-                                              <label for="${firstDepth.id}">${
-                                              firstDepth.name
-                                            }</label>
+                                              <label for="${
+                                                firstDepth.section_this
+                                              }">${firstDepth.name}</label>
                                               ${
                                                 firstDepth.depth
                                                   ? `
@@ -338,11 +338,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                         <input
                                                           class="radio__input"
                                                           type="radio"
-                                                          id="${secondDepth.id}"
+                                                          id="${
+                                                            secondDepth.section_this
+                                                          }"
                                                           name="category"
                                                         />
                                                         <label for="${
-                                                          secondDepth.id
+                                                          secondDepth.section_this
                                                         }">${
                                                         secondDepth.name
                                                       }</label>
@@ -358,10 +360,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                                 <input
                                                                   class="radio__input"
                                                                   type="radio"
-                                                                  id="${thirdDepth.id}"
+                                                                  id="${thirdDepth.section_this}"
                                                                   name="category"
                                                                 />
-                                                                <label for="${thirdDepth.id}">${thirdDepth.name}</label>
+                                                                <label for="${thirdDepth.section_this}">${thirdDepth.name}</label>
                                                               </li>
                                                             `;
                                                               }
@@ -707,10 +709,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (el.section_this !== id) {
           if (el.depth) {
             el.depth.forEach((firstDepth) => {
-              if (firstDepth.id !== id) {
+              if (firstDepth.section_this !== id) {
                 if (firstDepth.depth) {
                   firstDepth.depth.forEach((secondDepth) => {
-                    if (secondDepth.id !== id) {
+                    if (secondDepth.section_this !== id) {
                       if (secondDepth.depth) {
                         secondDepth.depth.forEach((thirdDepth) => {
                           filteredCatalog = thirdDepth;

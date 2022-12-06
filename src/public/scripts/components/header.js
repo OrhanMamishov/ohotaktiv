@@ -8,21 +8,97 @@ import { showMessage } from "../functions/showMessage";
 import { getUserData } from "../functions/getUserData";
 import { updateCountGoods } from "../functions/updateCountGoods";
 
+if (!sessionStorage.getItem("catalog")) {
+  const catalogHighArray = fetch(
+    "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json",
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      const sortedCat = res.sort((a, b) =>
+        Number(a.sort) > Number(b.sort) ? 1 : -1
+      );
+      return sessionStorage.setItem("catalog", JSON.stringify(sortedCat));
+      // return res; // для теста памяти
+    });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
+  const headerAccordion = document.querySelector(
+    ".header__accordion-container"
+  );
+  while (headerAccordion.firstChild) {
+    headerAccordion.removeChild(headerAccordion.firstChild);
+  }
+  const catalogItems = JSON.parse(sessionStorage.catalog);
+  catalogItems.forEach((cat) => {
+    if (cat.name == "other") return;
+    const element = `
+      <div class="ac">
+        <h2 class="ac-header">
+          <a href="#" class="ac-link">${cat.name}</a>
+          ${
+            cat.depth
+              ? `<button type="button" class="ac-trigger"></button>`
+              : ``
+          }
+        </h2>
+        <div class="ac-panel">
+          <div class="ac-panel-wrap">
+            <ul class="header__catalog-list">
+            ${
+              cat.depth
+                ? cat.depth
+                    .map((depth) => {
+                      return `
+                <li class="header__catalog-item">
+                  <a href="#" class="header__catalog-link">
+                    ${depth.name}
+                  </a>
+                </li>
+              `;
+                    })
+                    .join("")
+                : ``
+            }
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+    headerAccordion.insertAdjacentHTML("beforeend", element);
+  });
   const userInfo = await getUserData();
   console.log(userInfo);
+  const userCity = await fetch(
+    `https://suggestions.dadata.ru/suggestions/api/4_1/rs/iplocate/address?ip=${userInfo.IP.VALUE}`,
+    {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Token " + "6469d62ecc3146040716bb2321fdd7559f318eaa",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      const cityName = document.querySelector(".header__city");
+      cityName.textContent = res.location.data.city
+        ? res.location.data.city
+        : "Москва";
+    });
   const header = document.querySelector(".header");
   const headerMenuWrap = document.querySelector(".header__menu-wrap");
   const headerMenu = document.querySelector(".header__menu");
   const headerCatalogWrap = document.querySelector(".header__catalog-wrap");
   const headerCatalog = document.querySelector(".header__catalog");
-  const allAccordions = document.querySelectorAll(
-    ".header__accordion-container"
-  );
-  allAccordions.forEach((accordion) => {
-    if (window.innerWidth < 1024) new Accordion(accordion);
-  });
-  const IS_AUTHORIZED = userInfo.personal ? true : false;
+
+  if (window.innerWidth < 1024) new Accordion(headerAccordion);
+  const IS_AUTHORIZED = userInfo.personal.ID !== null ? true : false;
   IS_AUTHORIZED ? updateCountGoods(userInfo) : updateCountGoods(userInfo);
   // const IS_AUTHORIZED = false;
   header.addEventListener("click", (e) => {
@@ -183,11 +259,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         headerCatalogWrap.style.visibility = "hidden";
       }, 200);
     }
-    if (
-      e.target.className == "header__action-link cabinet" ||
-      e.target.className == "header__action-link favourite" ||
-      e.target.className == "header__action-link cart"
-    ) {
+    if (e.target.className == "header__action-link cabinet") {
       e.preventDefault();
       if (IS_AUTHORIZED) {
         window.location.href = e.target.href;
@@ -333,7 +405,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .then((res) => res.json())
                 .then(async (res) => {
                   if (res.success) {
-                    const userInfoAfterAuthorize = await authorized();
+                    const userInfoAfterAuthorize = await getUserData();
                     updateCountGoods(userInfoAfterAuthorize);
                     showMessage(
                       "Вы успешно авторизованы!",
