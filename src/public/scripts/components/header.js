@@ -72,25 +72,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   const userInfo = await getUserData();
   console.log(userInfo);
-  const userCity = await fetch(
-    `https://suggestions.dadata.ru/suggestions/api/4_1/rs/iplocate/address?ip=${userInfo.IP.VALUE}`,
-    {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Token " + "6469d62ecc3146040716bb2321fdd7559f318eaa",
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      const cityName = document.querySelector(".header__city");
-      cityName.textContent = res.location.data.city
-        ? res.location.data.city
-        : "Москва";
-    });
+  if (!localStorage.getItem("oa_choosed_city")) {
+    const userCity = await fetch(
+      `https://suggestions.dadata.ru/suggestions/api/4_1/rs/iplocate/address?ip=${userInfo.IP.VALUE}`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: "Token " + "6469d62ecc3146040716bb2321fdd7559f318eaa",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        const cityName = document.querySelector(".header__city");
+        if (res.location.data.city) {
+          cityName.textContent = res.location.data.city;
+          localStorage.setItem(
+            "oa_choosed_city",
+            JSON.stringify(res.location.data.city)
+          );
+        } else {
+          cityName.textContent = "Москва";
+          localStorage.setItem("oa_choosed_city", JSON.stringify("Москва"));
+        }
+      });
+  }
   const header = document.querySelector(".header");
   const headerMenuWrap = document.querySelector(".header__menu-wrap");
   const headerMenu = document.querySelector(".header__menu");

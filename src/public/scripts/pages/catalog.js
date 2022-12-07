@@ -46,7 +46,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <li class="catalog__item">
                   <div class="catalog__img-wrap">
                     <img
-                      src="${serverName + list.picture}"
+                      src="${serverName}${
+                list.picture
+                  ? list.picture
+                  : `/local/templates/ohota2021/img/no_photo.png`
+              }"
                       alt="${list.name}"
                       class="catalog__img"
                     />

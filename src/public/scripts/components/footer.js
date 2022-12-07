@@ -42,8 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
       footerInput.classList.add("is-not-valid");
       return;
     }
+    const deviceCookie = document.cookie
+      .split(";")
+      .filter((el) => el.includes("mindboxDeviceUUID"));
+    const deviceId = deviceCookie[0].split("=")[1];
     await fetch(
-      "https://api.mindbox.ru/v3/operations/async?endpointId=ohotaktiv-website&operation=Website.SubscriptionInFooter",
+      `https://api.mindbox.ru/v3/operations/async?endpointId=ohotaktiv-website&operation=Website.SubscriptionInFooter&deviceUUID=${deviceId}`,
       {
         method: "POST",
         headers: {

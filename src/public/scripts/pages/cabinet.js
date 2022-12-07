@@ -437,7 +437,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (e.target.classList.contains("tabs__item")) {
         if (e.target.classList.contains("is-active")) return;
         if (e.target.getAttribute("data-path") == "logout") {
-          window.location.href = "https://ohotaktiv.ru/?logout=yes";
+          window.location.href =
+            "https://ohotaktiv.ru/12dev/new-design/pages/index/?logout=yes";
           return;
         }
         const baseUrl = document.location.href.split("?")[0];

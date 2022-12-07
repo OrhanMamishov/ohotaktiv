@@ -12,7 +12,7 @@ export function updateCountGoods(array) {
   headerFavourite.insertAdjacentHTML("beforeend", spanFavouriteElement);
 
   const spanCartElement = `<span class="count">${
-    array.cart ? array.cart.length : 0
+    array.cart ? Object.keys(array.cart).length : 0
   }</span>`;
   const headerCart = document.querySelector(".header__action-link.cart");
   const spanCart = document.querySelector(".header__action-link.cart>.count");
