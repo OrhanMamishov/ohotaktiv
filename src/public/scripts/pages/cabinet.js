@@ -781,6 +781,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const inputs = [oldPasswordInput, newPasswordInput, repeatPasswordInput];
     inputs.forEach((input) => {
       Inputmask({
+        showMaskOnHover: false,
         onKeyDown: function () {
           this.classList.remove("is-not-valid");
         },

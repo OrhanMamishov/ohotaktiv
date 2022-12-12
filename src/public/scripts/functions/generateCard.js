@@ -69,10 +69,14 @@ export function generateCard(card, buttons, isCatalog, userData) {
         </div>
       </a>
       <button id="${idCard}" class="card-item__button" data-url="/catalog/full_remington/sportivnaya-strelba/38674/" ${
-    userData.cart ? (userData.cart.includes(idCard) ? "disabled" : "") : ""
+    userData.cart
+      ? Object.keys(userData.cart).includes(idCard)
+        ? "disabled"
+        : ""
+      : ""
   }>${
     userData.cart
-      ? userData.cart.includes(idCard)
+      ? Object.keys(userData.cart).includes(idCard)
         ? "В корзине"
         : "В корзину"
       : "В корзину"

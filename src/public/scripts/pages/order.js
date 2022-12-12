@@ -1,29 +1,365 @@
 import "../../styles/pages/order/style.scss";
-import Choices from "choices.js";
-import "choices.js/public/assets/styles/choices.min.css";
+import { getUserData } from "../functions/getUserData";
 import Inputmask from "inputmask";
+import { numberWithSpaces } from "../functions/numberWithSpaces";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const selectElement = document.querySelector(".js-select");
-  const choice = new Choices(selectElement, {
-    itemSelectText: "",
-    allowHTML: true,
-    noResultsText: "Город не найден",
-    searchPlaceholderValue: "Начните вводить город",
+const choosedCity = localStorage.getItem("oa_choosed_city")
+  ? JSON.parse(localStorage.getItem("oa_choosed_city"))
+  : "Москва";
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const headerButtonGeo = document.querySelector(".header__geo");
+  headerButtonGeo.textContent = choosedCity;
+  let userCart = await getArrayOfCart();
+  refreshOrder(userCart);
+});
+
+async function getArrayOfCart() {
+  const userInfoFromFetch = await getUserData();
+  // const userCartFromFetch = userInfoFromFetch.cart ? userInfoFromFetch.cart : 0;
+  const userCartFromFetch = {
+    10585: "2.0000",
+    104000: "3.0000",
+    450212: "1.0000",
+    232270: "1.0000",
+    455799: "1.0000",
+  };
+  if (userCartFromFetch == 0) {
+    return userCartFromFetch;
+  } else {
+    const isAvailable = [];
+    const isNotAvailable = [];
+    for (const item of Object.entries(userCartFromFetch)) {
+      const id = item[0];
+      const count = item[1];
+      const cardInfo = await getCardInfo(id, count);
+      const available = Object.values(cardInfo.available).filter((el) =>
+        el.NAME.includes(choosedCity)
+      );
+      if (available.length) {
+        isAvailable.push(cardInfo);
+      } else if (cardInfo.warehouse == "0") {
+        isNotAvailable.push(cardInfo);
+      } else {
+        isNotAvailable.push(cardInfo);
+      }
+    }
+    return {
+      isAvailable: isAvailable,
+      isNotAvailable: isNotAvailable,
+    };
+  }
+}
+
+async function getCardInfo(id, count) {
+  return await fetch(
+    `https://ohotaktiv.ru/12dev/new-design/pages/card/hand.php?the_id=${id}`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      const item = {
+        id: id,
+        name: res.NAME,
+        PRICE: res.PRICE,
+        img: `https://ohotaktiv.ru${
+          res.DETAIL_PICTURE
+            ? res.DETAIL_PICTURE
+            : res["Картинки"]
+            ? res["Картинки"][0]
+            : `/local/templates/ohota2021/img/no_photo.png`
+        }`,
+        warehouse: res.warehouse,
+        count: Number(count),
+        available: res["Наличие в магазине"] ? res["Наличие в магазине"] : {},
+        startedPrice: res.PRICE[13]
+          ? Number(res.PRICE[13])
+          : res.PRICE[5]
+          ? Number(res.PRICE[5])
+          : Number(res.PRICE[1]),
+        oldPrice: Number(res.PRICE[1]),
+        is_licence: res.properties
+          ? res.properties["ИМ Лицензия"]
+            ? res.properties["ИМ Лицензия"]
+            : "false"
+          : "false",
+      };
+      return item;
+    });
+}
+
+async function refreshOrder(data) {
+  console.log(data);
+  const userInfo = await getUserData();
+  const orderWrap = document.querySelector(".order__wrap");
+  while (orderWrap.firstChild) {
+    orderWrap.removeChild(orderWrap.firstChild);
+  }
+  const goods = data.isAvailable.concat(data.isNotAvailable);
+  const amount = goods
+    .map((item) => item.startedPrice * item.count)
+    .reduce((prev, curr) => prev + curr, 0);
+  const discount = goods
+    .map((item) => (item.startedPrice - item.oldPrice) * item.count)
+    .reduce((prev, curr) => prev + curr, 0);
+  const element = `
+    <button class="order__back">Вернуться в корзину</button>
+      <h1 class="order__title">Оформление заказа</h1>
+      ${
+        goods.find((el) => el.is_licence == "true")
+          ? `
+        <p class="order__attention">
+          Внимание! В вашем заказе присутствуют лицензионные товары, получить
+          которые вы можете только самовывозом из магазинов розничной сети
+          ОхотАктив.
+        </p>`
+          : ``
+      }
+      <div class="order__columns">
+        <div class="order__left">
+          <div class="order__left-block" data-personal>
+            <div class="order__left-block-section-wrap">
+              <div class="order__left-block-section">
+                <p class="order__left-block-title">Получатель</p>
+                <input
+                  type="text"
+                  class="order__left-block-input"
+                  id="client-name-input"
+                  placeholder="Имя"
+                  autocomplete="off"
+                  value="${
+                    userInfo.personal.NAME !== null
+                      ? userInfo.personal.NAME
+                      : ``
+                  }"
+                />
+                <input
+                  type="text"
+                  class="order__left-block-input"
+                  id="client-surname-input"
+                  placeholder="Фамилия"
+                  autocomplete="off"
+                  value="${
+                    userInfo.personal.LAST_NAME !== null
+                      ? userInfo.personal.LAST_NAME
+                      : ``
+                  }"
+                />
+                <input
+                  type="text"
+                  class="order__left-block-input"
+                  id="client-tel-input"
+                  placeholder="Телефон"
+                  autocomplete="off"
+                  value="${
+                    userInfo.personal.PERSONAL_PHONE !== null
+                      ? userInfo.personal.PERSONAL_PHONE
+                      : ``
+                  }"
+                />
+                <input
+                  type="text"
+                  class="order__left-block-input"
+                  id="client-email-input"
+                  placeholder="E-mail"
+                  autocomplete="off"
+                  value="${
+                    userInfo.personal.EMAIL !== null
+                      ? userInfo.personal.EMAIL
+                      : ``
+                  }"
+                />
+                <div class="address-input__wrap">
+                  <input
+                    type="text"
+                    class="order__left-block-input"
+                    id="client-address-input"
+                    placeholder="Ваш город"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div class="order__left-block-section">
+                <p class="order__left-block-title">Способ оплаты</p>
+                <ul class="order__left-block-radio-wrap">
+                  ${
+                    goods.find((el) => el.is_licence == "true")
+                      ? ``
+                      : `
+                      <li class="order__left-block-radio">
+                        <input
+                          class="radio__input"
+                          type="radio"
+                          id="method-online"
+                          name="method"
+                          checked
+                        />
+                        <label for="method-online">Онлайн оплата</label>
+                      </li>`
+                  }
+                  <li class="order__left-block-radio">
+                    <input
+                      class="radio__input"
+                      type="radio"
+                      id="method-receive"
+                      name="method"
+                      ${
+                        goods.find((el) => el.is_licence == "true")
+                          ? `checked`
+                          : ``
+                      }
+                    />
+                    <label for="method-receive">Оплата при получении</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="order__left-block" data-goods>
+            <p class="order__left-block-title">Товары в заказе</p>
+            <div class="order__left-block-section">
+              <ul class="order__left-block-cards-list">
+              ${goods
+                .map((el) => {
+                  return `
+                  <li class="order__left-block-cards-item">
+                    <div class="order__left-block-img-wrap">
+                      <img
+                        src="${el.img}"
+                        alt="${el.name}"
+                        class="order__left-block-img"
+                      />
+                    </div>
+                    <div class="order__left-block-cards-info">
+                      <p class="order__left-block-cards-text">
+                        ${el.name}
+                      </p>
+                      <p class="order__left-block-cards-text">
+                        Кол-во: ${el.count}
+                      </p>
+                      <p class="order__left-block-cards-text text-bold">
+                        Цена: ${numberWithSpaces(
+                          el.startedPrice * el.count
+                        )} &#8381;
+                      </p>
+                    </div>
+                  </li>
+                `;
+                })
+                .join("")}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="order__right">
+          <p class="order__right-title">Ваш заказ</p>
+          <div class="order__right-block">
+            <div class="order__right-info">
+              <div class="order__right-text-wrap">
+                <p class="order__right-text" data-count-goods>Товары: ${
+                  data.isAvailable.length + data.isNotAvailable.length
+                }</p>
+                <p class="order__right-text" data-count>${numberWithSpaces(
+                  amount
+                )} &#8381;</p>
+              </div>
+              <div class="order__right-text-wrap">
+                <p class="order__right-text">Скидка</p>
+                <p class="order__right-text text-red" data-count-discount>
+                ${numberWithSpaces(discount)} &#8381;
+                </p>
+              </div>
+            </div>
+            <div class="order__right-info">
+              <div class="order__right-text-wrap">
+                <p class="order__right-text text-bold">Общая стоимость</p>
+                <p class="order__right-text text-bold" data-count-total>
+                  ${numberWithSpaces(amount + discount)} &#8381;
+                </p>
+              </div>
+              <button id="submit-order" class="order__right-button">Перейти к оплате</button>
+              <div class="order__right-input-wrap">
+                <input class="order__right-input" placeholder="Промокод / Сертификат" id="check-coupon"/>
+                <button class="order__right-input-check">Применить</button>
+              </div>
+              <p class="order__right-description">
+                Нажимая на кнопку «Перейти к оплате», вы принимаете условия
+                Публичной оферты и Политику обработки ПДн и даете согласие
+                на обработку ваших ПДн, включая их передачу
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  `;
+  orderWrap.insertAdjacentHTML("beforeend", element);
+  const checkCouponInput = document.getElementById("check-coupon");
+  const nameInput = document.getElementById("client-name-input");
+  const surnameInput = document.getElementById("client-surname-input");
+  const telInput = document.getElementById("client-tel-input");
+  const addressInput = document.getElementById("client-address-input");
+  const emailInput = document.getElementById("client-email-input");
+  const inputs = [nameInput, surnameInput, telInput, addressInput, emailInput];
+  let fetchAddress;
+  addressInput.addEventListener("input", () => {
+    clearTimeout(fetchAddress);
+    if (addressInput.value.length > 4) {
+      fetchAddress = setTimeout(async () => {
+        await fetch(
+          "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization:
+                "Token " + "6469d62ecc3146040716bb2321fdd7559f318eaa",
+            },
+            body: JSON.stringify({ query: addressInput.value }),
+          }
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            const dropdown = document.querySelector(".dropdown-cities-list");
+            if (dropdown) dropdown.remove();
+            if (res.suggestions.length) {
+              const element = `
+                <ul class="dropdown-cities-list">
+                  ${res.suggestions
+                    .map((address, index) => {
+                      if (index < 2) {
+                        return `
+                          <li class="dropdown-cities-item" data-value="${address.unrestricted_value}">
+                            ${address.unrestricted_value}
+                          </li>
+                        `;
+                      }
+                    })
+                    .join("")}
+                </ul>
+              `;
+              const addressInputWrap = document.querySelector(
+                ".address-input__wrap"
+              );
+              addressInputWrap.insertAdjacentHTML("beforeend", element);
+            }
+          });
+      }, 1000);
+    } else {
+      const dropdown = document.querySelector(".dropdown-cities-list");
+      if (dropdown) dropdown.remove();
+    }
   });
-  selectElement.addEventListener("change", function () {
-    refreshLeft();
-  });
-  const nameInput = document.getElementById("name-input");
-  const surnameInput = document.getElementById("surname-input");
-  const telInput = document.getElementById("tel-input");
-  const emailInput = document.getElementById("email-input");
   Inputmask({
     mask: "*{30}",
     placeholder: "",
     showMaskOnHover: false,
     onKeyDown: function () {
       this.classList.remove("is-not-valid");
+      if (!this.value.length) this.classList.add("is-not-valid");
     },
     definitions: {
       "*": {
@@ -45,6 +381,13 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   }).mask(surnameInput);
   Inputmask({
+    placeholder: "",
+    showMaskOnHover: false,
+    onKeyDown: function () {
+      this.classList.remove("is-not-valid");
+    },
+  }).mask(addressInput);
+  Inputmask({
     mask: "+7 (999) 999-99-99",
     showMaskOnHover: false,
     onKeyDown: function () {
@@ -55,209 +398,53 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   }).mask(telInput);
   Inputmask({
-    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+    mask: "*{100}",
+    placeholder: "",
+    showMaskOnHover: false,
+    definitions: {
+      "*": {
+        validator: "[A-Za-z-0-9]",
+      },
+    },
+  }).mask(checkCouponInput);
+  Inputmask({
+    mask: "*{50}",
+    placeholder: "",
     greedy: false,
     showMaskOnHover: false,
     definitions: {
       "*": {
-        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
-        // casing: "lower",
+        validator: "[0-9A-Za-z@._-]",
       },
     },
     onKeyDown: function () {
       this.classList.remove("is-not-valid");
     },
     onincomplete: function () {
-      this.classList.add("is-not-valid");
+      if (!this.value.includes("@")) this.classList.add("is-not-valid");
     },
   }).mask(emailInput);
-  function refreshLeft() {
-    const leftColumn = document.querySelector(".order__left");
-    while (leftColumn.children.length > 1) {
-      leftColumn.removeChild(leftColumn.lastChild);
+  orderWrap.addEventListener("click", (e) => {
+    if (e.target.className == "dropdown-cities-item") {
+      const dropdown = document.querySelector(".dropdown-cities-list");
+      addressInput.value = e.target.getAttribute("data-value");
+      dropdown.remove();
     }
-    const goodsWithDeliveryElement = `
-      <div class="order__left-block" data-delivery>
-        <p class="order__left-block-title">
-          Товары с доставкой
-        </p>
-        <div class="order__left-block-section">
-          <ul class="order__left-block-cards-list">
-            <li class="order__left-block-cards-item" data-delivery-point>
-              <div class="order__left-block-img-wrap">
-                <img src="/assets/img/card-img.png" alt="Карточка товара" class="order__left-block-img">
-              </div>
-            </li>
-            <li class="order__left-block-cards-item" data-delivery-point>
-              <div class="order__left-block-img-wrap">
-                <img src="/assets/img/card-img.png" alt="Карточка товара" class="order__left-block-img">
-              </div>
-            </li>
-          </ul>
-          <p class="order__left-block-subtitle">
-            Выберите способ доставки
-          </p>
-          <ul class="order__left-block-delivery-list">
-            <li class="order__left-block-delivery-item selected">
-              <p class="order__left-block-delivery-title">
-                CDEK Курьерская доставка
-              </p>
-              <p class="order__left-block-delivery-text">
-                Посылка склад-дверь
-              </p>
-              <p class="order__left-block-delivery-price">
-                1500 &#8381;
-              </p>
-              <p class="order__left-block-delivery-date">
-                4-5 дней
-              </p>
-            </li>
-            <li class="order__left-block-delivery-item">
-              <p class="order__left-block-delivery-title">
-                CDEK Курьерская доставка
-              </p>
-              <p class="order__left-block-delivery-text">
-                Посылка склад-дверь
-              </p>
-              <p class="order__left-block-delivery-price">
-                1500 &#8381;
-              </p>
-              <p class="order__left-block-delivery-date">
-                4-5 дней
-              </p>
-            </li>
-            <li class="order__left-block-delivery-item">
-              <p class="order__left-block-delivery-title">
-                CDEK Курьерская доставка
-              </p>
-              <p class="order__left-block-delivery-text">
-                Посылка склад-дверь
-              </p>
-              <p class="order__left-block-delivery-price">
-                1500 &#8381;
-              </p>
-              <p class="order__left-block-delivery-date">
-                4-5 дней
-              </p>
-            </li>
-            <li class="order__left-block-delivery-item">
-              <p class="order__left-block-delivery-title">
-                CDEK Курьерская доставка
-              </p>
-              <p class="order__left-block-delivery-text">
-                Посылка склад-дверь
-              </p>
-              <p class="order__left-block-delivery-price">
-                1500 &#8381;
-              </p>
-              <p class="order__left-block-delivery-date">
-                4-5 дней
-              </p>
-            </li>
-          </ul>
-        </div>
-        <div class="order__left-block-section">
-          <p class="order__left-block-subtitle">
-            Укажите адрес доставки
-          </p>
-          <input type="text" class="order__left-block-map-input" placeholder="Искать по улице, метро">
-          <p class="order__left-block-map-text">
-            Выбрано: обл. Костромская, г. Кострома, просп. Мира, д. 10/11
-          </p>
-          <div class="order__left-block-map">
-            <div id="map"></div>
-          </div>
-        </div>
-      </div>
-    `;
-    const goodsWithDeliveryMyselfElement = `
-      <div class="order__left-block" data-delivery-myself>
-        <p class="order__left-block-title">
-          Товары самовывозом
-        </p>
-        <div class="order__left-block-section">
-          <ul class="order__left-block-cards-list">
-            <li class="order__left-block-cards-item">
-              <div class="order__left-block-img-wrap">
-                <img src="/assets/img/card-img.png" alt="Карточка товара" class="order__left-block-img">
-              </div>
-            </li>
-            <li class="order__left-block-cards-item">
-              <div class="order__left-block-img-wrap">
-                <img src="/assets/img/card-img.png" alt="Карточка товара" class="order__left-block-img">
-              </div>
-            </li>
-          </ul>
-          <p class="order__left-block-subtitle">
-            Выберите пункт самовывоза
-          </p>
-          <ul class="order__left-block-delivery-list">
-            <li class="order__left-block-delivery-item selected" data-delivery-myself>
-              <p class="order__left-block-delivery-title">
-                Кострома
-              </p>
-              <p class="order__left-block-delivery-text">
-                просп. Мира, д. 10/11
-              </p>
-              <a href="#" class="order__left-block-delivery-tel">
-                +7 (831)-2-147-147
-              </a>
-              <p class="order__left-block-delivery-work">
-                9:00 - 20:00, вс 9:00 - 16:00
-              </p>
-            </li>
-            <li class="order__left-block-delivery-item" data-delivery-myself>
-              <p class="order__left-block-delivery-title">
-                Кострома
-              </p>
-              <p class="order__left-block-delivery-text">
-                просп. Мира, д. 10/11
-              </p>
-              <a href="#" class="order__left-block-delivery-tel">
-                +7 (831)-2-147-147
-              </a>
-              <p class="order__left-block-delivery-work">
-                9:00 - 20:00, вс 9:00 - 16:00
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    `;
-    leftColumn.insertAdjacentHTML("beforeend", goodsWithDeliveryElement);
-    leftColumn.insertAdjacentHTML("beforeend", goodsWithDeliveryMyselfElement);
-    // карта
-    const geoMagazines = [
-      {
-        name: "улица Титова 6, г.Кострома",
-        coords: [57.758071, 40.974595],
-      },
-      {
-        name: "улица Пряничные Ряды 1, г.Кострома",
-        coords: [57.765644, 40.925018],
-      },
-      {
-        name: "микрорайон Паново 15, г.Кострома",
-        coords: [57.736203, 40.908649],
-      },
-    ];
-    // eslint-disable-next-line
-    ymaps.ready(init);
-    function init() {
-      let myMap = new ymaps.Map("map", {
-        center: [57.73, 40.97],
-        zoom: 11,
-        yandexMapDisablePoiInteractivity: true,
-        controls: ["zoomControl"],
-      });
-      geoMagazines.forEach((geo) => {
-        const myPlacemark = new ymaps.Placemark(geo.coords, {
-          // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-          balloonContentHeader: `<p class="balloon-title">Адрес доставки</p>`,
-          balloonContentBody: geo.name,
-        });
-        myMap.geoObjects.add(myPlacemark);
-      });
+    if (e.target.className == "order__right-input-check") {
+      console.log("check coupon");
     }
-  }
-});
+    if (e.target.id == "submit-order") {
+      e.preventDefault();
+      inputs.forEach((input) => {
+        if (!input.value.length) {
+          input.classList.add("is-not-valid");
+        }
+      });
+      const isNotValid = document.querySelectorAll(".is-not-valid");
+      console.log(isNotValid);
+      if (!isNotValid.length) {
+        console.log("POST");
+      }
+    }
+  });
+}

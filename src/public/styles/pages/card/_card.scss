@@ -241,7 +241,7 @@
     }
     &__img {
       &-big {
-        width: auto;
+        width: 500px;
       }
     }
   }
@@ -466,11 +466,6 @@
         @include contentScroll;
         max-height: 373px;
         overflow-x: hidden;
-      }
-      &-item {
-        &:not(:last-child) {
-          border-bottom: 1px solid var(--border-color);
-        }
       }
       &-address {
         @include fontSize14;

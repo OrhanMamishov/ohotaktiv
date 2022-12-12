@@ -35,6 +35,10 @@
       align-items: center;
       &-text {
         @include fontSize14;
+        &.skeleton {
+          width: 425px;
+          height: 25px;
+        }
       }
     }
     &__columns {
@@ -54,6 +58,9 @@
           @include fontSize20;
           padding: 30px 40px;
           font-weight: 800;
+          &.skeleton {
+            height: 92px;
+          }
         }
         &-card {
           padding: 30px 40px;
@@ -70,6 +77,10 @@
             display: flex;
             align-items: center;
             border-radius: 10px;
+            &.skeleton {
+              width: 100px;
+              height: 100px;
+            }
           }
         }
         &-description {
@@ -77,30 +88,34 @@
           &-text {
             @include fontSize14;
             margin-bottom: 20px;
+            &.skeleton {
+              width: 288px;
+              height: 25px;
+            }
           }
           &-status {
             @include fontSize14;
             display: inline-block;
             color: var(--grey-form-color);
+            &.skeleton {
+              width: 288px;
+              height: 25px;
+            }
           }
           &-notavailable {
             @include fontSize14;
             display: inline-block;
-            span {
-              text-decoration: underline;
-              text-underline-offset: 3px;
-              transition: color 0.2s ease;
-            }
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
             &:hover {
-              span {
-                color: var(--primary-color);
-              }
+              color: var(--primary-color);
             }
           }
         }
         &-count {
           margin-left: auto;
-          width: 76px;
+          width: 85px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -111,8 +126,13 @@
           &-input {
             @include fontSize14;
             padding-top: 2px;
-            max-width: 30px;
+            max-width: 40px;
             text-align: center;
+          }
+          &.skeleton {
+            width: 85px;
+            height: 45px;
+            border: none;
           }
         }
         &-price {
@@ -123,9 +143,13 @@
           span {
             @include fontSize14;
             margin-right: 12px;
-            display: inline-block;
+            display: block;
             text-decoration: line-through;
             font-weight: 600;
+          }
+          &.skeleton {
+            width: 165px;
+            height: 53px;
           }
         }
         &-delete {
@@ -149,6 +173,9 @@
         padding: 30px 40px;
         font-weight: 800;
         border-bottom: 1px solid var(--grey-item-color);
+        &.skeleton {
+          height: 93px;
+        }
       }
       &-info {
         padding: 30px 40px;
@@ -180,6 +207,10 @@
             margin-bottom: 10px;
           }
         }
+        &.skeleton {
+          width: 66px;
+          height: 25px;
+        }
       }
       &-link {
         @include contentButton;
@@ -189,10 +220,35 @@
         padding: 20px;
         margin-bottom: 20px;
         text-align: center;
+        &.skeleton {
+          height: 65px;
+        }
       }
       &-description {
         font-size: 11px;
         line-height: 22px;
+        &.skeleton {
+          height: 66px;
+        }
+      }
+    }
+    &__empty {
+      width: 100%;
+      height: 58vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &-img {
+        width: 288px;
+        margin-bottom: 20px;
+      }
+      &-title {
+        @include fontSize18;
+        margin-bottom: 15px;
+      }
+      &-text {
+        @include fontSize14;
       }
     }
   }

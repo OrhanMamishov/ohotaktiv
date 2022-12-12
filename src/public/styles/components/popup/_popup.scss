@@ -490,3 +490,20 @@
     }
   }
 }
+
+#popup-available {
+  .popup {
+    &__wrap {
+      .availability {
+        &__list {
+          @include contentScroll;
+          max-height: 373px;
+          overflow-x: hidden;
+        }
+        &__item {
+          padding: 10px 30px 10px 0;
+        }
+      }
+    }
+  }
+}

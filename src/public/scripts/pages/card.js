@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     while (cardSection.firstChild) {
       cardSection.removeChild(cardSection.firstChild);
     }
+    const isInFavourite = userInfo
+      ? userInfo.favorites
+        ? Object.keys(userInfo.favorites).includes(idGood)
+        : false
+      : false;
     const element = `
       <div class="card__wrap container">
         <nav class="navigation">
@@ -105,7 +110,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
               <div class="card-item__photo-button-wrap">
                 <button class="card-item__photo-button share"></button>
-                <button class="card-item__photo-button favourite"></button>
+                <button class="card-item__photo-button card favourite ${
+                  isInFavourite ? "is-in" : ""
+                }"></button>
                 <div class="share-wrap">
                   <a href="http://vk.com/share.php?url=${
                     document.location
@@ -237,7 +244,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
     cardSection.insertAdjacentHTML("beforeend", element);
     const wrapShare = document.querySelector(".share-wrap");
-    cardSection.addEventListener("click", (e) => {
+    cardSection.addEventListener("click", async (e) => {
       const withinBoundaries = e.composedPath().includes(wrapShare);
       if (e.target.className == "card__right-button") {
         if (e.target.getAttribute("data-available") == "not-available") {
@@ -263,6 +270,37 @@ document.addEventListener("DOMContentLoaded", async () => {
           .catch((err) => {
             showMessage("Ошибка!", err, "error");
           });
+      }
+      if (
+        e.target.className == "card-item__photo-button card favourite " ||
+        e.target.className == "card-item__photo-button card favourite is-in"
+      ) {
+        e.target.classList.toggle("is-in");
+        let userInfo = await getUserData();
+        if (userInfo.personal.ID == null) {
+        } else {
+          await fetch(
+            `https://ohotaktiv.ru/local/ajax/fav_2.php?p_id=${idGood}`,
+            {
+              method: "GET",
+              mode: "no-cors",
+            }
+          ).then(async () => {
+            if (!e.target.classList.contains("is-in")) {
+              showMessage(
+                "Товар убран!",
+                "Товар убран из избранного",
+                "success"
+              );
+            } else {
+              showMessage(
+                "Товар добавлен!",
+                "Товар успешно добавлен в избранное",
+                "success"
+              );
+            }
+          });
+        }
       }
       if (
         !withinBoundaries &&

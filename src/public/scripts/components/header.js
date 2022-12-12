@@ -39,11 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="ac">
         <h2 class="ac-header">
           <a href="#" class="ac-link">${cat.name}</a>
-          ${
-            cat.depth
-              ? `<button type="button" class="ac-trigger"></button>`
-              : ``
-          }
+          <button type="button" class="ac-trigger"></button>
         </h2>
         <div class="ac-panel">
           <div class="ac-panel-wrap">
@@ -105,7 +101,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const headerMenu = document.querySelector(".header__menu");
   const headerCatalogWrap = document.querySelector(".header__catalog-wrap");
   const headerCatalog = document.querySelector(".header__catalog");
-
   if (window.innerWidth < 1024) new Accordion(headerAccordion);
   const IS_AUTHORIZED = userInfo.personal.ID !== null ? true : false;
   IS_AUTHORIZED ? updateCountGoods(userInfo) : updateCountGoods(userInfo);
@@ -328,61 +323,66 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
         const emailInputForgot = document.getElementById("forgot-input");
         Inputmask({
-          mask: "*{1,100}[.*{1,100}][.*{1,100}][.*{1,100}]@*{1,100}[.*{1,100}][.*{1,100}]",
+          mask: "*{50}",
+          placeholder: "",
           greedy: false,
           showMaskOnHover: false,
           definitions: {
             "*": {
-              validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+              validator: "[0-9A-Za-z@._-]",
             },
           },
           onKeyDown: function () {
             this.classList.remove("is-not-valid");
           },
           onincomplete: function () {
-            this.classList.add("is-not-valid");
+            if (!this.value.includes("@")) this.classList.add("is-not-valid");
           },
         }).mask(emailInputAuthorization);
         Inputmask({
+          showMaskOnHover: false,
           onKeyDown: function () {
             this.classList.remove("is-not-valid");
           },
         }).mask(passwordInputAuthorization);
         Inputmask({
-          mask: "*{1,100}[.*{1,100}][.*{1,100}][.*{1,100}]@*{1,100}[.*{1,100}][.*{1,100}]",
+          mask: "*{50}",
+          placeholder: "",
           greedy: false,
           showMaskOnHover: false,
           definitions: {
             "*": {
-              validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+              validator: "[0-9A-Za-z@._-]",
             },
           },
           onKeyDown: function () {
             this.classList.remove("is-not-valid");
           },
           onincomplete: function () {
-            this.classList.add("is-not-valid");
+            if (!this.value.includes("@")) this.classList.add("is-not-valid");
           },
         }).mask(emailInputRegistration);
         Inputmask({
+          showMaskOnHover: false,
           onKeyDown: function () {
             this.classList.remove("is-not-valid");
           },
         }).mask(passwordInputRegistration);
         Inputmask({
-          mask: "*{1,100}[.*{1,100}][.*{1,100}][.*{1,100}]@*{1,100}[.*{1,100}][.*{1,100}]",
+          mask: "*{50}",
+          placeholder: "",
           greedy: false,
           showMaskOnHover: false,
           definitions: {
             "*": {
-              validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
+              validator: "[0-9A-Za-z@._-]",
             },
           },
           onKeyDown: function () {
             this.classList.remove("is-not-valid");
           },
           onincomplete: function () {
-            this.classList.add("is-not-valid");
+            if (!this.value.includes("@")) this.classList.add("is-not-valid");
           },
         }).mask(emailInputForgot);
         const popupAuthorize = document.getElementById("popup-authorize");

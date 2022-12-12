@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   console.log(userInfo);
   const main = document.querySelector("main");
   const serverName = "https://ohotaktiv.ru";
-  const urlCatalog = "/pnevmaticheskoe_oruzhie/".split("/");
+  // const urlCatalog = "/pnevmaticheskoe_oruzhie/".split("/");
+  const urlCatalog = document.location.search.split("?")[1].split("/");
   const mainLevel = urlCatalog[1]; // главный каталог
   const level = urlCatalog.length - 2; // уровень этого каталога
   let itemsOnPage = [];
@@ -611,6 +612,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     url.searchParams.forEach((value) => {
       const values = value.split("%");
       values.forEach((el) => {
+        if (el.includes("/")) return;
         const checkbox = document.querySelector(`.checkbox[value="${el}"]`);
         checkbox.click();
       });
@@ -883,7 +885,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     itemsForPage(1, itemsOnPage, true);
     changePagination(1);
-    let neededUrl = "?";
+    let neededUrl = "&";
     Object.keys(choosedFilters).forEach((filter, index) => {
       neededUrl += `${index == 0 ? `` : `&`}${filter.toLowerCase()}=`;
       if (filter == "STORE_AVAILABLE") {
@@ -900,7 +902,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
       }
     });
-    const baseUrl = document.location.href.split("?")[0];
+    const baseUrl = document.location.href.split("&")[0];
     let newUrl = baseUrl + neededUrl;
     history.pushState(null, null, newUrl);
     const miniFiltersContainer = document.querySelector(
@@ -980,8 +982,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
     const element = `
-    <div class="detail__filter-all">
-      <div class="detail__filter">
+      <div class="detail__filter-all">
+        ${
+          filters["Магазины"]
+            ? `
+        <div class="detail__filter">
         <p class="detail__filter-title">Наличие в магазинах</p>
           <input
             type="text"
@@ -989,27 +994,31 @@ document.addEventListener("DOMContentLoaded", async () => {
             placeholder="Поиск магазина"
           />
         <ul class="detail__filter-list">
-        ${filters["Магазины"]
-          .map((el) => {
-            return `
-              <li class="detail__filter-item">
-                <label class="checkbox__label">
-                  ${el.NAME}
-                  <input
-                    type="checkbox"
-                    class="checkbox visually-hidden"
-                    value="${el.VALUE}"
-                    data-filter="STORE_AVAILABLE"
-                    id="${el.ID}"
-                    data-ru-value="${el.NAME}"
-                  />
-                  <span class="checkbox__span"></span>
-                </label>
-              </li>
-            `;
-          })
-          .join("")}
-      </div>
+          ${filters["Магазины"]
+            .map((el) => {
+              return `
+                <li class="detail__filter-item">
+                  <label class="checkbox__label">
+                    ${el.NAME}
+                    <input
+                      type="checkbox"
+                      class="checkbox visually-hidden"
+                      value="${el.VALUE}"
+                      data-filter="STORE_AVAILABLE"
+                      id="${el.ID}"
+                      data-ru-value="${el.NAME}"
+                    />
+                    <span class="checkbox__span"></span>
+                  </label>
+                </li>
+              `;
+            })
+            .join("")}
+            </ul>
+        </div>
+        `
+            : ``
+        }
       <div class="detail__filter">
         <p class="detail__filter-title">Цена</p>
         <div class="detail__filter-input-wrap">

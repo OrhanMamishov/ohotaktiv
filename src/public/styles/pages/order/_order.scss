@@ -50,6 +50,34 @@
     }
     &__left {
       flex: 1 1 auto;
+      .address-input__wrap {
+        position: relative;
+        .dropdown-cities {
+          &-list {
+            @include contentScroll;
+            max-width: 427px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            border-radius: 10px;
+            background-color: var(--white-color);
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+          }
+          &-item {
+            @include fontSize14;
+            padding: 14px 30px;
+            transition: background 0.2s ease;
+            cursor: pointer;
+            &:not(:last-child) {
+              border-bottom: 1px solid var(--black-color);
+            }
+            &:hover {
+              background-color: var(--light-grey-color);
+            }
+          }
+        }
+      }
       &-block {
         padding: 30px 40px;
         border-radius: 15px;
@@ -74,13 +102,16 @@
           }
           .choices {
             &__inner {
+              padding: 8px 0 !important;
               background-color: transparent;
-              border-radius: 100px;
-              border: 1px solid var(--grey-form-color);
+              border-radius: unset;
+              border: none;
+              border-bottom: 1px solid var(--black-color);
+              min-height: unset;
             }
             &__list {
               &--single {
-                padding: 9px 16px 6px 20px;
+                padding: 0;
               }
               &--dropdown {
                 box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.08);
@@ -125,9 +156,7 @@
           @include contentInput;
           display: block;
           width: 427px;
-          border-radius: 100px;
-          border: 1px solid var(--grey-form-color);
-          padding: 15px 30px;
+          padding: 8px 0;
           &:not(:last-child) {
             margin-bottom: 18px;
           }
@@ -139,8 +168,10 @@
         }
         &-img {
           border-radius: 10px;
+          width: 100px;
           &-wrap {
-            max-width: 100px;
+            margin-right: 10px;
+            position: relative;
             height: 100px;
             display: flex;
             align-items: center;
@@ -151,12 +182,18 @@
         &-cards {
           &-list {
             margin-bottom: 45px;
-            display: flex;
-            flex-wrap: wrap;
           }
           &-item {
+            display: flex;
+            align-items: center;
             &:not(:last-child) {
-              margin-right: 24px;
+              margin-bottom: 20px;
+            }
+          }
+          &-text {
+            @include fontSize14;
+            &.text-bold {
+              font-weight: 800;
             }
           }
         }
@@ -275,14 +312,29 @@
         padding: 20px;
         margin-bottom: 20px;
         border: 1px solid var(--primary-color);
-        &:nth-child(3) {
-          background-color: transparent;
-          border: 1px solid var(--black-color);
-        }
       }
       &-description {
         font-size: 11px;
         line-height: 22px;
+      }
+      &-input {
+        @include contentInput;
+        margin-right: 20px;
+        width: 100%;
+        border: 1px solid var(--secondary-color);
+        border-radius: 100px;
+        padding: 20px;
+        &::placeholder {
+          text-align: center;
+        }
+        &-wrap {
+          position: relative;
+          display: flex;
+          margin-bottom: 20px;
+        }
+        &-check {
+          @include contentButton;
+        }
       }
     }
   }

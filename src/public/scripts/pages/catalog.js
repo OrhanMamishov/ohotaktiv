@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <div class="catalog__accordion accordion-container">
                     <div class="ac">
                       <h2 class="ac-header">
-                        <a href="${list.url.replace(
+                        <a href="../catalogview/?section=${list.url.replace(
                           "/catalog",
                           ""
                         )}" class="catalog__link title"> ${list.name} </a>
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                   <div class="catalog__accordion accordion-container">
                                     <div class="ac">
                                       <h2 class="ac-header">
-                                        <a href="${el.url.replace(
+                                        <a href="../catalogview/?section=${el.url.replace(
                                           "/catalog",
                                           ""
                                         )}" class="catalog__link subtitle"> ${
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                   <div class="catalog__accordion accordion-container">
                                                     <div class="ac">
                                                       <h2 class="ac-header">
-                                                      <a href="${firstDepth.url.replace(
+                                                      <a href="../catalogview/?section=${firstDepth.url.replace(
                                                         "/catalog",
                                                         ""
                                                       )}" class="catalog__link subtitle"> ${
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                                     <div class="catalog__accordion accordion-container">
                                                                       <div class="ac">
                                                                         <h2 class="ac-header">
-                                                                        <a href="${secondDepth.url.replace(
+                                                                        <a href="../catalogview/?section=${secondDepth.url.replace(
                                                                           "/catalog",
                                                                           ""
                                                                         )}" class="catalog__link subtitle"> ${
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                                                 thirdDepth
                                                                               ) => {
                                                                                 return `
-                                                                                <a href="${thirdDepth.url.replace(
+                                                                                <a href="../catalogview/?section=${thirdDepth.url.replace(
                                                                                   "/catalog",
                                                                                   ""
                                                                                 )}" class="catalog__link">${
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                                   `;
                                                                 } else {
                                                                   return `
-                                                                  <a href="${secondDepth.url.replace(
+                                                                  <a href="../catalogview/?section=${secondDepth.url.replace(
                                                                     "/catalog",
                                                                     ""
                                                                   )}" class="catalog__link">${
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                 `;
                                               } else {
                                                 return `
-                                                <a href="${firstDepth.url.replace(
+                                                <a href="../catalogview/?section=${firstDepth.url.replace(
                                                   "/catalog",
                                                   ""
                                                 )}" class="catalog__link">${
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 `;
                                     } else {
                                       return `
-                                  <a href="${el.url.replace(
+                                  <a href="../catalogview/?section=${el.url.replace(
                                     "/catalog",
                                     ""
                                   )}" class="catalog__link">${el.name}</a>
