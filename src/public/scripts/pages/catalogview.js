@@ -217,10 +217,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                               <input
                                 class="radio__input"
                                 type="radio"
-                                id="${section.id}"
+                                id="${section.section_this}"
                                 name="category"
                               />
-                              <label for="${section.id}">${section.name}</label>
+                              <label for="${section.section_this}">${
+                                section.name
+                              }</label>
                               ${
                                 section.depth
                                   ? `<ul class="detail__filter-list subcategory-list">
@@ -231,12 +233,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                                           <input
                                             class="radio__input"
                                             type="radio"
-                                            id="${firstDepth.id}"
+                                            id="${firstDepth.section_this}"
                                             name="category"
                                           />
-                                          <label for="${firstDepth.id}">${
-                                          firstDepth.name
-                                        }</label>
+                                          <label for="${
+                                            firstDepth.section_this
+                                          }">${firstDepth.name}</label>
                                           ${
                                             firstDepth.depth
                                               ? `
@@ -248,11 +250,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                     <input
                                                       class="radio__input"
                                                       type="radio"
-                                                      id="${secondDepth.id}"
+                                                      id="${
+                                                        secondDepth.section_this
+                                                      }"
                                                       name="category"
                                                     />
                                                     <label for="${
-                                                      secondDepth.id
+                                                      secondDepth.section_this
                                                     }">${
                                                     secondDepth.name
                                                   }</label>
@@ -267,10 +271,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                             <input
                                                               class="radio__input"
                                                               type="radio"
-                                                              id="${thirdDepth.id}"
+                                                              id="${thirdDepth.section_this}"
                                                               name="category"
                                                             />
-                                                            <label for="${thirdDepth.id}">${thirdDepth.name}</label>
+                                                            <label for="${thirdDepth.section_this}">${thirdDepth.name}</label>
                                                           </li>
                                                         `;
                                                         })
@@ -737,13 +741,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
       // иначе фильтруем подкаталог по ID
       catalog.depth.forEach((el) => {
-        if (el.id !== id) {
+        if (el.section_this !== id) {
           if (el.depth) {
             el.depth.forEach((firstDepth) => {
-              if (firstDepth.id !== id) {
+              if (firstDepth.section_this !== id) {
                 if (firstDepth.depth) {
                   firstDepth.depth.forEach((secondDepth) => {
-                    if (secondDepth.id !== id) {
+                    if (secondDepth.section_this !== id) {
                       if (secondDepth.depth) {
                         secondDepth.depth.forEach((thirdDepth) => {
                           filteredCatalog = thirdDepth;
@@ -1114,3 +1118,239 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 });
+
+// document.addEventListener("DOMContentLoaded", async () => {
+//   const userInfo = await getUserData();
+//   console.log(userInfo);
+//   const main = document.querySelector("main");
+//   const serverName = "https://ohotaktiv.ru";
+//   const urlCatalog = document.location.search.split("?")[1].split("/");
+//   const mainCatalog = urlCatalog[1]; // главный каталог
+//   const thisCatalog = urlCatalog[urlCatalog.length - 2];
+//   let items = [];
+//   let itemsOnPage = [];
+//   const catalogHighArray = await fetch(
+//     "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json?id='111'",
+//     {
+//       method: "GET",
+//     }
+//   )
+//     .then((res) => res.json())
+//     .then((res) => {
+//       // фильтруем полученный результат по нужному каталогу
+//       const catalog = res.filter((el) => el.file == `${mainCatalog}.json`)[0];
+//       let thisCatalogSection;
+//       if (mainCatalog !== thisCatalog) {
+//         const urlForSearch = document.location.search
+//           .split("?")[1]
+//           .split("section=")[1];
+//         catalog.depth.forEach((el) => {
+//           if (!el.url.includes(urlForSearch)) {
+//             if (el.depth) {
+//               el.depth.forEach((firstDepth) => {
+//                 if (!firstDepth.url.includes(urlForSearch)) {
+//                   if (firstDepth.depth) {
+//                     firstDepth.depth.forEach((secondDepth) => {
+//                       if (!secondDepth.url.includes(urlForSearch)) {
+//                         if (secondDepth.depth) {
+//                           secondDepth.depth.forEach((thirdDepth) => {
+//                             thisCatalogSection = thirdDepth;
+//                           });
+//                         }
+//                       } else {
+//                         thisCatalogSection = secondDepth;
+//                       }
+//                     });
+//                   }
+//                 } else {
+//                   thisCatalogSection = firstDepth;
+//                 }
+//               });
+//             }
+//           } else {
+//             thisCatalogSection = el;
+//           }
+//         });
+//       } else {
+//         thisCatalogSection = catalog;
+//       }
+//       refreshThisCatalog(thisCatalogSection);
+//     });
+//   async function refreshThisCatalog(catalog) {
+//     console.log(catalog);
+//     const fetchItems = await fetch(
+//       `https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/${mainCatalog}.json`,
+//       {
+//         method: "GET",
+//       }
+//     )
+//       .then((res) => res.json())
+//       .then((res) => {
+//         // узнаем каталог
+//         console.log(res.catalog.section_list);
+//       });
+//     const element = `
+//       <section class="detail">
+//         <div class="detail__wrap container">
+//           <nav class="navigation">
+//             <ul class="navigation__list">
+//               <li class="navigation__item">
+//                 <a href="#" class="navigation__link back"> Назад </a>
+//               </li>
+//               <li class="navigation__item">
+//                 <a href="../index/" class="navigation__link"> Главная </a>
+//               </li>
+//               <li class="navigation__item">
+//                 <a href="../catalog/" class="navigation__link"> Каталог </a>
+//               </li>
+//               <li class="navigation__item">
+//                 <a href="#" class="navigation__link"> ${catalog.name} </a>
+//               </li>
+//             </ul>
+//           </nav>
+//           <h1 class="detail__title title-seo"> ${catalog.name} </h1>
+//           <div class="detail__subtitle-wrap">
+//             <p class="detail__subtitle"> ${itemsOnPage.length} товаров</p>
+//             <button class="detail__cards-filter-open"></button>
+//           </div>
+//           <div class="detail__columns">
+//             <div class="detail__filters">
+//               <div class="detail__filters-background"></div>
+//               <div class="detail__filters-wrap">
+//                 <button class="detail__close"></button>
+//                 ${
+//                   catalog.depth
+//                     ? `
+//                       <div class="detail__filter">
+//                       <p class="detail__filter-title">Выберите категорию</p>
+//                       <ul class="detail__filter-list category-list">
+//                         ${
+//                           catalog.depth
+//                             ? catalog.depth
+//                                 .map((section) => {
+//                                   return `
+//                                     <li class="detail__filter-item">
+//                                       <input
+//                                         class="radio__input"
+//                                         type="radio"
+//                                         id="${section.ID}"
+//                                         name="category"
+//                                       />
+//                                       <label for="${section.ID}">${
+//                                     section.name
+//                                   }</label>
+//                                       ${
+//                                         section.depth
+//                                           ? `<ul class="detail__filter-list subcategory-list">
+//                                             ${section.depth
+//                                               .map((firstDepth) => {
+//                                                 return `
+//                                                 <li class="detail__filter-item">
+//                                                   <input
+//                                                     class="radio__input"
+//                                                     type="radio"
+//                                                     id="${firstDepth.ID}"
+//                                                     name="category"
+//                                                   />
+//                                                   <label for="${
+//                                                     firstDepth.ID
+//                                                   }">${firstDepth.name}</label>
+//                                                   ${
+//                                                     firstDepth.depth
+//                                                       ? `
+//                                                     <ul class="detail__filter-list subcategory-list">
+//                                                       ${firstDepth.depth
+//                                                         .map((secondDepth) => {
+//                                                           return `
+//                                                           <li class="detail__filter-item">
+//                                                             <input
+//                                                               class="radio__input"
+//                                                               type="radio"
+//                                                               id="${
+//                                                                 secondDepth.ID
+//                                                               }"
+//                                                               name="category"
+//                                                             />
+//                                                             <label for="${
+//                                                               secondDepth.ID
+//                                                             }">${
+//                                                             secondDepth.name
+//                                                           }</label>
+//                                                             ${
+//                                                               secondDepth.depth
+//                                                                 ? `
+//                                                             <ul class="detail__filter-list subcategory-list">
+//                                                               ${secondDepth.depth
+//                                                                 .map(
+//                                                                   (
+//                                                                     thirdDepth
+//                                                                   ) => {
+//                                                                     return `
+//                                                                   <li class="detail__filter-item">
+//                                                                     <input
+//                                                                       class="radio__input"
+//                                                                       type="radio"
+//                                                                       id="${thirdDepth.ID}"
+//                                                                       name="category"
+//                                                                     />
+//                                                                     <label for="${thirdDepth.ID}">${thirdDepth.name}</label>
+//                                                                   </li>
+//                                                                 `;
+//                                                                   }
+//                                                                 )
+//                                                                 .join("")}
+//                                                             </ul>
+//                                                             `
+//                                                                 : ``
+//                                                             }
+//                                                           </li>
+//                                                         `;
+//                                                         })
+//                                                         .join("")}
+//                                                     </ul>
+//                                                   `
+//                                                       : ``
+//                                                   }
+//                                               </li>
+//                                               `;
+//                                               })
+//                                               .join("")}
+//                                           </ul>`
+//                                           : ``
+//                                       }
+//                                     </li>
+//                                   `;
+//                                 })
+//                                 .join("")
+//                             : []
+//                         }
+//                       </ul>
+//                     </div>
+//                 `
+//                     : ``
+//                 }
+
+//                 <button class="detail__filter-button">Сбросить</button>
+//               </div>
+//             </div>
+//           <div class="detail__cards">
+//             <div class="detail__cards-filters">
+//             </div>
+//             <div class="detail__cards-list-wrap">
+//               <ul class="detail__cards-list">
+
+//               </ul>
+//               <div class="pagination-list">
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+//     `;
+//     while (main.firstChild) {
+//       main.removeChild(main.firstChild);
+//     }
+
+//     main.insertAdjacentHTML("beforeend", element);
+//   }
+// });

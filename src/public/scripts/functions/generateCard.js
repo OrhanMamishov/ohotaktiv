@@ -34,8 +34,10 @@ export function generateCard(card, buttons, isCatalog, userData) {
     isCatalog
       ? card.PREVIEW_PICTURE
         ? card.PREVIEW_PICTURE
-        : card.properties.MORE_PHOTO
-        ? card.properties.MORE_PHOTO.FILES
+        : card.properties
+        ? card.properties.MORE_PHOTO
+          ? card.properties.MORE_PHOTO.FILES
+          : `/local/templates/ohota2021/img/no_photo.png`
         : `/local/templates/ohota2021/img/no_photo.png`
       : card[1].PREVIEW_PICTURE
       ? card[1].PREVIEW_PICTURE
@@ -47,6 +49,7 @@ export function generateCard(card, buttons, isCatalog, userData) {
             class="card-item__photo  ${
               isCatalog
                 ? `${
+                    card.properties &&
                     card.properties.STORE_AVAILABLE &&
                     Object.keys(card.properties.STORE_AVAILABLE).length
                       ? ``
@@ -81,6 +84,7 @@ export function generateCard(card, buttons, isCatalog, userData) {
     isCatalog
       ? `
       ${
+        card.properties &&
         card.properties.STORE_AVAILABLE &&
         Object.keys(card.properties.STORE_AVAILABLE).length
           ? `${
@@ -103,6 +107,7 @@ export function generateCard(card, buttons, isCatalog, userData) {
   }>${
     isCatalog
       ? `${
+          card.properties &&
           card.properties.STORE_AVAILABLE &&
           Object.keys(card.properties.STORE_AVAILABLE).length
             ? `${

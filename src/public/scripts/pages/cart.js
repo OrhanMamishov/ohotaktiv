@@ -262,14 +262,14 @@ async function refreshCart(data) {
 
 async function getArrayOfCart() {
   const userInfoFromFetch = await getUserData();
-  // const userCartFromFetch = userInfoFromFetch.cart ? userInfoFromFetch.cart : 0;
-  const userCartFromFetch = {
-    10585: "2.0000",
-    104000: "3.0000",
-    450212: "1.0000",
-    232270: "1.0000",
-    455799: "1.0000",
-  };
+  const userCartFromFetch = userInfoFromFetch.cart ? userInfoFromFetch.cart : 0;
+  // const userCartFromFetch = {
+  //   10585: "2.0000",
+  //   104000: "3.0000",
+  //   450212: "1.0000",
+  //   232270: "1.0000",
+  //   455799: "1.0000",
+  // };
   if (userCartFromFetch == 0) {
     return userCartFromFetch;
   } else {

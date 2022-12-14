@@ -29,7 +29,6 @@ module.exports = {
     blog: "./src/public/scripts/pages/blog.js",
     viewblog: "./src/public/scripts/pages/viewblog.js",
     shops: "./src/public/scripts/pages/shops.js",
-    viewshop: "./src/public/scripts/pages/viewshop.js",
     liquidation: "./src/public/scripts/pages/liquidation.js",
     remington: "./src/public/scripts/pages/remington.js",
     article: "./src/public/scripts/pages/article.js",

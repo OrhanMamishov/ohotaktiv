@@ -31,6 +31,10 @@
       &-text {
         @include fontSize14;
       }
+      &.skeleton {
+        width: 280px;
+        height: 183px;
+      }
     }
   }
   .map {
@@ -43,10 +47,16 @@
       width: 100%;
       margin-right: 16px;
     }
+    &__right-column {
+      &.skeleton {
+        width: 100%;
+        height: 500px;
+      }
+    }
     &__input {
       @include contentInput;
       margin-bottom: 30px;
-      padding: 18px 60px 18px 35px;
+      padding: 18px 60px 18px 0;
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
       background-position: 96% center;
@@ -103,10 +113,42 @@
       &:last-child {
         border-color: #2d2a28 transparent #2d2a28 transparent;
       }
+      &.skeleton {
+        width: 100%;
+        height: 40px;
+        border: none;
+        margin-bottom: 20px;
+      }
     }
     #map {
       height: 561px;
       width: 995px;
+      .ymaps-2-1-79-balloon {
+        box-shadow: unset;
+        &__layout {
+          border-radius: 10px;
+        }
+        &__content {
+          font: unset;
+          padding: 20px 30px;
+        }
+      }
+      .map {
+        &-header {
+          &-title {
+            @include fontSize15;
+            margin-bottom: 10px;
+          }
+        }
+        &-body {
+          &-text {
+            @include fontSize14;
+            &.grey--text {
+              color: var(--grey-color);
+            }
+          }
+        }
+      }
     }
   }
 }

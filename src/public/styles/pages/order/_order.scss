@@ -207,10 +207,26 @@
           }
         }
         &-cards {
+          // &-list {
+          //   display: flex;
+          //   gap: 20px;
+          //   margin-bottom: 30px;
+          // }
           &-list {
             display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
+            flex-direction: column;
+          }
+          &-item {
+            display: flex;
+            align-items: center;
+            &-text {
+              margin-left: auto;
+              margin-right: 80px;
+            }
+            &-price {
+              width: 150px;
+              // margin-left: auto;
+            }
           }
           &-text {
             @include fontSize14;
