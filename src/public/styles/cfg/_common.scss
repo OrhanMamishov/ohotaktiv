@@ -173,15 +173,20 @@ main {
   margin: -1px;
 }
 .card-item {
+  width: 80%;
   background-color: var(--white-color);
   cursor: pointer;
   padding: 20px;
   border-radius: 10px;
   &__photo {
     height: 100%;
+    mix-blend-mode: multiply;
     object-fit: contain;
+    &.not-available {
+      opacity: 0.3;
+    }
     &-wrap {
-      height: 200px;
+      display: flex;
       position: relative;
       margin-bottom: 18px;
       background-color: var(--cart-background-color);
@@ -229,7 +234,7 @@ main {
         right: 8px;
         display: flex;
         align-items: center;
-        z-index: 2;
+        z-index: 1;
       }
       &:not(:last-child) {
         margin-right: 12px;
@@ -499,7 +504,7 @@ main {
       top: 50%;
       left: 4px;
       border-radius: 100%;
-      transition: transform 0.2s ease;
+      transition: opacity 0.2s ease;
     }
     &:not(:checked) + label::after {
       opacity: 0;

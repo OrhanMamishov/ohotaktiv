@@ -2,6 +2,8 @@ import "../../styles/pages/order/style.scss";
 import { getUserData } from "../functions/getUserData";
 import Inputmask from "inputmask";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
+import Choices from "choices.js";
+import "choices.js/public/assets/styles/choices.min.css";
 
 const choosedCity = localStorage.getItem("oa_choosed_city")
   ? JSON.parse(localStorage.getItem("oa_choosed_city"))
@@ -23,6 +25,7 @@ async function getArrayOfCart() {
     450212: "1.0000",
     232270: "1.0000",
     455799: "1.0000",
+    299436: "1.0000",
   };
   if (userCartFromFetch == 0) {
     return userCartFromFetch;
@@ -33,15 +36,13 @@ async function getArrayOfCart() {
       const id = item[0];
       const count = item[1];
       const cardInfo = await getCardInfo(id, count);
-      const available = Object.values(cardInfo.available).filter((el) =>
-        el.NAME.includes(choosedCity)
-      );
-      if (available.length) {
-        isAvailable.push(cardInfo);
-      } else if (cardInfo.warehouse == "0") {
+      if (
+        cardInfo.warehouse == "0" &&
+        Object.keys(cardInfo.available).length == 0
+      ) {
         isNotAvailable.push(cardInfo);
       } else {
-        isNotAvailable.push(cardInfo);
+        isAvailable.push(cardInfo);
       }
     }
     return {
@@ -92,18 +93,30 @@ async function getCardInfo(id, count) {
 
 async function refreshOrder(data) {
   console.log(data);
+  if (data == 0) return (document.location.href = "https://ohotaktiv.ru");
   const userInfo = await getUserData();
   const orderWrap = document.querySelector(".order__wrap");
   while (orderWrap.firstChild) {
     orderWrap.removeChild(orderWrap.firstChild);
   }
-  const goods = data.isAvailable.concat(data.isNotAvailable);
+  const goods = data.isAvailable;
   const amount = goods
     .map((item) => item.startedPrice * item.count)
     .reduce((prev, curr) => prev + curr, 0);
   const discount = goods
     .map((item) => (item.startedPrice - item.oldPrice) * item.count)
     .reduce((prev, curr) => prev + curr, 0);
+  const licenceGoods = goods.filter((good) => good.is_licence == "true"); // Лицензионные товары
+  const isInGoods = goods.filter(
+    (obj) =>
+      obj.is_licence == "false" &&
+      Object.values(obj.available).some((el) => el.NAME.includes(choosedCity))
+  ); // товары в городе
+  const isNotInGoods = goods.filter(
+    (obj) =>
+      obj.is_licence == "false" &&
+      !Object.values(obj.available).some((el) => el.NAME.includes(choosedCity))
+  ); // товары не в городе
   const element = `
     <button class="order__back">Вернуться в корзину</button>
       <h1 class="order__title">Оформление заказа</h1>
@@ -194,34 +207,152 @@ async function refreshOrder(data) {
                           type="radio"
                           id="method-online"
                           name="method"
+                          value="14"
                           checked
                         />
-                        <label for="method-online">Онлайн оплата</label>
+                        <label for="method-online">Онлайн банковской картой</label>
                       </li>`
                   }
+                  <li class="order__left-block-radio">
+                  <input
+                    class="radio__input"
+                    type="radio"
+                    id="method-receive"
+                    name="method"
+                    value="2"
+                    ${
+                      goods.find((el) => el.is_licence == "true")
+                        ? `checked`
+                        : ``
+                    }
+                  />
+                  <label for="method-receive">Оплата при получении</label>
                   <li class="order__left-block-radio">
                     <input
                       class="radio__input"
                       type="radio"
-                      id="method-receive"
+                      id="method-transfer"
                       name="method"
-                      ${
-                        goods.find((el) => el.is_licence == "true")
-                          ? `checked`
-                          : ``
-                      }
+                      value="3"
                     />
-                    <label for="method-receive">Оплата при получении</label>
+                    <label for="method-transfer">Оплата переводом (менеджер сообщит реквизиты по счету)</label>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="order__left-block" data-goods>
-            <p class="order__left-block-title">Товары в заказе</p>
+          ${
+            licenceGoods.length
+              ? `
+              <div class="order__left-block">
+                <p class="order__left-block-title">Лицензионные товары (только самовывозом)</p>
+                <div class="order__left-block-section">
+                  <ul class="order__left-block-cards-list">
+                  ${licenceGoods
+                    .map((el) => {
+                      return `
+                      <li class="order__left-block-cards-item">
+                        <div class="order__left-block-img-wrap">
+                          <img
+                            src="${el.img}"
+                            alt="${el.name}"
+                            class="order__left-block-img"
+                          />
+                        </div>
+                      </li>
+                    `;
+                    })
+                    .join("")}
+                  </ul>
+                  <p class="order__left-block-section-text">
+                    В вашем городе отсутствуют розничные магазин ОхотАктив, мы можем доставить ваш заказ в ближайший город.
+                  </p>
+                  <select class="js-select" id="select-city" name="select">
+                    <option value="">Выберите ближайший магазин</option>
+                    <option value="Кострома">Кострома</option>
+                    <option value="Москва">Москва</option>
+                    <option value="Мурманск">Мурманск</option>
+                    <option value="Набережные челны">Набережные челны</option>
+                  </select>
+                </div>
+              </div>
+              `
+              : ``
+          }
+          ${
+            isNotInGoods.length
+              ? `
+              <div class="order__left-block">
+                <p class="order__left-block-title">Выберите способ доставки</p>
+                <div class="order__left-block-section">
+                  <ul class="order__left-block-cards-list">
+                  ${isNotInGoods
+                    .map((el) => {
+                      return `
+                      <li class="order__left-block-cards-item">
+                        <div class="order__left-block-img-wrap">
+                          <img
+                            src="${el.img}"
+                            alt="${el.name}"
+                            class="order__left-block-img"
+                          />
+                        </div>
+                      </li>
+                    `;
+                    })
+                    .join("")}
+                  </ul>
+                  <ul class="order__left-block-delivery-list">
+                    <li class="order__left-block-delivery-item">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        id="delivery-isnotin-courier"
+                        name="delivery-isnotin"
+                      />
+                      <label class="label" for="delivery-isnotin-courier">
+                        <span class="label-title">Курьерская доставка</span>
+                        <span class="label-text">Посылка склад-дверь</span>
+                      </label>
+                    </li>
+                    <li class="order__left-block-delivery-item">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        id="delivery-isnotin-sdek"
+                        name="delivery-isnotin"
+                      />
+                      <label class="label" for="delivery-isnotin-sdek">
+                        <span class="label-title">СДЭК ПВЗ</span>
+                        <span class="label-text">Посылка склад-дверь</span>
+                      </label>
+                    </li>
+                    <li class="order__left-block-delivery-item">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        id="delivery-isnotin-shop"
+                        name="delivery-isnotin"
+                      />
+                      <label class="label" for="delivery-isnotin-shop">
+                        <span class="label-title">Доставка в магазин</span>
+                        <span class="label-text">Доставка на склад магазина</span>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            `
+              : ``
+          }
+          ${
+            isInGoods.length
+              ? `
+          <div class="order__left-block">
+            <p class="order__left-block-title">Товары в вашем городе</p>
             <div class="order__left-block-section">
               <ul class="order__left-block-cards-list">
-              ${goods
+              ${isInGoods
                 .map((el) => {
                   return `
                   <li class="order__left-block-cards-item">
@@ -232,26 +363,41 @@ async function refreshOrder(data) {
                         class="order__left-block-img"
                       />
                     </div>
-                    <div class="order__left-block-cards-info">
-                      <p class="order__left-block-cards-text">
-                        ${el.name}
-                      </p>
-                      <p class="order__left-block-cards-text">
-                        Кол-во: ${el.count}
-                      </p>
-                      <p class="order__left-block-cards-text text-bold">
-                        Цена: ${numberWithSpaces(
-                          el.startedPrice * el.count
-                        )} &#8381;
-                      </p>
-                    </div>
                   </li>
                 `;
                 })
                 .join("")}
               </ul>
+              <ul class="order__left-block-delivery-list">
+                <li class="order__left-block-delivery-item">
+                  <input
+                    class="radio__input"
+                    type="radio"
+                    id="delivery-isin-courier"
+                    name="delivery-isin"
+                  />
+                  <label class="label" for="delivery-isin-courier">
+                    <span class="label-title">Курьерская доставка</span>
+                    <span class="label-text">Посылка склад-дверь</span>
+                  </label>
+                </li>
+                <li class="order__left-block-delivery-item">
+                  <input
+                    class="radio__input"
+                    type="radio"
+                    id="delivery-isin-myself"
+                    name="delivery-isin"
+                  />
+                  <label class="label" for="delivery-isin-myself">
+                    <span class="label-title">Самовывоз</span>
+                  </label>
+                </li>
+              </ul>
             </div>
           </div>
+          `
+              : ``
+          }
         </div>
         <div class="order__right">
           <p class="order__right-title">Ваш заказ</p>
@@ -259,7 +405,7 @@ async function refreshOrder(data) {
             <div class="order__right-info">
               <div class="order__right-text-wrap">
                 <p class="order__right-text" data-count-goods>Товары: ${
-                  data.isAvailable.length + data.isNotAvailable.length
+                  data.isAvailable.length
                 }</p>
                 <p class="order__right-text" data-count>${numberWithSpaces(
                   amount
@@ -279,13 +425,13 @@ async function refreshOrder(data) {
                   ${numberWithSpaces(amount + discount)} &#8381;
                 </p>
               </div>
-              <button id="submit-order" class="order__right-button">Перейти к оплате</button>
               <div class="order__right-input-wrap">
                 <input class="order__right-input" placeholder="Промокод / Сертификат" id="check-coupon"/>
-                <button class="order__right-input-check">Применить</button>
+                <button class="order__right-input-check">→</button>
               </div>
+              <button id="submit-order" class="order__right-button">Оформить заказ</button>
               <p class="order__right-description">
-                Нажимая на кнопку «Перейти к оплате», вы принимаете условия
+                Нажимая на кнопку «Оформить заказ», вы принимаете условия
                 Публичной оферты и Политику обработки ПДн и даете согласие
                 на обработку ваших ПДн, включая их передачу
               </p>
@@ -295,6 +441,15 @@ async function refreshOrder(data) {
       </div>
   `;
   orderWrap.insertAdjacentHTML("beforeend", element);
+  const selectElement = document.querySelector(".js-select");
+  const choice = new Choices(selectElement, {
+    itemSelectText: "",
+    searchEnabled: false,
+    allowHTML: true,
+  });
+  selectElement.addEventListener("change", () => {
+    console.log("here");
+  });
   const checkCouponInput = document.getElementById("check-coupon");
   const nameInput = document.getElementById("client-name-input");
   const surnameInput = document.getElementById("client-surname-input");
@@ -424,7 +579,7 @@ async function refreshOrder(data) {
       if (!this.value.includes("@")) this.classList.add("is-not-valid");
     },
   }).mask(emailInput);
-  orderWrap.addEventListener("click", (e) => {
+  orderWrap.addEventListener("click", async (e) => {
     if (e.target.className == "dropdown-cities-item") {
       const dropdown = document.querySelector(".dropdown-cities-list");
       addressInput.value = e.target.getAttribute("data-value");
@@ -441,9 +596,17 @@ async function refreshOrder(data) {
         }
       });
       const isNotValid = document.querySelectorAll(".is-not-valid");
-      console.log(isNotValid);
       if (!isNotValid.length) {
-        console.log("POST");
+        const methodId = document.querySelector("[name=method]:checked");
+        await fetch(
+          `https://ohotaktiv.ru/12dev/new-design/pages/checkout/checkout.php?delivery_id=2&pay_id=${
+            methodId.value
+          }&address=${
+            addressInput.value
+          }&phone=7${telInput.inputmask.unmaskedvalue()}&email=${
+            emailInput.value
+          }&first_name=${nameInput.value}&second_name=${surnameInput.value}`
+        );
       }
     }
   });

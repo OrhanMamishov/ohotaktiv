@@ -16,6 +16,6 @@ export function generatePrice(item) {
       }
     }
   } else {
-    return "Нет в наличии";
+    return "Нет цены";
   }
 }

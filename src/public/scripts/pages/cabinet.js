@@ -224,15 +224,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     <p class="cabinet__orders-item-panel-status-text">
                                       Способ доставки: в пункт выдачи
                                     </p>
-                                    <p class="cabinet__orders-item-panel-status-text">
-                                      <span class="bold">Статус: </span
-                                      ><span class="${
-                                        order[1].STATUS_ID !== "Отменен" ||
-                                        order[1].STATUS_ID !== "Выполнен"
-                                          ? ``
-                                          : `worked`
-                                      }">${order[1].STATUS_ID}</span>
-                                    </p>
                                   </div>
                                   <div class="cabinet__orders-item-panel-count">
                                     <p class="cabinet__orders-item-panel-text">${Number(
@@ -700,7 +691,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const isNotValid = document.querySelectorAll(".is-not-valid");
         if (!isNotValid.length) {
           const changeDataFetch = await fetch(
-            `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_info=change&name=${nameInput.value}&last_name=${surnameInput.value}&phone=${telInput.value}&address=${addressInput.value}`,
+            `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_info=change&name=${
+              nameInput.value
+            }&last_name=${
+              surnameInput.value
+            }&phone=7${telInput.inputmask.unmaskedvalue()}&address=${
+              addressInput.value
+            }`,
             {
               method: "GET",
             }

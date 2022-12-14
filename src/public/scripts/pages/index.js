@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       spaceBetween: 16,
       modules: [Navigation, Pagination],
       allowTouchMove: false,
+      slidesPerView: "auto",
       navigation: {
         nextEl: `.${swiper}__swiper-button-next`,
         prevEl: `.${swiper}__swiper-button-prev`,

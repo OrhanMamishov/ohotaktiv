@@ -6,27 +6,27 @@ export function generateCard(card, buttons, isCatalog, userData) {
   return `
   <li class="swiper-slide card-item">
     <div class="card-item__wrap">
-    <div class="card-item__photo-button-wrap">
-    ${buttons
-      .map((button) => {
-        let isInFavourite;
-        if (button == "favourite") {
-          isInFavourite = userData
-            ? userData.favorites
-              ? Object.keys(userData.favorites).includes(idCard)
-              : false
-            : false;
-        }
-        return `
-        <span
-          class="card-item__photo-button ${button} ${
-          button == "favourite" ? (isInFavourite ? "is-in" : "") : ""
-        }"
-        ></span>
-      `;
-      })
-      .join("")}
-    </div>
+      <div class="card-item__photo-button-wrap">
+      ${buttons
+        .map((button) => {
+          let isInFavourite;
+          if (button == "favourite") {
+            isInFavourite = userData
+              ? userData.favorites
+                ? Object.keys(userData.favorites).includes(idCard)
+                : false
+              : false;
+          }
+          return `
+          <span
+            class="card-item__photo-button ${button} ${
+            button == "favourite" ? (isInFavourite ? "is-in" : "") : ""
+          }"
+          ></span>
+        `;
+        })
+        .join("")}
+      </div>
       <a href="../card/?id=${idCard}" class="card-item__link" target="_blank">
         <div class="card-item__photo-wrap">
           <img
@@ -44,7 +44,16 @@ export function generateCard(card, buttons, isCatalog, userData) {
       : `/local/templates/ohota2021/img/no_photo.png`
   }"
             alt="${isCatalog ? card.name : card[1].NAME}"
-            class="card-item__photo"
+            class="card-item__photo  ${
+              isCatalog
+                ? `${
+                    card.properties.STORE_AVAILABLE &&
+                    Object.keys(card.properties.STORE_AVAILABLE).length
+                      ? ``
+                      : `not-available`
+                  }`
+                : ``
+            }"
           />
           <div class="card-item__photo-texts">
             <p class="card-item__photo-text new">Что то</p>
@@ -69,17 +78,49 @@ export function generateCard(card, buttons, isCatalog, userData) {
         </div>
       </a>
       <button id="${idCard}" class="card-item__button" data-url="/catalog/full_remington/sportivnaya-strelba/38674/" ${
-    userData.cart
-      ? Object.keys(userData.cart).includes(idCard)
-        ? "disabled"
-        : ""
-      : ""
+    isCatalog
+      ? `
+      ${
+        card.properties.STORE_AVAILABLE &&
+        Object.keys(card.properties.STORE_AVAILABLE).length
+          ? `${
+              userData.cart
+                ? Object.keys(userData.cart).includes(idCard)
+                  ? "disabled"
+                  : ""
+                : ""
+            }`
+          : `disabled`
+      }
+    `
+      : `${
+          userData.cart
+            ? Object.keys(userData.cart).includes(idCard)
+              ? "disabled"
+              : ""
+            : ""
+        }`
   }>${
-    userData.cart
-      ? Object.keys(userData.cart).includes(idCard)
-        ? "В корзине"
-        : "В корзину"
-      : "В корзину"
+    isCatalog
+      ? `${
+          card.properties.STORE_AVAILABLE &&
+          Object.keys(card.properties.STORE_AVAILABLE).length
+            ? `${
+                userData.cart
+                  ? Object.keys(userData.cart).includes(idCard)
+                    ? "В корзине"
+                    : "В корзину"
+                  : "В корзину"
+              }`
+            : `Нет в наличии`
+        }`
+      : `${
+          userData.cart
+            ? Object.keys(userData.cart).includes(idCard)
+              ? "В корзине"
+              : "В корзину"
+            : "В корзину"
+        }`
   }</button>
     </div>
   </li>

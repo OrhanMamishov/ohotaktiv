@@ -16,29 +16,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerInput = document.getElementById("footer-form-input");
   const footerSubmitButton = document.querySelector(".footer__form-button");
   Inputmask({
-    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+    mask: "*{50}",
+    placeholder: "",
     greedy: false,
     showMaskOnHover: false,
     definitions: {
       "*": {
-        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~-]",
-        // casing: "lower",
+        validator: "[0-9A-Za-z@._-]",
       },
     },
     onKeyDown: function () {
       this.classList.remove("is-not-valid");
     },
     onincomplete: function () {
-      this.classList.add("is-not-valid");
+      if (!this.value.includes("@") && !this.value.includes("."))
+        this.classList.add("is-not-valid");
     },
   }).mask(footerInput);
   footerSubmitButton.addEventListener("click", async (e) => {
     e.preventDefault();
     if (footerInput.value.length == 0) {
-      footerInput.classList.add("is-not-valid");
-      return;
-    }
-    if (!footerInput.value.includes(".")) {
       footerInput.classList.add("is-not-valid");
       return;
     }
