@@ -220,12 +220,20 @@
             display: flex;
             align-items: center;
             &-text {
+              @include fontSize14;
               margin-left: auto;
               margin-right: 80px;
             }
             &-price {
+              @include fontSize14;
+              font-weight: 700;
               width: 150px;
-              // margin-left: auto;
+              span {
+                @include fontSize11;
+                margin-left: 5px;
+                text-decoration: line-through;
+                font-weight: 600;
+              }
             }
           }
           &-text {
@@ -343,17 +351,17 @@
       }
       &-input {
         @include contentInput;
-        padding: 6px 0;
+        padding: 6px 80px 6px 0;
         &-wrap {
           position: relative;
           margin-bottom: 33px;
         }
         &-check {
+          @include fontSize14;
           position: absolute;
           top: 50%;
           right: 0;
           transform: translate(0, -50%);
-          font-size: 20px;
           color: var(--secondary-color);
           transition: color 0.2s ease;
           &:hover {

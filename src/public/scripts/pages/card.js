@@ -176,9 +176,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       res["product_code"] ? `Код: ${res["product_code"]}` : ``
     }
           </p>
-          <p class="card__right-reviews">
-            ★
-            <span>5</span> ${res["reviews"] ? res["reviews"].length : 0} отз.
+          <p class="card__right-reviews">${
+            res["reviews"] ? res["reviews"].length : 0
+          } отз.
           </p>
           ${
             res["warehouse"] == "0" && !res["Наличие в магазине"]
@@ -197,34 +197,40 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
           <div class="card__right-dots">
           ${
-            res["properties"]
-              ? Object.keys(res["properties"])
-                  .map((el, index) => {
-                    if (index < 4) {
-                      return `
+            res.properties
+              ? res.properties.print
+                ? Object.keys(res.properties.print)
+                    .map((el, index) => {
+                      if (index < 4) {
+                        return `
                         <div class="dot">
                           <span class="dot__prop"><span>${el}</span></span>
                           <span class="dot__value">${
-                            res["properties"][el] == "true"
+                            res.properties.print[el] == "true"
                               ? "Да"
-                              : res["properties"][el] == "false"
+                              : res.properties.print[el] == "false"
                               ? "Нет"
-                              : res["properties"][el]
+                              : res.properties.print[el]
                           }</span>
                         </div>
                       `;
-                    }
-                  })
-                  .join("")
+                      }
+                    })
+                    .join("")
+                : ``
               : ``
           }
           ${
-            res["properties"]
-              ? `
+            res.properties
+              ? res.properties.print
+                ? Object.keys(res.properties.print).length > 4
+                  ? `
                 <a href="#description" class="card__right-dots-button">
-                Все характеристики
-              </a>
-          `
+                  Все характеристики
+                </a>
+            `
+                  : ``
+                : ``
               : ``
           }
           </div>
@@ -436,7 +442,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     <h2 class="visually-hidden">Описание товара</h2>
     <div class="accordion-container">
     ${
-      res.properties || res.DETAIL_TEXT
+      (res.properties && res.properties.print) ||
+      (res.DETAIL_TEXT && res.DETAIL_TEXT.length > 50)
         ? `
         <div class="ac">
           <p class="ac-header">
@@ -451,22 +458,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                   <div class="description__stats-dots">
                   ${
                     res.properties
-                      ? Object.keys(res["properties"])
-                          .map((el) => {
-                            return `
+                      ? res.properties.print
+                        ? Object.keys(res.properties.print)
+                            .map((el) => {
+                              return `
                         <div class="dot">
                           <span class="dot__prop"><span>${el}</span></span>
                           <span class="dot__value">${
-                            res["properties"][el] == "true"
+                            res.properties.print[el] == "true"
                               ? "Да"
-                              : res["properties"][el] == "false"
+                              : res.properties.print[el] == "false"
                               ? "Нет"
-                              : res["properties"][el]
+                              : res.properties.print[el]
                           }</span>
                         </div>
                       `;
-                          })
-                          .join("")
+                            })
+                            .join("")
+                        : ``
                       : ``
                   }
                   </div>

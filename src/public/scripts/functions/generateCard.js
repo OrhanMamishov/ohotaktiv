@@ -70,14 +70,9 @@ export function generateCard(card, buttons, isCatalog, userData) {
           <p class="card-item__description-text">
             ${isCatalog ? card.name : card[1].NAME}
           </p>
-          <div class="not-clicked-rate-wrap">
-            <span class="active"></span>
-            <span class="active"></span>
-            <span class="active"></span>
-            <span class="active"></span>
-            <span></span>
-            <p class="not-clicked-rate-karma">10</p>
-          </div>
+          <p class="card-item__description-reviews">
+            Отзывы: 10
+          </p>
         </div>
       </a>
       <button id="${idCard}" class="card-item__button" data-url="/catalog/full_remington/sportivnaya-strelba/38674/" ${

@@ -182,6 +182,7 @@ main {
     height: 100%;
     mix-blend-mode: multiply;
     object-fit: contain;
+    aspect-ratio: 1/1;
     &.not-available {
       opacity: 0.3;
     }
@@ -272,11 +273,17 @@ main {
     }
     &-text {
       @include fontSize14;
+      margin-bottom: 7px;
       height: 50px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+    }
+    &-reviews {
+      @include fontSize14;
+      margin-bottom: 16px;
+      font-weight: 700;
     }
   }
   &__wrap {

@@ -4,6 +4,7 @@ import Inputmask from "inputmask";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.min.css";
+import { showMessage } from "../functions/showMessage";
 
 const choosedCity = localStorage.getItem("oa_choosed_city")
   ? JSON.parse(localStorage.getItem("oa_choosed_city"))
@@ -25,7 +26,7 @@ async function getArrayOfCart() {
   //   450212: "1.0000",
   //   232270: "1.0000",
   //   455799: "1.0000",
-  //   299436: "1.0000",
+  //   16391: "1.0000",
   // };
   if (userCartFromFetch == 0) {
     return userCartFromFetch;
@@ -37,7 +38,7 @@ async function getArrayOfCart() {
       const count = item[1];
       const cardInfo = await getCardInfo(id, count);
       if (
-        cardInfo.warehouse == "0" &&
+        cardInfo.warehouse <= 0 &&
         Object.keys(cardInfo.available).length == 0
       ) {
         isNotAvailable.push(cardInfo);
@@ -65,6 +66,13 @@ async function getCardInfo(id, count) {
         id: id,
         name: res.NAME,
         PRICE: res.PRICE,
+        mb_prop: res.properties
+          ? res.properties.system
+            ? res.properties.system.mb_prop
+              ? res.properties.system.mb_prop
+              : ""
+            : ""
+          : "",
         img: `https://ohotaktiv.ru${
           res.DETAIL_PICTURE
             ? res.DETAIL_PICTURE
@@ -72,18 +80,22 @@ async function getCardInfo(id, count) {
             ? res["Картинки"][0]
             : `/local/templates/ohota2021/img/no_photo.png`
         }`,
-        warehouse: res.warehouse,
+        warehouse: res.warehouse ? Number(res.warehouse) : 0,
         count: Number(count),
         available: res["Наличие в магазине"] ? res["Наличие в магазине"] : {},
-        startedPrice: res.PRICE[13]
-          ? Number(res.PRICE[13])
-          : res.PRICE[5]
-          ? Number(res.PRICE[5])
-          : Number(res.PRICE[1]),
-        oldPrice: Number(res.PRICE[1]),
+        startedPrice: Math.ceil(
+          res.PRICE[13]
+            ? Number(res.PRICE[13])
+            : res.PRICE[5]
+            ? Number(res.PRICE[5])
+            : Number(res.PRICE[1])
+        ),
+        oldPrice: Math.ceil(Number(res.PRICE[1])),
         is_licence: res.properties
-          ? res.properties["ИМ Лицензия"]
-            ? res.properties["ИМ Лицензия"]
+          ? res.properties.system
+            ? res.properties.system["ИМ Лицензия"]
+              ? res.properties.system["ИМ Лицензия"]
+              : "false"
             : "false"
           : "false",
       };
@@ -92,7 +104,6 @@ async function getCardInfo(id, count) {
 }
 
 async function refreshOrder(data) {
-  console.log(data);
   if (data == 0) return (document.location.href = "https://ohotaktiv.ru");
   const userInfo = await getUserData();
   const orderWrap = document.querySelector(".order__wrap");
@@ -102,9 +113,6 @@ async function refreshOrder(data) {
   const goods = data.isAvailable;
   const amount = goods
     .map((item) => item.startedPrice * item.count)
-    .reduce((prev, curr) => prev + curr, 0);
-  const discount = goods
-    .map((item) => (item.startedPrice - item.oldPrice) * item.count)
     .reduce((prev, curr) => prev + curr, 0);
   const licenceGoods = goods.filter((good) => good.is_licence == "true"); // Лицензионные товары
   const isInGoods = goods.filter(
@@ -168,7 +176,7 @@ async function refreshOrder(data) {
                   autocomplete="off"
                   value="${
                     userInfo.personal.PERSONAL_PHONE !== null
-                      ? userInfo.personal.PERSONAL_PHONE
+                      ? userInfo.personal.PERSONAL_PHONE.slice(1)
                       : ``
                   }"
                 />
@@ -248,7 +256,9 @@ async function refreshOrder(data) {
               ${goods
                 .map((el) => {
                   return `
-                  <li class="order__left-block-cards-item">
+                  <li class="order__left-block-cards-item" id="${
+                    el.id
+                  }" data-price="${el.startedPrice * el.count}">
                     <div class="order__left-block-img-wrap">
                       <img
                         src="${el.img}"
@@ -437,30 +447,23 @@ async function refreshOrder(data) {
           <div class="order__right-block">
             <div class="order__right-info">
               <div class="order__right-text-wrap">
-                <p class="order__right-text" data-count-goods>Товары: ${
+                <p class="order__right-text">Товары: ${
                   data.isAvailable.length
                 }</p>
-                <p class="order__right-text" data-count>${numberWithSpaces(
-                  amount
-                )} &#8381;</p>
-              </div>
-              <div class="order__right-text-wrap">
-                <p class="order__right-text">Скидка</p>
-                <p class="order__right-text text-red" data-count-discount>
-                ${numberWithSpaces(discount)} &#8381;
-                </p>
+                <p class="order__right-text" data-count="${amount}">${numberWithSpaces(
+    amount
+  )} &#8381;</p>
               </div>
             </div>
             <div class="order__right-info">
               <div class="order__right-text-wrap">
                 <p class="order__right-text text-bold">Общая стоимость</p>
-                <p class="order__right-text text-bold" data-count-total>
-                  ${numberWithSpaces(amount + discount)} &#8381;
+                <p class="order__right-text text-bold" data-total-count>
+                  ${numberWithSpaces(amount)} &#8381;
                 </p>
               </div>
               <div class="order__right-input-wrap">
                 <input class="order__right-input" placeholder="Промокод / Сертификат" id="check-coupon"/>
-                <button class="order__right-input-check">→</button>
               </div>
               <button id="submit-order" class="order__right-button">Оформить заказ</button>
               <p class="order__right-description">
@@ -589,6 +592,9 @@ async function refreshOrder(data) {
     mask: "*{100}",
     placeholder: "",
     showMaskOnHover: false,
+    onKeyDown: function () {
+      this.classList.remove("is-not-valid");
+    },
     definitions: {
       "*": {
         validator: "[A-Za-z-0-9]",
@@ -612,6 +618,33 @@ async function refreshOrder(data) {
       if (!this.value.includes("@")) this.classList.add("is-not-valid");
     },
   }).mask(emailInput);
+  checkCouponInput.addEventListener("focusin", (e) => {
+    if (!document.querySelector(".order__right-input-check")) {
+      e.target.parentNode.insertAdjacentHTML(
+        "beforeend",
+        `<button class="order__right-input-check">Применить</button>`
+      );
+    }
+  });
+  checkCouponInput.addEventListener("focusout", (e) => {
+    if (!e.target.value.length) {
+      e.target.nextElementSibling.remove();
+    }
+  });
+  checkCouponInput.addEventListener("input", () => {
+    const allDiscounts = document.querySelectorAll("[data-price-promo]");
+    if (allDiscounts.length) {
+      allDiscounts.forEach((el) => {
+        const span = el.children[el.children.length - 1];
+        const spanText = `Цена: ${numberWithSpaces(
+          el.getAttribute("data-price")
+        )} &#8381`;
+        span.innerHTML = spanText;
+        el.removeAttribute("data-price-promo");
+      });
+      refreshPricesOnRightBlock(true);
+    }
+  });
   orderWrap.addEventListener("click", async (e) => {
     if (e.target.className == "dropdown-cities-item") {
       const dropdown = document.querySelector(".dropdown-cities-list");
@@ -619,7 +652,74 @@ async function refreshOrder(data) {
       dropdown.remove();
     }
     if (e.target.className == "order__right-input-check") {
-      console.log("check coupon");
+      if (document.querySelector("[data-discount-total]")) {
+        return showMessage("Ошибка", "Промокод на заказ уже применен", "error");
+      }
+      if (!checkCouponInput.value) {
+        return showMessage(
+          "Не заполнено поле",
+          "Заполните поле с промокодом",
+          "error"
+        );
+      }
+      await fetch(
+        `https://ohotaktiv.ru/12dev/new-design/pages/checkout/checkout.php?coupon=${checkCouponInput.value}&event=add`
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.value == null) {
+            showMessage(
+              "Ошибка",
+              "Промокод введен некорректно либо такого промокода не существует",
+              "error"
+            );
+          } else if (res.active !== "Y") {
+            showMessage("Ошибка", "Промокод уже использован", "error");
+          } else {
+            goods.forEach((good) => {
+              if (res.mb_prop && res.mb_prop == "true") {
+                if (good.mb_prop !== "5") {
+                  const getElement = document.getElementById(`${good.id}`);
+                  const startedPrice = Number(
+                    getElement.getAttribute("data-price")
+                  );
+                  const newPrice =
+                    startedPrice - (startedPrice / 100) * res.value;
+                  getElement.children[
+                    getElement.children.length - 1
+                  ].innerHTML = `Цена: ${numberWithSpaces(
+                    Math.ceil(newPrice)
+                  )} &#8381;<span class="promo-discount">${numberWithSpaces(
+                    startedPrice
+                  )} &#8381;</span>`;
+                  getElement.setAttribute(
+                    "data-price-promo",
+                    Math.ceil(newPrice)
+                  );
+                }
+              } else {
+                const getElement = document.getElementById(`${good.id}`);
+                const startedPrice = Number(
+                  getElement.getAttribute("data-price")
+                );
+                const newPrice =
+                  startedPrice - (startedPrice / 100) * res.value;
+                getElement.children[
+                  getElement.children.length - 1
+                ].innerHTML = `Цена: ${numberWithSpaces(
+                  Math.ceil(newPrice)
+                )} &#8381;<span class="promo-discount">${numberWithSpaces(
+                  startedPrice
+                )} &#8381;</span>`;
+                getElement.setAttribute(
+                  "data-price-promo",
+                  Math.ceil(newPrice)
+                );
+              }
+            });
+            refreshPricesOnRightBlock();
+          }
+        });
     }
     if (e.target.id == "submit-order") {
       e.preventDefault();
@@ -643,4 +743,42 @@ async function refreshOrder(data) {
       }
     }
   });
+}
+
+function refreshPricesOnRightBlock(cancel) {
+  const pricesElements = document.querySelectorAll(
+    ".order__left-block-cards-item"
+  );
+  let pricesGoods = 0;
+  pricesElements.forEach((el) => {
+    pricesGoods += el.getAttribute("data-price-promo")
+      ? Number(el.getAttribute("data-price-promo"))
+      : Number(el.getAttribute("data-price"));
+  });
+  const dataTotalCount = document.querySelector("[data-total-count]");
+  dataTotalCount.textContent = `${numberWithSpaces(pricesGoods)} ₽`;
+  const dataCount = document.querySelector("[data-count]");
+  const dataDiscount = document.querySelector("[data-discount-total]");
+
+  if (cancel) {
+    if (dataDiscount) {
+      dataDiscount.remove();
+      dataTotalCount.textContent = `${numberWithSpaces(pricesGoods)} ₽`;
+    }
+  } else {
+    const elementDiscount = `
+    <div class="order__right-text-wrap" data-discount-total>
+      <p class="order__right-text">Скидка</p>
+      <p class="order__right-text text-red">
+        ${numberWithSpaces(
+          pricesGoods - Number(dataCount.getAttribute("data-count"))
+        )} &#8381;
+      </p>
+  </div>
+  `;
+    dataCount.parentElement.parentElement.insertAdjacentHTML(
+      "beforeend",
+      elementDiscount
+    );
+  }
 }

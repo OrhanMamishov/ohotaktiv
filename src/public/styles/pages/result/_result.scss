@@ -1,0 +1,135 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--white-color);
+  border-bottom: 1px solid #2d2a28;
+  z-index: 1;
+  &__wrap {
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    width: 165px;
+  }
+  &__geo {
+    @include fontSize14;
+    margin: 0 25px 0 auto;
+  }
+  &__tel {
+    @include fontSize14;
+    padding: 3px 12px;
+    background-color: var(--primary-color);
+    border-radius: 100px;
+  }
+}
+.main {
+  padding-top: 72px;
+  background-color: var(--cart-background-color);
+  .result {
+    &__wrap {
+      width: 100%;
+      height: 66vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__img {
+      max-width: 60px;
+      margin-bottom: 25px;
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 702px;
+      max-height: 490px;
+      padding: 66px 123px 30px 123px;
+      background-color: var(--white-color);
+      border-radius: 15px;
+    }
+    &__title {
+      @include fontSize20;
+      margin-bottom: 20px;
+    }
+    &__text {
+      @include fontSize14;
+      text-align: center;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+      &.text--grey {
+        margin-bottom: 8px;
+        color: var(--grey-color);
+      }
+    }
+    &__link {
+      @include contentButton;
+      padding: 6px 16px;
+      margin-bottom: 77px;
+      display: block;
+      &.cart {
+        margin-bottom: 0;
+        background: transparent;
+      }
+    }
+  }
+}
+.footer {
+  padding: 33px 0;
+  &__wrap {
+    display: block;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+  }
+}
+@media only screen and (max-width: 1439px) {
+  .main {
+  }
+}
+@media only screen and (max-width: 1365px) {
+  .main {
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+  }
+}
+@media only screen and (max-width: 767px) {
+  .header {
+    &__geo,
+    &__tel {
+      padding: 0;
+      font-size: 0;
+      border-radius: unset;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+    &__geo {
+      margin: 0 16px 0 auto;
+      width: 20px;
+      height: 25px;
+      background-image: url("../../../img/tag.svg");
+    }
+    &__tel {
+      width: 20px;
+      height: 25px;
+      background-image: url("../../../img/telephone.svg");
+    }
+    &__logo {
+      width: 118px;
+    }
+  }
+  .main {
+    padding-bottom: 30px;
+  }
+}

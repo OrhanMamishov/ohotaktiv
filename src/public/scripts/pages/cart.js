@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function refreshCart(data) {
-  console.log(data);
   const columns = document.querySelector(".cart__columns");
   while (columns.firstChild) {
     columns.removeChild(columns.firstChild);
@@ -269,6 +268,7 @@ async function getArrayOfCart() {
   //   450212: "1.0000",
   //   232270: "1.0000",
   //   455799: "1.0000",
+  //   16391: "1.0000",
   // };
   if (userCartFromFetch == 0) {
     return userCartFromFetch;
@@ -280,7 +280,7 @@ async function getArrayOfCart() {
       const count = item[1];
       const cardInfo = await getCardInfo(id, count);
       if (
-        cardInfo.warehouse == "0" &&
+        cardInfo.warehouse <= 0 &&
         Object.keys(cardInfo.available).length == 0
       ) {
         isNotAvailable.push(cardInfo);
@@ -309,6 +309,13 @@ async function getCardInfo(id, count) {
           id: id,
           name: res.NAME,
           PRICE: res.PRICE,
+          mb_prop: res.properties
+            ? res.properties.system
+              ? res.properties.system.mb_prop
+                ? res.properties.system.mb_prop
+                : ""
+              : ""
+            : "",
           img: `https://ohotaktiv.ru${
             res.DETAIL_PICTURE
               ? res.DETAIL_PICTURE
@@ -318,18 +325,22 @@ async function getCardInfo(id, count) {
               ? res["Картинки"][0]
               : `/local/templates/ohota2021/img/no_photo.png`
           }`,
-          warehouse: res.warehouse,
+          warehouse: res.warehouse ? Number(res.warehouse) : 0,
           count: Number(count),
           available: res["Наличие в магазине"] ? res["Наличие в магазине"] : {},
-          startedPrice: res.PRICE[13]
-            ? Number(res.PRICE[13])
-            : res.PRICE[5]
-            ? Number(res.PRICE[5])
-            : Number(res.PRICE[1]),
-          oldPrice: Number(res.PRICE[1]),
+          startedPrice: Math.ceil(
+            res.PRICE[13]
+              ? Number(res.PRICE[13])
+              : res.PRICE[5]
+              ? Number(res.PRICE[5])
+              : Number(res.PRICE[1])
+          ),
+          oldPrice: Math.ceil(Number(res.PRICE[1])),
           is_licence: res.properties
-            ? res.properties["ИМ Лицензия"]
-              ? res.properties["ИМ Лицензия"]
+            ? res.properties.system
+              ? res.properties.system["ИМ Лицензия"]
+                ? res.properties.system["ИМ Лицензия"]
+                : "false"
               : "false"
             : "false",
         };
