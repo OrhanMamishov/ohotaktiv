@@ -51,9 +51,10 @@ module.exports = {
     order: "./src/public/scripts/pages/order.js",
     faq: "./src/public/scripts/pages/faq.js",
     pay: "./src/public/scripts/pages/pay.js",
-    new: "./src/public/scripts/pages/new.js",
+    comission: "./src/public/scripts/pages/comission.js",
     catalogview: "./src/public/scripts/pages/catalogview.js",
     result: "./src/public/scripts/pages/result.js",
+    comissionview: "./src/public/scripts/pages/comissionview.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),

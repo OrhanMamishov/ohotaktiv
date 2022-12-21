@@ -27,9 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           <nav class="navigation">
             <ul class="navigation__list">
               <li class="navigation__item">
-                <a href="#" class="navigation__link back"> Назад </a>
-              </li>
-              <li class="navigation__item">
                 <a href="../index/" class="navigation__link"> Главная </a>
               </li>
               <li class="navigation__item">

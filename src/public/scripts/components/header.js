@@ -26,6 +26,13 @@ if (!sessionStorage.getItem("catalog")) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await fetch("../header/")
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      document.querySelector("header").innerHTML = data;
+    });
   const headerAccordion = document.querySelector(
     ".header__accordion-container"
   );

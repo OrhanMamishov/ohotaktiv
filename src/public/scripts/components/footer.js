@@ -2,7 +2,15 @@ import "../../styles/components/footer/style.scss";
 import Inputmask from "inputmask";
 import { showMessage } from "../functions/showMessage";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await fetch("../footer/")
+    .then((response) => {
+      return response.text();
+    })
+    .then((data) => {
+      document.querySelector("footer").innerHTML = data;
+    });
+
   const titleListsFooter = document.querySelectorAll(".item-title");
   const listsFooter = document.querySelectorAll(".footer__list");
   titleListsFooter.forEach((title) => {
