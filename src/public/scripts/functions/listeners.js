@@ -31,7 +31,7 @@ document.addEventListener("click", async (e) => {
       }).then(async () => {
         updateCountGoods(await getUserData());
         if (!e.target.classList.contains("is-in")) {
-          showMessage("Товар убран!", "Товар убран из избранного", "success");
+          showMessage("Товар удален!", "Товар удален из избранного", "success");
         } else {
           showMessage(
             "Товар добавлен!",

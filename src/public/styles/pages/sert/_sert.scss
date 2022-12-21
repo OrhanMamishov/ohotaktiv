@@ -84,6 +84,47 @@
       }
     }
   }
+  .questions {
+    padding: 57px 0;
+    background-color: var(--cart-background-color);
+    &__title {
+      @include fontSize20;
+      margin-bottom: 0;
+    }
+    &__wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__list {
+      display: flex;
+    }
+    &__item {
+      &:not(:last-child) {
+        margin-right: 88px;
+      }
+    }
+    &__link {
+      @include fontSize14;
+      display: block;
+      padding-left: 57px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      span {
+        display: block;
+        font-weight: 700;
+      }
+      &.call {
+        background-image: url("../../../img/call-img.svg");
+      }
+      &.mail {
+        background-image: url("../../../img/mail-img.svg");
+      }
+      &.write {
+        background-image: url("../../../img/write-img.svg");
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 1439px) {
@@ -109,6 +150,9 @@
       &__right {
         width: 350px;
       }
+    }
+    .questions {
+      display: none;
     }
   }
 }

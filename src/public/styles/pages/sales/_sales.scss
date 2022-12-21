@@ -6,5 +6,11 @@
       grid-gap: 35px;
       justify-content: center;
     }
+    &__item {
+      &.skeleton {
+        width: 288px;
+        height: 211px;
+      }
+    }
   }
 }

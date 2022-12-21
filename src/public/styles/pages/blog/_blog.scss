@@ -1,36 +1,27 @@
 .main {
   .blog {
-    &__path {
-      &-list {
-        @include tabsList;
-      }
-    }
     &__target {
-      display: none;
       .swiper {
         padding-bottom: 70px;
       }
-      &.is-open {
-        display: block;
-      }
     }
     &__link {
-      height: 100%;
+      display: flex;
     }
     &__item {
       position: relative;
+      &-img {
+        max-height: 255px;
+      }
+      &.skeleton {
+        width: 288px;
+        height: 250px;
+      }
     }
-    &__tag {
-      &-list {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: var(--white-color);
-      }
-      &-item {
-        @include fontSize14;
-        padding: 2px 12px;
-      }
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
     }
     &__swiper-pagination {
       .swiper-pagination-bullet {
