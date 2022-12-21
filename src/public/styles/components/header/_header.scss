@@ -8,14 +8,16 @@
   background-color: var(--white-color);
   &__input {
     @include contentInput;
-    padding: 10px 24px;
+    padding: 10px 24px !important;
     border: 1px solid var(--black-color);
     border-radius: 100px;
     &-wrap {
       position: relative;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 527px;
+      margin-right: 40px;
+      flex: 1 1 auto;
+      // margin: 0 auto;
+      // width: 100%;
+      // max-width: 527px;
     }
     &-search {
       position: absolute;
@@ -28,6 +30,8 @@
     }
   }
   &__tel {
+    @include fontSize14;
+    margin-right: 40px;
     transition: color 0.2s ease;
     &:hover {
       color: var(--primary-color);
@@ -44,6 +48,7 @@
   }
   &__logo {
     width: 165px;
+    margin-right: 40px;
   }
   &__bottom {
     display: flex;
@@ -52,15 +57,17 @@
     padding-bottom: 14px;
   }
   &__city {
+    @include fontSize14;
+    margin-right: 40px;
     text-decoration: underline;
     text-underline-offset: 3px;
-    margin-left: auto;
     transition: color 0.2s ease;
     &:hover {
       color: var(--primary-color);
     }
   }
   &__status {
+    @include fontSize14;
     margin-right: 35px;
     transition: color 0.2s ease;
     &:hover {
@@ -211,6 +218,10 @@
         }
         .ac-link {
           @include fontSize14;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
         .ac-trigger {
           width: 0;
@@ -280,12 +291,12 @@
     &-item {
       &.for-mobile {
         display: none;
-        @media only screen and (max-width: 1365px) {
+        @media only screen and (max-width: 1230px) {
           display: block;
         }
       }
       &.for-desktop {
-        @media only screen and (max-width: 1365px) {
+        @media only screen and (max-width: 1230px) {
           display: none;
         }
       }
@@ -296,6 +307,7 @@
       }
     }
     &-link {
+      @include fontSize14;
       transition: color 0.2s ease;
       &:hover {
         color: var(--primary-color);
@@ -316,11 +328,6 @@
 
 @media only screen and (max-width: 1560px) {
   .header {
-    &__input {
-      &-wrap {
-        width: 33%;
-      }
-    }
     &__status {
       margin-right: 30px;
     }
@@ -346,11 +353,6 @@
     &__pages-list {
       gap: 26px;
     }
-    &__input {
-      &-wrap {
-        width: 30%;
-      }
-    }
   }
 }
 @media only screen and (max-width: 1365px) {
@@ -366,11 +368,10 @@
     &__logo {
       width: 141px;
     }
-    &__input {
-      &-wrap {
-        width: 41%;
-      }
-    }
+  }
+}
+@media only screen and (max-width: 1230px) {
+  .header {
     &__tel {
       display: none;
     }
@@ -450,18 +451,14 @@
 }
 @media only screen and (max-width: 1023px) {
   .header {
+    &__input {
+      &-wrap {
+        margin-right: 0;
+      }
+    }
     &__action {
       &-list {
         display: none;
-      }
-    }
-    &__city {
-      margin: 0 auto;
-    }
-    &__input {
-      &-wrap {
-        width: 50%;
-        margin: 0;
       }
     }
     &__catalog {
@@ -623,7 +620,7 @@
       }
       &-link {
         width: 100%;
-        padding-top: 28px;
+        padding-top: 17px;
         font-size: 9px;
         background-size: 23px 20px;
       }

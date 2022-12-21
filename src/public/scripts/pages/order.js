@@ -622,7 +622,7 @@ async function refreshOrder(data) {
     if (!document.querySelector(".order__right-input-check")) {
       e.target.parentNode.insertAdjacentHTML(
         "beforeend",
-        `<button class="order__right-input-check">Применить</button>`
+        `<button id="check-coupon-button" class="order__right-input-check">Применить</button>`
       );
     }
   });
@@ -631,27 +631,13 @@ async function refreshOrder(data) {
       e.target.nextElementSibling.remove();
     }
   });
-  checkCouponInput.addEventListener("input", () => {
-    const allDiscounts = document.querySelectorAll("[data-price-promo]");
-    if (allDiscounts.length) {
-      allDiscounts.forEach((el) => {
-        const span = el.children[el.children.length - 1];
-        const spanText = `Цена: ${numberWithSpaces(
-          el.getAttribute("data-price")
-        )} &#8381`;
-        span.innerHTML = spanText;
-        el.removeAttribute("data-price-promo");
-      });
-      refreshPricesOnRightBlock(true);
-    }
-  });
   orderWrap.addEventListener("click", async (e) => {
     if (e.target.className == "dropdown-cities-item") {
       const dropdown = document.querySelector(".dropdown-cities-list");
       addressInput.value = e.target.getAttribute("data-value");
       dropdown.remove();
     }
-    if (e.target.className == "order__right-input-check") {
+    if (e.target.id == "check-coupon-button") {
       if (document.querySelector("[data-discount-total]")) {
         return showMessage("Ошибка", "Промокод на заказ уже применен", "error");
       }
@@ -663,7 +649,7 @@ async function refreshOrder(data) {
         );
       }
       await fetch(
-        `https://ohotaktiv.ru/12dev/new-design/pages/checkout/checkout.php?coupon=${checkCouponInput.value}&event=add`
+        `https://ohotaktiv.ru/12dev/new-design/pages/checkout/checkout.php?coupon=${checkCouponInput.value}&event=check`
       )
         .then((res) => res.json())
         .then((res) => {
@@ -718,6 +704,16 @@ async function refreshOrder(data) {
               }
             });
             refreshPricesOnRightBlock();
+            checkCouponInput.setAttribute(
+              "data-coupon",
+              checkCouponInput.value
+            );
+            checkCouponInput.disabled = true;
+            e.target.parentNode.insertAdjacentHTML(
+              "beforeend",
+              `<button id="cancel-coupon-button" class="order__right-input-check">Отменить</button>`
+            );
+            e.target.remove();
           }
         });
     }
@@ -739,8 +735,41 @@ async function refreshOrder(data) {
           }&phone=7${telInput.inputmask.unmaskedvalue()}&email=${
             emailInput.value
           }&first_name=${nameInput.value}&second_name=${surnameInput.value}`
-        );
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.success && methodId.value == 14) {
+              document.location.href = res.success.pay_url;
+            } else {
+              document.location.href =
+                "https://ohotaktiv.ru/12dev/new-design/pages/result/";
+            }
+          });
       }
+    }
+    if (e.target.id == "cancel-coupon-button") {
+      const allDiscounts = document.querySelectorAll("[data-price-promo]");
+      if (allDiscounts.length) {
+        allDiscounts.forEach((el) => {
+          const span = el.children[el.children.length - 1];
+          const spanText = `Цена: ${numberWithSpaces(
+            el.getAttribute("data-price")
+          )} &#8381`;
+          span.innerHTML = spanText;
+          el.removeAttribute("data-price-promo");
+        });
+        refreshPricesOnRightBlock(true);
+      }
+      fetch(
+        `https://ohotaktiv.ru/12dev/new-design/pages/checkout/checkout.php?coupon=${checkCouponInput.value}&event=clear`
+      );
+      checkCouponInput.disabled = false;
+      checkCouponInput.value = "";
+      e.target.parentNode.insertAdjacentHTML(
+        "beforeend",
+        `<button id="check-coupon-button" class="order__right-input-check">Применить</button>`
+      );
+      e.target.remove();
     }
   });
 }

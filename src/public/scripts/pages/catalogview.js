@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         for (let i = 3; i <= level; i++) {
           // перебираем полученные подкаталоги
           thisCatalog[0].depth.forEach((depth) => {
+            console.log(depth);
             // если каталог совпадает с нужным
             if (depth.page_url.includes(urlCatalog[i])) {
               // пушим его в этот каталог
@@ -182,9 +183,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           <nav class="navigation">
             <ul class="navigation__list">
               <li class="navigation__item">
-                <a href="#" class="navigation__link back"> Назад </a>
-              </li>
-              <li class="navigation__item">
                 <a href="../index/" class="navigation__link"> Главная </a>
               </li>
               <li class="navigation__item">
@@ -195,212 +193,213 @@ document.addEventListener("DOMContentLoaded", async () => {
               </li>
             </ul>
           </nav>
-          <h1 class="detail__title title-seo"> ${catalogName} </h1>
-          <div class="detail__subtitle-wrap">
-            <p class="detail__subtitle"> ${itemsOnPage.length} товаров</p>
-            <button class="detail__cards-filter-open"></button>
-          </div>
+          <h1 class="detail__title title-seo"> ${catalogName} <span>${
+      itemsOnPage.length
+    }</span> </h1>
+          <button class="detail__cards-filter-open">Фильтры</button>
           <div class="detail__columns">
             <div class="detail__filters">
               <div class="detail__filters-background"></div>
               <div class="detail__filters-wrap">
                 <button class="detail__close"></button>
+                ${
+                  catalog.depth || catalog.length
+                    ? `
                 <div class="detail__filter">
-                  <p class="detail__filter-title">Выберите категорию</p>
-                  <ul class="detail__filter-list category-list">
-                    ${
-                      catalog.depth
-                        ? catalog.depth
-                            .map((section) => {
-                              return `
-                            <li class="detail__filter-item">
-                              <input
-                                class="radio__input"
-                                type="radio"
-                                id="${section.section_this}"
-                                name="category"
-                              />
-                              <label for="${section.section_this}">${
-                                section.name
-                              }</label>
-                              ${
-                                section.depth
-                                  ? `<ul class="detail__filter-list subcategory-list">
-                                    ${section.depth
-                                      .map((firstDepth) => {
-                                        return `
-                                        <li class="detail__filter-item">
-                                          <input
-                                            class="radio__input"
-                                            type="radio"
-                                            id="${firstDepth.section_this}"
-                                            name="category"
-                                          />
-                                          <label for="${
-                                            firstDepth.section_this
-                                          }">${firstDepth.name}</label>
-                                          ${
-                                            firstDepth.depth
-                                              ? `
-                                            <ul class="detail__filter-list subcategory-list">
-                                              ${firstDepth.depth
-                                                .map((secondDepth) => {
-                                                  return `
-                                                  <li class="detail__filter-item">
-                                                    <input
-                                                      class="radio__input"
-                                                      type="radio"
-                                                      id="${
-                                                        secondDepth.section_this
-                                                      }"
-                                                      name="category"
-                                                    />
-                                                    <label for="${
+                <p class="detail__filter-title">Выберите категорию</p>
+                <ul class="detail__filter-list category-list">
+                  ${
+                    catalog.depth
+                      ? catalog.depth
+                          .map((section) => {
+                            return `
+                          <li class="detail__filter-item">
+                            <input
+                              class="radio__input"
+                              type="radio"
+                              id="${section.section_this}"
+                              name="category"
+                            />
+                            <label for="${section.section_this}">${
+                              section.name
+                            }</label>
+                            ${
+                              section.depth
+                                ? `<ul class="detail__filter-list subcategory-list">
+                                  ${section.depth
+                                    .map((firstDepth) => {
+                                      return `
+                                      <li class="detail__filter-item">
+                                        <input
+                                          class="radio__input"
+                                          type="radio"
+                                          id="${firstDepth.section_this}"
+                                          name="category"
+                                        />
+                                        <label for="${
+                                          firstDepth.section_this
+                                        }">${firstDepth.name}</label>
+                                        ${
+                                          firstDepth.depth
+                                            ? `
+                                          <ul class="detail__filter-list subcategory-list">
+                                            ${firstDepth.depth
+                                              .map((secondDepth) => {
+                                                return `
+                                                <li class="detail__filter-item">
+                                                  <input
+                                                    class="radio__input"
+                                                    type="radio"
+                                                    id="${
                                                       secondDepth.section_this
-                                                    }">${
-                                                    secondDepth.name
-                                                  }</label>
-                                                    ${
-                                                      secondDepth.depth
-                                                        ? `
-                                                    <ul class="detail__filter-list subcategory-list">
-                                                      ${secondDepth.depth
-                                                        .map((thirdDepth) => {
-                                                          return `
-                                                          <li class="detail__filter-item">
-                                                            <input
-                                                              class="radio__input"
-                                                              type="radio"
-                                                              id="${thirdDepth.section_this}"
-                                                              name="category"
-                                                            />
-                                                            <label for="${thirdDepth.section_this}">${thirdDepth.name}</label>
-                                                          </li>
-                                                        `;
-                                                        })
-                                                        .join("")}
-                                                    </ul>
-                                                    `
-                                                        : ``
-                                                    }
-                                                  </li>
-                                                `;
-                                                })
-                                                .join("")}
-                                            </ul>
-                                          `
-                                              : ``
-                                          }
-                                      </li>
-                                      `;
-                                      })
-                                      .join("")}
-                                  </ul>`
-                                  : ``
-                              }
-                            </li>
-                          `;
-                            })
-                            .join("")
-                        : catalog.length
-                        ? catalog
-                            .map((section) => {
-                              return `
-                                <li class="detail__filter-item">
-                                  <input
-                                    class="radio__input"
-                                    type="radio"
-                                    id="${section.section_this}"
-                                    name="category"
-                                  />
-                                  <label for="${section.section_this}">${
-                                section.name
-                              }</label>
-                                  ${
-                                    section.depth
-                                      ? `<ul class="detail__filter-list subcategory-list">
-                                        ${section.depth
-                                          .map((firstDepth) => {
-                                            return `
-                                            <li class="detail__filter-item">
-                                              <input
-                                                class="radio__input"
-                                                type="radio"
-                                                id="${firstDepth.section_this}"
-                                                name="category"
-                                              />
-                                              <label for="${
-                                                firstDepth.section_this
-                                              }">${firstDepth.name}</label>
-                                              ${
-                                                firstDepth.depth
-                                                  ? `
-                                                <ul class="detail__filter-list subcategory-list">
-                                                  ${firstDepth.depth
-                                                    .map((secondDepth) => {
-                                                      return `
-                                                      <li class="detail__filter-item">
-                                                        <input
-                                                          class="radio__input"
-                                                          type="radio"
-                                                          id="${
-                                                            secondDepth.section_this
-                                                          }"
-                                                          name="category"
-                                                        />
-                                                        <label for="${
+                                                    }"
+                                                    name="category"
+                                                  />
+                                                  <label for="${
+                                                    secondDepth.section_this
+                                                  }">${secondDepth.name}</label>
+                                                  ${
+                                                    secondDepth.depth
+                                                      ? `
+                                                  <ul class="detail__filter-list subcategory-list">
+                                                    ${secondDepth.depth
+                                                      .map((thirdDepth) => {
+                                                        return `
+                                                        <li class="detail__filter-item">
+                                                          <input
+                                                            class="radio__input"
+                                                            type="radio"
+                                                            id="${thirdDepth.section_this}"
+                                                            name="category"
+                                                          />
+                                                          <label for="${thirdDepth.section_this}">${thirdDepth.name}</label>
+                                                        </li>
+                                                      `;
+                                                      })
+                                                      .join("")}
+                                                  </ul>
+                                                  `
+                                                      : ``
+                                                  }
+                                                </li>
+                                              `;
+                                              })
+                                              .join("")}
+                                          </ul>
+                                        `
+                                            : ``
+                                        }
+                                    </li>
+                                    `;
+                                    })
+                                    .join("")}
+                                </ul>`
+                                : ``
+                            }
+                          </li>
+                        `;
+                          })
+                          .join("")
+                      : catalog.length
+                      ? catalog
+                          .map((section) => {
+                            return `
+                              <li class="detail__filter-item">
+                                <input
+                                  class="radio__input"
+                                  type="radio"
+                                  id="${section.section_this}"
+                                  name="category"
+                                />
+                                <label for="${section.section_this}">${
+                              section.name
+                            }</label>
+                                ${
+                                  section.depth
+                                    ? `<ul class="detail__filter-list subcategory-list">
+                                      ${section.depth
+                                        .map((firstDepth) => {
+                                          return `
+                                          <li class="detail__filter-item">
+                                            <input
+                                              class="radio__input"
+                                              type="radio"
+                                              id="${firstDepth.section_this}"
+                                              name="category"
+                                            />
+                                            <label for="${
+                                              firstDepth.section_this
+                                            }">${firstDepth.name}</label>
+                                            ${
+                                              firstDepth.depth
+                                                ? `
+                                              <ul class="detail__filter-list subcategory-list">
+                                                ${firstDepth.depth
+                                                  .map((secondDepth) => {
+                                                    return `
+                                                    <li class="detail__filter-item">
+                                                      <input
+                                                        class="radio__input"
+                                                        type="radio"
+                                                        id="${
                                                           secondDepth.section_this
-                                                        }">${
-                                                        secondDepth.name
-                                                      }</label>
-                                                        ${
-                                                          secondDepth.depth
-                                                            ? `
-                                                        <ul class="detail__filter-list subcategory-list">
-                                                          ${secondDepth.depth
-                                                            .map(
-                                                              (thirdDepth) => {
-                                                                return `
-                                                              <li class="detail__filter-item">
-                                                                <input
-                                                                  class="radio__input"
-                                                                  type="radio"
-                                                                  id="${thirdDepth.section_this}"
-                                                                  name="category"
-                                                                />
-                                                                <label for="${thirdDepth.section_this}">${thirdDepth.name}</label>
-                                                              </li>
-                                                            `;
-                                                              }
-                                                            )
-                                                            .join("")}
-                                                        </ul>
-                                                        `
-                                                            : ``
-                                                        }
-                                                      </li>
-                                                    `;
-                                                    })
-                                                    .join("")}
-                                                </ul>
-                                              `
-                                                  : ``
-                                              }
-                                          </li>
-                                          `;
-                                          })
-                                          .join("")}
-                                      </ul>`
-                                      : ``
-                                  }
-                                </li>
-                              `;
-                            })
-                            .join("")
-                        : []
-                    }
-                  </ul>
-                </div>
+                                                        }"
+                                                        name="category"
+                                                      />
+                                                      <label for="${
+                                                        secondDepth.section_this
+                                                      }">${
+                                                      secondDepth.name
+                                                    }</label>
+                                                      ${
+                                                        secondDepth.depth
+                                                          ? `
+                                                      <ul class="detail__filter-list subcategory-list">
+                                                        ${secondDepth.depth
+                                                          .map((thirdDepth) => {
+                                                            return `
+                                                            <li class="detail__filter-item">
+                                                              <input
+                                                                class="radio__input"
+                                                                type="radio"
+                                                                id="${thirdDepth.section_this}"
+                                                                name="category"
+                                                              />
+                                                              <label for="${thirdDepth.section_this}">${thirdDepth.name}</label>
+                                                            </li>
+                                                          `;
+                                                          })
+                                                          .join("")}
+                                                      </ul>
+                                                      `
+                                                          : ``
+                                                      }
+                                                    </li>
+                                                  `;
+                                                  })
+                                                  .join("")}
+                                              </ul>
+                                            `
+                                                : ``
+                                            }
+                                        </li>
+                                        `;
+                                        })
+                                        .join("")}
+                                    </ul>`
+                                    : ``
+                                }
+                              </li>
+                            `;
+                          })
+                          .join("")
+                      : []
+                  }
+                </ul>
+              </div>
+                `
+                    : ``
+                }
                 ${filtersForPage(itemsOnPage)}
                 <button class="detail__filter-button">Сбросить</button>
               </div>
@@ -561,6 +560,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         changePagination(Number(e.target.getAttribute("data-page-length")));
       }
       if (e.target.className == "radio__input") {
+        if (
+          e.target.parentNode.children[2] &&
+          !e.target.parentNode.children[2].classList.contains(
+            "subcategory-active"
+          )
+        ) {
+          const allSubcategoryList = document.querySelectorAll(
+            ".subcategory-active"
+          );
+          allSubcategoryList.forEach((sub) =>
+            sub.classList.remove("subcategory-active")
+          );
+          e.target.parentNode.children[2].classList.add("subcategory-active");
+        }
         itemsFromRadio(catalog, e.target.id);
       }
       if (e.target.className == "detail__cards-filter-close") {
@@ -583,11 +596,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const priceFrom = document.getElementById("price-from");
     const priceTo = document.getElementById("price-to");
     const pricesInputs = [priceFrom, priceTo];
+    let timeoutForInputs;
     pricesInputs.forEach((input) => {
       input.addEventListener("input", (e) => {
         e.currentTarget.value = numberWithSpaces(
           e.currentTarget.value.replace(/\D/g, "")
         );
+        clearTimeout(timeoutForInputs);
+        timeoutForInputs = setTimeout(() => {
+          filterGoodsOnPage(items, catalog);
+        }, 1000);
       });
     });
     // события в поиске магазина
@@ -642,12 +660,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (clicked) {
       const detailList = document.querySelector(".detail__cards-list");
-      const detailSubtitle = document.querySelector(".detail__subtitle");
-      detailSubtitle.textContent = `${arr.length} ${numWord(arr.length, [
-        "товар",
-        "товара",
-        "товаров",
-      ])}`;
+      const detailTitle = document.querySelector(".detail__title span");
+      detailTitle.textContent = `${arr.length}`;
       return (detailList.innerHTML = element);
     } else {
       return element;
@@ -887,9 +901,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       mergedArr.length ? mergedArr : filteredItemsFromRadio,
       choosedFilters
     );
+    const priceFrom = document.getElementById("price-from").value
+      ? Number(document.getElementById("price-from").value.replace(/\s/g, ""))
+      : 0;
+    const priceTo = document.getElementById("price-to").value
+      ? Number(document.getElementById("price-to").value.replace(/\s/g, ""))
+      : 3000000;
+    itemsOnPage = itemsOnPage.filter(
+      (el) =>
+        el.properties.FILTER_PRICE.VALUE >= priceFrom &&
+        el.properties.FILTER_PRICE.VALUE <= priceTo
+    );
+    console.log(Number(document.getElementById("price-to").value));
     itemsForPage(1, itemsOnPage, true);
     changePagination(1);
-    let neededUrl = "&";
+    let neededUrl = `${Object.keys(choosedFilters).length ? `&` : ``}`;
     Object.keys(choosedFilters).forEach((filter, index) => {
       neededUrl += `${index == 0 ? `` : `&`}${filter.toLowerCase()}=`;
       if (filter == "STORE_AVAILABLE") {

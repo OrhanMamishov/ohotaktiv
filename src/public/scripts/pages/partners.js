@@ -3,27 +3,6 @@ import "../../styles/pages/partners/style.scss";
 import Inputmask from "inputmask";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // кастомизация выбора файлов
-  const inputFile = document.querySelector(".input-wrap-file__input");
-  const labelFile = inputFile.nextElementSibling;
-  inputFile.addEventListener("change", (e) => {
-    labelFile.textContent = "Выбраны файлы: ";
-    console.log(e.target.files);
-    let size = 0;
-    Object.values(e.target.files).forEach((el) => {
-      labelFile.textContent += `${el.name}, `;
-      size += el.size;
-    });
-    if (size > 8000000) {
-      labelFile.textContent = "Превышен размер файлов!";
-      return;
-    }
-    inputFile.nextElementSibling.classList.add("is-valid");
-    inputFile.nextElementSibling.classList.remove("is-not-valid");
-    inputFile.classList.remove("is-not-valid");
-  });
-  // кастомизация выбора файлов
-
   const innInput = document.getElementById("inn-form-input");
   const nameCompanyInput = document.getElementById("namecompany-form-input");
   const goodsInput = document.getElementById("goods-form-input");
@@ -31,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const jobInput = document.getElementById("job-form-input");
   const telInput = document.getElementById("tel-form-input");
   const emailInput = document.getElementById("email-form-input");
-  const fileInput = document.getElementById("input-wrap-file");
   const submitButton = document.querySelector(".blank__form-button");
   const inputs = [
     innInput,
@@ -41,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     nameInput,
     telInput,
     emailInput,
-    fileInput,
   ];
   document.addEventListener("click", (e) => {
     if (e.target.className == "blank__form-dropdown-item") {

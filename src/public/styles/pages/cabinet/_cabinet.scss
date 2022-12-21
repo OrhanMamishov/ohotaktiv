@@ -218,7 +218,7 @@
             &-text {
               @include fontSize14;
               &:last-child {
-                margin-top: 20px;
+                margin-top: 5px;
               }
               span {
                 padding: 4px 10px;
@@ -265,6 +265,9 @@
     &__favourites {
       &-pagination {
         display: none;
+        .swiper-pagination-bullet-active {
+          color: var(--secondary-color);
+        }
       }
     }
     &__text {
@@ -302,11 +305,6 @@
 @media only screen and (max-width: 1439px) {
   .main {
     .cabinet {
-      &__profile {
-        &-blocks {
-          grid-template-columns: 355px 480px;
-        }
-      }
       &__target {
         .swiper {
           max-width: 867px;
@@ -319,11 +317,10 @@
   .main {
     .cabinet {
       &__profile {
-        &-blocks {
-          display: block;
-          max-width: 600px;
-        }
         &-block {
+          &:not(:last-child) {
+            margin-right: 50px;
+          }
           &-user {
             &-avatar {
               width: 140px;
@@ -385,7 +382,7 @@
           height: 17px;
           width: 21px;
           position: absolute;
-          top: 8px;
+          top: 7px;
           left: 50px;
           z-index: 1;
           display: flex;
@@ -425,13 +422,6 @@
         &-title {
           padding-left: 55px;
         }
-        &-blocks {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: 430px 245px;
-          gap: 30px;
-          max-width: unset;
-        }
         &-block {
           &-user {
             &-avatar {
@@ -441,9 +431,6 @@
             &-birthdate {
               margin-bottom: 20px;
             }
-          }
-          &-text {
-            margin-top: auto;
           }
           &:first-child {
             grid-area: 1 / 1 / 2 / 2;
@@ -457,8 +444,11 @@
         }
       }
       &__subscription {
+        &-list {
+          max-width: unset;
+        }
         &-item {
-          width: 314px;
+          width: 100%;
         }
       }
       &__left {
@@ -523,7 +513,6 @@
           display: block;
         }
         &-block {
-          padding: 20px 25px;
           &-user {
             &-avatar {
               width: 100px;
@@ -547,7 +536,8 @@
         }
         &-item {
           width: 100%;
-          padding: 20px 25px;
+          padding: 20px 0;
+          grid-template-rows: 1fr 50px;
         }
       }
       &__favourites {

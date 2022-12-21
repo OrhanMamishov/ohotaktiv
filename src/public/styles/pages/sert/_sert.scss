@@ -7,38 +7,13 @@
       justify-content: space-between;
     }
     &__img {
-      &-big {
-        max-width: 457px;
-      }
+      object-fit: scale-down;
     }
     .navigation {
       width: 100%;
     }
     &__left {
       width: 50%;
-      &-slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      &-wrap {
-        max-height: 500px;
-        &.swiper {
-          padding-left: 30px;
-          margin: 0;
-        }
-      }
-      &-pagination {
-        left: 0;
-        right: unset !important;
-        .swiper-pagination-bullet {
-          width: 10px;
-          height: 10px;
-          &-active {
-            background: var(--grey-color);
-          }
-        }
-      }
       &.skeleton {
         height: 500px;
       }
@@ -99,20 +74,13 @@
     &__list {
       display: flex;
     }
-    .swiper {
-      padding: 5px 30px;
-    }
     &__swiper-button {
       @include swiperArrowsIndexPage;
     }
-  }
-}
-
-@media only screen and (max-width: 1560px) {
-  .main {
-    .sert {
-      &__left {
-        // width: 593px;
+    .swiper-pagination {
+      display: none;
+      .swiper-pagination-bullet-active {
+        background: var(--grey-color);
       }
     }
   }
@@ -178,7 +146,10 @@
     .viewed {
       &__wrap {
         .swiper {
-          padding: 0;
+          padding-bottom: var(--paddingForCards);
+          &-pagination {
+            display: block;
+          }
         }
       }
     }
@@ -188,6 +159,7 @@
 @media only screen and (max-width: 767px) {
   .main {
     .sert {
+      margin-bottom: 40px;
       &__right {
         .input-wrap {
           width: 100%;
@@ -197,6 +169,12 @@
           margin: 0 auto;
           text-align: center;
         }
+        &-description {
+          margin-bottom: 40px;
+        }
+      }
+      &__left {
+        margin-bottom: 40px;
       }
     }
   }

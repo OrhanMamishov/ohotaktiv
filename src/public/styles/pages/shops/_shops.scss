@@ -2,9 +2,6 @@
   padding-bottom: 0;
   .categories {
     margin-bottom: 55px;
-    &__title {
-      margin-bottom: 80px;
-    }
     &__list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(auto, 280px));
@@ -56,10 +53,9 @@
     &__input {
       @include contentInput;
       margin-bottom: 30px;
-      padding: 18px 60px 18px 0;
       background-image: url("../../../img/search.svg");
       background-repeat: no-repeat;
-      background-position: 96% center;
+      background-position: right center;
     }
     &__list {
       @include contentScroll;
@@ -73,6 +69,9 @@
       &-button {
         &:focus {
           color: unset !important;
+        }
+        &::after {
+          right: 0;
         }
       }
       &-address {
@@ -88,7 +87,7 @@
       &-tel {
         @include fontSize14;
         display: block;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
       }
       &-link {
         @include fontSize14;
@@ -156,9 +155,6 @@
 @media only screen and (max-width: 1560px) {
   .main {
     .categories {
-      &__title {
-        margin-bottom: 60px;
-      }
       &__list {
         grid-template-columns: repeat(auto-fit, minmax(auto, 250px));
       }
@@ -236,20 +232,21 @@
 @media only screen and (max-width: 767px) {
   .main {
     .categories {
-      margin-bottom: 40px;
-      &__title {
-        margin-bottom: 40px;
-      }
-      &__list {
-        grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-      }
+      display: none;
     }
     .map {
       &__input {
         margin: 0 auto 37px auto;
       }
+      &__list {
+        height: unset;
+        padding: 0;
+      }
       &__left-column {
-        margin-bottom: 40px;
+        margin-bottom: 0;
+      }
+      &__right-column {
+        display: none;
       }
     }
   }

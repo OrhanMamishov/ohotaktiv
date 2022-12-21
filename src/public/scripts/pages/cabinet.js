@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   СМС-уведомления
                 </p>
                 <p class="cabinet__subscription-item-text">
-                  Информация о предстоящих акциях и скидках
+                  Информация о предстоящих акциях, скидках и новинках
                 </p>
                 <label class="switch">
                   <input type="checkbox" ${

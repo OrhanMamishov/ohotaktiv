@@ -174,7 +174,7 @@
           width: 427px;
           padding: 8px 0;
           &:not(:last-child) {
-            margin-bottom: 18px;
+            margin-bottom: 30px;
           }
           &.skeleton {
             border: none;
@@ -351,7 +351,7 @@
       }
       &-input {
         @include contentInput;
-        padding: 6px 80px 6px 0;
+        padding: 10px 80px 10px 0;
         &-wrap {
           position: relative;
           margin-bottom: 33px;
@@ -509,12 +509,6 @@
       &__left {
         &-block {
           padding: 15px 16px;
-          &-input {
-            padding: 12px 23px;
-            &:not(:last-child) {
-              margin-bottom: 15px;
-            }
-          }
           &-section {
             &-wrap {
               gap: 30px;

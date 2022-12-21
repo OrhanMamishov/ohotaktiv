@@ -145,9 +145,6 @@
           input {
             @include fontSize14;
           }
-          &:not(:last-child) {
-            margin-bottom: 50px;
-          }
         }
         &:nth-child(5) {
           .blank__form-title {
@@ -268,11 +265,6 @@
         }
         &-item {
           margin-bottom: 50px;
-          .input-wrap {
-            &:not(:last-child) {
-              margin-bottom: 30px;
-            }
-          }
         }
       }
     }

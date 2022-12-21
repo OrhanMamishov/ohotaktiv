@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="popup__wrap">
             <button class="popup__wrap-close"></button>
             <h2 class="popup__wrap-title">
-              Отклик на вакансию ${nameVacancy}
+              Отклик на вакансию <br> ${nameVacancy}
             </h2>
             <form action="#" class="popup__form">
               <div class="popup__personal-wrap">
@@ -64,12 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   <input class="popup__wrap-input" id="tel-form-input" type="tel" placeholder=" " required>
                   <label for="tel-form-input">Телефон</label>
                 </div>
-                <div class="input-wrap-file">
-                  <input name="file" type="file" id="input-wrap-file" class="input-wrap-file__input" accept=".pdf, .jpg, .doc, .docx" required>
-                  <label for="input-wrap-file">
-                    Прикрепить резюме
-                  </label>
-                </div>
               </div>
               <label class="checkbox__label">
                 Я даю согласие на обработку персональных данных</a>
@@ -84,26 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
       document.body.insertAdjacentHTML("beforeend", popupVacancyElement);
-      // закрытие формы
-      const popupVacancy = document.getElementById("popup-vacancy");
-      const closePopup = document.querySelector(".popup__wrap-close");
-      const backgroundPopup = document.querySelector(".popup__background");
-      closePopup.addEventListener("click", () => {
-        bodyScrollToggle();
-        popupVacancy.remove();
-      });
-      backgroundPopup.addEventListener("click", () => closePopup.click());
-      // закрытие формы
-      // выбор файлов
-      const inputFile = document.querySelector(".input-wrap-file__input");
-      const labelFile = inputFile.nextElementSibling;
-      inputFile.addEventListener("change", (e) => {
-        labelFile.textContent = "Выбран файл: ";
-        Object.values(e.target.files).forEach((el) => {
-          labelFile.textContent += el.name;
-        });
-      });
-      // выбор файлов
       // валидация
       const nameInput = document.getElementById("name-form-input");
       const surnameInput = document.getElementById("surname-form-input");

@@ -101,7 +101,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const headerMenu = document.querySelector(".header__menu");
   const headerCatalogWrap = document.querySelector(".header__catalog-wrap");
   const headerCatalog = document.querySelector(".header__catalog");
-  if (window.innerWidth < 1024) new Accordion(headerAccordion);
+  if (window.innerWidth < 1024)
+    new Accordion(headerAccordion, {
+      showMultiple: true,
+    });
   const IS_AUTHORIZED = userInfo.personal.ID !== null ? true : false;
   IS_AUTHORIZED ? updateCountGoods(userInfo) : updateCountGoods(userInfo);
   // const IS_AUTHORIZED = false;

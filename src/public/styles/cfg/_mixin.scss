@@ -118,6 +118,7 @@
   width: 100%;
   border-bottom: 1px solid var(--secondary-color);
   transition: border 0.2s ease;
+  padding: 10px 20px 10px 0;
   &::placeholder {
     color: var(--grey-color);
   }

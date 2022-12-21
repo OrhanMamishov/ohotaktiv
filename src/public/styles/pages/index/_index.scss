@@ -101,12 +101,16 @@
         @include fontSize15;
         margin-top: auto;
       }
+      &-img {
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+      }
     }
     &__img {
-      height: 100%;
-      object-fit: contain;
       &-wrap {
-        padding: 60px 30px 50px;
+        padding: 30px;
+        display: flex;
         margin-bottom: 10px;
         background-color: var(--cart-background-color);
       }
@@ -354,7 +358,7 @@
         }
       }
       .swiper {
-        padding-bottom: 51px;
+        padding-bottom: var(--paddingForCards);
       }
     }
     .bonuscard {
@@ -378,7 +382,7 @@
         }
       }
       .swiper {
-        padding-bottom: 41px;
+        padding-bottom: var(--paddingForCards);
       }
       &__item {
         &.swiper-slide-active {
@@ -403,7 +407,7 @@
         }
       }
       .swiper {
-        padding-bottom: 41px;
+        padding-bottom: var(--paddingForCards);
       }
     }
     .about {
@@ -424,7 +428,7 @@
         }
       }
       .swiper {
-        padding-bottom: 61px;
+        padding-bottom: var(--paddingForCards);
       }
     }
   }
@@ -472,7 +476,7 @@
     .popular {
       &__img {
         &-wrap {
-          padding: 43px 14px 7px 16px;
+          padding: 15px;
         }
       }
     }

@@ -62,11 +62,14 @@
         }
         &-open {
           display: none;
-          width: 35px;
-          height: 35px;
+          padding: 10px 15px 10px 40px;
+          border: 1px solid var(--secondary-color);
+          border-radius: 50px;
           background-image: url("../../../img/filter-icon.svg");
+          background-size: 15px;
           background-repeat: no-repeat;
-          background-position: center;
+          background-position: 15px;
+          background-color: transparent;
         }
       }
       &-list {
@@ -129,7 +132,12 @@
           max-height: 500px; // сделать гибкость
         }
         &.subcategory-list {
+          display: none;
           padding-left: 20px;
+          max-height: unset;
+          &.subcategory-active {
+            display: block;
+          }
         }
       }
       &-item {
@@ -319,23 +327,12 @@
 @media only screen and (max-width: 1365px) {
   .main {
     .detail {
-      &__title {
-        margin-right: 0;
-      }
-      &__wrap {
-        .detail__cards-filter-open {
-          display: inline-block;
-        }
-      }
-      &__subtitle {
-        &-wrap {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
+      .detail__cards-filter-open {
+        display: block;
       }
       &__columns {
         display: block;
+        margin-bottom: 0;
       }
       &__filters {
         opacity: 0;
@@ -365,11 +362,6 @@
       }
       &__cards {
         width: 100%;
-        &-filters {
-          .detail__cards-filter-open {
-            display: none;
-          }
-        }
       }
     }
   }
@@ -423,7 +415,7 @@
     .detail {
       &__cards {
         &-list {
-          gap: 15px;
+          gap: 25px 15px;
           .card-item {
             width: 47%;
           }
