@@ -29,7 +29,7 @@ module.exports = {
     blog: "./src/public/scripts/pages/blog.js",
     viewblog: "./src/public/scripts/pages/viewblog.js",
     shops: "./src/public/scripts/pages/shops.js",
-    liquidation: "./src/public/scripts/pages/liquidation.js",
+    new: "./src/public/scripts/pages/new.js",
     remington: "./src/public/scripts/pages/remington.js",
     article: "./src/public/scripts/pages/article.js",
     card: "./src/public/scripts/pages/card.js",
@@ -55,6 +55,7 @@ module.exports = {
     catalogview: "./src/public/scripts/pages/catalogview.js",
     result: "./src/public/scripts/pages/result.js",
     comissionview: "./src/public/scripts/pages/comissionview.js",
+    404: "./src/public/scripts/pages/404.js",
   },
   output: {
     path: path.resolve(__dirname, "./dist"),

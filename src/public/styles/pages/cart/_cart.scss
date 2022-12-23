@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   padding: 20px 0;
-  background-color: var(--white-color);
+  background-color: var(--cart-background-color);
   border-bottom: 1px solid #2d2a28;
   z-index: 1;
   &__wrap {
@@ -20,14 +20,10 @@
   }
   &__tel {
     @include fontSize14;
-    padding: 3px 12px;
-    background-color: var(--primary-color);
-    border-radius: 100px;
   }
 }
 .main {
   padding-top: 72px;
-  background-color: var(--cart-background-color);
   .cart {
     &__region {
       display: flex;
@@ -44,13 +40,13 @@
     &__columns {
       display: flex;
       align-items: flex-start;
-      gap: 35px;
     }
     &__left {
       flex: 1 1 auto;
+      padding-right: 61px;
+      border-right: 1px solid var(--grey-item-color);
       &-block {
         border-radius: 15px;
-        background-color: var(--white-color);
         &:not(:last-child) {
           margin-bottom: 35px;
         }
@@ -63,17 +59,19 @@
           }
         }
         &-card {
-          padding: 30px 40px;
+          padding: 35px 0;
           display: flex;
           align-items: center;
-          border-top: 1px solid var(--grey-item-color);
+          &:not(:last-child) {
+            border-bottom: 1px solid var(--grey-item-color);
+          }
         }
         &-img {
           border-radius: 10px;
           &-wrap {
-            max-width: 100px;
-            height: 100px;
-            margin-right: 24px;
+            max-width: 110px;
+            height: 110px;
+            margin-right: 25px;
             display: flex;
             align-items: center;
             border-radius: 10px;
@@ -85,9 +83,10 @@
         }
         &-description {
           max-width: 300px;
+          margin-right: 20px;
           &-text {
             @include fontSize14;
-            margin-bottom: 20px;
+            color: var(--grey-color);
             &.skeleton {
               width: 288px;
               height: 25px;
@@ -95,39 +94,34 @@
           }
           &-status {
             @include fontSize14;
-            display: inline-block;
-            color: var(--grey-form-color);
+            margin-bottom: 10px;
+            color: var(--green-color);
             &.skeleton {
               width: 288px;
               height: 25px;
             }
-          }
-          &-notavailable {
-            @include fontSize14;
-            display: inline-block;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            transition: color 0.2s ease;
-            &:hover {
-              color: var(--primary-color);
+            &.notavailable {
+              color: var(--red-color);
             }
           }
         }
         &-count {
           margin-left: auto;
-          width: 85px;
+          max-width: 140px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 8px 14px;
-          margin-right: 50px;
-          border-radius: 100px;
-          border: 1px solid var(--grey-form-color);
           &-input {
             @include fontSize14;
             padding-top: 2px;
             max-width: 40px;
             text-align: center;
+          }
+          &-button {
+            width: 35px;
+            height: 35px;
+            border-radius: 100%;
+            border: 1px solid var(--grey-item-color);
           }
           &.skeleton {
             width: 85px;
@@ -137,13 +131,10 @@
         }
         &-price {
           @include fontSize16;
-          width: 165px;
-          margin-bottom: 2px;
           font-weight: 800;
           span {
             @include fontSize14;
-            margin-right: 12px;
-            display: block;
+            margin-left: 15px;
             text-decoration: line-through;
             font-weight: 600;
           }
@@ -153,6 +144,7 @@
           }
         }
         &-delete {
+          margin-right: 20px;
           width: 20px;
           height: 19px;
           background-image: url("../../../img/remove.svg");
@@ -165,22 +157,23 @@
       margin-left: auto;
       position: sticky;
       top: 90px;
-      width: 457px;
+      width: 517px;
+      padding-left: 60px;
       border-radius: 15px;
       background-color: var(--white-color);
       &-title {
         @include fontSize20;
-        padding: 30px 40px;
+        padding: 20px 0;
         font-weight: 800;
-        border-bottom: 1px solid var(--grey-item-color);
+        border-bottom: 1px solid var(--secondary-color);
         &.skeleton {
           height: 93px;
         }
       }
       &-info {
-        padding: 30px 40px;
+        padding: 30px 0;
         &:first-child {
-          border-bottom: 1px solid var(--grey-item-color);
+          border-bottom: 1px solid var(--secondary-color);
         }
       }
       &-text {
@@ -220,8 +213,11 @@
         padding: 20px;
         margin-bottom: 20px;
         text-align: center;
+        background: transparent;
+        border: 2px solid var(--black-color);
         &.skeleton {
           height: 65px;
+          border: none;
         }
       }
       &-description {
@@ -249,12 +245,14 @@
       }
       &-text {
         @include fontSize14;
+        text-align: center;
       }
     }
   }
 }
 .footer {
   padding: 33px 0;
+  background-color: var(--cart-background-color);
   &__wrap {
     display: block;
     padding-top: 0 !important;
@@ -265,33 +263,8 @@
 @media only screen and (max-width: 1560px) {
   .main {
     .cart {
-      &__left {
-        &-block {
-          &-title {
-            padding: 30px 35px;
-          }
-          &-card {
-            padding: 30px 35px;
-          }
-          &-description {
-            max-width: 256px;
-          }
-          &-count {
-            margin-right: 27px;
-          }
-          &-prices {
-            width: 140px;
-          }
-        }
-      }
       &__right {
-        width: 430px;
-        &-title {
-          padding: 30px 35px;
-        }
-        &-info {
-          padding: 30px 35px;
-        }
+        width: 429px;
       }
     }
   }
@@ -306,32 +279,13 @@
       &__left {
         flex: unset;
         width: 100%;
+        padding-right: 0;
+        border: none;
       }
       &__right {
         width: 100%;
+        padding-left: 0;
         position: unset;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 1023px) {
-  .main {
-    .cart {
-      &__left {
-        &-block {
-          &-description {
-            max-width: 210px;
-          }
-          &-prices {
-            width: unset;
-          }
-          &-oldprice {
-            display: block;
-          }
-          &-count {
-            margin: 0 auto;
-          }
-        }
       }
     }
   }
@@ -374,59 +328,31 @@
       }
       &__left {
         &-block {
-          .checkbox__label {
-            margin-right: 0px;
+          &-delete {
+            margin-right: 15px;
           }
           &-img {
             &-wrap {
               margin-right: 15px;
-              margin-bottom: 15px;
-              height: 90px;
-              width: 90px;
-              order: 2;
+              max-width: 80px;
+              height: 80px;
             }
-          }
-          &-oldprice {
-            display: inline-block;
-            margin-right: 3px;
-          }
-          &-title {
-            padding: 15px 16px;
           }
           &-card {
-            padding: 15px 16px;
-            flex-wrap: wrap;
-            .checkbox__label {
-              order: 1;
-            }
-          }
-          &-prices {
-            order: 3;
-            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 65px;
           }
           &-count {
-            order: 4;
-            width: 100%;
-            max-width: 420px;
-            margin: 0 0 15px 0;
+            position: absolute;
+            bottom: 20px;
+            left: 130px;
           }
           &-description {
-            width: 100%;
-            max-width: unset;
-            order: 5;
-          }
-        }
-      }
-      &__right {
-        &-title {
-          padding: 15px 16px;
-        }
-        &-info {
-          padding: 15px 16px;
-        }
-        &-text {
-          &.text-bold {
-            margin-bottom: 20px;
+            width: 53%;
+            margin-right: 0;
+            &-status {
+              margin-bottom: 5px;
+            }
           }
         }
       }

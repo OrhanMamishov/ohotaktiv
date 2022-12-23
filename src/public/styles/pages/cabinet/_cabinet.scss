@@ -207,19 +207,21 @@
           display: flex;
           align-items: center;
           &-img {
-            margin-right: 50px;
             width: 116px;
             height: 116px;
             object-fit: contain;
+            mix-blend-mode: multiply;
+            &-wrap {
+              display: flex;
+              margin-right: 50px;
+              background-color: var(--cart-background-color);
+            }
           }
           &-status {
             display: flex;
             flex-direction: column;
             &-text {
               @include fontSize14;
-              &:last-child {
-                margin-top: 5px;
-              }
               span {
                 padding: 4px 10px;
                 border-radius: 100px;
@@ -235,20 +237,9 @@
                 background-color: var(--primary-color);
               }
             }
-          }
-          &-price {
-            @include fontSize18;
-            font-weight: 700;
-            &-wrap {
-              text-align: right;
-              width: 100px;
+            &-price {
+              @include fontSize18;
             }
-            &-text {
-              @include fontSize14;
-            }
-          }
-          &-count {
-            margin: 0 auto;
           }
           &:not(:last-child) {
             border-bottom: 1px solid var(--grey-item-color);
@@ -351,7 +342,9 @@
           &-panel {
             padding: 25px 30px;
             &-img {
-              margin-right: 30px;
+              &-wrap {
+                margin-right: 30px;
+              }
             }
             &-count {
               display: none;
@@ -562,13 +555,14 @@
           }
           &-panel {
             padding: 15px 20px 20px;
-            flex-wrap: wrap;
+            align-items: flex-start;
             &-img {
               width: 90px;
               height: 90px;
-              margin-right: 25px;
-              margin-bottom: 15px;
-              order: 1;
+              &-wrap {
+                margin-right: 25px;
+                order: 1;
+              }
             }
             &-price {
               &-wrap {
@@ -576,7 +570,6 @@
               }
             }
             &-status {
-              width: 100%;
               order: 3;
             }
           }

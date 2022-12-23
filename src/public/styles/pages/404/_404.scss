@@ -1,0 +1,128 @@
+.main {
+  padding-bottom: 0;
+  .notfound {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url("../../../img/404.jpg");
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__content {
+      max-width: 600px;
+      text-align: center;
+      padding: 90px 0 191px;
+    }
+    &__title {
+      margin-bottom: 40px;
+      color: var(--cart-background-color);
+    }
+    &__text {
+      @include fontSize16;
+      margin-bottom: 60px;
+      color: var(--cart-background-color);
+    }
+    &__link {
+      @include fontSize16;
+      color: var(--primary-color);
+    }
+    &__goods {
+      &-list {
+        display: flex;
+        gap: 26px;
+        text-align: left;
+      }
+      &-link {
+        display: block;
+      }
+      &-img {
+        border-radius: 12px;
+      }
+      &-text {
+        @include fontSize14;
+        color: var(--cart-background-color);
+      }
+      &-see {
+        @include fontSize14;
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1560px) {
+  .main {
+    .notfound {
+      &__content {
+        padding: 70px 0 166px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1365px) {
+  .main {
+    .notfound {
+      &__title {
+        margin-bottom: 30px;
+      }
+      &__text {
+        margin-bottom: 50px;
+      }
+      &__content {
+        padding: 70px 0 136px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    .notfound {
+      &__title {
+        margin-bottom: 30px;
+      }
+      &__text {
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .notfound {
+      &__title {
+        margin-bottom: 20px;
+      }
+      &__text {
+        margin-bottom: 40px;
+      }
+      &__goods {
+        &-list {
+          gap: 10px;
+        }
+      }
+      &__content {
+        padding: 27px 0 45px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .main {
+    .notfound {
+      &__goods {
+        &-item {
+          &:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

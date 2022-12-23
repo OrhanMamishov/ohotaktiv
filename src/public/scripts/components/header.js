@@ -8,22 +8,23 @@ import { showMessage } from "../functions/showMessage";
 import { getUserData } from "../functions/getUserData";
 import { updateCountGoods } from "../functions/updateCountGoods";
 
-if (!sessionStorage.getItem("catalog")) {
-  const catalogHighArray = fetch(
-    "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json",
-    {
-      method: "GET",
-    }
-  )
-    .then((res) => res.json())
-    .then((res) => {
-      const sortedCat = res.sort((a, b) =>
-        Number(a.sort) > Number(b.sort) ? 1 : -1
-      );
-      return sessionStorage.setItem("catalog", JSON.stringify(sortedCat));
-      // return res; // для теста памяти
-    });
-}
+// if (!sessionStorage.getItem("catalog")) {
+//   const catalogHighArray = fetch(
+//     "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json",
+//     {
+//       method: "GET",
+//     }
+//   )
+//     .then((res) => res.json())
+//     .then((res) => {
+//       console.log(res);
+//       const sortedCat = res.sort((a, b) =>
+//         Number(a.sort) > Number(b.sort) ? 1 : -1
+//       );
+//       return sessionStorage.setItem("catalog", JSON.stringify(sortedCat));
+//       // return res; // для теста памяти
+//     });
+// }
 
 document.addEventListener("DOMContentLoaded", async () => {
   await fetch("../header/")
@@ -39,40 +40,40 @@ document.addEventListener("DOMContentLoaded", async () => {
   while (headerAccordion.firstChild) {
     headerAccordion.removeChild(headerAccordion.firstChild);
   }
-  const catalogItems = JSON.parse(sessionStorage.catalog);
-  catalogItems.forEach((cat) => {
-    if (cat.name == "other") return;
-    const element = `
-      <div class="ac">
-        <h2 class="ac-header">
-          <a href="#" class="ac-link">${cat.name}</a>
-          <button type="button" class="ac-trigger"></button>
-        </h2>
-        <div class="ac-panel">
-          <div class="ac-panel-wrap">
-            <ul class="header__catalog-list">
-            ${
-              cat.depth
-                ? cat.depth
-                    .map((depth) => {
-                      return `
-                <li class="header__catalog-item">
-                  <a href="#" class="header__catalog-link">
-                    ${depth.name}
-                  </a>
-                </li>
-              `;
-                    })
-                    .join("")
-                : ``
-            }
-            </ul>
-          </div>
-        </div>
-      </div>
-    `;
-    headerAccordion.insertAdjacentHTML("beforeend", element);
-  });
+  // const catalogItems = JSON.parse(sessionStorage.catalog);
+  // catalogItems.forEach((cat) => {
+  //   if (cat.name == "other") return;
+  //   const element = `
+  //     <div class="ac">
+  //       <h2 class="ac-header">
+  //         <a href="#" class="ac-link">${cat.name}</a>
+  //         <button type="button" class="ac-trigger"></button>
+  //       </h2>
+  //       <div class="ac-panel">
+  //         <div class="ac-panel-wrap">
+  //           <ul class="header__catalog-list">
+  //           ${
+  //             cat.depth
+  //               ? cat.depth
+  //                   .map((depth) => {
+  //                     return `
+  //               <li class="header__catalog-item">
+  //                 <a href="#" class="header__catalog-link">
+  //                   ${depth.name}
+  //                 </a>
+  //               </li>
+  //             `;
+  //                   })
+  //                   .join("")
+  //               : ``
+  //           }
+  //           </ul>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   `;
+  //   headerAccordion.insertAdjacentHTML("beforeend", element);
+  // });
   const userInfo = await getUserData();
   console.log(userInfo);
   if (!localStorage.getItem("oa_choosed_city")) {

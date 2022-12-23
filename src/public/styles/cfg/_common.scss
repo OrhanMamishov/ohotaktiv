@@ -368,7 +368,11 @@ main {
     }
     &__description {
       &-price {
+        @include fontSize14;
         margin-bottom: 5px;
+        span {
+          font-size: 12px;
+        }
       }
       &-text {
         @include fontSize13;

@@ -24,7 +24,7 @@ async function refreshCart(data) {
   if (data == 0) {
     const element = `
       <div class="cart__empty">
-      <img class="cart__empty-img" src="../assets/img/basket.svg" alt="Пустая корзина" />
+      <img class="cart__empty-img" src="img/basket.svg" alt="Пустая корзина" />
         <p class="cart__empty-title">
           Ваша корзина пуста!
         </p>
@@ -43,129 +43,85 @@ async function refreshCart(data) {
   let countDiscount = data.isAvailable
     .map((item) => (item.startedPrice - item.oldPrice) * item.count)
     .reduce((prev, curr) => prev + curr, 0);
+  const goods = data.isAvailable.concat(data.isNotAvailable);
   const element = `
     <div class="cart__left">
-    ${
-      data.isAvailable.length
-        ? `
-        <div class="cart__left-block">
-        <p class="cart__left-block-title">Доступно для заказа</p>
-        ${data.isAvailable
-          .map((el) => {
-            return `
-            <div class="cart__left-block-card">
-              <div class="cart__left-block-img-wrap">
-                <img src="${el.img}" alt="${
-              el.name
-            }" class="cart__left-block-img">
-              </div>
-              <div class="cart__left-block-description">
-                <p class="cart__left-block-description-text">
-                  ${el.name}
-                </p>
-              </div>
-              <div class="cart__left-block-count">
-                <button class="cart__left-block-count-button subtract-count" data-step="1">
-                  -
-                </button>
-                <input class="cart__left-block-count-input" type="number" min="1" max="99999" value="${
-                  el.count
-                }">
-                <button class="cart__left-block-count-button append-count" data-step="1">
-                  +
-                </button>
-              </div>
+    ${goods
+      .map((el) => {
+        return `
+          <div class="cart__left-block-card">
+            <button id=${el.id} class="cart__left-block-delete"></button>
+            <div class="cart__left-block-img-wrap">
+              <img src="${el.img}" alt="${
+          el.name
+        }" class="cart__left-block-img">
+            </div>
+            <div class="cart__left-block-description">
               <p class="cart__left-block-price" data-price="${
                 el.startedPrice
-              }" data-old-price="${el.oldPrice}" data-price-now="${
-              el.PRICE[13]
-                ? Number(el.PRICE[13] * el.count)
-                : el.PRICE[5]
-                ? Number(el.PRICE[5]) * el.count
-                : Number(el.PRICE[1]) * el.count
-            }" ${
-              (el.PRICE[13] && el.PRICE[13] !== el.PRICE[1]) ||
-              (el.PRICE[5] && el.PRICE[5] !== el.PRICE[1])
-                ? `data-price-now-discount="${Number(el.PRICE[1]) * el.count}"`
-                : ``
-            }>
+              }" data-old-price="${el.oldPrice}" data-price-now="${Math.ceil(
+          el.PRICE[13]
+            ? Number(el.PRICE[13] * el.count)
+            : el.PRICE[5]
+            ? Number(el.PRICE[5]) * el.count
+            : Number(el.PRICE[1]) * el.count
+        )}" ${
+          (el.PRICE[13] && el.PRICE[13] !== el.PRICE[1]) ||
+          (el.PRICE[5] && el.PRICE[5] !== el.PRICE[1])
+            ? `data-price-now-discount="${Number(el.PRICE[1]) * el.count}"`
+            : ``
+        }>
                 ${
                   el.PRICE[13]
-                    ? numberWithSpaces(Number(el.PRICE[13]) * el.count)
+                    ? numberWithSpaces(
+                        Math.ceil(Number(el.PRICE[13]) * el.count)
+                      )
                     : el.PRICE[5]
-                    ? numberWithSpaces(Number(el.PRICE[5]) * el.count)
-                    : numberWithSpaces(Number(el.PRICE[1]) * el.count)
+                    ? numberWithSpaces(
+                        Math.ceil(Number(el.PRICE[5]) * el.count)
+                      )
+                    : numberWithSpaces(
+                        Math.ceil(Number(el.PRICE[1]) * el.count)
+                      )
                 } ₽ ${
-              (el.PRICE[13] && el.PRICE[13] !== el.PRICE[1]) ||
-              (el.PRICE[5] && el.PRICE[5] !== el.PRICE[1])
-                ? `<span>${numberWithSpaces(
-                    Number(el.PRICE[1]) * el.count
-                  )} ₽</span>`
-                : ``
-            }
+          (el.PRICE[13] && el.PRICE[13] !== el.PRICE[1]) ||
+          (el.PRICE[5] && el.PRICE[5] !== el.PRICE[1])
+            ? `<span>${numberWithSpaces(
+                Number(el.PRICE[1]) * el.count
+              )} ₽</span>`
+            : ``
+        }
               </p>
-              <button id=${el.id} class="cart__left-block-delete"></button>
-            </div>
-        `;
-          })
-          .join("")}
-      </div>`
-        : ``
-    }
-    ${
-      data.isNotAvailable.length
-        ? `
-        <div class="cart__left-block">
-        <p class="cart__left-block-title">Нет в наличии</p>
-        ${data.isNotAvailable
-          .map((el) => {
-            return `
-            <div class="cart__left-block-card">
-              <div class="cart__left-block-img-wrap">
-                <img src="${el.img}" alt="${
-              el.name
-            }" class="cart__left-block-img">
-              </div>
-              <div class="cart__left-block-description">
-                <p class="cart__left-block-description-text">
-                  ${el.name}
-                </p>
-              </div>
-              <div class="cart__left-block-count">
-                <button class="cart__left-block-count-button">
-                  -
-                </button>
-                <input class="cart__left-block-count-input" type="number" min="1" max="99999" value="${
-                  el.count
-                }" disabled>
-                <button class="cart__left-block-count-button">
-                  +
-                </button>
-              </div>
-              <p class="cart__left-block-price">
+              <p class="cart__left-block-description-status ${
+                Object.keys(el.available).length || el.warehouse > 0
+                  ? ``
+                  : `notavailable`
+              }">
                 ${
-                  el.PRICE[13]
-                    ? numberWithSpaces(Number(el.PRICE[13]) * el.count)
-                    : el.PRICE[5]
-                    ? numberWithSpaces(Number(el.PRICE[5]) * el.count)
-                    : numberWithSpaces(Number(el.PRICE[1]) * el.count)
-                } ₽ ${
-              (el.PRICE[13] && el.PRICE[13] !== el.PRICE[1]) ||
-              (el.PRICE[5] && el.PRICE[5] !== el.PRICE[1])
-                ? `<span>${numberWithSpaces(
-                    Number(el.PRICE[1]) * el.count
-                  )} ₽</span>`
-                : ``
-            }
+                  Object.keys(el.available).length || el.warehouse > 0
+                    ? `Доступно`
+                    : `Недоступно`
+                }
               </p>
-              <button id=${el.id} class="cart__left-block-delete"></button>
+              <p class="cart__left-block-description-text">
+                ${el.name}
+              </p>
             </div>
-        `;
-          })
-          .join("")}
-      `
-        : ``
-    }
+            <div class="cart__left-block-count">
+              <button class="cart__left-block-count-button subtract-count" data-step="1">
+                -
+              </button>
+              <input class="cart__left-block-count-input" type="number" min="1" max="99999" value="${
+                el.count
+              }">
+              <button class="cart__left-block-count-button append-count" data-step="1">
+                +
+              </button>
+            </div>
+          </div>
+      `;
+      })
+      .join("")}
     </div>
   </div>
   <div class="cart__right">
@@ -224,10 +180,10 @@ async function refreshCart(data) {
       e.target.previousElementSibling.value++;
       calculatePrices(
         e.target.previousElementSibling,
-        e.target.parentElement.nextElementSibling
+        e.target.parentElement.parentElement.children[2].children[0]
       );
       fetch(
-        `https://ohotaktiv.ru/12dev/new-design/pages/cart/cart.php?product_id=${e.target.parentElement.nextElementSibling.nextElementSibling.id}&quantity=${e.target.previousElementSibling.value}`
+        `https://ohotaktiv.ru/12dev/new-design/pages/cart/cart.php?product_id=${e.target.parentElement.parentElement.children[0].id}&quantity=${e.target.previousElementSibling.value}`
       );
     }
     if (e.target.classList.contains("subtract-count")) {
@@ -235,10 +191,10 @@ async function refreshCart(data) {
       e.target.nextElementSibling.value--;
       calculatePrices(
         e.target.nextElementSibling,
-        e.target.parentElement.nextElementSibling
+        e.target.parentElement.parentElement.children[2].children[0]
       );
       fetch(
-        `https://ohotaktiv.ru/12dev/new-design/pages/cart/cart.php?product_id=${e.target.parentElement.nextElementSibling.nextElementSibling.id}&quantity=${e.target.nextElementSibling.value}`
+        `https://ohotaktiv.ru/12dev/new-design/pages/cart/cart.php?product_id=${e.target.parentElement.parentElement.children[0].id}&quantity=${e.target.nextElementSibling.value}`
       );
     }
   });

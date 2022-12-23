@@ -2,8 +2,6 @@ import "../../styles/pages/order/style.scss";
 import { getUserData } from "../functions/getUserData";
 import Inputmask from "inputmask";
 import { numberWithSpaces } from "../functions/numberWithSpaces";
-import Choices from "choices.js";
-import "choices.js/public/assets/styles/choices.min.css";
 import { showMessage } from "../functions/showMessage";
 
 const choosedCity = localStorage.getItem("oa_choosed_city")
@@ -256,28 +254,26 @@ async function refreshOrder(data) {
               ${goods
                 .map((el) => {
                   return `
-                  <li class="order__left-block-cards-item" id="${
-                    el.id
-                  }" data-price="${el.startedPrice * el.count}">
-                    <div class="order__left-block-img-wrap">
-                      <img
-                        src="${el.img}"
-                        alt="${el.name}"
-                        class="order__left-block-img"
-                      />
-                    </div>
-                    <p class="order__left-block-cards-item-title">
-                      ${el.name}
-                    </p>
-                    <p class="order__left-block-cards-item-text">
-                      Кол-во: ${el.count}
-                    </p>
-                    <p class="order__left-block-cards-item-price">
-                      Цена: ${numberWithSpaces(
-                        el.startedPrice * el.count
-                      )} &#8381
-                    </p>
-                  </li>
+                    <li class="order__left-block-card" id="${
+                      el.id
+                    }" data-price="${el.startedPrice * el.count}">
+                      <div class="order__left-block-img-wrap">
+                        <img src="${el.img}" alt="${
+                    el.name
+                  }" class="order__left-block-img">
+                      </div>
+                      <div class="order__left-block-description">
+                        <p class="order__left-block-price">
+                        ${numberWithSpaces(el.startedPrice * el.count)} &#8381
+                        </p>
+                        <p class="order__left-block-description-text">
+                          ${el.name}
+                        </p>
+                        <p class="order__left-block-cards-item-text">
+                          Кол-во: ${el.count}
+                        </p>
+                      </div>
+                    </li>
                 `;
                 })
                 .join("")}
@@ -690,9 +686,7 @@ async function refreshOrder(data) {
                 );
                 const newPrice =
                   startedPrice - (startedPrice / 100) * res.value;
-                getElement.children[
-                  getElement.children.length - 1
-                ].innerHTML = `Цена: ${numberWithSpaces(
+                getElement.children[1].children[0].innerHTML = `${numberWithSpaces(
                   Math.ceil(newPrice)
                 )} &#8381;<span class="promo-discount">${numberWithSpaces(
                   startedPrice
@@ -751,8 +745,8 @@ async function refreshOrder(data) {
       const allDiscounts = document.querySelectorAll("[data-price-promo]");
       if (allDiscounts.length) {
         allDiscounts.forEach((el) => {
-          const span = el.children[el.children.length - 1];
-          const spanText = `Цена: ${numberWithSpaces(
+          const span = el.children[1].children[0];
+          const spanText = `${numberWithSpaces(
             el.getAttribute("data-price")
           )} &#8381`;
           span.innerHTML = spanText;
@@ -775,9 +769,7 @@ async function refreshOrder(data) {
 }
 
 function refreshPricesOnRightBlock(cancel) {
-  const pricesElements = document.querySelectorAll(
-    ".order__left-block-cards-item"
-  );
+  const pricesElements = document.querySelectorAll(".order__left-block-card");
   let pricesGoods = 0;
   pricesElements.forEach((el) => {
     pricesGoods += el.getAttribute("data-price-promo")

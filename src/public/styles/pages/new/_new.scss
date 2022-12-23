@@ -1,10 +1,7 @@
 .main {
-  .liquidation {
-    padding-top: 0;
-    &__banner {
-      margin-bottom: 70px;
-    }
+  .detail {
     &__columns {
+      margin-bottom: 100px;
       display: flex;
       justify-content: space-between;
       gap: 50px;
@@ -15,7 +12,14 @@
     }
     &__subtitle {
       @include fontSize14;
-      display: inline-block;
+      &-wrap {
+        display: inline-block;
+      }
+      &.skeleton {
+        margin-bottom: 40px;
+        width: 100px;
+        height: 25px;
+      }
     }
     &__filters {
       flex: 0 1 246px;
@@ -27,8 +31,14 @@
     &__cards {
       flex: 1 1 auto;
       width: 50%;
+      &-text {
+        @include fontSize14;
+      }
       &-filters {
+        @include contentScroll;
+        padding-bottom: 5px;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 20px;
         margin-bottom: 25px;
@@ -38,8 +48,7 @@
         position: relative;
         padding: 6px 38px 6px 20px;
         border-radius: 100px;
-        border: 1px solid var(--grey-form-color);
-        color: var(--grey-form-color);
+        background-color: var(--cart-background-color);
         &-close {
           position: absolute;
           top: 50%;
@@ -53,15 +62,34 @@
         }
         &-open {
           display: none;
-          width: 35px;
-          height: 35px;
+          padding: 10px 15px 10px 40px;
+          border: 1px solid var(--secondary-color);
+          border-radius: 50px;
           background-image: url("../../../img/filter-icon.svg");
+          background-size: 15px;
           background-repeat: no-repeat;
-          background-position: center;
+          background-position: 15px;
+          background-color: transparent;
         }
       }
       &-list {
-        margin-bottom: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        .goods-not-found {
+          &__wrap {
+            text-align: center;
+          }
+          &__text {
+            margin-bottom: 15px;
+          }
+        }
+        .swiper-slide {
+          width: 25%;
+          height: 100%;
+        }
+        .card-item__photo {
+          aspect-ratio: 1/1;
+        }
       }
       &-swiper-pagination {
         .swiper-pagination-bullet {
@@ -77,28 +105,47 @@
           }
         }
       }
+      &-item {
+        .card-item__photo {
+          mix-blend-mode: multiply; // убрать потом
+        }
+      }
     }
     &__filter {
+      &-all {
+        margin-bottom: 35px;
+      }
       &-title {
         @include fontSize18;
         margin-bottom: 20px;
+        &.skeleton {
+          width: 246px;
+          height: 28px;
+        }
       }
       &-list {
         @include contentScroll;
         max-height: 120px;
         overflow-x: hidden;
         &.category-list {
-          max-height: unset;
+          max-height: 500px; // сделать гибкость
         }
         &.subcategory-list {
-          margin-top: 25px;
-          margin-bottom: 25px;
-          color: var(--grey-form-color);
+          display: none;
+          padding-left: 20px;
+          max-height: unset;
+          &.subcategory-active {
+            display: block;
+          }
         }
       }
       &-item {
         &:not(:last-child) {
           margin-bottom: 5px;
+        }
+        &.skeleton {
+          width: 246px;
+          height: 25px;
         }
       }
       &-input {
@@ -110,7 +157,7 @@
         border-radius: 100px;
         &-wrap {
           position: relative;
-          .liquidation__filter-input {
+          .detail__filter-input {
             margin-bottom: 0;
             padding: 9px 25px 9px 50px;
           }
@@ -125,7 +172,7 @@
           transform: translate(0, -50%);
           &.symbol {
             left: unset;
-            right: 25px;
+            right: 20px;
           }
         }
       }
@@ -138,30 +185,10 @@
         background-color: transparent;
         border: 2px solid var(--black-color);
         border-radius: 100px;
-      }
-      &-contact {
-        position: relative;
-        padding-left: 22px;
-        &-text {
-          @include fontSize14;
-          margin-bottom: 5px;
-        }
-        &-button {
-          @include fontSize14;
-          font-weight: 700;
-          transition: color 0.2s ease;
-          &:hover {
-            color: var(--primary-color);
-          }
-        }
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 5px;
-          height: 100%;
-          background-color: var(--primary-color);
+        &.skeleton {
+          width: 246px;
+          height: 53px;
+          border: none;
         }
       }
       .choices {
@@ -263,11 +290,29 @@
   }
 }
 
+@media only screen and (max-width: 1439px) {
+  .main {
+    .detail {
+      &__cards {
+        &-list {
+          .card-item {
+            width: 33%;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1365px) {
   .main {
-    .liquidation {
+    .detail {
+      .detail__cards-filter-open {
+        display: block;
+      }
       &__columns {
         display: block;
+        margin-bottom: 0;
       }
       &__filters {
         opacity: 0;
@@ -297,9 +342,18 @@
       }
       &__cards {
         width: 100%;
-        &-filter {
-          &-open {
-            display: block;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1023px) {
+  .main {
+    .detail {
+      &__cards {
+        &-list {
+          gap: 30px;
+          .card-item {
+            width: 30%;
           }
         }
       }
@@ -308,15 +362,19 @@
 }
 @media only screen and (max-width: 767px) {
   .main {
-    .liquidation {
+    .detail {
+      &__subtitle {
+        &-wrap {
+          margin-bottom: 30px;
+        }
+      }
       &__cards {
-        margin-bottom: 30px;
         &-filter {
           display: none;
         }
         &-list {
+          gap: 20px;
           margin-bottom: 70px;
-          grid-row-gap: 20px;
         }
       }
       &__filters {
@@ -327,6 +385,20 @@
       }
       &__close {
         display: block;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 559px) {
+  .main {
+    .detail {
+      &__cards {
+        &-list {
+          gap: 25px 15px;
+          .card-item {
+            width: 47%;
+          }
+        }
       }
     }
   }

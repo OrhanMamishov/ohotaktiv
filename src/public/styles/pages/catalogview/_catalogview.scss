@@ -77,10 +77,8 @@
         flex-wrap: wrap;
         margin-bottom: 100px;
         .goods-not-found {
-          &__wrap {
-            text-align: center;
-          }
           &__text {
+            @include fontSize14;
             margin-bottom: 15px;
           }
         }
@@ -186,6 +184,13 @@
         background-color: transparent;
         border: 2px solid var(--black-color);
         border-radius: 100px;
+        &-text {
+          @include fontSize14;
+          font-weight: 700;
+        }
+        &:hover {
+          background: transparent;
+        }
         &.skeleton {
           width: 246px;
           height: 53px;

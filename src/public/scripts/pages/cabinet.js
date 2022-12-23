@@ -206,37 +206,55 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 order[1].cart
                                   ? order[1].cart
                                       .map((el) => {
+                                        `
+                                          <li class="order__left-block-card">
+                                            <div class="order__left-block-img-wrap">
+                                              <img src="${el.img}" alt="${
+                                          el.name
+                                        }" class="order__left-block-img">
+                                            </div>
+                                            <div class="order__left-block-description">
+                                              <p class="order__left-block-price">
+                                              ${numberWithSpaces(
+                                                el.startedPrice * el.count
+                                              )} &#8381
+                                              </p>
+                                              <p class="order__left-block-description-text">
+                                                ${el.name}
+                                              </p>
+                                              <p class="order__left-block-cards-item-text">
+                                                Кол-во: ${el.count}
+                                              </p>
+                                            </div>
+                                          </li>
+
+                                        `;
                                         return `
                                 <div class="cabinet__orders-item-panel">
-                                  <img
-                                    class="cabinet__orders-item-panel-img"
-                                    src="${serverName}${
+                                  <div class="cabinet__orders-item-panel-img-wrap">
+                                    <img
+                                      class="cabinet__orders-item-panel-img"
+                                      src="${serverName}${
                                           el.PREVIEW_PICTURE
                                             ? el.PREVIEW_PICTURE
                                             : `/local/templates/ohota2021/img/no_photo.png`
                                         }"
-                                    alt="${el.NAME}"
-                                  />
+                                      alt="${el.NAME}"
+                                    />
+                                  </div>
                                   <div class="cabinet__orders-item-panel-status">
-                                    <p class="cabinet__orders-item-panel-status-text">
-                                      Дата доставки: тут дата доставки
-                                    </p>
-                                    <p class="cabinet__orders-item-panel-status-text">
-                                      Способ доставки: в пункт выдачи
-                                    </p>
-                                  </div>
-                                  <div class="cabinet__orders-item-panel-count">
-                                    <p class="cabinet__orders-item-panel-text">${Number(
-                                      el.QUANTITY
-                                    )} шт.</p>
-                                  </div>
-                                  <div class="cabinet__orders-item-panel-price-wrap">
-                                    <p class="cabinet__orders-item-panel-price">
+                                    <p class="cabinet__orders-item-panel-status-price">
                                       ${numberWithSpaces(
                                         Number(el.FINAL_PRICE) *
                                           Number(el.QUANTITY)
                                       )} &#8381;
                                     </p>
+                                    <p class="cabinet__orders-item-panel-status-text">
+                                      ${el.NAME}
+                                    </p>
+                                    <p class="cabinet__orders-item-panel-status-text">Кол-во: ${Number(
+                                      el.QUANTITY
+                                    )} шт.</p>
                                   </div>
                                 </div>
                                 `;
