@@ -8,14 +8,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const serverName = "https://ohotaktiv.ru";
   const baseUrl = document.location.href;
   const catalogHighArray = await fetch(
-    "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json",
+    "https://ohotaktiv.ru/12dev/new-design/pages/catalog/gentwo/sections/menu.json",
     {
       method: "GET",
     }
   )
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
       return refreshCatalog(res);
     });
 
@@ -52,167 +51,35 @@ document.addEventListener("DOMContentLoaded", async () => {
                       class="catalog__img"
                     />
                   </div>
-                  <div class="catalog__accordion accordion-container">
-                    <div class="ac">
-                      <h2 class="ac-header">
-                        <a href="../catalogview/?section=${list.url.replace(
-                          "/catalog",
-                          ""
-                        )}" class="catalog__link title"> ${list.name} </a>
-                        <button type="button" class="ac-trigger"></button>
-                        </h2>
-                        <div class="ac-panel">
-                          <div class="ac-panel-wrap">
-                          ${
-                            list.depth
-                              ? list.depth
-                                  .map((el) => {
-                                    if (el.depth) {
-                                      el.depth.sort((a, b) =>
-                                        Number(a.sort) > Number(b.sort) ? 1 : -1
-                                      );
-                                      return `
-                                  <div class="catalog__accordion accordion-container">
-                                    <div class="ac">
-                                      <h2 class="ac-header">
-                                        <a href="../catalogview/?section=${el.url.replace(
-                                          "/catalog",
-                                          ""
-                                        )}" class="catalog__link subtitle"> ${
-                                        el.name
-                                      } </a>
-                                      <button type="button" class="ac-trigger"></button>
-                                      </h2>
-                                      <div class="ac-panel">
-                                        <div class="ac-panel-wrap">
-                                          ${el.depth
-                                            .map((firstDepth) => {
-                                              if (firstDepth.depth) {
-                                                firstDepth.depth.sort((a, b) =>
-                                                  Number(a.sort) >
-                                                  Number(b.sort)
-                                                    ? 1
-                                                    : -1
-                                                );
-                                                return `
-                                                  <div class="catalog__accordion accordion-container">
-                                                    <div class="ac">
-                                                      <h2 class="ac-header">
-                                                      <a href="../catalogview/?section=${firstDepth.url.replace(
-                                                        "/catalog",
-                                                        ""
-                                                      )}" class="catalog__link subtitle"> ${
-                                                  firstDepth.name
-                                                } </a>
-                                                        <button type="button" class="ac-trigger"></button>
-                                                      </h2>
-                                                      <div class="ac-panel">
-                                                        <div class="ac-panel-wrap">
-                                                          ${firstDepth.depth
-                                                            .map(
-                                                              (secondDepth) => {
-                                                                if (
-                                                                  secondDepth.depth
-                                                                ) {
-                                                                  secondDepth.depth.sort(
-                                                                    (a, b) =>
-                                                                      Number(
-                                                                        a.sort
-                                                                      ) >
-                                                                      Number(
-                                                                        b.sort
-                                                                      )
-                                                                        ? 1
-                                                                        : -1
-                                                                  );
-                                                                  return `
-                                                                    <div class="catalog__accordion accordion-container">
-                                                                      <div class="ac">
-                                                                        <h2 class="ac-header">
-                                                                        <a href="../catalogview/?section=${secondDepth.url.replace(
-                                                                          "/catalog",
-                                                                          ""
-                                                                        )}" class="catalog__link subtitle"> ${
-                                                                    secondDepth.name
-                                                                  } </a>
-                                                                          <button type="button" class="ac-trigger"></button>
-                                                                        </h2>
-                                                                        <div class="ac-panel">
-                                                                          <div class="ac-panel-wrap">
-                                                                          ${secondDepth.depth
-                                                                            .map(
-                                                                              (
-                                                                                thirdDepth
-                                                                              ) => {
-                                                                                return `
-                                                                                <a href="../catalogview/?section=${thirdDepth.url.replace(
-                                                                                  "/catalog",
-                                                                                  ""
-                                                                                )}" class="catalog__link">${
-                                                                                  thirdDepth.name
-                                                                                }</a>
-                                                                              `;
-                                                                              }
-                                                                            )
-                                                                            .join(
-                                                                              ""
-                                                                            )}
-                                                                          </div>
-                                                                        </div>
-                                                                      </div>
-                                                                    </div>
-                                                                  `;
-                                                                } else {
-                                                                  return `
-                                                                  <a href="../catalogview/?section=${secondDepth.url.replace(
-                                                                    "/catalog",
-                                                                    ""
-                                                                  )}" class="catalog__link">${
-                                                                    secondDepth.name
-                                                                  }</a>
-                                                                `;
-                                                                }
-                                                              }
-                                                            )
-                                                            .join("")}
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                `;
-                                              } else {
-                                                return `
-                                                <a href="../catalogview/?section=${firstDepth.url.replace(
-                                                  "/catalog",
-                                                  ""
-                                                )}" class="catalog__link">${
-                                                  firstDepth.name
-                                                }</a>
-                                              `;
-                                              }
-                                            })
-                                            .join("")}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                `;
-                                    } else {
-                                      return `
-                                  <a href="../catalogview/?section=${el.url.replace(
-                                    "/catalog",
-                                    ""
-                                  )}" class="catalog__link">${el.name}</a>
-                                `;
-                                    }
-                                  })
-                                  .join("")
-                              : ""
-                          }
-                          </div>
-                        </div>
-                    </div>
-                  </div>
+                  <a href="${list.code}" class="catalog__link title"> ${
+                list.name
+              } </a>
+                  ${
+                    list.depth
+                      ? `
+                    <ul class="catalog__depths-list">
+                      ${list.depth
+                        .map((el, index) => {
+                          return `
+                            <li class="catalog__depths-item ${
+                              index > 9 ? "none" : ""
+                            }">
+                              <a href="${
+                                el.code
+                              }" class="catalog__depths-link"> ${el.name} </a>
+                            </li>
+                            ${
+                              index == 9 && list.depth[10]
+                                ? `<li class="catalog__depths-item"><button class="catalog__more">Еще категории</button></li>`
+                                : ``
+                            }
+                          `;
+                        })
+                        .join("")}
+                    </ul>
+                  `
+                      : ``
+                  }
                 </li>
                 `;
             })
@@ -228,6 +95,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     const allAccordions = document.querySelectorAll(".accordion-container");
     allAccordions.forEach((accordion) => {
       new Accordion(accordion);
+    });
+    const catalogElement = document.querySelector("section.catalog");
+    catalogElement.addEventListener("click", (e) => {
+      if (e.target.className == "catalog__more") {
+        for (let item of e.target.parentElement.parentElement.children) {
+          if (item.classList.contains("none")) {
+            item.classList.remove("none");
+          }
+        }
+        e.target.parentElement.remove();
+      }
+      if (
+        e.target.classList.contains("catalog__link") ||
+        e.target.classList.contains("catalog__depths-link")
+      ) {
+        e.preventDefault();
+        console.log(e.target);
+      }
     });
   }
 });
