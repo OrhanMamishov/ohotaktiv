@@ -6,7 +6,17 @@
       grid-gap: 35px;
       justify-content: center;
     }
+    &__img {
+      display: block;
+      transition: transform 0.2s ease;
+    }
     &__item {
+      overflow: hidden;
+      &:hover {
+        .sales__img {
+          transform: scale(0.98);
+        }
+      }
       &.skeleton {
         width: 288px;
         height: 211px;

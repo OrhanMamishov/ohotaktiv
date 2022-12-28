@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!anchorWithout) return;
       const element = document.getElementById(anchorWithout);
       window.scroll({
-        top: element.offsetTop - 147,
+        top: element.offsetTop - 140,
         behavior: "smooth",
       });
     });

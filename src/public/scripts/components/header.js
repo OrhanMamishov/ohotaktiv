@@ -7,24 +7,7 @@ import Inputmask from "inputmask";
 import { showMessage } from "../functions/showMessage";
 import { getUserData } from "../functions/getUserData";
 import { updateCountGoods } from "../functions/updateCountGoods";
-
-// if (!sessionStorage.getItem("catalog")) {
-//   const catalogHighArray = fetch(
-//     "https://ohotaktiv.ru/12dev/new-design/pages/catalog/sections/menu.json",
-//     {
-//       method: "GET",
-//     }
-//   )
-//     .then((res) => res.json())
-//     .then((res) => {
-//       console.log(res);
-//       const sortedCat = res.sort((a, b) =>
-//         Number(a.sort) > Number(b.sort) ? 1 : -1
-//       );
-//       return sessionStorage.setItem("catalog", JSON.stringify(sortedCat));
-//       // return res; // для теста памяти
-//     });
-// }
+import { numberWithSpaces } from "../functions/numberWithSpaces";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await fetch("../header/")
@@ -34,47 +17,66 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then((data) => {
       document.querySelector("header").innerHTML = data;
     });
+  const allLinks = document.querySelectorAll(".header__pages-link");
+  allLinks.forEach((link) => {
+    if (link.href == document.location) {
+      link.classList.add("is-here");
+    }
+  });
   const headerAccordion = document.querySelector(
     ".header__accordion-container"
   );
   while (headerAccordion.firstChild) {
     headerAccordion.removeChild(headerAccordion.firstChild);
   }
-  // const catalogItems = JSON.parse(sessionStorage.catalog);
-  // catalogItems.forEach((cat) => {
-  //   if (cat.name == "other") return;
-  //   const element = `
-  //     <div class="ac">
-  //       <h2 class="ac-header">
-  //         <a href="#" class="ac-link">${cat.name}</a>
-  //         <button type="button" class="ac-trigger"></button>
-  //       </h2>
-  //       <div class="ac-panel">
-  //         <div class="ac-panel-wrap">
-  //           <ul class="header__catalog-list">
-  //           ${
-  //             cat.depth
-  //               ? cat.depth
-  //                   .map((depth) => {
-  //                     return `
-  //               <li class="header__catalog-item">
-  //                 <a href="#" class="header__catalog-link">
-  //                   ${depth.name}
-  //                 </a>
-  //               </li>
-  //             `;
-  //                   })
-  //                   .join("")
-  //               : ``
-  //           }
-  //           </ul>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   `;
-  //   headerAccordion.insertAdjacentHTML("beforeend", element);
-  // });
+  const catalogHighArray = await fetch(
+    "https://ohotaktiv.ru/12dev/new-design/pages/catalog/gentwo/sections/menu.json",
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      res.sort((a, b) => (Number(a.sort) > Number(b.sort) ? 1 : -1));
+      res.forEach((cat) => {
+        if (cat.name == "other") return;
+        const element = `
+          <div class="ac">
+            <h2 class="ac-header">
+              <a href="../catalog/?section=${cat.code}" class="ac-link">${
+          cat.name
+        }</a>
+              <button type="button" class="ac-trigger"></button>
+            </h2>
+            <div class="ac-panel">
+              <div class="ac-panel-wrap">
+                <ul class="header__catalog-list">
+                ${
+                  cat.depth
+                    ? cat.depth
+                        .map((depth) => {
+                          return `
+                    <li class="header__catalog-item">
+                      <a href="../catalog/?section=${depth.code}" class="header__catalog-link">
+                        ${depth.name}
+                      </a>
+                    </li>
+                  `;
+                        })
+                        .join("")
+                    : ``
+                }
+                </ul>
+              </div>
+            </div>
+          </div>
+        `;
+        headerAccordion.insertAdjacentHTML("beforeend", element);
+      });
+    });
+
   const userInfo = await getUserData();
+  const cityName = document.querySelector(".header__city");
   console.log(userInfo);
   if (!localStorage.getItem("oa_choosed_city")) {
     const userCity = await fetch(
@@ -91,7 +93,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     )
       .then((res) => res.json())
       .then((res) => {
-        const cityName = document.querySelector(".header__city");
         if (res.location.data.city) {
           cityName.textContent = res.location.data.city;
           localStorage.setItem(
@@ -103,6 +104,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           localStorage.setItem("oa_choosed_city", JSON.stringify("Москва"));
         }
       });
+  } else {
+    cityName.textContent = JSON.parse(localStorage.getItem("oa_choosed_city"));
   }
   const header = document.querySelector(".header");
   const headerMenuWrap = document.querySelector(".header__menu-wrap");
@@ -115,7 +118,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   const IS_AUTHORIZED = userInfo.personal.ID !== null ? true : false;
   IS_AUTHORIZED ? updateCountGoods(userInfo) : updateCountGoods(userInfo);
-  // const IS_AUTHORIZED = false;
   header.addEventListener("click", (e) => {
     if (e.target.className == "header__status") {
       bodyScrollToggle();
@@ -143,91 +145,195 @@ document.addEventListener("DOMContentLoaded", async () => {
           inputPopup.classList.remove("is-not-valid");
         e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
       });
-      buttonPopup.addEventListener("click", () => {
+      buttonPopup.addEventListener("click", async () => {
         if (inputPopup.value.length < 6)
           return inputPopup.classList.add("is-not-valid");
+        await fetch(
+          `https://ohotaktiv.ru/12dev/order_status/?order_id=${inputPopup.value}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            const element = `
+              <div class="popup__wrap">
+                <button class="popup__wrap-close"></button>
+                <div class="popup__result-header">
+                  <p class="popup__result-title">
+                    Заказ № ${inputPopup.value}
+                  </p>
+                  <p class="popup__result-subtitle">
+                    Создан ${res.DATE_INSERT}
+                  </p>
+                </div>
+                <div class="popup__result-body">
+                  <p class="popup__result-text">
+                    Статус
+                  </p>
+                  <p class="popup__result-subtext">
+                    ${res.status}
+                  </p>
+                  <p class="popup__result-text">
+                    Оплата
+                  </p>
+                  <p class="popup__result-statuspay">
+                    ${res.PAYED}<span>${numberWithSpaces(
+              res.PRICE
+            )} &#8381;</span>
+                  </p>
+                </div>
+              </div>
+            `;
+            document.querySelector(".popup__wrap").remove();
+            popupStatus.insertAdjacentHTML("beforeend", element);
+          });
       });
     }
     if (e.target.className == "header__city") {
       bodyScrollToggle();
+      const currentCityList = [
+        {
+          name: "Москва",
+          id: 1,
+        },
+        {
+          name: "Санкт-Петербург",
+          id: 2,
+        },
+        {
+          name: "Новосибирск",
+          id: 3,
+        },
+        {
+          name: "Екатеринбург",
+          id: 4,
+        },
+        {
+          name: "Казань",
+          id: 5,
+        },
+        {
+          name: "Нижний Новгород",
+          id: 6,
+        },
+        {
+          name: "Краснодар",
+          id: 7,
+        },
+        {
+          name: "Красноярск",
+          id: 1,
+        },
+      ];
       const popupCityElement = `
           <div id="popup-city" class="popup">
             <div class="popup__background"></div>
             <div class="popup__wrap">
               <button class="popup__wrap-close"></button>
-              <div class="popup__wrap-top">
-                <p class="popup__wrap-top-title">
-                  Выбор города
-                </p>
-                <p class="popup__wrap-top-text">
-                  Ваш город Кострома?
-                </p>
-                <div class="popup__wrap-button-wrap">
-                  <button id="city-confirm" class="popup__wrap-button">
-                    Да, верно
-                  </button>
-                  <button id="city-change" class="popup__wrap-button">
-                    Нет, изменить
-                  </button>
-                </div>
-              </div>
               <div class="choose-cities__wrap">
                 <p class="popup__wrap-top-title">
                   Выберите свой город
                 </p>
                 <input type="text" class="choose-cities__input" placeholder="Начните вводить название города">
-                <ul class="choose-cities__list">
-                  <li class="choose-cities__item">
-                    <input class="radio__input" type="radio" id="city-1" name="city">
-                    <label for="city-1">Кострома</label>
-                  </li>
-                  <li class="choose-cities__item">
-                    <input class="radio__input" type="radio" id="city-2" name="city">
-                    <label for="city-2">Иваново</label>
-                  </li>
-                  <li class="choose-cities__item">
-                    <input class="radio__input" type="radio" id="city-3" name="city">
-                    <label for="city-3">Мурманск</label>
-                  </li>
+                <ul class="choose-cities__list initial">
+                ${Object.values(currentCityList)
+                  .map((city) => {
+                    return `
+                    <li class="choose-cities__item">
+                      <input class="radio__input" type="radio" id="${city.id}" name="city" data-city="${city.name}">
+                      <label for="${city.id}">${city.name}</label>
+                    </li>
+                  `;
+                  })
+                  .join("")}
                 </ul>
               </div>
             </div>
           </div>
         `;
       document.body.insertAdjacentHTML("beforeend", popupCityElement);
-      const topPopup = document.querySelector(".popup__wrap-top");
-      const chooseWrap = document.querySelector(".choose-cities__wrap");
-      const cityChangeButton = document.getElementById("city-change");
-      cityChangeButton.addEventListener("click", () => {
-        topPopup.style.display = "none";
-        chooseWrap.style.display = "block";
-        const chooseCitiesItems = document.querySelectorAll(
-          ".choose-cities__item"
-        );
-        chooseCitiesItems.forEach((el) => {
-          el.addEventListener("click", () => {
-            const cityText = document.querySelector(".popup__wrap-top-text");
-            cityText.textContent = `Ваш город ${el.children[1].textContent}?`;
-            topPopup.style.display = "block";
-            chooseWrap.style.display = "none";
-          });
-        });
-        const cityInput = document.querySelector(".choose-cities__input");
-        cityInput.addEventListener("input", (e) => {
-          e.currentTarget.value = e.currentTarget.value.replace(
-            /[^а-я, ^А-Я, '']/,
-            ""
+      const chooseCitiesList = document.querySelector(
+        ".choose-cities__list.initial"
+      );
+      const chooseCitiesInput = document.querySelector(".choose-cities__input");
+      const chooseCitiesWrap = document.querySelector(".choose-cities__wrap");
+      let fetchAddress;
+      chooseCitiesInput.addEventListener("input", () => {
+        clearTimeout(fetchAddress);
+        if (chooseCitiesInput.value.length > 2) {
+          fetchAddress = setTimeout(async () => {
+            await fetch(
+              "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
+              {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                  Authorization:
+                    "Token " + "6469d62ecc3146040716bb2321fdd7559f318eaa",
+                },
+                body: JSON.stringify({
+                  query: chooseCitiesInput.value,
+                  from_bound: { value: "city" },
+                  to_bound: { value: "city" },
+                }),
+              }
+            )
+              .then((res) => res.json())
+              .then((res) => {
+                if (res.suggestions.length) {
+                  chooseCitiesList.style.display = "none";
+                  const element = `
+                    <ul class="choose-cities__list custom">
+                      ${res.suggestions
+                        .map((el) => {
+                          return `
+                          <li class="choose-cities__item">
+                            <input class="radio__input" type="radio" id="${el.data.city_kladr_id}" name="city" data-city="${el.data.city}">
+                            <label for="${el.data.city_kladr_id}">${el.data.city}, <span>${el.data.region_with_type}</span></label>
+                          </li>
+                        `;
+                        })
+                        .join("")}
+                    </ul>
+                  `;
+                  const chooseCitiesCustom = document.querySelector(
+                    ".choose-cities__list.custom"
+                  );
+                  if (chooseCitiesCustom) chooseCitiesCustom.remove();
+                  chooseCitiesWrap.insertAdjacentHTML("beforeend", element);
+                  console.log(res);
+                } else {
+                  const chooseCitiesCustom = document.querySelector(
+                    ".choose-cities__wrap.list"
+                  );
+                  if (chooseCitiesCustom) chooseCitiesCustom.remove();
+                  chooseCitiesList.style.display = "block";
+                }
+              });
+          }, 1000);
+        } else {
+          const chooseCitiesCustom = document.querySelector(
+            ".choose-cities__list.custom"
           );
-          chooseCitiesItems.forEach((el) => {
-            if (
-              !el.children[1].textContent.startsWith(ucFirst(cityInput.value))
-            ) {
-              el.style.display = "none";
-            } else {
-              el.style.display = "block";
-            }
-          });
-        });
+          if (chooseCitiesCustom) chooseCitiesCustom.remove();
+          chooseCitiesList.style.display = "block";
+        }
+      });
+      chooseCitiesWrap.addEventListener("click", (e) => {
+        if (e.target.className == "radio__input") {
+          cityName.textContent = e.target.getAttribute("data-city");
+          localStorage.setItem(
+            "oa_choosed_city",
+            JSON.stringify(e.target.getAttribute("data-city"))
+          );
+          document.querySelector(".popup__wrap-close").click();
+        }
       });
     }
     if (e.target.className == "header__openmenu") {
@@ -433,6 +539,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                       "success"
                     );
                     popupAuthorize.remove();
+                    setTimeout(() => {
+                      document.location.reload();
+                    }, 1000);
                   }
                   if (res.error) {
                     e.target.removeAttribute("disabled");
@@ -497,7 +606,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               )
                 .then((res) => res.json())
                 .then((res) => {
-                  console.log(res);
                   if (res.success) {
                     showMessage(
                       "Вы успешно зарегистрированы!",

@@ -59,8 +59,22 @@ export function generateCard(card, buttons, isCatalog, userData) {
             }"
           />
           <div class="card-item__photo-texts">
-            <p class="card-item__photo-text new">Что то</p>
-            <p class="card-item__photo-text discount">-10%</p>
+          ${
+            card.properties && card.properties.LABELS
+              ? `
+          <p class="card-item__photo-text">${
+            card.properties.LABELS.VALUE == "est-skidka"
+              ? "Скидка"
+              : card.properties.LABELS.VALUE == "novinki"
+              ? "Новинка"
+              : card.properties.LABELS.VALUE == "hit"
+              ? "Хит"
+              : ""
+          }</p>
+          `
+              : ``
+          }
+
           </div>
         </div>
         <div class="card-item__description-wrap">

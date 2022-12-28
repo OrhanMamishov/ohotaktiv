@@ -24,7 +24,7 @@ async function refreshCart(data) {
   if (data == 0) {
     const element = `
       <div class="cart__empty">
-      <img class="cart__empty-img" src="img/basket.svg" alt="Пустая корзина" />
+      <img class="cart__empty-img" src="../../assets/img/basket.svg" alt="Пустая корзина" />
         <p class="cart__empty-title">
           Ваша корзина пуста!
         </p>

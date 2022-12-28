@@ -44,15 +44,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         ? Object.keys(userInfo.favorites).includes(idGood)
         : false
       : false;
+    const breadcrumds = res.breadcrumb.sort((a, b) =>
+      Number(a.SORT) > Number(b.SORT) ? 1 : -1
+    );
     const element = `
       <div class="card__wrap container">
         <nav class="navigation">
           <ul class="navigation__list">
-            <li class="navigation__item">
-              <a href="#" class="navigation__link back">
-                Назад
-              </a>
-            </li>
             <li class="navigation__item">
               <a href="#" class="navigation__link">
                 Главная
@@ -63,11 +61,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                 Каталог
               </a>
             </li>
-            <li class="navigation__item">
-              <a href="#" class="navigation__link">
-                Огнестрельное оружие
-              </a>
-            </li>
+            ${breadcrumds
+              .map((el) => {
+                return `
+                <li class="navigation__item">
+                  <a href="../catalog/?section=${el.FILE}" class="navigation__link">
+                    ${el.NAME}
+                  </a>
+                </li>
+              `;
+              })
+              .join("")}
           </ul>
         </nav>
         <div class="card__left">
@@ -99,8 +103,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             <div class="card__left-infoblock">
             ${
               res.properties &&
-              res.properties["ИМ Лицензия"] &&
-              res.properties["ИМ Лицензия"] == "true"
+              res.properties.system &&
+              res.properties.system["ИМ Лицензия"] &&
+              res.properties.system["ИМ Лицензия"] == "true"
                 ? `
                 <p class="card__left-infoblock-text license">
                   Лицензионный товар
@@ -281,10 +286,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.target.className == "card-item__photo-button card favourite " ||
         e.target.className == "card-item__photo-button card favourite is-in"
       ) {
-        e.target.classList.toggle("is-in");
-        let userInfo = await getUserData();
         if (userInfo.personal.ID == null) {
+          document.querySelector(".header__action-link.cabinet").click();
         } else {
+          e.target.classList.toggle("is-in");
           await fetch(
             `https://ohotaktiv.ru/local/ajax/fav_2.php?p_id=${idGood}`,
             {
@@ -334,13 +339,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
     Fancybox.bind('[data-fancybox="gallery"]', {
-      animated: false,
+      animated: true,
       showClass: false,
       hideClass: false,
       click: false,
       dragToClose: false,
       Image: {
         zoom: false,
+        Panzoom: {
+          zoomFriction: 0.7,
+          maxScale: function () {
+            return 3;
+          },
+        },
       },
       Toolbar: {
         display: [{ id: "counter", position: "center" }, "close"],
@@ -534,11 +545,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                                   ${review.author}
                                 </p>
                                 <div class="not-clicked-rate-wrap">
-                                  <span class="active"></span>
-                                  <span class="active"></span>
-                                  <span class="active"></span>
-                                  <span class="active"></span>
-                                  <span></span>
+                                  <span class="${
+                                    review.stars > 0 ? "active" : ""
+                                  }"></span>
+                                  <span class="${
+                                    review.stars > 1 ? "active" : ""
+                                  }"></span>
+                                  <span class="${
+                                    review.stars > 2 ? "active" : ""
+                                  }"></span>
+                                  <span class="${
+                                    review.stars > 3 ? "active" : ""
+                                  }"></span>
+                                  <span class="${
+                                    review.stars > 4 ? "active" : ""
+                                  }"></span>
                                 </div>
                               </div>
                               <p class="description__review-comment">
@@ -555,43 +576,79 @@ document.addEventListener("DOMContentLoaded", async () => {
                   </ul>
                   <div class="description__review-result">
                     <div class="not-clicked-rate-wrap">
-                      <p class="not-clicked-rate-karma">Средняя оценка 4.5/5</p>
+                      <p class="not-clicked-rate-karma">Средняя оценка ${
+                        res.reviews.reduce(
+                          (a, b) =>
+                            a.stars ? a.stars : 0 + b.stars ? b.stars : 0,
+                          0
+                        ) / res.reviews.length
+                      }/5</p>
                     </div>
                     <div class="description__review-starsby">
                       <div class="review-row">
                         <p class="label">5 звезд</p>
                         <div class="percent-line">
-                          <div class="line"></div>
+                          <div class="line" style="width: ${
+                            (res.reviews.filter((el) => el.stars == 5).length /
+                              res.reviews.length) *
+                            100
+                          }%;"></div>
                         </div>
-                        <div class="review-row-count">8</div>
+                        <div class="review-row-count">${
+                          res.reviews.filter((el) => el.stars == 5).length
+                        }</div>
                       </div>
                       <div class="review-row">
                         <p class="label">4 звезды</p>
                         <div class="percent-line">
-                          <div class="line"></div>
+                          <div class="line" style="width: ${
+                            (res.reviews.filter((el) => el.stars == 4).length /
+                              res.reviews.length) *
+                            100
+                          }%;"></div>
                         </div>
-                        <div class="review-row-count">8</div>
+                        <div class="review-row-count">${
+                          res.reviews.filter((el) => el.stars == 4).length
+                        }</div>
                       </div>
                       <div class="review-row">
                         <p class="label">3 звезды</p>
                         <div class="percent-line">
-                          <div class="line"></div>
+                          <div class="line" style="width: ${
+                            (res.reviews.filter((el) => el.stars == 3).length /
+                              res.reviews.length) *
+                            100
+                          }%;"></div>
                         </div>
-                        <div class="review-row-count">8</div>
+                        <div class="review-row-count">${
+                          res.reviews.filter((el) => el.stars == 3).length
+                        }</div>
                       </div>
                       <div class="review-row">
                         <p class="label">2 звезды</p>
                         <div class="percent-line">
-                          <div class="line"></div>
+                          <div class="line" style="width: ${
+                            (res.reviews.filter((el) => el.stars == 2).length /
+                              res.reviews.length) *
+                            100
+                          }%;"></div>
                         </div>
-                        <div class="review-row-count">8</div>
+                        <div class="review-row-count">${
+                          res.reviews.filter((el) => el.stars == 2).length
+                        }</div>
                       </div>
                       <div class="review-row">
                         <p class="label">1 звезда</p>
                         <div class="percent-line">
-                          <div class="line"></div>
+                          <div class="line" style="width: ${
+                            (res.reviews.filter((el) => el.stars == 1).length /
+                              res.reviews.length) *
+                            100
+                          }%;"></div>
                         </div>
-                        <div class="review-row-count">8</div>
+                        <div class="review-row-count">${
+                          res.reviews.filter((el) => el.stars == 1).length
+                        }</div>
                       </div>
                     </div>
                     <button class="description__review-button">
@@ -648,26 +705,26 @@ document.addEventListener("DOMContentLoaded", async () => {
             `
                 : ``
             }
-              ${
-                res["Наличие в магазине"]
-                  ? Object.entries(res["Наличие в магазине"])
-                      .map((shop) => {
-                        return `
-                  <li class="description__availability-item">
-                    <a href="../viewshop?id=${shop[0]}" class="description__availability-link" target="_blank">
-                      <address class="description__availability-address">
-                        ${shop[1].NAME}
-                      </address>
-                      <p class="description__availability-text">
-                        Подробнее о магазине
-                      </p>
-                    </a>
-                  </li>
-                `;
-                      })
-                      .join("")
-                  : ``
-              }
+            ${
+              res["Наличие в магазине"]
+                ? Object.entries(res["Наличие в магазине"])
+                    .map((shop) => {
+                      return `
+                          <li class="description__availability-item">
+                            <a href="../shops/?shop=${shop[1].VALUE}" class="description__availability-link" target="_blank">
+                              <address class="description__availability-address">
+                                ${shop[1].NAME}
+                              </address>
+                              <p class="description__availability-text">
+                                Подробнее о магазине
+                              </p>
+                            </a>
+                          </li>
+                        `;
+                    })
+                    .join("")
+                : ``
+            }
             </ul>
           </div>
         </div>
@@ -719,8 +776,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // форма с отзывом
     const reviewButton = document.querySelector(".description__review-button");
     reviewButton.addEventListener("click", () => {
-      bodyScrollToggle();
-      const popupElement = `
+      if (userInfo.personal.ID == null) {
+        document.querySelector(".header__action-link.cabinet").click();
+      } else {
+        const popupElement = `
       <div id="popup-review" class="popup">
         <div class="popup__background"></div>
           <div class="popup__wrap">
@@ -755,78 +814,81 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
         </div>
       `;
-      document.body.insertAdjacentHTML("beforeend", popupElement);
-      const popupReview = document.getElementById("popup-review");
-      const reviewPostButton = document.getElementById("review-button-confirm");
-      reviewPostButton.addEventListener("click", async (e) => {
-        e.preventDefault();
-        const attention = document.querySelector(".attention");
-        if (attention) attention.remove();
-        const stars = document.querySelectorAll(".rate-check");
-        const popupForm = document.querySelector(".popup__form");
-        let rate = "";
-        stars.forEach((star) => {
-          if (star.checked) {
-            rate = star.value;
-          }
-        });
-        if (!rate) {
-          const attentionElement = `
+        document.body.insertAdjacentHTML("beforeend", popupElement);
+        const popupReview = document.getElementById("popup-review");
+        const reviewPostButton = document.getElementById(
+          "review-button-confirm"
+        );
+        reviewPostButton.addEventListener("click", async (e) => {
+          e.preventDefault();
+          const attention = document.querySelector(".attention");
+          if (attention) attention.remove();
+          const stars = document.querySelectorAll(".rate-check");
+          const popupForm = document.querySelector(".popup__form");
+          let rate = "";
+          stars.forEach((star) => {
+            if (star.checked) {
+              rate = star.value;
+            }
+          });
+          if (!rate) {
+            const attentionElement = `
             <p class="attention">Оценка не выставлена, пожалуйста поставьте оценку</p>
           `;
-          popupForm.insertAdjacentHTML("beforeend", attentionElement);
-          return;
-        }
-        const textArea = document.querySelector(".popup__form-textarea");
-        textArea.addEventListener("input", () => {
-          textArea.classList.remove("is-not-valid");
-        });
-        if (!textArea.value) {
-          textArea.classList.add("is-not-valid");
-          const attentionElement = `
+            popupForm.insertAdjacentHTML("beforeend", attentionElement);
+            return;
+          }
+          const textArea = document.querySelector(".popup__form-textarea");
+          textArea.addEventListener("input", () => {
+            textArea.classList.remove("is-not-valid");
+          });
+          if (!textArea.value) {
+            textArea.classList.add("is-not-valid");
+            const attentionElement = `
             <p class="attention">Заполните поле</p>
           `;
-          popupForm.insertAdjacentHTML("beforeend", attentionElement);
-          return;
-        }
-        try {
-          await fetch(
-            "https://ohotaktiv.ru/12dev/new-design/pages/card/review.php",
-            {
-              method: "POST",
-              body: JSON.stringify({
-                goodId: "231822",
-                userId: "4307",
-                stars: rate,
-                textReview: textArea.value,
-              }),
-            }
-          )
-            .then((res) => res.json())
-            .then((res) => {
-              if (res == 200) {
-                popupReview.remove();
-                showMessage(
-                  "Отзыв оставлен!",
-                  "Спасибо за ваш отзыв! Отзыв будет опубликован после модерации.",
-                  "success"
-                );
-              } else {
-                showMessage(
-                  "Ошибка!",
-                  `Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${res}.`,
-                  "error"
-                );
+            popupForm.insertAdjacentHTML("beforeend", attentionElement);
+            return;
+          }
+          try {
+            await fetch(
+              "https://ohotaktiv.ru/12dev/new-design/pages/card/review.php",
+              {
+                method: "POST",
+                body: JSON.stringify({
+                  goodId: "231822",
+                  userId: "4307",
+                  stars: rate,
+                  textReview: textArea.value,
+                }),
               }
-            });
-        } catch (err) {
-          showMessage(
-            "Ошибка!",
-            `Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${err}.`,
-            "error"
-          );
-        }
-      });
+            )
+              .then((res) => res.json())
+              .then((res) => {
+                if (res == 200) {
+                  popupReview.remove();
+                  showMessage(
+                    "Отзыв оставлен!",
+                    "Спасибо за ваш отзыв! Отзыв будет опубликован после модерации.",
+                    "success"
+                  );
+                } else {
+                  showMessage(
+                    "Ошибка!",
+                    `Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${res}.`,
+                    "error"
+                  );
+                }
+              });
+          } catch (err) {
+            showMessage(
+              "Ошибка!",
+              `Произошла ошибка. Пожалуйста обратитесь в службу поддержки. Код ошибки: ${err}.`,
+              "error"
+            );
+          }
+        });
+      }
     });
   }
   function openPopupAnalogue() {

@@ -42,21 +42,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                   .map((blog) => {
                     return `
                     <li class="blog__item swiper-slide">
-                      <img
-                        src="https://ohotaktiv.ru${blog.pic}"
-                        alt="${blog.name}"
-                        class="blog__item-img"
-                        data-blog="${blog.code}"
-                      />
-                      ${
-                        blog.tag && blog.tag !== null
-                          ? `
-                        <ul class="blog__tag-list">
-                          <li class="blog__tag-item">${blog.tag}</li>
-                        </ul>
-                      `
-                          : ``
-                      }
+                      <a href="../blog/?blog=${
+                        blog.code
+                      }" class="blog__item-link">
+                        <img
+                          src="https://ohotaktiv.ru${blog.pic}"
+                          alt="${blog.name}"
+                          class="blog__item-img"
+                        />
+                        ${
+                          blog.tag && blog.tag !== null
+                            ? `
+                          <ul class="blog__tag-list">
+                            <li class="blog__tag-item">${blog.tag}</li>
+                          </ul>
+                        `
+                            : ``
+                        }
+                        </a>
                     </li>
                   `;
                   })
@@ -128,20 +131,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     });
     const blogElement = document.querySelector(".blog");
-    blogElement.addEventListener("click", (e) => {
-      if (e.target.className == "blog__item-img") {
-        const baseUrl = document.location;
-        let newUrl =
-          baseUrl.origin +
-          baseUrl.pathname +
-          `?blog=${e.target.getAttribute("data-blog")}`;
-        history.pushState(null, null, newUrl);
-        viewBlog(blogs, e.target.getAttribute("data-blog"));
-      }
-    });
   }
   function viewBlog(blogs, code) {
     const blog = blogs.filter((blog) => blog.code == code)[0];
+    console.log(blog);
     const element = `
     <section class="viewblog">
       <div class="viewblog__wrap container">
@@ -159,24 +152,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           </ul>
         </nav>
         <div class="viewblog__item">
-          <img
-            src="img/viewblog-img.jpg"
-            alt="Блог"
-            class="viewblog__item-img"
-          />
+          <iframe class="viewblog__iframe" src="https://www.youtube.com/embed/${
+            blog.youtube
+          }" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p class="viewblog__item-date">${blog.date}</p>
           <h1 class="viewblog__item-title">
             ${blog.name}
           </h1>
           <p class="viewblog__item-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Aspernatur cupiditate quidem ipsa facilis quae accusamus! Beatae
-            temporibus quo officia, magni odit quos aliquam quibusdam iure!
-            Enim fuga maxime nobis exercitationem? Lorem ipsum dolor, sit amet
-            consectetur adipisicing elit. Aspernatur cupiditate quidem ipsa
-            facilis quae accusamus! Beatae temporibus quo officia, magni odit
-            quos aliquam quibusdam iure! Enim fuga maxime nobis
-            exercitationem?
+            ${blog.description}
           </p>
         </div>
         <aside class="viewblog__aside swiper swiper-aside">

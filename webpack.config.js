@@ -52,7 +52,6 @@ module.exports = {
     faq: "./src/public/scripts/pages/faq.js",
     pay: "./src/public/scripts/pages/pay.js",
     comission: "./src/public/scripts/pages/comission.js",
-    catalogview: "./src/public/scripts/pages/catalogview.js",
     result: "./src/public/scripts/pages/result.js",
     comissionview: "./src/public/scripts/pages/comissionview.js",
     404: "./src/public/scripts/pages/404.js",

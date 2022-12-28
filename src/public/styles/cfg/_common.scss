@@ -214,18 +214,15 @@ main {
     }
     &-text {
       padding: 4px 8px;
-      color: var(--white-color);
       text-align: center;
       border-radius: 20px;
       &.hit {
-        background-color: var(--red-color);
+        // color: var(--red-color);
       }
       &.new {
-        background-color: var(--green-color);
-        display: none; // для теста
+        // color: var(--green-color);
       }
       &.discount {
-        display: none; // test
         width: 44px;
         padding: 0px 2px;
         color: var(--black-color);
@@ -313,8 +310,6 @@ main {
   &__link {
     display: flex;
     flex-direction: column;
-  }
-  &:hover {
   }
   &.skeleton {
     width: 270px;

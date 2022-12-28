@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   return `
                   <li class="map__item ac">
                     <p class="map__item-title ac-header">
-                      <button type="button" class="map__item-button ac-trigger" data-index="${index}">
+                      <button value="${shop.VALUE}" type="button" class="map__item-button ac-trigger" data-index="${index}">
                         ${shop.TITLE}
                       </button>
                     </p>
@@ -117,17 +117,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       main.removeChild(main.firstChild);
     }
     main.insertAdjacentHTML("beforeend", element);
-    main.addEventListener("click", (e) => {
-      if (e.target.className == "map__item-button ac-trigger") {
-        console.log();
-        myMap.geoObjects.each((el, index) => {
-          if (index == e.target.getAttribute("data-index")) {
-            el.balloon.open();
-          }
-        });
-      }
-    });
-    new Accordion(".map__list");
     ymaps.ready(init);
     function init() {
       // Создание карты.
@@ -149,7 +138,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         myMap.geoObjects.add(myPlacemark);
       });
+      if (document.location.search) {
+        const shop = document.location.search.split("?shop=")[1];
+        const shopElement = document.querySelector(`[value=${shop}]`);
+        shopElement.click();
+      }
     }
+    main.addEventListener("click", (e) => {
+      if (e.target.className == "map__item-button ac-trigger") {
+        myMap.geoObjects.each((el, index) => {
+          if (index == e.target.getAttribute("data-index")) {
+            el.balloon.open();
+          }
+        });
+      }
+    });
+    new Accordion(".map__list");
     const mapItems = document.querySelectorAll(".map__item");
     const mapInput = document.querySelector(".map__input");
     mapInput.addEventListener("input", (e) => {

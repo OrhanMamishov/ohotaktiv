@@ -4,6 +4,7 @@ import { getUserData } from "../functions/getUserData";
 import { updateCountGoods } from "./updateCountGoods";
 
 document.addEventListener("click", async (e) => {
+  let userInfo = await getUserData();
   if (e.target.className == "popup__background") {
     bodyScrollToggle();
     e.target.parentElement.remove();
@@ -15,16 +16,14 @@ document.addEventListener("click", async (e) => {
     e.target.className == "card-item__photo-button favourite " ||
     e.target.className == "card-item__photo-button favourite is-in"
   ) {
-    e.target.classList.toggle("is-in");
-    const idGood =
-      e.target.parentElement.parentElement.children[
-        e.target.parentElement.parentElement.children.length - 1
-      ].id;
-    let userInfo = await getUserData();
     if (userInfo.personal.ID == null) {
-      // const parent = e.target.parentElement.parentElement;
-      // console.log(parent);
+      document.querySelector(".header__action-link.cabinet").click();
     } else {
+      e.target.classList.toggle("is-in");
+      const idGood =
+        e.target.parentElement.parentElement.children[
+          e.target.parentElement.parentElement.children.length - 1
+        ].id;
       await fetch(`https://ohotaktiv.ru/local/ajax/fav_2.php?p_id=${idGood}`, {
         method: "GET",
         mode: "no-cors",
