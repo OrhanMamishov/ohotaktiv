@@ -225,9 +225,12 @@
         overflow-x: hidden;
         display: flex;
         flex-direction: column;
-        &.category-list,
-        &.available-list {
+        &.category-list {
           max-height: 500px; // сделать гибкость
+        }
+
+        &.available-list {
+          max-height: 200px;
         }
         &.subcategory-list {
           display: none;
@@ -239,9 +242,7 @@
         }
       }
       &-item {
-        &:not(:last-child) {
-          margin-bottom: 5px;
-        }
+        margin-bottom: 5px;
         &.skeleton {
           width: 246px;
           height: 25px;
@@ -263,6 +264,7 @@
             margin-bottom: 23px;
           }
           &-button {
+            display: none;
             width: 20px;
             height: 20px;
             position: absolute;

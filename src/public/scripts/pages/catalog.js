@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
     fetchCatalog(catalog);
-    async function fetchCatalog(catalog) {
+    async function fetchCatalog(catalog, clicked) {
       await fetch(
         `https://ohotaktiv.ru/12dev/new-design/pages/catalog/gentwo/sections/${thisSection}.json`
       )
@@ -441,9 +441,9 @@ document.addEventListener("DOMContentLoaded", async () => {
               .getAttribute("data-ru-value")
               .startsWith(ucFirst(magazinesInput.value))
           ) {
-            el.parentElement.style.display = "none";
+            el.parentElement.parentElement.style.display = "none";
           } else {
-            el.parentElement.style.display = "block";
+            el.parentElement.parentElement.style.display = "block";
           }
         });
       });
@@ -529,7 +529,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           let newUrl =
             baseUrl.origin + baseUrl.pathname + `?section=${thisSection}`;
           history.pushState(null, null, newUrl);
-          fetchCatalog(catalog);
+          fetchCatalog(catalog, "true");
           window.scroll({
             top: document.getElementById("detailSection").offsetTop - 140,
             behavior: "smooth",
@@ -544,6 +544,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           checkbox.click();
         }
         if (e.target.classList.contains("checkbox")) {
+          e.target.parentElement.parentElement.style.order = "-1";
           filterGoodsOnPage();
         }
       });
@@ -574,7 +575,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
         }
       });
-      if (searchParams.length == 1) {
+      if (searchParams.length == 1 && clicked !== "true") {
         const cityCheckboxes = document.querySelectorAll(
           `.checkbox[data-filter]`
         );

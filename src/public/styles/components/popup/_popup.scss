@@ -98,7 +98,7 @@
       &__list {
         display: flex;
         flex-direction: column;
-        max-height: 200px;
+        max-height: 150px;
         flex-wrap: wrap;
         @media only screen and (max-width: 767px) {
           @include contentScroll;

@@ -292,6 +292,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <ul class="choose-cities__list custom">
                       ${res.suggestions
                         .map((el) => {
+                          if (el.data.city.includes("км")) return;
                           return `
                           <li class="choose-cities__item">
                             <input class="radio__input" type="radio" id="${el.data.city_kladr_id}" name="city" data-city="${el.data.city}">
@@ -307,13 +308,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                   );
                   if (chooseCitiesCustom) chooseCitiesCustom.remove();
                   chooseCitiesWrap.insertAdjacentHTML("beforeend", element);
-                  console.log(res);
                 } else {
                   const chooseCitiesCustom = document.querySelector(
                     ".choose-cities__wrap.list"
                   );
                   if (chooseCitiesCustom) chooseCitiesCustom.remove();
-                  chooseCitiesList.style.display = "block";
+                  chooseCitiesList.style.display = "flex";
                 }
               });
           }, 1000);
@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             ".choose-cities__list.custom"
           );
           if (chooseCitiesCustom) chooseCitiesCustom.remove();
-          chooseCitiesList.style.display = "block";
+          chooseCitiesList.style.display = "flex";
         }
       });
       chooseCitiesWrap.addEventListener("click", (e) => {
