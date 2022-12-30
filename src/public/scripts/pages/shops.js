@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </ul>
         </nav>
         <h1 class="categories__title">
-          Адреса магазинов ОхотАктив в городах России
+          Адреса магазинов ОхотАктив
         </h1>
         <div class="map__columns">
           <div class="map__left-column">

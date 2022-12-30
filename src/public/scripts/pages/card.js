@@ -14,6 +14,7 @@ import { generatePrice } from "../functions/generatePrice";
 import { generateCard } from "../functions/generateCard";
 import { showMessage } from "../functions/showMessage";
 import Inputmask from "inputmask";
+import { updateCountGoods } from "../functions/updateCountGoods";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const idGood = document.location.search.split("?id=")[1];
@@ -239,11 +240,13 @@ document.addEventListener("DOMContentLoaded", async () => {
               : ``
           }
           </div>
-          <button class="card__right-button" ${
-            res["warehouse"] == "0" && !res["Наличие в магазине"]
-              ? `data-available="not-available"`
-              : ""
-          }>
+          <button id="${
+            document.location.search.split("?id=")[1]
+          }" class="card__right-button" ${
+      res["warehouse"] == "0" && !res["Наличие в магазине"]
+        ? `data-available="not-available"`
+        : ""
+    }>
             ${
               res["warehouse"] == "0" && !res["Наличие в магазине"]
                 ? "Подобрать аналог"
@@ -260,6 +263,30 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (e.target.className == "card__right-button") {
         if (e.target.getAttribute("data-available") == "not-available") {
           openPopupAnalogue();
+        } else {
+          await fetch(
+            `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?add2basket=yes&id=${e.target.id}`
+          )
+            .then((res) => res.json())
+            .then(async (res) => {
+              if (res.STATUS == "OK") {
+                showMessage(
+                  "Товар добавлен!",
+                  "Товар успешно добавлен в корзину.",
+                  "success"
+                );
+                e.target.setAttribute("disabled", true);
+                e.target.textContent = "В корзине";
+                updateCountGoods(await getUserData());
+              }
+              if (res.STATUS == "NEOK") {
+                showMessage(
+                  "Ошибка!",
+                  "Произошла ошибка, пожалуйста обратитесь в службу поддержки.",
+                  "error"
+                );
+              }
+            });
         }
       }
       if (e.target.classList.contains("share-link")) {
@@ -312,6 +339,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
           });
         }
+        const userInfoAfterAuthorize = await getUserData();
+        updateCountGoods(userInfoAfterAuthorize);
       }
       if (
         !withinBoundaries &&

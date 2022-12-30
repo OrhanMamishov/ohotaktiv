@@ -4,7 +4,6 @@
     padding-top: 0;
     &__img {
       width: 100%;
-      // min-height: 600px;
       object-fit: cover;
     }
     &__pagination {
@@ -153,8 +152,11 @@
       &-item {
         &.item-title {
           margin-bottom: 35px;
-          a {
+          p {
             @include fontSize20;
+            &:hover {
+              color: var(--white-color);
+            }
           }
         }
       }

@@ -33,8 +33,6 @@ async function refreshCart(data) {
         </p>
       </div>
     `;
-    const regionText = document.querySelector(".cart__region");
-    regionText.remove();
     return columns.insertAdjacentHTML("beforeend", element);
   }
   let countPrice = data.isAvailable
@@ -202,9 +200,12 @@ async function refreshCart(data) {
   function eventForInput(input) {
     if (input.value > 99999) input.value = 99999;
     if (input.value < 1) input.value = 1;
-    calculatePrices(input, input.parentElement.nextElementSibling);
+    calculatePrices(
+      input,
+      input.parentElement.previousElementSibling.children[0]
+    );
     fetch(
-      `https://ohotaktiv.ru/12dev/new-design/pages/cart/cart.php?product_id=${input.parentElement.nextElementSibling.nextElementSibling.id}&quantity=${input.value}`
+      `https://ohotaktiv.ru/12dev/new-design/pages/cart/cart.php?product_id=${input.parentElement.parentElement.children[0].id}&quantity=${input.value}`
     );
   }
   inputs.forEach((input) => {
@@ -306,6 +307,7 @@ async function getCardInfo(id, count) {
 }
 
 function calculatePrices(input, priceElement) {
+  console.log(priceElement);
   priceElement.setAttribute(
     "data-price-now",
     priceElement.getAttribute("data-price") * input.value

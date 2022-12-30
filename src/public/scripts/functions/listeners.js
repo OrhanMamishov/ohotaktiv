@@ -43,21 +43,27 @@ document.addEventListener("click", async (e) => {
   }
   if (e.target.className == "card-item__button") {
     await fetch(
-      `https://ohotaktiv.ru${e.target.getAttribute(
-        "data-url"
-      )}?action=ADD2BASKET&id=${
-        e.target.id
-      }&ajax_basket=Y&quantity=1&prop[0]=0`,
-      {}
+      `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?add2basket=yes&id=${e.target.id}`
     )
       .then((res) => res.json())
       .then(async (res) => {
         if (res.STATUS == "OK") {
-          showMessage("Товар добавлен!", res.MESSAGE, "success");
+          showMessage(
+            "Товар добавлен!",
+            "Товар успешно добавлен в корзину.",
+            "success"
+          );
           e.target.setAttribute("disabled", true);
           e.target.textContent = "В корзине";
+          updateCountGoods(await getUserData());
         }
-        updateCountGoods(await getUserData());
+        if (res.STATUS == "NEOK") {
+          showMessage(
+            "Ошибка!",
+            "Произошла ошибка, пожалуйста обратитесь в службу поддержки.",
+            "error"
+          );
+        }
       });
   }
 });

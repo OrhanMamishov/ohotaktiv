@@ -1,12 +1,372 @@
 import "../imports";
 import "../../styles/pages/index/style.scss";
+import { generateCard } from "../functions/generateCard";
 import { bodyScrollToggle } from "../functions/scrollBody";
 import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css/bundle";
+import { getUserData } from "../functions/getUserData";
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Свайперы
-  //eslint-disable-next-line
+document.addEventListener("DOMContentLoaded", async () => {
+  const userInfo = await getUserData();
+  const main = document.querySelector("main");
+  const hitItems = await fetch(
+    `https://ohotaktiv.ru/12dev/new-design/widgets/items.php?read=hit`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    });
+  const newItems = await fetch(
+    `https://ohotaktiv.ru/12dev/new-design/widgets/items.php?read=new`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    });
+  const popularItems = await fetch(
+    `https://ohotaktiv.ru/12dev/new-design/widgets/sections.php?read=popular`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    });
+  const recommendedItems = await fetch(
+    `https://ohotaktiv.ru/12dev/new-design/widgets/items.php?read=recommended`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    });
+  const blogItems = await fetch(
+    `https://ohotaktiv.ru/12dev/new-design/pages/blog/blog.php?read=all`,
+    {
+      method: "GET",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      return res.slice(0, 6);
+    });
+  const mainBanners = [
+    {
+      picture: "img/main-banner.jpg",
+      title: "Новогодняя распродажа",
+      text: "Новогодняя акция! Успей приобрести товары со скидкой с 16 декабря по 20 января!",
+      url: "#",
+    },
+  ];
+  const element = `
+  <section class="banners">
+    <h2 class="banner__title visually-hidden">Главный баннер сайта</h2>
+    <div class="banners__wrap">
+      <div class="swiper swiper-banner">
+        <ul class="banners__list swiper-wrapper">
+          <li class="banners__item swiper-slide">
+            <a href="#" class="banners__link">
+              <img
+                src="img/main-banner.jpg"
+                alt="Главный баннер"
+                class="banners__img"
+              />
+              <div class="banners__text-wrap">
+                <p class="banners__text">Товары для охоты</p>
+                <p class="banners__subtext">Смотреть</p>
+              </div>
+            </a>
+          </li>
+          <li class="banners__item swiper-slide">
+            <a href="#" class="banners__link">
+              <img
+                src="img/main-banner.jpg"
+                alt="Главный баннер"
+                class="banners__img"
+              />
+              <div class="banners__text-wrap">
+                <p class="banners__text">Товары для охоты</p>
+                <p class="banners__subtext">Смотреть</p>
+              </div>
+            </a>
+          </li>
+          <li class="banners__item swiper-slide">
+            <a href="#" class="banners__link">
+              <img
+                src="img/main-banner.jpg"
+                alt="Главный баннер"
+                class="banners__img"
+              />
+              <div class="banners__text-wrap">
+                <p class="banners__text">Товары для охоты</p>
+                <p class="banners__subtext">Смотреть</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="banners__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="bestsellers">
+    <div class="bestsellers__wrap container">
+      <h2 class="bestsellers__title">Хиты продаж</h2>
+      <div class="swiper swiper-bestsellers">
+        <ul class="bestsellers__list swiper-wrapper cards-list">
+          ${hitItems
+            .map((item) => {
+              return generateCard(item, ["favourite"], true, userInfo);
+            })
+            .join("")}
+        </ul>
+        <div
+          class="bestsellers__swiper-button-prev swiper-button-prev"
+        ></div>
+        <div
+          class="bestsellers__swiper-button-next swiper-button-next"
+        ></div>
+        <div class="bestsellers__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="new">
+    <div class="new__wrap container">
+      <h2 class="new__title">Новинки</h2>
+      <div class="swiper swiper-new">
+        <ul class="new__list swiper-wrapper">
+        ${newItems
+          .map((item) => {
+            return generateCard(item, ["favourite"], true, userInfo);
+          })
+          .join("")}
+        </ul>
+        <div class="new__swiper-button-prev swiper-button-prev"></div>
+        <div class="new__swiper-button-next swiper-button-next"></div>
+        <div class="new__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="bonuscard">
+    <div class="bonuscard__wrap container">
+      <div class="bonuscard__text-wrap">
+        <h2 class="bonuscard__title">Электронная бонусная карта</h2>
+        <p class="bonuscard__text">
+          Приобретайте бонусную карту ОхотАктив и получайте выгоду при
+          покупке
+        </p>
+        <button id="index-bonuscard-button" class="bonuscard__button">
+          Перейти в карточку товара
+        </button>
+      </div>
+      <img
+        src="/assets/img/bonus-card.png"
+        alt="Бонусная карта"
+        class="bonuscard__img"
+      />
+    </div>
+  </section>
+  <section class="popular">
+    <div class="popular__wrap container">
+      <h2 class="popular__title">Популярные категории</h2>
+      <div class="swiper swiper-popular">
+        <ul class="popular__list swiper-wrapper">
+        ${popularItems
+          .map((item) => {
+            return `
+              <li class="popular__item swiper-slide">
+                <a href="../catalog/?section=${item.code}" class="popular__link">
+                  <div class="popular__img-wrap">
+                    <img
+                      src="https://ohotaktiv.ru${item.pic}"
+                      alt="${item.name}"
+                      class="popular__item-img"
+                    />
+                  </div>
+                  <p class="popular__item-text">${item.name}</p>
+                </a>
+              </li>
+            `;
+          })
+          .join("")}
+        </ul>
+        <div class="popular__swiper-button-prev swiper-button-prev"></div>
+        <div class="popular__swiper-button-next swiper-button-next"></div>
+        <div class="popular__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="ready">
+    <div class="ready__wrap container">
+      <h2 class="ready__title">Готовимся к сезону</h2>
+      <div class="swiper swiper-ready">
+        <ul class="ready__list swiper-wrapper">
+          <li class="ready__item swiper-slide">
+            <img src="/assets/img/ready-img.jpg" alt="Рыбалка" class="ready__img" />
+            <ul class="ready__links-list">
+              <li class="ready__links-item item-title">
+                <p class="ready__links-link"> Рыбалка </p>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=udilishcha_2075401759" class="ready__links-link"> Удилища </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=primanka_1886428494" class="ready__links-link"> Приманка </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=ledobury-sanki" class="ready__links-link"> Ледобуры </a>
+              </li>
+            </ul>
+          </li>
+          <li class="ready__item swiper-slide">
+            <img
+              src="/assets/img/ready-img-2.jpg"
+              alt="Рыбалка"
+              class="ready__img"
+            />
+            <ul class="ready__links-list">
+              <li class="ready__links-item item-title">
+                <p class="ready__links-link"> Охота </p>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=gladkostvolnoe-oruzhie" class="ready__links-link"> Гладкоствольное оружие </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=patrony" class="ready__links-link"> Патроны </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=pritsely" class="ready__links-link"> Прицелы </a>
+              </li>
+            </ul>
+          </li>
+          <li class="ready__item swiper-slide">
+            <img
+              src="/assets/img/ready-img-3.jpg"
+              alt="Рыбалка"
+              class="ready__img"
+            />
+            <ul class="ready__links-list">
+              <li class="ready__links-item item-title">
+                <p class="ready__links-link"> Туризм </p>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=termobele" class="ready__links-link"> Термобелье </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=sapogi" class="ready__links-link"> Сапоги </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=kostyumy" class="ready__links-link"> Костюмы </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=turisticheskiy-inventar" class="ready__links-link"> Инвентарь </a>
+              </li>
+              <li class="ready__links-item">
+                <a href="../catalog/?section=ryukzaki" class="ready__links-link"> Рюкзаки </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="ready__swiper-button-prev swiper-button-prev"></div>
+        <div class="ready__swiper-button-next swiper-button-next"></div>
+        <div class="ready__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="recommended">
+    <div class="recommended__wrap container">
+      <h2 class="recommended__title">Рекомендуем</h2>
+      <div class="swiper swiper-recommended">
+        <ul class="recommended__list swiper-wrapper">
+        ${recommendedItems
+          .map((item) => {
+            return generateCard(item, ["favourite"], true, userInfo);
+          })
+          .join("")}
+        </ul>
+        <div
+          class="recommended__swiper-button-prev swiper-button-prev"
+        ></div>
+        <div
+          class="recommended__swiper-button-next swiper-button-next"
+        ></div>
+        <div class="recommended__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="blog">
+    <div class="blog__wrap container">
+      <h2 class="blog__title">Блог</h2>
+      <div class="swiper swiper-blog">
+        <ul class="blog__list swiper-wrapper">
+          ${blogItems
+            .map((blog) => {
+              return `
+                <li class="blog__item swiper-slide">
+                  <a href="../blog/?blog=${blog.code}" class="blog__link">
+                    <img
+                      src="https://ohotaktiv.ru${blog.pic}"
+                      alt="${blog.name}"
+                      class="blog__item-img"
+                    />
+                    ${
+                      blog.tag !== null
+                        ? `
+                      <ul class="blog__tag-list">
+                        <li class="blog__tag-item">#туризм</li>
+                      </ul>
+                    `
+                        : ``
+                    }
+                  </a>
+                </li>
+              `;
+            })
+            .join("")}
+        </ul>
+        <div class="blog__swiper-button-prev swiper-button-prev"></div>
+        <div class="blog__swiper-button-next swiper-button-next"></div>
+        <div class="blog__pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <section class="about">
+    <div class="about__wrap container">
+      <h1 class="about__title">
+        ОхотАктив — товары для охоты, рыбалки и туризма
+      </h1>
+      <p class="about__text">
+        Магазин «ОхотАктив» ${
+          document.querySelector(".header__city").textContent
+        } — ваш поставщик оружия и экипировки. Наша
+        компания является эксклюзивным представителем мировых брендов,
+        располагает собственной ремонтной базой, а также сетью розничных
+        магазинов для охотников и рыболовов. На
+        всю продукцию действует гарантия качества.
+      </p>
+      <ul class="about__list">
+        <li class="about__item">Быстрая доставка</li>
+        <li class="about__item">Обмен и возврат</li>
+        <li class="about__item">Качественный сервис</li>
+        <li class="about__item">Более 75 магазинов</li>
+      </ul>
+      <a href="../history/" class="about__link">История компании</a>
+    </div>
+  </section>
+      
+  `;
+  // while (main.firstChild) {
+  //   main.removeChild(main.firstChild);
+  // }
+  // main.insertAdjacentHTML("beforeend", element);
   const templateSwipers = ["bestsellers", "new", "recommended"];
   templateSwipers.forEach((swiper) => {
     const swiperNew = new Swiper(".swiper-" + swiper, {
@@ -50,7 +410,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   });
-
   //eslint-disable-next-line
   const mainBannerSwiper = new Swiper(".swiper-banner", {
     modules: [Pagination],
@@ -141,7 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pagination: {
       el: ".ready__pagination",
     },
-    loop: true,
+    // loop: true,
     breakpoints: {
       1559: {
         spaceBetween: 35,
@@ -165,125 +524,4 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
-  // Свайперы
-  // Попапчики
-  // Вывод попапчика
-  const bonuscardButtonIndex = document.getElementById(
-    "index-bonuscard-button"
-  );
-  bonuscardButtonIndex.addEventListener("click", () => {
-    bodyScrollToggle();
-    const popupBonuscardElement = `
-    <div id="popup-bonuscard" class="popup">
-      <div class="popup__background"></div>
-      <div class="popup__wrap">
-        <button class="popup__wrap-close"></button>
-        <h2 class="popup__wrap-title">
-          Получить бонусную карту ОхотАктив
-        </h2>
-        <form action="#" class="popup__form">
-          <h3 class="popup__wrap-subtitle">
-            Введите личные данные
-          </h3>
-          <div class="popup__personal-wrap">
-            <div class="input-wrap">
-              <input class="popup__wrap-input" id="client-name-input" type="text" placeholder=" ">
-              <label for="client-name-input">Имя</label>
-            </div>
-            <div class="input-wrap">
-              <input class="popup__wrap-input" id="client-surname-input" type="text" placeholder=" ">
-              <label for="client-surname-input">Фамилия</label>
-            </div>
-            <div class="input-wrap">
-              <input class="popup__wrap-input" id="client-city-input" type="text" placeholder=" ">
-              <label for="client-city-input">Город</label>
-            </div>
-            <div class="input-wrap">
-              <input class="popup__wrap-input" id="client-email-input" type="email" placeholder=" ">
-              <label for="client-email-input">E-mail</label>
-            </div>
-            <div class="input-wrap">
-              <input class="popup__wrap-input" id="client-tel-input" type="tel" placeholder=" ">
-              <label for="client-tel-input">Телефон</label>
-            </div>
-            <div class="input-wrap">
-              <input class="popup__wrap-input" id="client-db-input" type="tel" placeholder=" ">
-              <label for="client-db-input">Дата рождения</label>
-            </div>
-          </div>
-          <div class="popup__hobbies-wrap">
-            <div class="popup__hobbies-left-column">
-              <h3 class="popup__wrap-subtitle">
-                Выберите интересы
-              </h3>
-              <ul class="popup__hobbies-list">
-                <li class="popup__hobbies-item">
-                  <label class="checkbox__label">
-                    Рыбалка
-                    <input type="checkbox" class="checkbox visually-hidden" required>
-                    <span class="checkbox__span"></span>
-                  </label>
-                </li>
-                <li class="popup__hobbies-item">
-                  <label class="checkbox__label">
-                    Туризм
-                    <input type="checkbox" class="checkbox visually-hidden" required>
-                    <span class="checkbox__span"></span>
-                  </label>
-                </li>
-                <li class="popup__hobbies-item">
-                  <label class="checkbox__label">
-                    Охота
-                    <input type="checkbox" class="checkbox visually-hidden" required>
-                    <span class="checkbox__span"></span>
-                  </label>
-                </li>
-                <li class="popup__hobbies-item">
-                  <label class="checkbox__label">
-                    Спортивная стрельба
-                    <input type="checkbox" class="checkbox visually-hidden" required>
-                    <span class="checkbox__span"></span>
-                  </label>
-                </li>
-              </ul>
-            </div>
-            <div class="popup__hobbies-right-column">
-              <h3 class="popup__wrap-subtitle">
-                Укажите пол
-              </h3>
-              <ul class="popup__hobbies-list">
-                <li class="popup__hobbies-item">
-                  <input class="radio__input" type="radio" id="female" name="sex">
-                  <label for="female">Женский</label>
-                </li>
-                <li class="popup__hobbies-item">
-                  <input class="radio__input" type="radio" id="male" name="sex">
-                  <label for="male">Мужской</label>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <label class="checkbox__label">
-            Я принимаю <a href="#" class="checkbox__link">условия обработки персональных данных</a>
-            <input type="checkbox" class="checkbox visually-hidden" required>
-            <span class="checkbox__span"></span>
-          </label>
-          <button id="bonuscard-button-confirm" class="popup__wrap-button">
-            Зарегистрировать
-          </button>
-        </form>
-      </div>
-    </div>
-  `;
-    document.body.insertAdjacentHTML("beforeend", popupBonuscardElement);
-    const popupBonuscard = document.getElementById("popup-bonuscard");
-    const closePopup = document.querySelector(".popup__wrap-close");
-    const backgroundPopup = document.querySelector(".popup__background");
-    closePopup.addEventListener("click", () => {
-      bodyScrollToggle();
-      popupBonuscard.remove();
-    });
-    backgroundPopup.addEventListener("click", () => closePopup.click());
-  });
-  // Вывод попапчика
 });

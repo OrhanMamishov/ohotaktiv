@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="liquidation">
             <div class="liquidation__banner-wrap container">
               <p class="liquidation__banner-title">
-                Ликвидация товаров
+                Ликвидация товара
               </p>
               <p class="liquidation__banner-subtitle">
                 Скидки до 50%!
@@ -544,7 +544,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           checkbox.click();
         }
         if (e.target.classList.contains("checkbox")) {
-          e.target.parentElement.parentElement.style.order = "-1";
+          if (e.target.checked) {
+            e.target.parentElement.parentElement.style.order = "-1";
+          } else {
+            e.target.parentElement.parentElement.style.order = "unset";
+          }
           filterGoodsOnPage();
         }
       });
