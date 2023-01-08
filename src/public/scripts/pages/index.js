@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </button>
       </div>
       <img
-        src="/assets/img/bonus-card.png"
+        src="../../assets/img/bonus-card.png"
         alt="Бонусная карта"
         class="bonuscard__img"
       />
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div class="swiper swiper-ready">
         <ul class="ready__list swiper-wrapper">
           <li class="ready__item swiper-slide">
-            <img src="/assets/img/ready-img.jpg" alt="Рыбалка" class="ready__img" />
+            <img src="../../assets/img/ready-img.jpg" alt="Рыбалка" class="ready__img" />
             <ul class="ready__links-list">
               <li class="ready__links-item item-title">
                 <p class="ready__links-link"> Рыбалка </p>
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </li>
           <li class="ready__item swiper-slide">
             <img
-              src="/assets/img/ready-img-2.jpg"
+              src="../../assets/img/ready-img-2.jpg"
               alt="Рыбалка"
               class="ready__img"
             />
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </li>
           <li class="ready__item swiper-slide">
             <img
-              src="/assets/img/ready-img-3.jpg"
+              src="../../assets/img/ready-img-3.jpg"
               alt="Рыбалка"
               class="ready__img"
             />
@@ -363,10 +363,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   </section>
       
   `;
-  // while (main.firstChild) {
-  //   main.removeChild(main.firstChild);
-  // }
-  // main.insertAdjacentHTML("beforeend", element);
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
+  main.insertAdjacentHTML("beforeend", element);
   const templateSwipers = ["bestsellers", "new", "recommended"];
   templateSwipers.forEach((swiper) => {
     const swiperNew = new Swiper(".swiper-" + swiper, {

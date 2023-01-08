@@ -274,6 +274,9 @@
             background-image: url("../../../img/close-button.svg");
             background-repeat: no-repeat;
             background-size: cover;
+            &.active {
+              display: block;
+            }
           }
         }
         &-wrap {

@@ -435,6 +435,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           /[^а-я, ^А-Я, '']/,
           ""
         );
+        if (magazinesInput.value.length) {
+          magazinesInput.nextElementSibling.classList.add("active");
+        } else {
+          magazinesInput.nextElementSibling.classList.remove("active");
+        }
         chooseMagazinesItems.forEach((el) => {
           if (
             !el
@@ -551,6 +556,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
           filterGoodsOnPage();
         }
+        if (
+          e.target.className == "detail__filter-input-available-button active"
+        ) {
+          e.target.classList.remove("active");
+          e.target.previousElementSibling.value = "";
+          chooseMagazinesItems.forEach((el) => {
+            el.parentElement.parentElement.style.display = "block";
+          });
+        }
       });
       const priceFrom = document.getElementById("price-from");
       const priceTo = document.getElementById("price-to");
@@ -621,6 +635,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               /[^а-я, ^А-Я, '']/,
               ""
             );
+            if (magazinesInput.value.length) {
+              magazinesInput.nextElementSibling.classList.add("active");
+            } else {
+              magazinesInput.nextElementSibling.classList.remove("active");
+            }
             chooseMagazinesItems.forEach((el) => {
               if (
                 !el
