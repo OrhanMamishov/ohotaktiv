@@ -79,9 +79,10 @@
       background-position: right center;
     }
     &__item {
-      .vacancy__item-button {
+      &-button {
         @include contentButton;
         @include fontSize14;
+        display: inline-block;
         margin-bottom: 50px;
       }
       &.ac {
@@ -89,6 +90,12 @@
         border: none;
         &:not(:last-child) {
           border-bottom: 1px solid var(--black-color) !important;
+        }
+        .name {
+          &.skeleton {
+            width: 288px;
+            height: 35px;
+          }
         }
         .price {
           @include fontSize18;
@@ -98,6 +105,10 @@
           font-weight: 800;
           border-radius: 100px;
           background-color: var(--primary-color);
+          &.skeleton {
+            width: 187px;
+            height: 35px;
+          }
         }
         .address {
           @include fontSize16;
@@ -105,11 +116,19 @@
           margin-bottom: 20px;
           padding: 3px 0;
           font-weight: 800;
+          &.skeleton {
+            width: 288px;
+            height: 32px;
+          }
         }
         .job {
           @include fontSize16;
           width: 800px;
           font-weight: 500;
+          &.skeleton {
+            width: 100%;
+            height: 280px;
+          }
           span {
             @include fontSize16;
             display: block;
@@ -132,6 +151,11 @@
           }
           &::after {
             top: 14%;
+          }
+          &.sk {
+            &::after {
+              display: none;
+            }
           }
         }
         &-panel {

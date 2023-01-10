@@ -1,16 +1,16 @@
 .main {
   .sales {
     &__list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 450px));
-      grid-gap: 35px;
-      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: 25px;
     }
     &__img {
       display: block;
       transition: transform 0.2s ease;
     }
     &__item {
+      max-width: 31%;
       overflow: hidden;
       &:hover {
         .sales__img {
@@ -20,6 +20,36 @@
       &.skeleton {
         width: 288px;
         height: 211px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1365px) {
+  .main {
+    .sales {
+      &__item {
+        max-width: 48%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main {
+    .sales {
+      &__list {
+        grid-gap: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .main {
+    .sales {
+      &__item {
+        max-width: 100%;
       }
     }
   }

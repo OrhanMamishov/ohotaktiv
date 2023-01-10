@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <li class="sales__item">
                   <a href="${sale.url}" class="sales__link" target="_blank">
                     <img
-                      src="https://ohotaktiv.ru/${sale.min_pic}"
+                      src="https://ohotaktiv.ru${sale.min_pic}"
                       alt="Товары по акции"
                       class="sales__img"
                     />

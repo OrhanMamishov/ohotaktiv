@@ -446,8 +446,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (e.target.classList.contains("tabs__item")) {
         if (e.target.classList.contains("is-active")) return;
         if (e.target.getAttribute("data-path") == "logout") {
-          window.location.href =
-            "https://ohotaktiv.ru/12dev/new-design/pages/index/?logout=yes";
+          fetch(
+            `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?logout=yes`
+          );
+          window.location.href = "../index/?logout=yes";
           return;
         }
         const baseUrl = document.location.href.split("?")[0];
@@ -833,7 +835,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             repeatPasswordInput.classList.add("is-not-valid");
           } else {
             const changePasswordFetch = await fetch(
-              `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_password=change&password_1=${newPasswordInput.value}&password_2=${repeatPasswordInput.value}`,
+              `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_password=yes&new_password=${repeatPasswordInput.value}`,
               {
                 method: "GET",
               }
@@ -841,14 +843,15 @@ document.addEventListener("DOMContentLoaded", async () => {
               .then((res) => res.json())
               .then((res) => {
                 e.target.setAttribute("disabled", true);
-                if (res == true) {
+                if (res.success) {
                   showMessage(
                     "Данные успешно обновлены!",
-                    "Ваш пароль обновлен!",
+                    res.success,
                     "success"
                   );
                   popupPassword.remove();
-                } else {
+                }
+                if (res.error) {
                   e.target.removeAttribute("disabled");
                   showMessage(
                     "Ошибка!",

@@ -19,12 +19,8 @@ async function getArrayOfCart() {
   const userInfoFromFetch = await getUserData();
   const userCartFromFetch = userInfoFromFetch.cart ? userInfoFromFetch.cart : 0;
   // const userCartFromFetch = {
-  //   10585: "2.0000",
-  //   104000: "3.0000",
-  //   450212: "1.0000",
+  //   242252: "1.0000",
   //   232270: "1.0000",
-  //   455799: "1.0000",
-  //   16391: "1.0000",
   // };
   if (userCartFromFetch == 0) {
     return userCartFromFetch;
@@ -628,6 +624,9 @@ async function refreshOrder(data) {
     }
   });
   orderWrap.addEventListener("click", async (e) => {
+    if (e.target.className == "order__back") {
+      history.back();
+    }
     if (e.target.className == "dropdown-cities-item") {
       const dropdown = document.querySelector(".dropdown-cities-list");
       addressInput.value = e.target.getAttribute("data-value");
@@ -660,16 +659,14 @@ async function refreshOrder(data) {
           } else {
             goods.forEach((good) => {
               if (res.mb_prop && res.mb_prop == "true") {
-                if (good.mb_prop !== "5") {
+                if (good.mb_prop !== "5" && good.mb_prop !== "fetter") {
                   const getElement = document.getElementById(`${good.id}`);
                   const startedPrice = Number(
                     getElement.getAttribute("data-price")
                   );
                   const newPrice =
                     startedPrice - (startedPrice / 100) * res.value;
-                  getElement.children[
-                    getElement.children.length - 1
-                  ].innerHTML = `Цена: ${numberWithSpaces(
+                  getElement.children[1].children[0].innerHTML = `${numberWithSpaces(
                     Math.ceil(newPrice)
                   )} &#8381;<span class="promo-discount">${numberWithSpaces(
                     startedPrice

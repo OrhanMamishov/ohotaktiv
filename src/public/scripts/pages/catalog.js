@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   : `/local/templates/ohota2021/img/no_photo.png`
               }"
                       alt="${list.name}"
-                      class="catalog__img"
+                      class="catalog__img lozad"
                     />
                   </div>
                   <a href="../catalog/?section=${
@@ -105,6 +105,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       main.removeChild(main.firstChild);
     }
     main.insertAdjacentHTML("beforeend", element);
+    const observer = lozad();
+    observer.observe();
     const allAccordions = document.querySelectorAll(".accordion-container");
     allAccordions.forEach((accordion) => {
       new Accordion(accordion);

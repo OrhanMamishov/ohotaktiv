@@ -50,6 +50,17 @@ html {
   font-weight: 600;
   background-color: var(--white-color);
   color: var(--black-color);
+  &::-webkit-scrollbar {
+    width: 17px;
+    height: 1px;
+    &-track {
+      background: var(--grey-item-color);
+    }
+    &-thumb {
+      border-radius: 10px;
+      background-color: var(--secondary-color);
+    }
+  }
 }
 h1,
 h2,

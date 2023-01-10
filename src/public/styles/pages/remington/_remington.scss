@@ -503,8 +503,8 @@
       .category {
         &__img {
           &-big {
-            width: 55%;
-            margin-right: 6%;
+            width: 62%;
+            margin-right: 5%;
           }
         }
         &__link {
@@ -574,6 +574,7 @@
       font-weight: 600;
       &-big {
         @include fontSize16;
+        display: inline-block;
         padding: 18px 30px;
         border: 2px solid #f0ebe180;
         border-radius: 100px;
@@ -588,10 +589,11 @@
     }
     &__content {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
     }
     &__right {
       max-width: 450px;
+      padding-bottom: 70px;
     }
     &__list {
       display: flex;

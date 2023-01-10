@@ -176,7 +176,6 @@
     }
   }
   &__catalog {
-    @include contentScroll;
     position: absolute;
     top: 0;
     left: 0;
@@ -186,7 +185,6 @@
     height: 100vh;
     padding-top: 50px !important;
     padding-bottom: 50px !important;
-    overflow-x: hidden;
     transform: translateY(-10px);
     transition: transform 0.2s ease;
     &-button {
@@ -232,10 +230,13 @@
       }
     }
     .header__accordion-container {
+      @include contentScroll;
+      height: 100%;
       display: flex;
       flex-wrap: wrap;
       gap: 50px;
       padding-bottom: 100px;
+      overflow-x: hidden;
       .ac {
         width: 100%;
         max-width: 211px;
@@ -290,8 +291,8 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      top: 30px;
-      right: 100px;
+      top: 50px;
+      right: 150px;
       font-size: 0;
     }
     &-link {

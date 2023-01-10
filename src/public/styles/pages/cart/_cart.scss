@@ -68,6 +68,7 @@
         }
         &-img {
           border-radius: 10px;
+          mix-blend-mode: multiply;
           &-wrap {
             max-width: 110px;
             height: 110px;
@@ -75,6 +76,7 @@
             display: flex;
             align-items: center;
             border-radius: 10px;
+            background-color: var(--cart-background-color);
             &.skeleton {
               width: 100px;
               height: 100px;

@@ -46,7 +46,7 @@ export function generateCard(card, buttons, isCatalog, userData) {
       : `/local/templates/ohota2021/img/no_photo.png`
   }"
             alt="${isCatalog ? card.name : card[1].NAME}"
-            class="card-item__photo  ${
+            class="lozad card-item__photo  ${
               isCatalog
                 ? `${
                     card.properties &&

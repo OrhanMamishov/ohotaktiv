@@ -43,7 +43,6 @@ module.exports = {
     requisites: "./src/public/scripts/pages/requisites.js",
     delivery: "./src/public/scripts/pages/delivery.js",
     opt: "./src/public/scripts/pages/opt.js",
-    brands: "./src/public/scripts/pages/brands.js",
     return: "./src/public/scripts/pages/return.js",
     policy: "./src/public/scripts/pages/policy.js",
     history: "./src/public/scripts/pages/history.js",

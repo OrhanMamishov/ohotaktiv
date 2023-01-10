@@ -540,16 +540,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     );
                     popupAuthorize.remove();
                     setTimeout(() => {
-                      document.location.reload();
+                      if (document.location.search.includes("?logout=yes")) {
+                        return (document.location = "../index/");
+                      }
                     }, 1000);
                   }
                   if (res.error) {
                     e.target.removeAttribute("disabled");
-                    showMessage(
-                      "Неверный логин или пароль!",
-                      res.error,
-                      "error"
-                    );
+                    showMessage("Ошибка!", res.error.MESSAGE, "error");
                   }
                 });
             }
@@ -609,8 +607,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                   if (res.success) {
                     showMessage(
                       "Вы успешно зарегистрированы!",
-                      res.success +
-                        `. На указанный электронный адрес отправлено письмо с подтверждением`,
+                      res.success,
                       "success"
                     );
                     popupAuthorize.remove();
@@ -618,6 +615,36 @@ document.addEventListener("DOMContentLoaded", async () => {
                   if (res.error) {
                     e.target.removeAttribute("disabled");
                     showMessage("Ошибка!", res.error, "error");
+                  }
+                });
+            }
+          }
+          if (e.target.id == "forgot-password-button") {
+            e.target.setAttribute("disabled", true);
+            if (!emailInputForgot.value.length) {
+              emailInputForgot.classList.add("is-not-valid");
+              e.target.removeAttribute("disabled");
+            }
+            if (!emailInputForgot.value.length) {
+              emailInputForgot.classList.add("is-not-valid");
+              e.target.removeAttribute("disabled");
+            }
+            if (!emailInputForgot.classList.contains("is-not-valid")) {
+              const fetchFromBase = await fetch(
+                `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?send_password=yes&login=${emailInputForgot.value}`,
+                {
+                  method: "GET",
+                }
+              )
+                .then((res) => res.json())
+                .then(async (res) => {
+                  if (res.success) {
+                    showMessage("Успешно!", res.success, "success");
+                    popupAuthorize.remove();
+                  }
+                  if (res.error) {
+                    e.target.removeAttribute("disabled");
+                    showMessage("Ошибка!", res.error.MESSAGE, "error");
                   }
                 });
             }

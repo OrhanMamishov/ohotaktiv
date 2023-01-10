@@ -18,6 +18,7 @@ import { updateCountGoods } from "../functions/updateCountGoods";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const idGood = document.location.search.split("?id=")[1];
+  if (!idGood) document.location.href = "../404/";
   const userInfo = await getUserData();
   let accordion;
   const serverName = "https://ohotaktiv.ru";
@@ -29,7 +30,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   )
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
       refreshCard(res);
       refreshDescription(res);
       refreshViewed(userInfo.viewed);
@@ -47,6 +47,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       : false;
     const breadcrumds = res.breadcrumb.sort((a, b) =>
       Number(a.SORT) > Number(b.SORT) ? 1 : -1
+    );
+    const IS_PREORDER = res.breadcrumb.find(
+      (bread) =>
+        bread.NAME == "Огнестрельное оружие" ||
+        bread.NAME == "Пневматическое оружие" ||
+        bread.NAME == "Оптика"
     );
     const element = `
       <div class="card__wrap container">
@@ -240,16 +246,26 @@ document.addEventListener("DOMContentLoaded", async () => {
               : ``
           }
           </div>
-          <button id="${
-            document.location.search.split("?id=")[1]
-          }" class="card__right-button" ${
+          <button id="${idGood}" class="card__right-button" ${
       res["warehouse"] == "0" && !res["Наличие в магазине"]
-        ? `data-available="not-available"`
+        ? IS_PREORDER
+          ? `data-available="not-available"`
+          : "disabled"
+        : userInfo.cart
+        ? Object.keys(userInfo.cart).includes(idGood)
+          ? "disabled"
+          : ""
         : ""
     }>
             ${
               res["warehouse"] == "0" && !res["Наличие в магазине"]
-                ? "Подобрать аналог"
+                ? IS_PREORDER
+                  ? "Подобрать аналог"
+                  : "Товара нет в наличии"
+                : userInfo.cart
+                ? Object.keys(userInfo.cart).includes(idGood)
+                  ? "В корзине"
+                  : "В корзину"
                 : "В корзину"
             }
           </button>
@@ -269,7 +285,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           )
             .then((res) => res.json())
             .then(async (res) => {
-              if (res.STATUS == "OK") {
+              if (res.STATUS.OK == "OK") {
                 showMessage(
                   "Товар добавлен!",
                   "Товар успешно добавлен в корзину.",
@@ -279,7 +295,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 e.target.textContent = "В корзине";
                 updateCountGoods(await getUserData());
               }
-              if (res.STATUS == "NEOK") {
+              if (res.STATUS.NEOK == "NEOK") {
                 showMessage(
                   "Ошибка!",
                   "Произошла ошибка, пожалуйста обратитесь в службу поддержки.",
@@ -885,8 +901,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               {
                 method: "POST",
                 body: JSON.stringify({
-                  goodId: "231822",
-                  userId: "4307",
+                  goodId: idGood,
+                  userId: userInfo.personal.ID,
                   stars: rate,
                   textReview: textArea.value,
                 }),
@@ -937,6 +953,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             <input class="popup__wrap-input" id="client-tel-input" type="text" placeholder=" " autocomplete="off">
             <label for="client-tel-input">Введите номер телефона</label>
           </div>
+          <div class="input-wrap">
+            <input class="popup__wrap-input" id="client-email-input" type="text" placeholder=" " autocomplete="off">
+            <label for="client-email-input">Введите ваш email</label>
+          </div>
           <label class="checkbox__label">
             Нажимая кнопку «Заказать звонок», вы соглашаетесь с условиями политики конфиденциальности
             <input
@@ -958,6 +978,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.body.insertAdjacentHTML("beforeend", element);
     const popupAnalog = document.getElementById("popup-analog");
     const telInput = document.getElementById("client-tel-input");
+    const emailInput = document.getElementById("client-email-input");
     Inputmask({
       mask: "+7 (999) 999-99-99",
       showMaskOnHover: false,
@@ -968,11 +989,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         this.classList.add("is-not-valid");
       },
     }).mask(telInput);
+    Inputmask({
+      mask: "*{50}",
+      placeholder: "",
+      greedy: false,
+      showMaskOnHover: false,
+      definitions: {
+        "*": {
+          validator: "[0-9A-Za-z@._-]",
+        },
+      },
+      onKeyDown: function () {
+        this.classList.remove("is-not-valid");
+      },
+      onincomplete: function () {
+        if (!this.value.includes("@")) this.classList.add("is-not-valid");
+      },
+    }).mask(emailInput);
     popupAnalog.addEventListener("click", async (e) => {
       if (e.target.id == "submit-button") {
         e.preventDefault();
         const checkbox = document.querySelector(".checkbox");
         if (!telInput.value.length) telInput.classList.add("is-not-valid");
+        if (!emailInput.value.length) emailInput.classList.add("is-not-valid");
         if (checkbox.checked) {
           document
             .querySelector(".checkbox__span")
@@ -984,7 +1023,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         const isNotValid = document.querySelectorAll(".is-not-valid");
         if (!isNotValid.length) {
-          console.log("POST");
+          showMessage(
+            "Успешно!",
+            "Заявка на звонок отправлена. Менеджер свяжется с вами в ближайшее время.",
+            "success"
+          );
+          popupAnalog.remove();
           // const changeDataFetch = await fetch(
           //   `https://ohotaktiv.ru/12dev/new-design/pages/header/hand_user.php?change_user_info=change&name=${nameInput.value}&last_name=${surnameInput.value}&phone=${telInput.value}&address=${addressInput.value}`,
           //   {

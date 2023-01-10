@@ -30,6 +30,9 @@
           &:not(.is-active):hover {
             color: var(--grey-color);
           }
+          &:last-child {
+            color: var(--grey-item-color);
+          }
           &.skeleton {
             width: 170px;
             height: 25px;

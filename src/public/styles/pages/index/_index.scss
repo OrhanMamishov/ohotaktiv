@@ -4,6 +4,7 @@
     padding-top: 0;
     &__img {
       width: 100%;
+      height: 100%;
       object-fit: cover;
     }
     &__pagination {
@@ -11,29 +12,53 @@
         background: var(--white-color);
       }
     }
-    &__item {
+    &__title {
+      max-width: 600px;
+      padding-left: 45px;
+      margin-bottom: 35px;
       position: relative;
+      font-size: 60px;
+      line-height: 65px;
+      font-weight: 700;
+      color: var(--secondary-color);
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 100%;
+        background-color: var(--primary-color);
+      }
     }
     &__text {
-      width: 330px;
-      margin-bottom: 37px;
-      font-size: 60px;
-      line-height: 75px;
-      font-weight: 800;
-      color: var(--white-color);
+      margin-bottom: 40px;
+      max-width: 450px;
+      font-weight: 600;
+      line-height: 35px;
+      font-size: 20px;
+      color: var(--secondary-color);
+      letter-spacing: normal;
       &-wrap {
         position: absolute;
         top: 50%;
-        right: 10%;
-        transform: translate(-50%, -50%);
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
       }
     }
-    &__subtext {
-      @include fontSize20;
-      color: var(--white-color);
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    &__more {
+      @include fontSize18;
+      display: inline-block;
+      padding: 22px 34px;
+      background-color: var(--primary-color);
+      border-radius: 100px;
+      text-align: center;
+      font-weight: 500;
+      color: var(--secondary-color);
+    }
+    .swiper {
+      height: 530px;
     }
   }
   .bestsellers {
@@ -270,8 +295,18 @@
 @media only screen and (max-width: 1560px) {
   .main {
     .banners {
-      &__img {
-        min-height: 509px;
+      .swiper {
+        height: 495px;
+      }
+      &__title {
+        margin-bottom: 30px;
+        padding-left: 40px;
+        font-size: 55px;
+        line-height: 60px;
+      }
+      &__text {
+        max-width: 469px;
+        margin-bottom: 35px;
       }
     }
     .bonuscard {
@@ -296,17 +331,24 @@
 @media only screen and (max-width: 1365px) {
   .main {
     .banners {
-      &__img {
-        min-height: 435px;
+      .swiper {
+        height: 465px;
+      }
+      &__title {
+        margin-bottom: 25px;
+        max-width: 520px;
+        font-size: 45px;
+        line-height: 55px;
       }
       &__text {
-        width: 263px;
         margin-bottom: 30px;
-        font-size: 50px;
-        line-height: 65px;
-        &-wrap {
-          right: 0;
-        }
+        max-width: 400px;
+        font-size: 18px;
+        line-height: 30px;
+      }
+      &__more {
+        padding: 20px 32px;
+        font-size: 16px;
       }
     }
     .bonuscard {
@@ -341,13 +383,23 @@
 @media only screen and (max-width: 1023px) {
   .main {
     .banners {
-      &__img {
-        min-height: 371px;
+      &__title {
+        margin-bottom: 20px;
+        padding-left: 35px;
+        font-size: 40px;
+        line-height: 50px;
       }
       &__text {
-        width: 211px;
-        font-size: 40px;
-        line-height: 55px;
+        max-width: 258px;
+        margin-bottom: 25px;
+        font-size: 16px;
+      }
+      .swiper {
+        height: 435px;
+      }
+      &__more {
+        padding: 16px 30px;
+        font-size: 14px;
       }
     }
     .bestsellers,
@@ -438,21 +490,43 @@
 @media only screen and (max-width: 767px) {
   .main {
     .banners {
+      &__title {
+        max-width: 288px;
+        margin-bottom: 15px;
+        padding-left: 25px;
+        font-size: 35px;
+        line-height: 45px;
+        &::before {
+          width: 5px;
+        }
+      }
       &__img {
-        min-height: 453px;
+        object-position: 50%;
       }
       &__text {
-        width: 150px;
-        margin-bottom: 17px;
-        font-size: 30px;
-        line-height: 40px;
+        max-width: 46%;
+        margin-bottom: 25px;
+        font-size: 14px;
+        line-height: 25px;
         &-wrap {
-          right: unset;
-          left: 16px;
-          bottom: 40px;
-          top: unset;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding-top: 30px;
+          padding-bottom: 30px;
+          top: 0;
+          height: 100%;
           transform: unset;
         }
+      }
+      &__pagination {
+        bottom: 5px !important;
+      }
+      &__more {
+        margin-top: auto;
+      }
+      .swiper {
+        height: 420px;
       }
     }
     .bonuscard {

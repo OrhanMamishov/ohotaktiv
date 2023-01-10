@@ -5,8 +5,12 @@ import { bodyScrollToggle } from "../functions/scrollBody";
 import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/css/bundle";
 import { getUserData } from "../functions/getUserData";
+import { showMessage } from "../functions/showMessage";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  if (document.location.search.includes("?logout=yes")) {
+    showMessage("Выход", "Вы вышли из учетной записи!", "success");
+  }
   const userInfo = await getUserData();
   const main = document.querySelector("main");
   const hitItems = await fetch(
@@ -61,8 +65,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   const mainBanners = [
     {
-      picture: "img/main-banner.jpg",
-      title: "Новогодняя распродажа",
+      picture: "../../assets/img/main-banner.jpg",
+      title: "Новогодняя распродажа 2023",
+      text: "Новогодняя акция! Успей приобрести товары со скидкой с 16 декабря по 20 января!",
+      url: "#",
+    },
+    {
+      picture: "../../assets/img/main-banner.jpg",
+      title: "Новогодняя распродажа 2023 / 2",
+      text: "Новогодняя акция! Успей приобрести товары со скидкой с 16 декабря по 20 января!",
+      url: "#",
+    },
+    {
+      picture: "../../assets/img/main-banner.jpg",
+      title: "Новогодняя распродажа 2023 / 3",
       text: "Новогодняя акция! Успей приобрести товары со скидкой с 16 декабря по 20 января!",
       url: "#",
     },
@@ -73,45 +89,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     <div class="banners__wrap">
       <div class="swiper swiper-banner">
         <ul class="banners__list swiper-wrapper">
-          <li class="banners__item swiper-slide">
-            <a href="#" class="banners__link">
-              <img
-                src="img/main-banner.jpg"
-                alt="Главный баннер"
-                class="banners__img"
-              />
-              <div class="banners__text-wrap">
-                <p class="banners__text">Товары для охоты</p>
-                <p class="banners__subtext">Смотреть</p>
-              </div>
-            </a>
-          </li>
-          <li class="banners__item swiper-slide">
-            <a href="#" class="banners__link">
-              <img
-                src="img/main-banner.jpg"
-                alt="Главный баннер"
-                class="banners__img"
-              />
-              <div class="banners__text-wrap">
-                <p class="banners__text">Товары для охоты</p>
-                <p class="banners__subtext">Смотреть</p>
-              </div>
-            </a>
-          </li>
-          <li class="banners__item swiper-slide">
-            <a href="#" class="banners__link">
-              <img
-                src="img/main-banner.jpg"
-                alt="Главный баннер"
-                class="banners__img"
-              />
-              <div class="banners__text-wrap">
-                <p class="banners__text">Товары для охоты</p>
-                <p class="banners__subtext">Смотреть</p>
-              </div>
-            </a>
-          </li>
+          ${mainBanners
+            .map((banner) => {
+              return `
+              <li class="banners__item swiper-slide">
+                <a href="${banner.url}" class="banners__link">
+                  <img class="banners__img" src="${banner.picture}" alt="${banner.title}">
+                  <div class="banners__text-wrap container">
+                    <p class="banners__title">${banner.title}</p>
+                    <p class="banners__text">${banner.text}</p>
+                    <p class="banners__more">Подробнее об акции</p>
+                  </div>
+                </a>
+              </li>
+            `;
+            })
+            .join("")}
         </ul>
         <div class="banners__pagination swiper-pagination"></div>
       </div>
